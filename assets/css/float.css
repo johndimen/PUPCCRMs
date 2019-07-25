@@ -1,0 +1,51 @@
+@import url(https://fonts.googleapis.com/css?family=Anton&display=swap);
+@import url(font-awesome.min.css);
+@import url(./main.css);
+
+.btnz {
+    display: block;
+    float: left;
+    padding: 10px 15px;
+    border:none;
+    background-color: #ececec;
+    text-decoration: none;
+    font-size: 18px;
+    color: #FFF;
+}
+.btnz:hover {
+    color: #efefef;
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+.twitter {
+    background-color: #55acee;
+}
+.linkedin {
+    background-color: #0077b5;
+}
+.buffer {
+    background-color: #323b43;
+}
+
+.socialfloat {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 200px;
+    z-index: 9999;
+}
+.socialfloat .fbtn {
+    width: 50px;
+    height: 50px;
+    display: block;
+    color: #fff;
+    text-align: center;
+}
+.socialfloat .fbtn i {
+    font-size: 30px;
+    line-height: 50px;
+}
+
+

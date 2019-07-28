@@ -1,5 +1,5 @@
 var modal = document.querySelector(".modal");
-var trigger = document.querySelector(".tooltip");
+var trigger = document.querySelector(".tooltips");
 var closeButton = document.querySelector(".close-button");
 
 function toggleModal() {

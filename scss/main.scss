@@ -21,3 +21,192 @@
 @import "theme/header";
 @import "theme/home";
 @import "theme/footer";
+
+//download area
+//Vars
+$primary: #007ee5;
+$white: #fff;
+
+//downloadBlock-sliderContainer
+.downloadBlocks-sliderContainer:after,
+.downloadBlocks-sliderContainer:before {
+  position: absolute;
+  top: 0;
+  z-index: 200;
+  width: 17.5%;
+  height: 100%;
+  content: "";
+  pointer-events: none;
+}
+
+.downloadBlocks-sliderContainer:before {
+  left: 0;
+  background: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
+}
+
+.downloadBlocks-sliderContainer:after {
+  right: 0;
+  background: linear-gradient(90deg, hsla(0, 0%, 100%, 0), #fff);
+}
+
+//downloadBlocks-slider
+.downloadBlocks-slider {
+  transition: opacity .5s ease-in-out;
+}
+
+//downloadBlock-container
+.downloadBlock-container {
+  top: 50%;
+  padding: 16px 0;
+  transform: translateY(-50%);
+}
+
+.download-container+.download-container {
+  margin-left: -1px;
+}
+
+//downloadBlock
+.downloadBlock {
+  background: $white;
+  position: relative;
+  overflow: hidden;
+  padding: 32px 16px;
+  width: 240px;
+  border: 1px solid $primary;
+  transition: padding .4s ease-in-out;
+}
+
+//downloadBlock-top
+.downloadBlock-top {
+  text-align: center;
+  font-weight: 800;
+}
+
+.u-flexCenter {
+  justify-content: center!important;
+}
+
+.u-flex,
+.u-flexDeepMatch > * {
+  display: flex;
+}
+
+.u-flex {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.downloadBlock-price {
+  align-items: baseline;
+  font-size: 64px;
+  line-height: 1;
+  transition: transform 0.25s cubic-bezier(1, 0, 0, 1);
+  transform: scale(.75);
+}
+
+.downloadBlocks-slider .downloadBlock-container.is-selected .downloadBlock-dollar,
+.downloadBlocks-slider .downloadBlock-container.is-selected .downloadBlock-price {
+  transform: scale(1);
+}
+
+.downloadBlocks-slider .downloadBlock-container.is-selected .downloadBlock-list {
+  transform: translateX(-50%) scale(1);
+}
+
+.downloadBlock-list {
+  position: relative;
+  left: 50%;
+  display: inline-block;
+  transition: transform 0.4s ease-in-out;
+  transform: translateX(-50%) scale(.85);
+  margin-top: 16px;
+}
+
+.u-textLarge {
+  font-size: 20px!important;
+}
+
+.u-textPrimary {
+  color: $primary!important;
+}
+
+.downloadBlock-dollar {
+  align-self: flex-start;
+  margin-right: 4px;
+  font-size: 30px;
+}
+
+.downloadBlock-time {
+  margin-left: 4px;
+  font-size: 20px;
+}
+
+.downloadBlocks-slider .downloadBlock:before {
+  box-shadow: inset -15px 0 30px -15px rgba(0, 105, 255, .5);
+  transform: translateX(100%);
+}
+
+.downloadBlocks-slider .downloadBlock:after {
+  box-shadow: inset 15px 0 30px -15px rgba(0, 105, 255, .5);
+  transform: translateX(-100%);
+}
+
+.downloadBlock-container.is-next .downloadBlock:after,
+.downloadBlock-container.is-previous .downloadBlock:before {
+  transform: translateX(0);
+}
+
+.downloadBlocks-slider .downloadBlock:after,
+.downloadBlocks-slider .downloadBlock:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  transition: transform .25s cubic-bezier(1, 0, 0, 1);
+}
+
+.downloadBlocks-slider .downloadBlock-container.is-selected .downloadBlock {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+//PrevNext
+.flickity-prev-next-button {
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  z-index: 400;
+}
+
+.flickity-prev-next-button:hover {
+  background: transparent;
+}
+
+.flickity-prev-next-button .arrow {
+  fill: $primary;
+}
+
+.flickity-prev-next-button.no-svg {
+  color: $primary;
+}
+
+//Page Dots
+.flickity-page-dots {
+  bottom: -40px;
+}
+
+.flickity-page-dots .dot {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background: transparent;
+  border: 1px solid $primary;
+  transition: all .4s ease-in-out;
+}
+
+.flickity-page-dots .dot.is-selected {
+  background: $primary;
+}

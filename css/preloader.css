@@ -246,6 +246,19 @@ preloader
     transform: translate(-50%) rotate(0deg)
 }
 
+/*feedback*/
+.feedback-textarea{
+    display:block;
+    width:100%;
+    line-height:20px;
+    border:none;
+    outline:none;
+    background:#f9f9ff;
+    padding:0 20px;
+    height:100px;
+    resize:none
+}
 
-/*  download area */
-
+.feedback-textarea:focus{
+    outline:none
+}

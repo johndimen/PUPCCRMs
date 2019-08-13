@@ -53,6 +53,7 @@
                   <nav id="nav-menu-container">
                     <ul class="nav-menu">
                       <li class="menu-active"><a href="./index.html">Home</a></li>
+                      <li class="manu-active"><a href="#feedback">Feedback</a></li>
                       <li class="menu-has-children"><a href="">Pages</a>
                         <ul>
                           <li><a href="https://www.pup.edu.ph/">PUPWebSite</a></li>
@@ -71,8 +72,8 @@
                         <div class="row height align-items-center justify-content-center">
                             <div class="col-lg-10">
                                 <div class="generic-banner-content">
-                                    <h2 class="text-white">The Elements Page</h2>
-                                    <p class="text-white">It won’t be a bigger problem to find one video game lover in your <br> neighbor. Since the introduction of Virtual Game.</p>
+                                    <h2 class="text-white">Feedback</h2>
+                                    <p class="text-white">Give Us your Feedback!<br>you dont have to worry about your feedback data <br> it is secured here inside our system.</p>
                                 </div>
                             </div>
                         </div>
@@ -83,55 +84,74 @@
         <!-- Start Align Area -->
         <div class="whole-wrap">
             <div class="container">
-                <div class="section-top-border">
+                <div class="section-top-border" id="feedback">
                     <div class="row">
                         <div class="col-lg-8 col-md-8">
-                            <h3 class="mb-30">Form Element</h3>
+                            <h3 class="mb-30">Feedback Form</h3>
                             <form action="#">
-                                <div class="mt-10">
-                                    <input type="text" name="first_name" placeholder="First Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required class="single-input">
-                                </div>
-                                <div class="mt-10">
-                                    <input type="text" name="last_name" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required class="single-input">
-                                </div>
-                                <div class="mt-10">
-                                    <input type="text" name="last_name" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required class="single-input">
-                                </div>
-                                <div class="mt-10">
-                                    <input type="email" name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required class="single-input">
-                                </div>
-                                <div class="input-group-icon mt-10">
-                                    <div class="icon"><i class="fa fa-thumb-tack" aria-hidden="true"></i></div>
-                                    <input type="text" name="address" placeholder="Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'" required class="single-input">
-                                </div>
-                                <div class="input-group-icon mt-10">
-                                    <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
-                                    <div class="form-select" id="default-select"">
-                                        <select>
-                                            <option value="1">City</option>
-                                            <option value="1">Dhaka</option>
-                                            <option value="1">Dilli</option>
-                                            <option value="1">Newyork</option>
-                                            <option value="1">Islamabad</option>
-                                        </select>
+                                <div class="row">
+                                    <fieldset id='rating' class="rating">
+                                        <h5>Evaluation</h5>
+                                            <input class="stars" type="radio" id="star53" name="rating" value="5" />
+                                            <label class = "full" for="star53" title="Awesome - 5 stars"></label>
+                                            <input class="stars" type="radio" id="star4half3" name="rating" value="4.5" />
+                                            <label class="half" for="star4half3" title="Pretty good - 4.5 stars"></label>
+                                            <input class="stars" type="radio" id="star43" name="rating" value="4" />
+                                            <label class = "full" for="star43" title="Pretty good - 4 stars"></label>
+                                            <input class="stars" type="radio" id="star3half3" name="rating" value="3.5" />
+                                            <label class="half" for="star3half3" title="Meh - 3.5 stars"></label>
+                                            <input class="stars" type="radio" id="star33" name="rating" value="3" />
+                                            <label class = "full" for="star33" title="Meh - 3 stars"></label>
+                                            <input class="stars" type="radio" id="star2half3" name="rating" value="2.5" />
+                                            <label class="half" for="star2half3" title="Kinda bad - 2.5 stars"></label>
+                                            <input class="stars" type="radio" id="star23" name="rating" value="2" />
+                                            <label class = "full" for="star23" title="Kinda bad - 2 stars"></label>
+                                            <input class="stars" type="radio" id="star1half3" name="rating" value="1.5" />
+                                            <label class="half" for="star1half3" title="Meh - 1.5 stars"></label>
+                                            <input class="stars" type="radio" id="star13" name="rating" value="1" />
+                                            <label class = "full" for="star13" title="Sucks big time - 1 star"></label>
+                                            <input class="stars" type="radio" id="starhalf3" name="rating" value="0.5" />
+                                            <label class="half" for="starhalf3" title="Sucks big time - 0.5 stars"></label>
+                                    </fieldset> 
+                                    <div class="col-sm-3">
+                                            <h5>Stall No.</h5>
+                                            <div class="default-select" id="default-select"">
+                                                <select>
+                                                    <option selected disabled>Stall No..</option>
+                                                    <option value="1">Stall No.1</option>
+                                                    <option value="2">Stall No.2</option>
+                                                    <option value="3">Stall No.3</option>
+                                                    <option value="4">Stall No.4</option>
+                                                    <option value="5">Stall No.5</option>
+                                                    <option value="6">Stall No.6</option>
+                                                    <option value="7">Stall No.7</option>
+                                                    <option value="8">Stall No.8</option>
+                                                    <option value="9">Stall No.9</option>
+
+                                                </select>
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                            <h5>Area</h5>
+                                            <div class="default-select" id="default-select"">
+                                                <select>
+                                                    <option selected disabled>Area</option>
+                                                    <option value="North">North</option>
+                                                    <option value="East">East</option>
+                                                    <option value="South">South</option>
+                                                    <option value="West">West</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>
                                     </div>
                                 </div>
-                                <div class="input-group-icon mt-10">
-                                    <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
-                                    <div class="form-select" id="default-select"">
-                                        <select>
-                                            <option value="1">Country</option>
-                                            <option value="1">Bangladesh</option>
-                                            <option value="1">India</option>
-                                            <option value="1">England</option>
-                                            <option value="1">Srilanka</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
                                 <div class="mt-10">
+                                    <h5>Your message</h5>
                                     <textarea class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
                                 </div>
+                                
+						        <a href="#" class="genric-btn primary circle arrow pull-right mt-10">Continue<span class="lnr lnr-arrow-right"></span></a>
+                                
                                 <!-- For Gradient Border Use -->
                                 <!-- <div class="mt-10">
                                     <div class="primary-input">
@@ -139,16 +159,29 @@
                                         <label for="primary-input"></label>
                                     </div>
                                 </div> -->
-                                <div class="mt-10">
-                                    <input type="text" name="first_name" placeholder="Primary color" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Primary color'" required class="single-input-primary">
-                                </div>
-                                <div class="mt-10">
-                                    <input type="text" name="first_name" placeholder="Accent color" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Accent color'" required class="single-input-accent">
-                                </div>
-                                <div class="mt-10">
-                                    <input type="text" name="first_name" placeholder="Secondary color" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Secondary color'" required class="single-input-secondary">
-                                </div>
                             </form>
+                            
+                        </div>
+                        <div class="nav-tabs-custom">
+                        <div>
+                            <H5>Details</H5>
+                        </div>
+                                <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#student" data-toggle="tab">Student</a></li>
+                                        <li><a href="#employee" data-toggle="tab">Employee</a></li>
+                                        <li><a href="#faculty" data-toggle="tab">Faculty</a></li>
+                                </ul>
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="student">
+
+                                </div>
+                                <div class="active tab-pane" id="employee">
+
+                                </div>
+                                <div class="active tab-pane" id="faculty">
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -221,12 +254,30 @@
         </footer>	
         <!-- End footer Area -->
 
-
+        <script>
+            $(document).ready(function () {
+                $("#rating .stars").click(function () {
+                    $.post('rating.php',{rate:$(this).val()},function(d){
+                               if(d>0)
+                               {
+                                   alert('You already rated');
+                               }else{
+                                   alert('Thanks For Rating');
+                               }
+                           });
+                    var label = $("label[for='" + $(this).attr('id') + "']");
+                                
+                    $("#feedback").text(label.attr('title'));
+                    $(this).attr("checked");
+                });
+            });
+        </script>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d4db5c0f29b8e57"></script>
         <script src="js/vendor/jquery-2.2.4.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="js/vendor/bootstrap.min.js"></script>			
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-          <script src="js/easing.min.js"></script>			
+        <script src="js/easing.min.js"></script>			
         <script src="js/hoverIntent.js"></script>
         <script src="js/superfish.min.js"></script>	
         <script src="js/jquery.ajaxchimp.min.js"></script>

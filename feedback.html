@@ -34,7 +34,7 @@
     </head>
     <body>
         <!-- preloader-->
-        <div class="preloader">
+        <div class="preloader" style="background-image:-webkit-linear-gradient(0deg,rgba(98, 189, 252) 0%, rgba(132, 144, 255) 100%)">
             <div class="sk-folding-cube">
                 <div class="sk-cube1 sk-cube"></div>
                 <div class="sk-cube2 sk-cube"></div>
@@ -44,7 +44,7 @@
         </div>
         <!-- #preloader-->
         <!-- Header-->
-          <header id="header" id="home">
+          <header id="header" >
             <div class="container">
                 <div class="row align-items-center justify-content-between d-flex">
                   <div id="logo">
@@ -57,7 +57,7 @@
                       <li class="menu-has-children"><a href="">Pages</a>
                         <ul>
                           <li><a href="https://www.pup.edu.ph/">PUPWebSite</a></li>
-                          <li><a href="./admin/login.html">Admin Login</a></li>
+                          <li><a href="./admin/login.php">CCRM Admin Login</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -67,7 +67,7 @@
           </header><!-- #header -->
 
           	<!-- Start banner Area -->
-			<section class=" generic-banner relative">					
+			<section class=" generic-banner relative" style="background-image:-webkit-linear-gradient(0deg,rgba(98, 189, 252,1) 0%, rgba(132, 144, 255,1) 100%)">					
                     <div class="container">
                         <div class="row height align-items-center justify-content-center">
                             <div class="col-lg-10">
@@ -88,9 +88,10 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-8">
                             <h3 class="mb-30">Feedback Form</h3>
+                            <p>You dont have to worry about information <b>leak</b>, Your Information is <b>secured</b> in our system. </p>
                             <form action="#">
                                 <div class="row">
-                                    <fieldset id='rating' class="rating">
+                                    <fieldset id='rating' class="rating" style="padding-left: 15px;">
                                         <h5>Evaluation</h5>
                                             <input class="stars" type="radio" id="star53" name="rating" value="5" />
                                             <label class = "full" for="star53" title="Awesome - 5 stars"></label>
@@ -114,22 +115,8 @@
                                             <label class="half" for="starhalf3" title="Sucks big time - 0.5 stars"></label>
                                     </fieldset> 
                                     <div class="col-sm-3">
-                                            <h5>Stall No.</h5>
-                                            <div class="default-select" id="default-select"">
-                                                <select>
-                                                    <option selected disabled>Stall No..</option>
-                                                    <option value="1">Stall No.1</option>
-                                                    <option value="2">Stall No.2</option>
-                                                    <option value="3">Stall No.3</option>
-                                                    <option value="4">Stall No.4</option>
-                                                    <option value="5">Stall No.5</option>
-                                                    <option value="6">Stall No.6</option>
-                                                    <option value="7">Stall No.7</option>
-                                                    <option value="8">Stall No.8</option>
-                                                    <option value="9">Stall No.9</option>
-
-                                                </select>
-                                            </div>
+                                        <h5>Stall No.</h5>
+                                        <input type="text" name="stall_no" placeholder="Stall No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Stall No.'" required class="single-input">
                                     </div>
                                     <div class="col-sm-3">
                                             <h5>Area</h5>
@@ -147,11 +134,10 @@
                                 </div>
                                 <div class="mt-10">
                                     <h5>Your message</h5>
-                                    <textarea class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
+                                    <textarea class="single-textarea" style="line-height:20px;height: 200px;border-radius: 5px;" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
                                 </div>
                                 
-						        <a href="#" class="genric-btn primary circle arrow pull-right mt-10">Continue<span class="lnr lnr-arrow-right"></span></a>
-                                
+						    
                                 <!-- For Gradient Border Use -->
                                 <!-- <div class="mt-10">
                                     <div class="primary-input">
@@ -162,27 +148,100 @@
                             </form>
                             
                         </div>
-                        <div class="nav-tabs-custom">
-                        <div>
-                            <H5>Details</H5>
-                        </div>
-                                <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#student" data-toggle="tab">Student</a></li>
-                                        <li><a href="#employee" data-toggle="tab">Employee</a></li>
-                                        <li><a href="#faculty" data-toggle="tab">Faculty</a></li>
-                                </ul>
-                            <div class="tab-content">
-                                <div class="active tab-pane" id="student">
-
-                                </div>
-                                <div class="active tab-pane" id="employee">
-
-                                </div>
-                                <div class="active tab-pane" id="faculty">
-
-                                </div>
+                        <div class="tab-area">
+                            <h5>Feedback Details</h5>
+                            <p>(It is <b>required</b> to fill up this form.)</p>
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#students">Students</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#employees">Employees</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#faculty">Faculty</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#others">Others</a>
+                            </li>
+                        </ul>
+  
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane container fade" id="students">
+                                <form>
+                                    <div class="mt-10">
+										<input type="text" name="student_name" placeholder="Student Name." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Student Name'" required class="single-input">
+                                    </div>
+                                    <div class="mt-10">
+										<input type="text" name="student_no" placeholder="Student No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Student No.'" required class="single-input">
+                                    </div>
+                                    <br>
+                                    <p>(in case of inquiry)<br>Please provide E-mail and Contact No.</p>
+                                    <div class="mt-10">
+										<input type="text" name="student_email" placeholder="E-mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'" required class="single-input">
+                                    </div>
+                                    <div class="mt-10">
+										<input type="text" name="student_contact_no" placeholder="Contact No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact No.'" required class="single-input">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane container fade" id="employees"> 
+                                <form>
+                                    <div class="mt-10">
+										<input type="text" name="employees_name" placeholder="Employees Name." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Employees Name'" required class="single-input">
+                                    </div>
+                                    <div class="mt-10">
+										<input type="text" name="employees_no" placeholder="Employees No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Employees No.'" required class="single-input">
+                                    </div>
+                                    <br>
+                                    <p>(in case of inquiry)<br>Please provide E-mail and Contact No.</p>
+                                    <div class="mt-10">
+										<input type="text" name="employees_email" placeholder="E-mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'" required class="single-input">
+                                    </div>
+                                    <div class="mt-10">
+										<input type="text" name="employees_contact_no" placeholder="Contact No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact No.'" required class="single-input">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane container fade" id="faculty"> 
+                                <form>
+                                    <div class="mt-10">
+										<input type="text" name="faculty_name" placeholder="Faculty Name." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Faculty Name'" required class="single-input">
+                                    </div>
+                                    <div class="mt-10">
+										<input type="text" name="faculty_no" placeholder="Faculty No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Faculty No.'" required class="single-input">
+                                    </div>
+                                    <br>
+                                    <p>(in case of inquiry)<br>Please provide E-mail and Contact No.</p>
+                                    <div class="mt-10">
+										<input type="text" name="faculty_email" placeholder="E-mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'" required class="single-input">
+                                    </div>
+                                    <div class="mt-10">
+										<input type="text" name="faculty_contact_no" placeholder="Contact No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact No.'" required class="single-input">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane container fade" id="others"> 
+                                <form>
+                                    <div class="mt-10">
+										<input type="text" name="others_name" placeholder="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" required class="single-input">
+                                    </div>
+                                    <br>
+                                    <p>(in case of inquiry)<br>Please provide E-mail and Contact No.</p>
+                                    <div class="mt-10">
+										<input type="text" name="others_email" placeholder="E-mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'" required class="single-input">
+                                    </div>
+                                    <div class="mt-10">
+										<input type="text" name="others_contact_no" placeholder="Contact No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact No.'" required class="single-input">
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                        </div>
+                        <a href="#" class="genric-btn primary circle arrow pull-right mt-10">Continue<span class="lnr lnr-arrow-right"></span></a>
+                                
                     </div>
                 </div>
             </div>

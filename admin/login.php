@@ -1,6 +1,7 @@
 <?php
   session_start();
-  require('dbconfig.php'); 
+  require('./assets/dbconfig.php'); 
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,8 +40,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
-
+    <p class="login-box-msg">Log in to start your session <br>Unauthorized Access <b>Is Prohibited</b>.<br>Click '<b>PUP</b>CCRMs' to Go Back.</p>
     <form action="./index.html" method="post">
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="Email">
@@ -60,7 +60,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
         </div>
         <!-- /.col -->
       </div>

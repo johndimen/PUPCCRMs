@@ -1,8 +1,18 @@
+<!--<?php
+// We need to use sessions, so you should always start sessions using the below code.
+// If the user is not logged in redirect to the login page...
+/*if (!isset($_SESSION['loggedin'])) {
+	header('Location: login.php');
+	exit();
+}*/
+?>-->
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="../img/icon.png">
   <title>PUPCCRMs | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -292,7 +302,7 @@
                   <a href="./page/options/admin-profile.html" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -528,6 +538,13 @@
         Dashboard
         <small>Control panel</small>
       </h1>
+      <h4>Today <b>(<script>var today = new Date();
+          var dd = String(today.getDate()).padStart(2, '0');
+          var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+          var yyyy = today.getFullYear();
+          
+          today = mm + '/' + dd + '/' + yyyy;
+          document.write(today);</script>)</b></h4>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
@@ -538,65 +555,51 @@
     <section class="content">
       <!-- Small boxes (Stat box) -->
       <div class="row">
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
               <h3>150</h3>
 
-              <p>New Orders</p>
+              <p>New Cases</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="ion ion-briefcase"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3>53</h3>
 
-              <p>Bounce Rate</p>
+              <p>Task</p>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="ion ion-clipboard"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
               <h3>44</h3>
 
-              <p>User Registrations</p>
+              <p>Feedbacks</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="ion ion-chatbubbles"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>65</h3>
-
-              <p>Unique Visitors</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
         <!-- ./col -->
       </div>
       <!-- /.row -->
@@ -604,19 +607,106 @@
       <div class="row">
         <!-- Left col -->
         <section class="col-lg-7 connectedSortable">
+
           <!-- Custom tabs (Charts with tabs)-->
-          <div class="nav-tabs-custom">
-            <!-- Tabs within a box -->
-            <ul class="nav nav-tabs pull-right">
-              <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
-              <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
-              <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
-            </ul>
-            <div class="tab-content no-padding">
-              <!-- Morris chart - Sales -->
-              <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
-              <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Latest Feedback</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
             </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="table-responsive">
+                <table class="table no-margin">
+                  <thead>
+                  <tr>
+                    <th>Feedback ID</th>
+                    <th>Subject</th>
+                    <th>Stall No.</th>
+                    <th>Date/Time</th>
+                    <th>Evaluation</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td><a href=" ">FI9842</a></td>
+                    <td>Feedback Sample</td>
+                    <td>1</td>
+                    <td><span class="">16/08/2019 00:00:00</span></td>
+                    <td>
+                      <p>4 <span class="fa fa-star"></span></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href=" ">FI1848</a></td>
+                    <td>Feedback Sample</td>
+                    <td>1</td>
+                    <td><span class="">16/08/2019 00:00:00</span></td>
+                    <td>
+                      <p>4 <span class="fa fa-star"></span></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href=" ">FI7429</a></td>
+                    <td>Feedback Sample</td>
+                    <td>1</td>
+                    <td><span class="">16/08/2019 00:00:00</span></td>
+                    <td>
+                      <p>4 <span class="fa fa-star"></span></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href=" ">FI7429</a></td>
+                    <td>Feedback Sample</td>
+                    <td>1</td>
+                    <td><span class="">16/08/2019 00:00:00</span></td>
+                    <td>
+                      <p>4 <span class="fa fa-star"></span></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href=" ">FI1848</a></td>
+                    <td>Feedback Sample</td>
+                    <td>1</td>
+                    <td><span class="">16/08/2019 00:00:00</span></td>
+                    <td>
+                      <p>4 <span class="fa fa-star"></span></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href=" ">FI7429</a></td>
+                    <td>Feedback Sample</td>
+                    <td>1</td>
+                    <td><span class="">16/08/2019 00:00:00</span></td>
+                    <td>
+                      <p>4 <span class="fa fa-star"></span></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="">FI9842</a></td>
+                    <td>Feedback Sample</td>
+                    <td>1</td>
+                    <td><span class="">16/08/2019 00:00:00</span></td>
+                    <td>
+                      <p>4 <span class="fa fa-star"></span></p>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <a href="./page/feedback/feedback.html" class="btn btn-sm btn-info btn-flat pull-left">View All Feedback</a>
+              <a href="./page/feedback/archive-feedback.html" class="btn btn-sm btn-default btn-flat pull-right">View Archived Feedback</a>
+            </div>
+            <!-- /.box-footer -->
           </div>
           <!-- /.nav-tabs-custom -->
 
@@ -756,33 +846,34 @@
               <i class="fa fa-map-marker"></i>
 
               <h3 class="box-title">
-                Visitors
+                Vicinity Map
               </h3>
             </div>
             <div class="box-body">
               <div id="world-map" style="height: 250px; width: 100%;"></div>
             </div>
-            <!-- /.box-body-->
+            
+            <!-- /.box-body
             <div class="box-footer no-border">
               <div class="row">
                 <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
                   <div id="sparkline-1"></div>
                   <div class="knob-label">Visitors</div>
                 </div>
-                <!-- ./col -->
+                <!-- ./col 
                 <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
                   <div id="sparkline-2"></div>
                   <div class="knob-label">Online</div>
                 </div>
-                <!-- ./col -->
+                <!-- ./col 
                 <div class="col-xs-4 text-center">
                   <div id="sparkline-3"></div>
                   <div class="knob-label">Exists</div>
                 </div>
-                <!-- ./col -->
+                <!-- ./col 
               </div>
-              <!-- /.row -->
-            </div>
+              <!-- /.row 
+            </div>-->
           </div>
           <!-- /.box -->
 

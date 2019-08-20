@@ -271,4 +271,5 @@ $(function () {
       spotColor: $this.data('spotcolor')
     });
   });
+  
 });

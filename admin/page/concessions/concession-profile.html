@@ -487,12 +487,17 @@
             </div>
             <!-- /.col -->
             <div class="col-md-9">
-              <div class="nav-tabs-custom">
+              <div class="nav-tabs-custom" id="profile_tabs">
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
                   <li><a href="#map" data-toggle="tab">Map</a></li>
                   <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-                  <li><a href="#settings" data-toggle="tab">Edit Profile</a></li>
+                  <li><a href="#experience" data-toggle="tab">Experience</a></li>
+                  <li><a href="#services" data-toggle="tab">Services</a></li>
+                  <li><a href="#items" data-toggle="tab">Items/Products</a></li>
+                  <li><a href="#equipment" data-toggle="tab">Equipments</a></li>
+                  <li><a href="#contract" data-toggle="tab">Contract</a></li>
+                  <li><a href="#settings" data-toggle="tab">Edit Concession</a></li>
                 </ul>
                 <div class="tab-content">
                   <div class="active tab-pane" id="activity">
@@ -612,7 +617,22 @@
                   <!-- /.tab-pane -->
 
                   <div class="tab-pane" id="map">
-
+                      <div class="box box-default collapsed-box">
+                          <div class="box-header with-border">
+                            <h3 class="box-title">Expandable</h3>
+              
+                            <div class="box-tools pull-right">
+                              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                              </button>
+                            </div>
+                            <!-- /.box-tools -->
+                          </div>
+                          <!-- /.box-header -->
+                          <div class="box-body">
+                            The body of the box
+                          </div>
+                          <!-- /.box-body -->
+                        </div>
                   </div>
 
                   <div class="tab-pane" id="timeline">
@@ -710,6 +730,69 @@
                     </ul>
                   </div>
                   <!-- /.tab-pane -->
+                  <!-- tab-pane-->
+                  <div class="tab-pane" id="experience">
+
+                  </div><!-- /.tab-pane-->
+                  <!-- tab-pane-->
+                  <div class="tab-pane" id="services">
+
+                  </div><!-- /.tab-pane-->
+                  <!-- tab-pane-->
+                  <div class="tab-pane" id="items">
+                      <div class="nav-tabs-wrapper">
+                          <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Tab 1</a></li>
+                            <li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>
+                            <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
+                          </ul>
+                          <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                              <b>How to use:</b>
+              
+                              <p>Exactly like the original bootstrap tabs except you should use
+                                the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>
+                              A wonderful serenity has taken possession of my entire soul,
+                              like these sweet mornings of spring which I enjoy with my whole heart.
+                              I am alone, and feel the charm of existence in this spot,
+                              which was created for the bliss of souls like mine. I am so happy,
+                              my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
+                              that I neglect my talents. I should be incapable of drawing a single stroke
+                              at the present moment; and yet I feel that I never was a greater artist than now.
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_2">
+                              The European languages are members of the same family. Their separate existence is a myth.
+                              For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
+                              in their grammar, their pronunciation and their most common words. Everyone realizes why a
+                              new common language would be desirable: one could refuse to pay expensive translators. To
+                              achieve this, it would be necessary to have uniform grammar, pronunciation and more common
+                              words. If several languages coalesce, the grammar of the resulting language is more simple
+                              and regular than that of the individual languages.
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_3">
+                              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                              when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                              It has survived not only five centuries, but also the leap into electronic typesetting,
+                              remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                              sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                              like Aldus PageMaker including versions of Lorem Ipsum.
+                            </div>
+                            <!-- /.tab-pane -->
+                          </div>
+                          <!-- /.tab-content -->
+                        </div>
+                  </div><!-- /.tab-pane-->
+                  <!-- tab-pane-->
+                  <div class="tab-pane" id="equipment">
+
+                  </div><!-- /.tab-pane-->
+                  <!-- tab-pane-->
+                  <div class="tab-pane" id="contract">
+
+                  </div><!-- /.tab-pane-->
     
                   <div class="tab-pane" id="settings">
                     <form class="form-horizontal">
@@ -1002,6 +1085,25 @@
   $(document).ready(function () {
     $('.sidebar-menu').tree()
   })
+
+  $('#profile_tabs').on('click', 'a[data-toggle="tab"]', function(e) {
+      e.preventDefault();
+
+      var $link = $(this);
+
+      if (!$link.parent().hasClass('active')) {
+
+        //remove active class from other tab-panes
+        $('.tab-content:not(.' + $link.attr('href').replace('#','') + ') .tab-pane').removeClass('active');
+
+        // click first submenu tab for active section
+        $('a[href="' + $link.attr('href') + '_all"][data-toggle="tab"]').click();
+
+        // activate tab-pane for active section
+        $('.tab-content.' + $link.attr('href').replace('#','') + ' .tab-pane:first').addClass('active');
+      }
+
+    });
 </script>
 
 

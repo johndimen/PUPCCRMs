@@ -4,7 +4,7 @@ $ipaddress = md5($_SERVER['REMOTE_ADDR']); // here I am taking IP as UniqueID bu
 $servername = "localhost"; // Server details
 $username = "root";
 $password = "";
-$dbname = "db_pupccrm";
+$dbname = "pupccrm_db";
 
 
 $conn = new mysqli($servername, $username, $password, $dbname);

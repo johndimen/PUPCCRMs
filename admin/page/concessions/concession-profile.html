@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -279,12 +283,15 @@
             </a>
             <ul class="treeview-menu active">
               <li class="treeview active"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                <ul class="treeview-menu active">
+                  <ul class="treeview-menu active">
                     <li class="active"><a href="./concession-profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                    <li><a href="./concession-item.html"><i class="fa fa-circle-o"></i> Items</a></li>
-                    <li><a href="./concession-product.html"><i class="fa fa-circle-o"></i> Products </a></li>
+                    <li><a href="./concession-map-images.html"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                    <li><a href="./concession-contact.html"><i class="fa fa-circle-o"></i> Contact</a></li>
+                    <li><a href="./concession-item.html"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                    <li><a href="./concession-services.html"><i class="fa fa-circle-o"></i> Services</a></li>
                     <li><a href="./concession-equipment.html"><i class="fa fa-circle-o"></i> Equipments</a></li>
-                </ul>
+                    <li><a href="./concession-experience.html"><i class="fa fa-circle-o"></i> Experience</a></li>
+                  </ul>
               </li>
               <li><a href="./concession-contract.html"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
@@ -423,19 +430,28 @@
                 <div class="box-body box-profile">
                   <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
     
-                  <h3 class="profile-username text-center">Nina Mcintire</h3>
+                  <h3 class="profile-username text-center"> Mcintire shop</h3>
     
-                  <p class="text-muted text-center">Software Engineer</p>
+                  <p class="text-muted text-center">Concessionaire</p>
     
                   <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
-                      <b>Followers</b> <a class="pull-right">1,322</a>
+                      <b>Stall No.</b> <a class="pull-right">1</a>
                     </li>
                     <li class="list-group-item">
-                      <b>Following</b> <a class="pull-right">543</a>
+                      <b>Area</b> <a class="pull-right">Lagoon</a>
                     </li>
                     <li class="list-group-item">
-                      <b>Friends</b> <a class="pull-right">13,287</a>
+                      <b>Items/Products</b> <a class="pull-right">13</a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Other Items</b> <a class="pull-right">4</a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Services</b> <a class="pull-right">5</a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Equipments</b> <a class="pull-right">10</a>
                     </li>
                   </ul>
                   
@@ -451,47 +467,55 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                  <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+                  <strong><i class="fa fa-certificate margin-r-5"></i> Owner</strong>
+
+                  <p class="text-muted">
+                    <b>Name:</b>Nina Mcintire
+                  </p>
+
+                  <hr>
+
+                  <strong><i class="fa fa-certificate margin-r-5"></i> Contract</strong>
     
                   <p class="text-muted">
-                    B.S. in Computer Science from the University of Tennessee at Knoxville
+                    <b>Contract Signed:</b>January 3, 2019
+                  </p>
+                  <p class="text-muted">
+                    <b>Contract Expires:</b>January 3, 2020
                   </p>
     
                   <hr>
     
                   <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
     
-                  <p class="text-muted">Malibu, California</p>
+                  <p class="text-muted">Manila City, Manila </p>
     
                   <hr>
     
-                  <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                  <strong><i class="fa fa-vcard margin-r-5"></i> Status</strong>
     
-                  <p>
-                    <span class="label label-danger">UI Design</span>
-                    <span class="label label-success">Coding</span>
-                    <span class="label label-info">Javascript</span>
-                    <span class="label label-warning">PHP</span>
-                    <span class="label label-primary">Node.js</span>
+                  <p class="text-muted">
+                    Active
                   </p>
     
                   <hr>
     
-                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Date Applied</strong>
     
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                  <p class="text-muted">December 1, 2018</p>
                 </div>
                 <!-- /.box-body -->
               </div>
               <!-- /.box -->
             </div>
             <!-- /.col -->
+            
             <div class="col-md-9">
               <div class="nav-tabs-custom" id="profile_tabs">
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
-                  <li><a href="#map" data-toggle="tab">Map</a></li>
                   <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
+                  <li><a href="#map" data-toggle="tab">Map/Images</a></li>
                   <li><a href="#experience" data-toggle="tab">Experience</a></li>
                   <li><a href="#services" data-toggle="tab">Services</a></li>
                   <li><a href="#items" data-toggle="tab">Items/Products</a></li>
@@ -617,9 +641,10 @@
                   <!-- /.tab-pane -->
 
                   <div class="tab-pane" id="map">
+                    <div class="row" style="padding:20px">
                       <div class="box box-default collapsed-box">
                           <div class="box-header with-border">
-                            <h3 class="box-title">Expandable</h3>
+                            <h3 class="box-title"><strong>Map</strong> </h3>
               
                             <div class="box-tools pull-right">
                               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
@@ -628,11 +653,58 @@
                             <!-- /.box-tools -->
                           </div>
                           <!-- /.box-header -->
-                          <div class="box-body">
-                            The body of the box
+                          <div class="box-body form-group" >
+                            <div  style="padding-left: 10px">
+                              <label for="mapInputFile">Map Image Input</label>
+                              <input type="file" id="mapInputFile">
+                              <p class="help-block">Input Concession Map Here</p>
+                              <button class="btn btn-primary" id="mapUploadFile">Upload</button>
+                            </div>
+                            <div class="box-body">
+                              Map here.
+                            </div>
                           </div>
+                          
                           <!-- /.box-body -->
                         </div>
+
+                        <div class="box box-solid">
+                          <div class="box-header with-border">
+                            <h3 class="box-title"><strong>Images</strong></h3>
+                          </div>
+
+                          <div class="box-body">
+                                <div class="row margin-bottom">
+                                  <div class="col-sm-6">
+                                    <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
+                                  </div>
+                                  <!-- /.col -->
+                                  <div class="col-sm-6">
+                                    <div class="row">
+                                      <div class="col-sm-6">
+                                        <img class="img-responsive" src="../../dist/img/photo2.png" alt="Photo">
+                                        <br>
+                                        <img class="img-responsive" src="../../dist/img/photo3.jpg" alt="Photo">
+                                      </div>
+                                      <!-- /.col -->
+                                      <div class="col-sm-6">
+                                        <img class="img-responsive" src="../../dist/img/photo4.jpg" alt="Photo">
+                                        <br>
+                                        <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
+                                      </div>
+                                      <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+                                  </div>
+                                  <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                          </div>
+
+                        </div>
+
+
+                    </div>
                   </div>
 
                   <div class="tab-pane" id="timeline">
@@ -732,105 +804,278 @@
                   <!-- /.tab-pane -->
                   <!-- tab-pane-->
                   <div class="tab-pane" id="experience">
+                      <div class="box box-solid">
+                          <div class="box-header with-border">
+                            <h3 class="box-title"><strong>Concession Experience</strong> </h3>
+                          </div>
 
+                          <div class="box-body">
+                            <table class="table table-striped">
+                              <tbody>
+                                <tr>
+                                  <th style="width: 10px;">Experience Number</th>
+                                  <th>Place</th>
+                                  <th>Year(s) in Concession</th>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+
+                      </div>
                   </div><!-- /.tab-pane-->
                   <!-- tab-pane-->
                   <div class="tab-pane" id="services">
+                      <div class="box box-solid">
+                          <div class="box-header with-border">
+                            <h3 class="box-title"><strong>Concession Services</strong> </h3>
+                          </div>
+
+                          <div class="box-body">
+                            <table class="table table-striped">
+                              <tbody>
+                                <tr>
+                                  <th style="width: 10px;">Service Number</th>
+                                  <th>Service Name</th>
+                                  <th>Description</th>
+                                  <th>Price Range</th>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+
+                      </div>
 
                   </div><!-- /.tab-pane-->
                   <!-- tab-pane-->
                   <div class="tab-pane" id="items">
-                      <div class="nav-tabs-wrapper">
-                          <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tab_1" data-toggle="tab">Tab 1</a></li>
-                            <li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>
-                            <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
-                          </ul>
-                          <div class="tab-content">
-                            <div class="tab-pane active" id="tab_1">
-                              <b>How to use:</b>
-              
-                              <p>Exactly like the original bootstrap tabs except you should use
-                                the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>
-                              A wonderful serenity has taken possession of my entire soul,
-                              like these sweet mornings of spring which I enjoy with my whole heart.
-                              I am alone, and feel the charm of existence in this spot,
-                              which was created for the bliss of souls like mine. I am so happy,
-                              my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
-                              that I neglect my talents. I should be incapable of drawing a single stroke
-                              at the present moment; and yet I feel that I never was a greater artist than now.
-                            </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_2">
-                              The European languages are members of the same family. Their separate existence is a myth.
-                              For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                              in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                              new common language would be desirable: one could refuse to pay expensive translators. To
-                              achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                              words. If several languages coalesce, the grammar of the resulting language is more simple
-                              and regular than that of the individual languages.
-                            </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_3">
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                              when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                              It has survived not only five centuries, but also the leap into electronic typesetting,
-                              remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                              sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                              like Aldus PageMaker including versions of Lorem Ipsum.
-                            </div>
-                            <!-- /.tab-pane -->
+                    <!-- Food Items-->
+                    <div class="box collapsed-box">
+                      <div class="box-header with-border">
+                        <h3 class="box-title"><strong>Food Items</strong> </h3>
+                          <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                            </button>
                           </div>
-                          <!-- /.tab-content -->
+                      </div>
+                      <div class="box-body">
+                        <table class="table table-bordered">
+                          <tbody>
+                            <tr>
+                              <th style="width: 10px">Item #</th>
+                              <th>Item Name</th>
+                              <th>Description</th>
+                              <th>Price<th></th>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="box-footer clearfix">
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                          <li><a href="#">«</a></li>
+                          <li><a href="#">1</a></li>
+                          <li><a href="#">»</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- ./Food Items-->
+
+                    <!-- Non-Food Items-->
+                    <div class="box collapsed-box">
+                        <div class="box-header with-border">
+                          <h3 class="box-title"> <strong>Non-Food Items</strong> </h3>
+                            <div class="box-tools pull-right">
+                              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                              </button>
+                            </div>
                         </div>
+                        <div class="box-body">
+                          <table class="table table-striped">
+                            <tbody>
+                              <tr>
+                                <th style="width: 10px">Item #</th>
+                                <th>Item Name</th>
+                                <th>Description</th>
+                                <th>Price<th></th>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="box-footer clearfix">
+                          <ul class="pagination pagination-sm no-margin pull-right">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">»</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <!-- ./Non-Food-->
+
+                      <!-- Other Items-->
+                        <div class="box collapsed-box">
+                          <div class="box-header with-border">
+                            <h3 class="box-title"><strong>Other Items</strong></h3>
+                              <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
+                              </div>
+                          </div>
+                          <div class="box-body">
+                            <table class="table table-striped">
+                              <tbody>
+                                <tr>
+                                  <th style="width: 10px">Item #</th>
+                                  <th>Item Name</th>
+                                  <th>Description</th>
+                                  <th>Price<th></th>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="box-footer clearfix">
+                            <ul class="pagination pagination-sm no-margin pull-right">
+                              <li><a href="#">«</a></li>
+                              <li><a href="#">1</a></li>
+                              <li><a href="#">»</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- ./Other Items-->
                   </div><!-- /.tab-pane-->
                   <!-- tab-pane-->
                   <div class="tab-pane" id="equipment">
+                      <div class="box box-solid">
+                          <div class="box-header with-border">
+                            <h3 class="box-title"><b>Equipment</b></h3>
+                          </div>
 
+                        <table class="table table-striped">
+                          <tbody>
+                            <tr>
+                              <th style="width: 10px;">Equipment Number</th>
+                              <th>Name</th>
+                              <th>Brand</th>
+                              <th>Description</th>
+                              <th>Wattage</th>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      
                   </div><!-- /.tab-pane-->
                   <!-- tab-pane-->
                   <div class="tab-pane" id="contract">
+                      <div class="box box-solid">
+                          <div class="box-header with-border"> 
+                            <h3 class="box-title"> <b>Contract</b></h3>
+                          </div>
 
+                            <table class="table table-striped">
+                              <tbody>
+                                <tr>
+                                  <th style="width: 10px;">Contract Number</th>
+                                  <th>Name</th>
+                                  <th>Description</th>
+                                  <th>Duration</th>
+                                  <th>Consignee</th>
+                                  <th>Date Signed</th>
+                                  <th>Status</th>
+                                </tr>
+                              </tbody>
+                            </table>
+                      </div>
                   </div><!-- /.tab-pane-->
     
                   <div class="tab-pane" id="settings">
+                    <h3>Edit Concession Profile </h3>
                     <form class="form-horizontal">
                       <div class="form-group">
-                        <label for="inputName" class="col-sm-2 control-label">Name</label>
+                        <label for="inputNumber" class="col-sm-2 control-label">Stall Number</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" placeholder="Stall Number" disabled>
+                        </div>
+                      </div>
+                        <div class="form-group">
+                          <label for="inputArea" class="col-sm-2 control-label">Stall Area</label>
+                          <div class="col-sm-10">
+                            <select class="form-control select2" style="width: 100%;">
+                              <option selected="selected"></option>Select Area</option>
+                              <option value="north">North</option>
+                              <option value="west">West</option>
+                              <option value=south"">South</option>
+                              <option value="east">East</option>
+                              <option value="east">Lagoon</option>
+                              <option value="other">Other</option>
+                            </select>
+                          </div>
+                        </div>
+                        <!-- /.form-group -->
+                      <div class="form-group">
+                        <label for="inputConcessionName" class="col-sm-2 control-label">Concession Name</label>
     
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Name">
+                          <input type="text" class="form-control" id="inputConcessionName" placeholder="Concession Name">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                        <label for="inputOwnerName" class="col-sm-2 control-label">Owner's Name</label>
     
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                          <input type="text" class="form-control" id="inputOwnerName" placeholder="Owner's Name">
                         </div>
                       </div>
+                        <div class="form-group">
+                          <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+      
+                          <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFunction" class="col-sm-2 control-label">Function</label>
+                          <div class="col-sm-10">
+                            <select class="form-control select2" style="width: 100%;" id="intpuFunction">
+                              <option selected="selected"></option>Select Function</option>
+                              <option value="north">Food</option>
+                              <option value="west">Non-Food</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputStatus" class="col-sm-2 control-label">Status</label>
+      
+                            <div class="col-sm-10">
+                              <select class="form-control select2" id="inputStatus" style="width: 100%;">
+                                <option selected="selected"></option>Select Status</option>
+                                <option value="active">Active</option>
+                                <option value="withdrawn">Withdrawn</option>
+                                <option value="kickout">Kicked Out</option>
+                                <option value="archive">Archived</option>
+                              </select>
+                            </div>
+                        </div>
                       <div class="form-group">
-                        <label for="inputName" class="col-sm-2 control-label">Name</label>
+                        <label for="inputAddress" class="col-sm-2 control-label">Address</label>
     
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName" placeholder="Name">
+                          <textarea class="form-control" id="inputAddress" placeholder="Address"></textarea>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-    
-                        <div class="col-sm-10">
-                          <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                        <div class="form-group">
+                          <label for="inputDateApplied" class="col-sm-2 control-label">Date Applied</label>
+                            <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="inputDateApplied">
+                            </div>
                         </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-    
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                        </div>
-                      </div>
+                        <div class="form-group">
+                          <label for="inputRemarks" class="col-sm-2 control-label">Remarks</label>
+      
+                          <div class="col-sm-10">
+                            <textarea class="form-control" id="inputRemarks" placeholder="Remarks"></textarea>
+                          </div>
+                        </div> 
                       <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                           <div class="checkbox">
@@ -866,7 +1111,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> beta 1.0
         </div>
-        <strong>Copyright &copy;2019 <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+        <strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script><a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
         reserved.
   </footer>
 
@@ -1071,6 +1316,10 @@
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- SlimScroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -1082,27 +1331,13 @@
 <!-- Page Script -->
 <script src="../../dist/js/pages/concession-profile.js"></script>
 <script>
-  $(document).ready(function () {
-    $('.sidebar-menu').tree()
-  })
-
-  $('#profile_tabs').on('click', 'a[data-toggle="tab"]', function(e) {
-      e.preventDefault();
-
-      var $link = $(this);
-
-      if (!$link.parent().hasClass('active')) {
-
-        //remove active class from other tab-panes
-        $('.tab-content:not(.' + $link.attr('href').replace('#','') + ') .tab-pane').removeClass('active');
-
-        // click first submenu tab for active section
-        $('a[href="' + $link.attr('href') + '_all"][data-toggle="tab"]').click();
-
-        // activate tab-pane for active section
-        $('.tab-content.' + $link.attr('href').replace('#','') + ' .tab-pane:first').addClass('active');
-      }
-
+  $(function () {
+    //initialize select2 elements
+    $('.select2').select2()
+    //Date picker
+    $('#inputDateApplied').datepicker({
+      autoclose: true
+    })
     });
 </script>
 

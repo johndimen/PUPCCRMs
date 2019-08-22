@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 20, 2019 at 04:50 AM
+-- Generation Time: Aug 21, 2019 at 11:37 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `pupccrm_db`
 --
-CREATE DATABASE IF NOT EXISTS `pupccrm_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `pupccrm_db`;
 
 -- --------------------------------------------------------
 
@@ -57,7 +55,13 @@ CREATE TABLE `crm_admin_contact_details` (
   `CRM_Contact_Detail_SerialNo` int(11) NOT NULL,
   `CRM_User_Contact_Detail_FK` int(11) NOT NULL,
   `CRM_Admin_Contact_Type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Admin_Contact_Detail` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+  `CRM_Admin_Contact_Detail` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Contact_Status` int(1) NOT NULL,
+  `CRM_Contact_Login_FK` int(11) NOT NULL,
+  `CRM_Addedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Date_Added` date NOT NULL,
+  `CRM_Updatedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Date_Updated` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -79,15 +83,19 @@ CREATE TABLE `crm_admin_user_details` (
   `CRM_Admin_Email` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Admin_Highest_Education` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Admin_Location` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Admin_is_Active` int(1) NOT NULL
+  `CRM_Admin_Status` int(1) NOT NULL,
+  `CRM_Addedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Date_Added` date NOT NULL,
+  `CRM_Updateby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Date_Updated` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `crm_admin_user_details`
 --
 
-INSERT INTO `crm_admin_user_details` (`CRM_User_Detail_SerialNo`, `CRM_User_Login_SerialNo_FK`, `CRM_Salutations`, `CRM_First_Name`, `CRM_Middle_Name`, `CRM_Last_Name`, `CRM_Extensions`, `CRM_Job_Title`, `CRM_Admin_Gender`, `CRM_Admin_Email`, `CRM_Admin_Highest_Education`, `CRM_Admin_Location`, `CRM_Admin_is_Active`) VALUES
-(0, 0, 'mr', 'admin', 'admin', 'admin', 'n/a', 'admin', 'male', 'admin@admin.com', 'college', 'manila', 1);
+INSERT INTO `crm_admin_user_details` (`CRM_User_Detail_SerialNo`, `CRM_User_Login_SerialNo_FK`, `CRM_Salutations`, `CRM_First_Name`, `CRM_Middle_Name`, `CRM_Last_Name`, `CRM_Extensions`, `CRM_Job_Title`, `CRM_Admin_Gender`, `CRM_Admin_Email`, `CRM_Admin_Highest_Education`, `CRM_Admin_Location`, `CRM_Admin_Status`, `CRM_Addedby`, `CRM_Date_Added`, `CRM_Updateby`, `CRM_Date_Updated`) VALUES
+(0, 0, 'mr', 'admin', 'admin', 'admin', 'n/a', 'admin', 'male', 'admin@admin.com', 'college', 'manila', 1, '', '0000-00-00', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -99,10 +107,17 @@ CREATE TABLE `crm_admin_user_general_permissions` (
   `CRM_User_Permission_SerialNo` int(11) NOT NULL,
   `CRM_User_Permission_Role_SerialNo_FK` int(11) NOT NULL,
   `CRM_Task_Permission` int(1) NOT NULL,
-  `CRM_User_Add_Permission` int(1) NOT NULL,
+  `CRM_User_Permission` int(1) NOT NULL,
   `CRM_Export_permission` int(1) NOT NULL,
   `CRM_Cases_permission` int(1) NOT NULL,
-  `CRM_Reports_Permission` int(1) NOT NULL
+  `CRM_Reports_Permission` int(1) NOT NULL,
+  `CRM_Concession_Permission` int(1) NOT NULL,
+  `CRM_Permission_Status` int(1) NOT NULL,
+  `CRM_General_Permission_Login_SerialNo_FK` int(11) NOT NULL,
+  `CRM_Addedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Date_Added` date NOT NULL,
+  `CRM_Updateby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Date_Updated` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -115,15 +130,20 @@ CREATE TABLE `crm_admin_user_login` (
   `CRM_User_Login_SerialNo` int(11) NOT NULL,
   `CRM_Login_Username` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Login_Password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Is_Active` int(1) NOT NULL
+  `CRM_Account_Status` int(1) NOT NULL,
+  `CRM_Login_fk` int(11) NOT NULL,
+  `CRM_Addedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Date_Added` date NOT NULL,
+  `CRM_Updateby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Date_Updated` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `crm_admin_user_login`
 --
 
-INSERT INTO `crm_admin_user_login` (`CRM_User_Login_SerialNo`, `CRM_Login_Username`, `CRM_Login_Password`, `CRM_Is_Active`) VALUES
-(0, 'test', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa', 1);
+INSERT INTO `crm_admin_user_login` (`CRM_User_Login_SerialNo`, `CRM_Login_Username`, `CRM_Login_Password`, `CRM_Account_Status`, `CRM_Login_fk`, `CRM_Addedby`, `CRM_Date_Added`, `CRM_Updateby`, `CRM_Date_Updated`) VALUES
+(0, 'test', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa', 1, 0, '', '0000-00-00', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -136,10 +156,18 @@ CREATE TABLE `crm_admin_user_module_permissions` (
   `CRM_User_Module_Role_SerialNo_FK` int(11) NOT NULL,
   `CRM_User_Module_Permission_SerialNo_FK` int(11) NOT NULL,
   `CRM_Create_permission` int(1) NOT NULL,
+  `CRM_Create_Archive_Permission` int(1) NOT NULL,
   `CRM_Read_Permission` int(1) NOT NULL,
+  `CRM_Read_Archive_Permission` int(1) NOT NULL,
   `CRM_Edit_permission` int(1) NOT NULL,
-  `CRM_Delete_Permission` int(1) NOT NULL,
-  `CRM_System_bulletin_Permission` int(1) NOT NULL
+  `CRM_Trash_Permission` int(1) NOT NULL,
+  `CRM_System_bulletin_Permission` int(1) NOT NULL,
+  `CRM_Module_Permission_Status` int(1) NOT NULL,
+  `CRM_Module_Login_SerialNo_FK` int(11) NOT NULL,
+  `CRM_Addedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Date_Added` date NOT NULL,
+  `CRM_Updatedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Date_Updated` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -151,7 +179,12 @@ CREATE TABLE `crm_admin_user_module_permissions` (
 CREATE TABLE `crm_admin_user_role` (
   `CRM_User_Role_SerialNo` int(11) NOT NULL,
   `CRM_User_Login_SerialNo_FK` int(11) NOT NULL,
-  `CRM_User_Role_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+  `CRM_User_Role_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Role_Status` int(11) NOT NULL,
+  `CRM_Addedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Date_Added` date NOT NULL,
+  `CRM_Updateby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Date_Updated` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -226,6 +259,7 @@ CREATE TABLE `crm_concession_contact` (
   `CRM_Profile_Contact_SerialNo_FK` int(11) NOT NULL,
   `CRM_Concession_Contact_Type` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Concession_Contact_Detail` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Concession_Contact_Status` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_hasContact` int(1) NOT NULL,
   `CRM_Contact_Login_SerialNo_FK` int(11) NOT NULL,
   `CRM_Contact_Addedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -252,6 +286,7 @@ CREATE TABLE `crm_concession_contract` (
   `CRM_Concession_Contract_Consignor` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Has_Consignor_Signature` int(1) NOT NULL,
   `CRM_Concession_Contract_Desc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Concession_Contract_Status` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Concession_hasContract` int(1) NOT NULL,
   `CRM_Concession_Contract_Login_SerialNo_FK` int(11) NOT NULL,
   `CRM_Contract_Addedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -569,7 +604,8 @@ ALTER TABLE `crm_activitylist`
 --
 ALTER TABLE `crm_admin_contact_details`
   ADD PRIMARY KEY (`CRM_Contact_Detail_SerialNo`),
-  ADD KEY `user_contact_fk` (`CRM_User_Contact_Detail_FK`);
+  ADD KEY `user_contact_fk` (`CRM_User_Contact_Detail_FK`),
+  ADD KEY `contact_login_fk` (`CRM_Contact_Login_FK`);
 
 --
 -- Indexes for table `crm_admin_user_details`
@@ -583,13 +619,15 @@ ALTER TABLE `crm_admin_user_details`
 --
 ALTER TABLE `crm_admin_user_general_permissions`
   ADD PRIMARY KEY (`CRM_User_Permission_SerialNo`),
-  ADD KEY `permission_role_fk` (`CRM_User_Permission_Role_SerialNo_FK`);
+  ADD KEY `permission_role_fk` (`CRM_User_Permission_Role_SerialNo_FK`),
+  ADD KEY `permission_login_fk` (`CRM_General_Permission_Login_SerialNo_FK`);
 
 --
 -- Indexes for table `crm_admin_user_login`
 --
 ALTER TABLE `crm_admin_user_login`
-  ADD PRIMARY KEY (`CRM_User_Login_SerialNo`);
+  ADD PRIMARY KEY (`CRM_User_Login_SerialNo`),
+  ADD KEY `login_fk` (`CRM_Login_fk`);
 
 --
 -- Indexes for table `crm_admin_user_module_permissions`
@@ -597,7 +635,8 @@ ALTER TABLE `crm_admin_user_login`
 ALTER TABLE `crm_admin_user_module_permissions`
   ADD PRIMARY KEY (`CRM_User_Module_Permission_SerialNo`),
   ADD KEY `module_general_permission_fk` (`CRM_User_Module_Permission_SerialNo_FK`),
-  ADD KEY `module_role_fk` (`CRM_User_Module_Role_SerialNo_FK`);
+  ADD KEY `module_role_fk` (`CRM_User_Module_Role_SerialNo_FK`),
+  ADD KEY `module_login_fk` (`CRM_Module_Login_SerialNo_FK`);
 
 --
 -- Indexes for table `crm_admin_user_role`
@@ -776,7 +815,8 @@ ALTER TABLE `crm_activitylist`
 -- Constraints for table `crm_admin_contact_details`
 --
 ALTER TABLE `crm_admin_contact_details`
-  ADD CONSTRAINT `user_contact_fk` FOREIGN KEY (`CRM_User_Contact_Detail_FK`) REFERENCES `crm_admin_user_details` (`CRM_User_Detail_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `contact_login_fk` FOREIGN KEY (`CRM_Contact_Login_FK`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `contact_user_fk` FOREIGN KEY (`CRM_User_Contact_Detail_FK`) REFERENCES `crm_admin_user_details` (`CRM_User_Detail_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `crm_admin_user_details`
@@ -788,13 +828,21 @@ ALTER TABLE `crm_admin_user_details`
 -- Constraints for table `crm_admin_user_general_permissions`
 --
 ALTER TABLE `crm_admin_user_general_permissions`
+  ADD CONSTRAINT `permission_login_fk` FOREIGN KEY (`CRM_General_Permission_Login_SerialNo_FK`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `permission_role_fk` FOREIGN KEY (`CRM_User_Permission_Role_SerialNo_FK`) REFERENCES `crm_admin_user_module_permissions` (`CRM_User_Module_Permission_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `crm_admin_user_login`
+--
+ALTER TABLE `crm_admin_user_login`
+  ADD CONSTRAINT `login_fk` FOREIGN KEY (`CRM_Login_fk`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `crm_admin_user_module_permissions`
 --
 ALTER TABLE `crm_admin_user_module_permissions`
   ADD CONSTRAINT `module_general_permission_fk` FOREIGN KEY (`CRM_User_Module_Permission_SerialNo_FK`) REFERENCES `crm_admin_user_general_permissions` (`CRM_User_Permission_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `module_login_fk` FOREIGN KEY (`CRM_Module_Login_SerialNo_FK`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `module_role_fk` FOREIGN KEY (`CRM_User_Module_Role_SerialNo_FK`) REFERENCES `crm_admin_user_role` (`CRM_User_Role_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --

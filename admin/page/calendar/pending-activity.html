@@ -293,7 +293,7 @@
             </ul>
           </li>
           <li class="treeview active">
-            <a href="../calendar.html">
+            <a href="./calendar.html">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
               <span class="pull-right-container">
                 <small class="label pull-right label-info">17</small>
@@ -301,7 +301,7 @@
             </a>
             <ul class="treeview-menu">
                 <li class="active">
-                  <a href="../activity.html"><i class="fa fa-circle-o"></i> Activity 
+                  <a href="./activity.html"><i class="fa fa-circle-o"></i> Activity 
                     <span class="pull-right-container">
                       <small class="label pull-right label-warning"> 3</small> 
                       <small class="label pull-right bg-blue"> 14</small> 
@@ -430,9 +430,9 @@
           <div class="col-md-3">
               <a href="../../index.html" class="btn btn-primary btn-block ">Back to Dashboard</a>
               <a href="./calendar.html" class="btn btn-primary btn-block margin-bottom">Back to Calendar</a>
-              <div class="btn-group">
+              
               <a href="./activity-new.html" class="btn btn-primary btn-block margin-bottom">Add Activity</a>
-              </div>
+              
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Folders</h3>
@@ -446,8 +446,7 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li><a href="./activity.html"><i class="fa fa-th-large"></i> Activitybox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li class="active"><a href="./pending-activity.html"><i class="fa fa-hand-paper-o"></i> Pending Activity</a></li>
-                    <li><a href="./activity-new.html"><i class="fa fa-plus-square"></i> New Activity</a></li>
+                    <li class="active"><a href="./pending-activity.html"><i class="fa fa-exclamation-circle"></i> Pending Activity</a></li>
                     <li><a href="./activity-archive.html"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
@@ -476,6 +475,58 @@
               <!-- /.box -->
             </div>
             <!-- /.col -->
+            <div class="col-md-9">
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>Pending ActivityBox</strong></h3>
+                    <div class="box-tools pull-right">
+                      <div class="has-feedback">
+                        <input type="text" class="form-control input-sm" placeholder="Search Contact">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="box-body no-padding">
+                    <div class="mailbox-controls">
+                      <!-- Check all button -->
+                      <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
+                      </div>
+                      <!-- /.btn-group -->
+                      <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                      <div class="pull-right">
+                        1/1
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                        </div>
+                      <!-- /.btn-group -->
+                      </div>
+                      <!-- /.pull-right -->
+                    </div>
+   
+                    <div class="table-responsive mailbox-massages">
+                      <table class="table table-hover table-striped">
+                        <tbody>
+                            <tr>
+                                <td style="width: 20px">Select</td>
+                                <td style="width: 150px">Activity Name</td>
+                                <td style="width: 200px">Description</td>
+                                <td style="width: 150px">Task Name</td>
+                                <td style="width: 100px">Date Start</td>
+                                <td style="width: 100px">Date End</td>
+                                <td style="width: 100px">Actions</td>
+                              </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
       </div>
 
     </section>

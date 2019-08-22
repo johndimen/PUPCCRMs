@@ -30,7 +30,6 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/preloader.css">
         <link rel="stylesheet" href="css/themify-icons.css">
-        <link rel="stylesheet" href="scss/main.scss">
     </head>
     <body>
         <!-- preloader-->
@@ -91,8 +90,8 @@
                             <p>You dont have to worry about information <b>leak</b>, Your Information is <b>secured</b> in our system. </p>
                             <form action="#">
                                 <div class="row">
-                                    <fieldset id='rating' class="rating" style="padding-left: 15px;">
-                                        <h5>Evaluation</h5>
+                                    <fieldset id='rating' class="rating" style="padding-left: 10px; padding-right:15px">
+                                        <h5>Overall Evaluation</h5>
                                             <input class="stars" type="radio" id="star53" name="rating" value="5" />
                                             <label class = "full" for="star53" title="Awesome - 5 stars"></label>
                                             <input class="stars" type="radio" id="star4half3" name="rating" value="4.5" />
@@ -120,20 +119,80 @@
                                     </div>
                                     <div class="col-sm-3">
                                             <h5>Area</h5>
-                                            <div class="default-select" id="default-select"">
+                                            <div class="default-select" id="default-select" required>
                                                 <select>
                                                     <option selected disabled>Area</option>
                                                     <option value="North">North</option>
                                                     <option value="East">East</option>
                                                     <option value="South">South</option>
                                                     <option value="West">West</option>
+                                                    <option value="lagoon">Lagoon</option>
+                                                    <option value="sampaguita">Sampaguita</option>
                                                     <option value="Others">Others</option>
                                                 </select>
                                             </div>
                                     </div>
                                 </div>
+                                <hr>
                                 <div class="mt-10">
+                                    <div class="col-md-12">
+                                        <h5>Questions</h5>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="form-check">
+                                                <P>Is the food good?</P>
+                                                <label for="question1" class="form-text-label" >
+                                                    <input type="text" style="width: 150px" name="question1" placeholder="ex. yes" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. yes'" class="single-input">
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <P>How's the service(s)?</P>
+                                                <label for="question2" class="form-text-label" >
+                                                    <input type="text" style="width: 150px" name="question2" placeholder="ex. good" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. good'" class="single-input">
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <P>How about the hospitality of the attendant(s)?</P>
+                                                <label for="question3" class="form-text-label" >
+                                                    <input type="text" name="question3" placeholder="ex. hospitable" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. hospitable'" class="single-input">
+                                                </label>
+                                            </div>
+                                        </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="form-check">
+                                                    <P>How's the product condition?</P>
+                                                    <label for="question4" class="form-text-label" >
+                                                        <input type="text" name="question4" placeholder="ex. in good condition" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. in good condition'" class="single-input">
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <P>How's the preparation of the food?</P>
+                                                    <label for="question5" class="form-text-label" >
+                                                        <input type="text" name="question5" placeholder="ex. no headgear" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. no headgear'" class="single-input">
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <P>How's the area around the stall?</P>
+                                                    <label for="question6" class="form-text-label" >
+                                                        <input type="text" name="question6" placeholder="ex. clean environment" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. clean environment'" class="single-input">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="form-check">
+                                                    <P>Is the Product at the fair price?</P>
+                                                    <label for="question7" class="form-text-label" >
+                                                        <input type="text" name="question7" placeholder="ex. expensive" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. expensive'" class="single-input">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <hr>
+                                    <hr>
                                     <h5>Your message</h5>
+                                    <p>Any feedbacks, questions, incidents, suggestions, and violent reactions. <br> Please write down below and let US know</p>
                                     <textarea class="single-textarea" style="line-height:20px;height: 200px;border-radius: 5px;" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
                                 </div>
                                 
@@ -240,7 +299,8 @@
                             </div>
                         </div>
                         </div>
-                        <a href="#" class="genric-btn primary circle arrow pull-right mt-10">Continue<span class="lnr lnr-arrow-right"></span></a>
+                        <hr>
+                        <a href="#" class="genric-btn primary circle arrow pull-right mt-10"><strong> Send</strong><span class="lnr lnr-rocket"></span></a>
                                 
                     </div>
                 </div>
@@ -313,24 +373,6 @@
         </footer>	
         <!-- End footer Area -->
 
-        <script>
-            $(document).ready(function () {
-                $("#rating .stars").click(function () {
-                    $.post('rating.php',{rate:$(this).val()},function(d){
-                               if(d>0)
-                               {
-                                   alert('You already rated');
-                               }else{
-                                   alert('Thanks For Rating');
-                               }
-                           });
-                    var label = $("label[for='" + $(this).attr('id') + "']");
-                                
-                    $("#feedback").text(label.attr('title'));
-                    $(this).attr("checked");
-                });
-            });
-        </script>
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d4db5c0f29b8e57"></script>
         <script src="js/vendor/jquery-2.2.4.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -350,5 +392,23 @@
         <script src="js/mail-script.js"></script>				
         <script src="js/main.js"></script>	
         <script src="js/preloader.js"></script>
+        <script language="javascript" type="text/javascript">
+            $(document).ready(function () {
+                $("#rating .stars").click(function () {
+                    $.post('rating.php',{rate:$(this).val()},function(d){
+                               if(d>0)
+                               {
+                                   alert('You already rated');
+                               }else{
+                                   alert('Thanks For Rating');
+                               }
+                           });
+                    var label = $("label[for='" + $(this).attr('id') + "']");
+                                
+                    $("#feedback").text(label.attr('title'));
+                    $(this).attr("checked");
+                });
+            });
+        </script>
     </body>
 </html>

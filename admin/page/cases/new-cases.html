@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
@@ -283,7 +285,7 @@
                       <li><a href="../concessions/concession-profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
                       <li><a href="../concessions/concession-map-images.html"><i class="fa fa-circle-o"></i> Map/Images</a></li>
                       <li><a href="../concessions/concession-contact.html"><i class="fa fa-circle-o"></i> Contact</a></li>
-                      <li><a href="../concessions/concession-item.html"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                      <li><a href="../concessions/concession-item-product.html"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                       <li><a href="../concessions/concession-services.html"><i class="fa fa-circle-o"></i> Services</a></li>
                       <li><a href="../concessions/concession-equipment.html"><i class="fa fa-circle-o"></i> Equipments</a></li>
                       <li><a href="../concessions/concession-experience.html"><i class="fa fa-circle-o"></i> Experience</a></li>
@@ -472,6 +474,85 @@
                 <!-- /.box -->
               </div>
               <!-- /.col -->
+
+              <div class="col-md-9">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title"><strong>Add Case</strong></h3>
+                </div>
+                <div class="box-body " style="padding-left: 40px; padding-right: 30px">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                          <label for="inputCaseNumber" class="col-sm-2 control-label">Case Number</label>
+      
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputCaseNumber" placeholder="Case Number">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputCaseName" class="col-sm-2 control-label">Case Name</label>
+      
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputCaseName" placeholder="Case Name">
+                          </div>
+                        </div>
+                          <div class="form-group">
+                            <label for="inputType" class="col-sm-2 control-label">Type</label>
+                            <div class="col-sm-10">
+                              <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected"></option>Select Type</option>
+                                <option value="question">Question</option>
+                                <option value="incident">Incident</option>
+                                <option value="problem">Problem</option>
+                                <option value="suggestion">Suggestion</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="inputStatus" class="col-sm-2 control-label">Status</label>
+                            <div class="col-sm-10">
+                              <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected"></option>Select Status</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="new">New</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="inputStatus" class="col-sm-2 control-label">Priority</label>
+                            <div class="col-sm-10">
+                              <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected"></option>Select Priority</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="high">High</option>
+                                <option value="normal">Normal</option>
+                                <option value="low">Low</option>
+                              </select>
+                            </div>
+                          </div>
+                        <div class="form-group">
+                          <label for="inputDescription" class="col-sm-2 control-label">Case Description</label>
+      
+                          <div class="col-sm-10">
+                            <textarea class="form-control" id="inputDescription" placeholder="Task Description"></textarea>
+                          </div>
+                        </div>
+                          <div class="form-group">
+                            <label for="inputAdminName" class="col-sm-2 control-label">Assigned Admin</label>
+        
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="inputAdminName" placeholder="Admin Name">
+                            </div>
+                          </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                          </div>
+                        </div>
+                      </form>
+                </div>
+              </div>
+            </div>
         </div>
   
 
@@ -689,6 +770,8 @@
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- SlimScroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -702,6 +785,8 @@
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+    //initialize select2 elements
+    $('.select2').select2()
   })
 </script>
 </body>

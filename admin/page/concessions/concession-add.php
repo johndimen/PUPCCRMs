@@ -1,3 +1,33 @@
+<?php
+include('../dbconfig.php');
+$inputConcessionNumber = $inputAddress = $inputConcessionName = $inputDateApplied = $inputEmail ="";
+$inputFunction = $inputNumber = $inputOwnerName = $inputRemarks = $inputStallArea ="";
+
+$sql = "INSERT INTO `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`,`CRM_Concession_Stall_Number`, `CRM_Concession_Area`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Status`, `CRM_Concession_Address`, `CRM_Concession_Email`, `CRM_Concession_Date_Applied`, `CRM_Concession_Remarks`, `CRM_Concession_IsActive`) VALUES ('$inputConcessionNumber','$inputNumber','$inputStallArea','$inputConcessionName','$inputFunction','$inputOwnerName','Active','$inputAddress','$inputEmail','$inputDateApplied','$inputRemarks','1')";
+
+if(mysqli_query($conn,$sql)){
+  echo $sucess ="Record Successfully.";
+}else{
+  echo $error = "Error: Could not Execute." .mysqli_error($conn);
+}
+
+
+
+
+if($_SERVER["REQUEST_METHOD"] == "post"){
+  if(empty($_POST["inputNumber"])){
+    $inputNumberError = "Is Required";
+  }else{
+
+  }
+};
+
+
+
+
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -462,21 +492,27 @@
                         <h3 class="box-title"><strong>Add Concession</strong></h3>
                     </div>
                     <div class="box-body no-padding">
-                                <form class="form-horizontal" style="padding: 30px">
+                                <form class="form-horizontal" style="padding: 30px" method="post">
+                                    <div class="form-group">
+                                      <label for="inputConcessionNumber" class="col-sm-2 control-label">Concession Number</label>
+                                      <div class="col-sm-10">
+                                      <input type="text" class="form-control" placeholder="Concession Number" id="inputConcessionNumber" value="<?php echo $inputConcessionNumber; ?>">
+                                      </div>
+                                    </div>
                                     <div class="form-group">
                                       <label for="inputNumber" class="col-sm-2 control-label">Stall Number</label>
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Stall Number" disabled>
+                                        <input type="text" class="form-control" placeholder="Stall Number" id="inputNumber" value="<?php echo $inputNumber; ?>">
                                       </div>
                                     </div>
                                       <div class="form-group">
                                         <label for="inputArea" class="col-sm-2 control-label">Stall Area</label>
                                         <div class="col-sm-10">
-                                          <select class="form-control select2" style="width: 100%;">
-                                            <option selected="selected"></option>Select Area</option>
+                                          <select class="form-control select2" style="width: 100%;" value = "<?php echo $inputStallArea;?>">
+                                            <option value="" selected>Select Area</option>
                                             <option value="north">North</option>
                                             <option value="west">West</option>
-                                            <option value=south"">South</option>
+                                            <option value="south">South</option>
                                             <option value="east">East</option>
                                             <option value="sampaguita">sampaguita</option>
                                             <option value="lagoon">Lagoon</option>
@@ -489,30 +525,30 @@
                                       <label for="inputConcessionName" class="col-sm-2 control-label">Concession Name</label>
                   
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputConcessionName" placeholder="Concession Name">
+                                        <input type="text" class="form-control" id="inputConcessionName" placeholder="Concession Name" value="<?php echo $inputConcessionName;?>">
                                       </div>
                                     </div>
                                     <div class="form-group">
                                       <label for="inputOwnerName" class="col-sm-2 control-label">Owner's Name</label>
                   
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputOwnerName" placeholder="Owner's Name">
+                                        <input type="text" class="form-control" id="inputOwnerName" placeholder="Owner's Name" value="<?php echo $inputOwnerName;?>">
                                       </div>
                                     </div>
                                       <div class="form-group">
                                         <label for="inputEmail" class="col-sm-2 control-label">Email</label>
                     
                                         <div class="col-sm-10">
-                                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                          <input type="email" class="form-control" id="inputEmail" placeholder="Email" value="<?php echo $inputEmail;?>">
                                         </div>
                                       </div>
                                       <div class="form-group">
                                           <label for="inputFunction" class="col-sm-2 control-label">Function</label>
                                         <div class="col-sm-10">
-                                          <select class="form-control select2" style="width: 100%;" id="intpuFunction">
-                                            <option selected="selected"></option>Select Function</option>
-                                            <option value="north">Food</option>
-                                            <option value="west">Non-Food</option>
+                                          <select class="form-control select2" style="width: 100%;" id="inputFunction">
+                                            <option value = ""selected="">Select Function</option>
+                                            <option value="food">Food</option>
+                                            <option value="nonfood">Non-Food</option>
                                           </select>
                                         </div>
                                       </div>
@@ -520,7 +556,7 @@
                                       <label for="inputAddress" class="col-sm-2 control-label">Address</label>
                   
                                       <div class="col-sm-10">
-                                        <textarea class="form-control" id="inputAddress" placeholder="Address"></textarea>
+                                        <textarea class="form-control" id="inputAddress" placeholder="Address" value = "<?php echo $inputAddress;?>"></textarea>
                                       </div>
                                     </div>
                                       <div class="form-group">
@@ -529,14 +565,14 @@
                                             <div class="input-group-addon">
                                               <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="inputDateApplied">
+                                            <input type="text" class="form-control pull-right" id="inputDateApplied" placeholder="mm/dd/yyyy" value="<?php echo $inputDateApplied;?>">
                                           </div>
                                       </div>
                                       <div class="form-group">
                                         <label for="inputRemarks" class="col-sm-2 control-label">Remarks</label>
                     
                                         <div class="col-sm-10">
-                                          <textarea class="form-control" id="inputRemarks" placeholder="Remarks"></textarea>
+                                          <textarea class="form-control" id="inputRemarks" placeholder="Remarks" value="<?php echo $inputRemarks;?>"></textarea>
                                         </div>
                                       </div> 
                                     <div class="form-group">

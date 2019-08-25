@@ -1,35 +1,38 @@
 <?php
+
 // Initialize the session
 session_start();
- 
+
+
+
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: index.php");
+    header("location: index.html");
     exit;
 }
  
 // Include config file
-require_once "./assets/dbconfig.php";
+require_once "./page/dbconfig.php";
  
 // Define variables and initialize with empty values
 $username = $password = "";
 $username_err = $password_err = "";
  
 // Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Check if username is empty
-    if(empty(trim($_POST["crm_login_username"]))){
-        $username_err = "Please enter username.";
+    if (empty(trim($_POST["username"]))){
+        $username_err = "Please enter your Username.";
     } else{
-        $username = trim($_POST["crm_login_username"]);
+        $username = trim($_POST["username"]);
     }
     
     // Check if password is empty
-    if(empty(trim($_POST["crm_login_password"]))){
-        $password_err = "Please enter your password.";
+    if (empty(trim($_POST["password"]))){
+        $password_err = "Please enter your Password.";
     } else{
-        $password = trim($_POST["crm_login_password"]);
+        $password = trim($_POST["password"]);
     }
     
     // Validate credentials
@@ -64,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $crm_login_username;                            
                             $_SESSION["name"] = $crm_first_name;
                             // Redirect user to index page
-                            header("location: index.php");
+                            header("location: index.html");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
@@ -126,14 +129,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Log in to start your session <br>Unauthorized Access <b>Is Prohibited</b>.<br>Click '<b>PUP</b>CCRMs' to Go Back.</p>
-    <form action="" method="POST">
+    <form action="login.php" method="POST">
       <div class="form-group has-feedback <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-        <input type="username" class="form-control" placeholder="Username" value="<?php echo $username; ?>">
+        <input type="username" class="form-control" placeholder="Username" name = "username" >
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         <span class="help-block"><?php echo $username_err; ?></span>
       </div>
       <div class="form-group has-feedback <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" placeholder="Password" name = "password" >
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         <span class="help-block"><?php echo $password_err; ?></span>
       </div>

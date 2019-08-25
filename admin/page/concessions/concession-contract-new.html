@@ -12,6 +12,12 @@
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="../../plugins/iCheck/all.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -472,6 +478,128 @@
               <!-- /.box -->
             </div>
             <!-- /.col -->
+              <div class="col-md-9">
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>Add Contract</strong></h3>
+                  </div>
+                  <div class="box-body " style="padding-left: 40px; padding-right: 30px">
+                      <form class="form-horizontal">
+                          <div class="form-group">
+                            <label for="inputContractNumber" class="col-sm-2 control-label">Contract Number</label>
+        
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="inputContractNumber" placeholder="Contract Number">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="inputContractName" class="col-sm-2 control-label">Contract Name</label>
+        
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="inputContractName" placeholder="Contract Name">
+                            </div>
+                          </div>
+                            <div class="form-group">
+                              <label for="inputStallName" class="col-sm-2 control-label">Stall Name</label>
+          
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputStallName" placeholder="Stall Name">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="inputType" class="col-sm-2 control-label">Function</label>
+                              <div class="col-sm-10">
+                                <select class="form-control select2" style="width: 100%;">
+                                  <option value="" selected></option>Select Function</option>
+                                  <option value="food">Food</option>
+                                  <option value="nonfood">Non-Food</option>
+                                </select>
+                              </div>
+                            </div>
+                              <div class="form-group">
+                                <label for="inputConsigneeName" class="col-sm-2 control-label">Consignee Name</label>
+            
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="inputConsigneeName" placeholder="Consignee Name">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                  <label for="inputConsigneeSignature" class="col-sm-2 control-label">Consignee Signature</label>
+              
+                                  <div class="col-sm-10" style="padding-top:10px">
+                                      <label>
+                                          <input type="radio" name="inputConsigneeSignatureYes" class="minimal">Yes
+                                      </label>
+                                  
+                                      <label>
+                                          <input  type="radio" name="inputConsigneeSignatureNo" class="minimal">No
+                                      </label>
+                                  </div>                                    
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputConsignorName" class="col-sm-2 control-label">Consignor Name</label>
+                
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="inputConsignorName" placeholder="Consignor Name">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="inputConsignorSignature" class="col-sm-2 control-label">Consignor Signature</label>
+                  
+                                      <div class="col-sm-10" style="padding-top:10px">
+                                          <label>
+                                              <input type="radio" name="inputConsignorSignatureYes" class="minimal">Yes
+                                          </label>
+                                      
+                                          <label>
+                                              <input  type="radio" name="inputConsignorSignatureNo" class="minimal">No
+                                          </label>
+                                      </div>                                    
+                                    </div>
+                            <div class="form-group">
+                              <label for="inputStatus" class="col-sm-2 control-label">Status</label>
+                              <div class="col-sm-10">
+                                <select class="form-control select2" style="width: 100%;">
+                                  <option selected="selected"></option>Select Status</option>
+                                  <option value="cancelled">Cancelled</option>
+                                  <option value="new">New</option>
+                                  <option value="due">Due</option>
+
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDescription" class="col-sm-2 control-label"> Description</label>
+            
+                                <div class="col-sm-10">
+                                  <textarea class="form-control" id="inputDescription" placeholder="Task Description"></textarea>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                  <label for="inputDateSigned" class="col-sm-2 control-label">Date Signed</label>
+                                    <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
+                                      <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                      </div>
+                                      <input type="text" class="form-control pull-right" id="inputDateSigned">
+                                    </div>
+                                </div>
+                            <div class="form-group">
+                              <label for="inputDuration" class="col-sm-2 control-label">Duration</label>
+          
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputDuration" placeholder="Duration">
+                              </div>
+                            </div>
+                          <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                              <button type="submit" class="btn btn-danger">Submit</button>
+                            </div>
+                          </div>
+                        </form>
+                  </div>
+                </div>
+              </div>
       </div>
 
     </section>
@@ -690,10 +818,16 @@
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page Script -->
@@ -701,7 +835,19 @@
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
-  })
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass   : 'iradio_minimal-blue'
+    })
+    
+    })
+    //initialize select2 elements
+    $('.select2').select2()
+  //Date picker
+  $('#inputDateSigned').datepicker({
+      autoclose: true
+    })
 </script>
 
 

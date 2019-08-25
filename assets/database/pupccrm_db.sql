@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2019 at 11:37 AM
+-- Generation Time: Aug 24, 2019 at 07:03 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -155,7 +155,8 @@ CREATE TABLE `crm_admin_user_module_permissions` (
   `CRM_User_Module_Permission_SerialNo` int(11) NOT NULL,
   `CRM_User_Module_Role_SerialNo_FK` int(11) NOT NULL,
   `CRM_User_Module_Permission_SerialNo_FK` int(11) NOT NULL,
-  `CRM_Create_permission` int(1) NOT NULL,
+  `CRM_Admin_Username` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Create_Permission` int(1) NOT NULL,
   `CRM_Create_Archive_Permission` int(1) NOT NULL,
   `CRM_Read_Permission` int(1) NOT NULL,
   `CRM_Read_Archive_Permission` int(1) NOT NULL,
@@ -179,6 +180,7 @@ CREATE TABLE `crm_admin_user_module_permissions` (
 CREATE TABLE `crm_admin_user_role` (
   `CRM_User_Role_SerialNo` int(11) NOT NULL,
   `CRM_User_Login_SerialNo_FK` int(11) NOT NULL,
+  `CRM_Admin_Name` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_User_Role_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Role_Status` int(11) NOT NULL,
   `CRM_Addedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -279,6 +281,7 @@ CREATE TABLE `crm_concession_contract` (
   `CRM_Concession_Contract_Profile_SerialNo_FK` int(11) NOT NULL,
   `CRM_Concession_Contract_Name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Concession_Contract_StallName` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Concession_Function` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Concession_Contract_RGO_Consignee` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Has_RGO_Consignee_Signature` int(1) NOT NULL,
   `CRM_Concession_Contract_Date_Signed` date NOT NULL,
@@ -339,41 +342,40 @@ CREATE TABLE `crm_concession_experience` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `crm_concession_food_items`
+-- Table structure for table `crm_concession_images`
 --
 
-CREATE TABLE `crm_concession_food_items` (
-  `CRM_Concession_Food_Item_SerialNo` int(11) NOT NULL,
-  `CRM_Profile_Food_SerialNo_FK` int(11) NOT NULL,
-  `CRM_Concession_Food_Item_Name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Concession_Food_Items_Price` int(11) NOT NULL,
-  `CRM_Concession_Food_Item_Description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_hasFood_Items` int(1) NOT NULL,
-  `CRM_Concession_Food_Login_SerialNo_FK` int(11) NOT NULL,
-  `CRM_Food_Addedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Food_Date_Added` date NOT NULL,
-  `CRM_Food_Updatedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Food_Date_Updated` date NOT NULL
+CREATE TABLE `crm_concession_images` (
+  `CRM_Concession_Images_SerialNo` int(11) NOT NULL,
+  `CRM_Concession_Images_Profile_SerialNo_FK` int(11) NOT NULL,
+  `CRM_Concession_Images_Login_SerialNo_FK` int(11) NOT NULL,
+  `CRM_Concession_Name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Concession_Type` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Concession_Image_Path` blob NOT NULL,
+  `CRM_Images_Addedby` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Images_Date_Added` date NOT NULL,
+  `CRM_Images_Updatedby` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Images_Date_Updated` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `crm_concession_other_items`
+-- Table structure for table `crm_concession_items`
 --
 
-CREATE TABLE `crm_concession_other_items` (
-  `CRM_Concession_Other_Items_SerialNo` int(11) NOT NULL,
-  `CRM_Other_Items_Profile_SerialNo_FK` int(11) NOT NULL,
-  `CRM_Concession_Other_Items_Name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Concession_Other_Items_Price` int(11) NOT NULL,
-  `CRM_Concession_Other_Items_Desc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_hasOther_Items` int(1) NOT NULL,
-  `CRM_Concession_Other_Login_SerialNo_FK` int(11) NOT NULL,
-  `CRM_Other_Addedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Other_Date_Added` date NOT NULL,
-  `CRM_Other_Updatedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Other_Date_Updated` date NOT NULL
+CREATE TABLE `crm_concession_items` (
+  `CRM_Concession_Item_SerialNo` int(11) NOT NULL,
+  `CRM_Concession_Item_Login_SerialNo_FK` int(11) NOT NULL,
+  `CRM_Concession_Item_Profile_SerialNo_FK` int(11) NOT NULL,
+  `CRM_Concession_Item_Name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Concession_Item_Price` float(6,2) NOT NULL,
+  `CRM_Concession_Item_Type` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Concession_Item_Description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Concession_Item_Addedby` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Concession_Item_Added_Date` date NOT NULL,
+  `CRM_Concession_Item_Updatedby` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Concession_Item_Updated_Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -384,8 +386,10 @@ CREATE TABLE `crm_concession_other_items` (
 
 CREATE TABLE `crm_concession_profile` (
   `CRM_Concession_Profile_SerialNo` int(11) NOT NULL,
+  `CRM_Profile_SerialNo` int(11) NOT NULL,
   `CRM_Concession_Stall_Number` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Concession_Area` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Profile_Picture` blob NOT NULL,
   `CRM_Concession_Name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Concession_Owner_Name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Concession_Function` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -401,6 +405,14 @@ CREATE TABLE `crm_concession_profile` (
   `CRM_Concession_Updatedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Concession_Date_Updated` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `crm_concession_profile`
+--
+
+INSERT INTO `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`, `CRM_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Area`, `CRM_Profile_Picture`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Status`, `CRM_Concession_Address`, `CRM_Concession_Email`, `CRM_Concession_Date_Applied`, `CRM_Concession_Remarks`, `CRM_Concession_IsActive`, `CRM_Profile_Login_SerialNo_FK`, `CRM_Concession_Addedby`, `CRM_Concession_Date_Added`, `CRM_Concession_Updatedby`, `CRM_Concession_Date_Updated`) VALUES
+(0, 0, '', '', '', '', '', '', 'Active', '', '', '0000-00-00', '', 1, 0, '', '0000-00-00', '', '0000-00-00'),
+(1, 0, '1', 'lagoon', '', 'john shop', 'john rafols', 'food', 'active', 'sta mesa', 'none', '2019-08-23', 'none', 1, 0, 'test', '2019-08-23', 'test', '2019-08-23');
 
 -- --------------------------------------------------------
 
@@ -420,26 +432,6 @@ CREATE TABLE `crm_concession_requirements` (
   `CRM_Requirements_Date_Added` date NOT NULL,
   `CRM_Requirements_Updatedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Requirements_Date_Updated` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `crm_concession_school_items`
---
-
-CREATE TABLE `crm_concession_school_items` (
-  `CRM_Concession_Items_SerialNo` int(11) NOT NULL,
-  `CRM_Items_Profile_SerialNo_FK` int(11) NOT NULL,
-  `CRM_Concession_School_Items_Name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Concession_School_Item_Price` int(11) NOT NULL,
-  `CRM_Concession_School_Item_Desc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_hasSchool_Items` int(1) NOT NULL,
-  `CRM_Concession_School_Item_Login_SerialNo_FK` int(11) NOT NULL,
-  `CRM_School_Item_Addedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_School_Item_Date_Added` date NOT NULL,
-  `CRM_School_Item_Updatedby` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_School_Item_Date_Updated` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -475,7 +467,14 @@ CREATE TABLE `crm_feedback` (
   `CRM_Feedback_Message` varchar(10000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Feedback_Evaluation` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CRM_Feedback_Stars` int(1) NOT NULL,
-  `CRM_Feedback_Date` date NOT NULL
+  `CRM_Feedback_Date` date NOT NULL,
+  `CRM_Feedback_Question1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Feedback_Question2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Feedback_Question3` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Feedback_Question4` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Feedback_Question5` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Feedback_Question6` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Feedback_Question7` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -502,64 +501,12 @@ CREATE TABLE `crm_feedback_detail` (
 
 CREATE TABLE `crm_sender_type` (
   `CRM_Feedback_Sender_SerialNo` int(11) NOT NULL,
-  `CRM_Sender_Type_SerialNo_FK` int(11) NOT NULL,
-  `CRM_Feedback_Sender_Type` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `crm_sender_type_employee_detail`
---
-
-CREATE TABLE `crm_sender_type_employee_detail` (
-  `CRM_Sender_Type_SerialNo` int(11) NOT NULL,
-  `CRM_Sender_Type_Sender_Name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Sender_Type_EmployeeNo` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Sender_Type_Email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Sender_Type_Contact` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `crm_sender_type_faculty_detail`
---
-
-CREATE TABLE `crm_sender_type_faculty_detail` (
-  `CRM_Sender_Type_SerialNo` int(11) NOT NULL,
-  `CRM_Sender_Type_Sender_Name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Sender_Type_facultyNo` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Sender_Type_Email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Sender_Type_Contact` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `crm_sender_type_others_detail`
---
-
-CREATE TABLE `crm_sender_type_others_detail` (
-  `CRM_Sender_Type_SerialNo` int(11) NOT NULL,
-  `CRM_Sender_Type_Sender_Name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Sender_Type_Specify` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Sender_Type_Email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Sender_Type_Contact` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `crm_sender_type_student_detail`
---
-
-CREATE TABLE `crm_sender_type_student_detail` (
-  `CRM_Sender_Type_SerialNo` int(11) NOT NULL,
-  `CRM_Sender_Type_Sender_Name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Sender_Type_StudentNo` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Sender_Type_Email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRM_Sender_Type_Contact` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL
+  `CRM_Feedback_SerialNo_FK` int(11) NOT NULL,
+  `CRM_Feedback_Sender_Type` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Sender_Name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Sender_ID` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Sender_Contact_Email` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRM_Sender_Contact_Number` int(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -672,48 +619,47 @@ ALTER TABLE `crm_caselist`
 --
 ALTER TABLE `crm_concession_contact`
   ADD PRIMARY KEY (`CRM_Concession_Contact_SerialNo`),
-  ADD KEY `profile_contact_fk` (`CRM_Profile_Contact_SerialNo_FK`),
-  ADD KEY `login_contact_fk` (`CRM_Contact_Login_SerialNo_FK`);
+  ADD KEY `login_contact_fk` (`CRM_Contact_Login_SerialNo_FK`),
+  ADD KEY `profile_contact_fk` (`CRM_Profile_Contact_SerialNo_FK`);
 
 --
 -- Indexes for table `crm_concession_contract`
 --
 ALTER TABLE `crm_concession_contract`
   ADD PRIMARY KEY (`CRM_Concession_Contract_SerialNo`),
-  ADD KEY `profile_contract_fk` (`CRM_Concession_Contract_Profile_SerialNo_FK`),
-  ADD KEY `login_contract_fk` (`CRM_Concession_Contract_Login_SerialNo_FK`);
+  ADD KEY `login_contract_fk` (`CRM_Concession_Contract_Login_SerialNo_FK`),
+  ADD KEY `profile_contract_fk` (`CRM_Concession_Contract_Profile_SerialNo_FK`);
 
 --
 -- Indexes for table `crm_concession_equipment`
 --
 ALTER TABLE `crm_concession_equipment`
   ADD PRIMARY KEY (`CRM_Concession_Equipment_SerialNo`),
-  ADD KEY `profile_equipment_fk` (`CRM_Concession_Equipment_Profile_SerialNo_FK`),
-  ADD KEY `login_equipment` (`CRM_Concession_Equipment_Login_SerialNo_FK`);
+  ADD KEY `login_equipment` (`CRM_Concession_Equipment_Login_SerialNo_FK`),
+  ADD KEY `profile_equipment` (`CRM_Concession_Equipment_Profile_SerialNo_FK`);
 
 --
 -- Indexes for table `crm_concession_experience`
 --
 ALTER TABLE `crm_concession_experience`
   ADD PRIMARY KEY (`CRM_Concession_Experience_SerialNo`),
-  ADD KEY `experience_profile_fk` (`CRM_Concession_Experience_Profile_SerialNo_FK`),
-  ADD KEY `login_experience_fk` (`CRM_Concession_Experience_Login_SerialNo_FK`);
+  ADD KEY `login_experience_fk` (`CRM_Concession_Experience_Login_SerialNo_FK`),
+  ADD KEY `profile_experience_fk` (`CRM_Concession_Experience_Profile_SerialNo_FK`);
 
 --
--- Indexes for table `crm_concession_food_items`
+-- Indexes for table `crm_concession_images`
 --
-ALTER TABLE `crm_concession_food_items`
-  ADD PRIMARY KEY (`CRM_Concession_Food_Item_SerialNo`),
-  ADD KEY `profile_food_fk` (`CRM_Profile_Food_SerialNo_FK`),
-  ADD KEY `login_food_fk` (`CRM_Concession_Food_Login_SerialNo_FK`);
+ALTER TABLE `crm_concession_images`
+  ADD KEY `login_Images_fk` (`CRM_Concession_Images_Login_SerialNo_FK`),
+  ADD KEY `profile_images_fk` (`CRM_Concession_Images_Profile_SerialNo_FK`);
 
 --
--- Indexes for table `crm_concession_other_items`
+-- Indexes for table `crm_concession_items`
 --
-ALTER TABLE `crm_concession_other_items`
-  ADD PRIMARY KEY (`CRM_Concession_Other_Items_SerialNo`),
-  ADD KEY `profile_other_fk` (`CRM_Other_Items_Profile_SerialNo_FK`),
-  ADD KEY `login_other_fk` (`CRM_Concession_Other_Login_SerialNo_FK`);
+ALTER TABLE `crm_concession_items`
+  ADD PRIMARY KEY (`CRM_Concession_Item_SerialNo`),
+  ADD KEY `login_item_fk` (`CRM_Concession_Item_Login_SerialNo_FK`),
+  ADD KEY `profile_item_fk` (`CRM_Concession_Item_Profile_SerialNo_FK`);
 
 --
 -- Indexes for table `crm_concession_profile`
@@ -730,19 +676,10 @@ ALTER TABLE `crm_concession_requirements`
   ADD KEY `login_equipment_fk` (`CRM_Concession_Requirements_Login_SerialNo_FK`);
 
 --
--- Indexes for table `crm_concession_school_items`
---
-ALTER TABLE `crm_concession_school_items`
-  ADD PRIMARY KEY (`CRM_Concession_Items_SerialNo`),
-  ADD KEY `login_shool_item_fk` (`CRM_Concession_School_Item_Login_SerialNo_FK`),
-  ADD KEY `profile_school_item_fk` (`CRM_Items_Profile_SerialNo_FK`);
-
---
 -- Indexes for table `crm_concession_services`
 --
 ALTER TABLE `crm_concession_services`
   ADD PRIMARY KEY (`CRM_Concession_Services_SerialNo`),
-  ADD KEY `profile_services_fk` (`CRM_Services_Profile_SerialNo_FK`),
   ADD KEY `login_services_fk` (`CRM_Concession_Services_Login_SerialNo_FK`);
 
 --
@@ -756,7 +693,6 @@ ALTER TABLE `crm_feedback`
 --
 ALTER TABLE `crm_feedback_detail`
   ADD PRIMARY KEY (`CRM_Feedback_Detail_SerialNo`),
-  ADD KEY `profile_feedback_detail_fk` (`CRM_Feedback_Detail_Profile_SerialNo_FK`),
   ADD KEY `sender_feedback_detail_fk` (`CRM_Feedback_Sender_SerialNo_FK`),
   ADD KEY `feedback_feedback_detail_fk` (`CRM_Feedback_SerialNo_FK`);
 
@@ -764,32 +700,7 @@ ALTER TABLE `crm_feedback_detail`
 -- Indexes for table `crm_sender_type`
 --
 ALTER TABLE `crm_sender_type`
-  ADD PRIMARY KEY (`CRM_Feedback_Sender_SerialNo`),
-  ADD KEY `other_sender_type_fk` (`CRM_Sender_Type_SerialNo_FK`);
-
---
--- Indexes for table `crm_sender_type_employee_detail`
---
-ALTER TABLE `crm_sender_type_employee_detail`
-  ADD PRIMARY KEY (`CRM_Sender_Type_SerialNo`);
-
---
--- Indexes for table `crm_sender_type_faculty_detail`
---
-ALTER TABLE `crm_sender_type_faculty_detail`
-  ADD PRIMARY KEY (`CRM_Sender_Type_SerialNo`);
-
---
--- Indexes for table `crm_sender_type_others_detail`
---
-ALTER TABLE `crm_sender_type_others_detail`
-  ADD PRIMARY KEY (`CRM_Sender_Type_SerialNo`);
-
---
--- Indexes for table `crm_sender_type_student_detail`
---
-ALTER TABLE `crm_sender_type_student_detail`
-  ADD PRIMARY KEY (`CRM_Sender_Type_SerialNo`);
+  ADD PRIMARY KEY (`CRM_Feedback_Sender_SerialNo`);
 
 --
 -- Indexes for table `crm_tasklist`
@@ -875,7 +786,7 @@ ALTER TABLE `crm_caselist`
 --
 ALTER TABLE `crm_concession_contact`
   ADD CONSTRAINT `login_contact_fk` FOREIGN KEY (`CRM_Contact_Login_SerialNo_FK`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `profile_contact_fk` FOREIGN KEY (`CRM_Profile_Contact_SerialNo_FK`) REFERENCES `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `profile_contact_fk` FOREIGN KEY (`CRM_Profile_Contact_SerialNo_FK`) REFERENCES `crm_concession_contact` (`CRM_Concession_Contact_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `crm_concession_contract`
@@ -889,28 +800,28 @@ ALTER TABLE `crm_concession_contract`
 --
 ALTER TABLE `crm_concession_equipment`
   ADD CONSTRAINT `login_equipment` FOREIGN KEY (`CRM_Concession_Equipment_Login_SerialNo_FK`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `profile_equipment_fk` FOREIGN KEY (`CRM_Concession_Equipment_Profile_SerialNo_FK`) REFERENCES `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `profile_equipment` FOREIGN KEY (`CRM_Concession_Equipment_Profile_SerialNo_FK`) REFERENCES `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `crm_concession_experience`
 --
 ALTER TABLE `crm_concession_experience`
-  ADD CONSTRAINT `experience_profile_fk` FOREIGN KEY (`CRM_Concession_Experience_Profile_SerialNo_FK`) REFERENCES `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `login_experience_fk` FOREIGN KEY (`CRM_Concession_Experience_Login_SerialNo_FK`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `login_experience_fk` FOREIGN KEY (`CRM_Concession_Experience_Login_SerialNo_FK`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `profile_experience_fk` FOREIGN KEY (`CRM_Concession_Experience_Profile_SerialNo_FK`) REFERENCES `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `crm_concession_food_items`
+-- Constraints for table `crm_concession_images`
 --
-ALTER TABLE `crm_concession_food_items`
-  ADD CONSTRAINT `login_food_fk` FOREIGN KEY (`CRM_Concession_Food_Login_SerialNo_FK`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `profile_food_fk` FOREIGN KEY (`CRM_Profile_Food_SerialNo_FK`) REFERENCES `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `crm_concession_images`
+  ADD CONSTRAINT `login_Images_fk` FOREIGN KEY (`CRM_Concession_Images_Login_SerialNo_FK`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `profile_images_fk` FOREIGN KEY (`CRM_Concession_Images_Profile_SerialNo_FK`) REFERENCES `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `crm_concession_other_items`
+-- Constraints for table `crm_concession_items`
 --
-ALTER TABLE `crm_concession_other_items`
-  ADD CONSTRAINT `login_other_fk` FOREIGN KEY (`CRM_Concession_Other_Login_SerialNo_FK`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `profile_other_fk` FOREIGN KEY (`CRM_Other_Items_Profile_SerialNo_FK`) REFERENCES `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `crm_concession_items`
+  ADD CONSTRAINT `login_item_fk` FOREIGN KEY (`CRM_Concession_Item_Login_SerialNo_FK`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `profile_item_fk` FOREIGN KEY (`CRM_Concession_Item_Profile_SerialNo_FK`) REFERENCES `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `crm_concession_profile`
@@ -923,13 +834,6 @@ ALTER TABLE `crm_concession_profile`
 --
 ALTER TABLE `crm_concession_requirements`
   ADD CONSTRAINT `login_equipment_fk` FOREIGN KEY (`CRM_Concession_Requirements_Login_SerialNo_FK`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
--- Constraints for table `crm_concession_school_items`
---
-ALTER TABLE `crm_concession_school_items`
-  ADD CONSTRAINT `login_shool_item_fk` FOREIGN KEY (`CRM_Concession_School_Item_Login_SerialNo_FK`) REFERENCES `crm_admin_user_login` (`CRM_User_Login_SerialNo`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `profile_school_item_fk` FOREIGN KEY (`CRM_Items_Profile_SerialNo_FK`) REFERENCES `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `crm_concession_services`
@@ -950,10 +854,10 @@ ALTER TABLE `crm_feedback_detail`
 -- Constraints for table `crm_sender_type`
 --
 ALTER TABLE `crm_sender_type`
-  ADD CONSTRAINT `employee_sender_type_fk` FOREIGN KEY (`CRM_Sender_Type_SerialNo_FK`) REFERENCES `crm_sender_type_employee_detail` (`CRM_Sender_Type_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `faculty_sender_type_fk` FOREIGN KEY (`CRM_Sender_Type_SerialNo_FK`) REFERENCES `crm_sender_type_faculty_detail` (`CRM_Sender_Type_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `other_sender_type_fk` FOREIGN KEY (`CRM_Sender_Type_SerialNo_FK`) REFERENCES `crm_sender_type_others_detail` (`CRM_Sender_Type_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `student_sender_type_fk` FOREIGN KEY (`CRM_Sender_Type_SerialNo_FK`) REFERENCES `crm_sender_type_student_detail` (`CRM_Sender_Type_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `employee_sender_type_fk` FOREIGN KEY (`CRM_Feedback_SerialNo_FK`) REFERENCES `crm_sender_type_employee_detail` (`CRM_Sender_Type_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `faculty_sender_type_fk` FOREIGN KEY (`CRM_Feedback_SerialNo_FK`) REFERENCES `crm_sender_type_faculty_detail` (`CRM_Sender_Type_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `other_sender_type_fk` FOREIGN KEY (`CRM_Feedback_SerialNo_FK`) REFERENCES `crm_sender_type_others_detail` (`CRM_Sender_Type_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `student_sender_type_fk` FOREIGN KEY (`CRM_Feedback_SerialNo_FK`) REFERENCES `crm_sender_type_student_detail` (`CRM_Sender_Type_SerialNo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `crm_tasklist`

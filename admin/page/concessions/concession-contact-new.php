@@ -1,9 +1,36 @@
-<!DOCTYPE html>
+<?php
+session_start();
+require_once('../dbconfig.php');
+
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+  header("location: ../../login.php");
+  exit;
+}
+
+if(isset($_POST['inputSubmit'])){
+  $inputContactNumber = $_POST['inputContactNumber'];
+  $inputProfile = $_POST['inputProfile'];
+  $inputContactType = $_POST['inputContactType'];
+  $inputContactDetail = $_POST['inputContactDetail'];
+  
+$sql = "INSERT INTO `crm_concession_contact`(`CRM_Concession_Contact_SerialNo`, `CRM_Contact_Profile_Name`, `CRM_Concession_Contact_Type`, `CRM_Concession_Contact_Detail`) VALUES ($inputContactNumber, '$inputProfile','$inputContactType','$inputContactDetail')";
+
+if(mysqli_query($conn,$sql)){
+  echo "Record Successfully.";
+}else{
+  echo "Error: Could not Execute, " .mysqli_error($conn);
+}
+
+}
+
+
+?>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Concession Contract</title>
+  <title>PUPCCRMs | Concession Contact</title>
+  <link rel="shortcut icon" href="../../../img/icon.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -478,26 +505,19 @@
                     <h3 class="box-title"><strong>Add Contact</strong></h3>
                   </div>
                   <div class="box-body " style="padding-left: 40px; padding-right: 30px">
-                      <form class="form-horizontal">
+                      <form class="form-horizontal" method="post">
                           <div class="form-group">
-                            <label for="inputContractNumber" class="col-sm-2 control-label">Contact Number</label>
+                            <label for="inputContactNumber" class="col-sm-2 control-label">Contact Number</label>
         
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputContractNumber" placeholder="Contract Number">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="inputContractName" class="col-sm-2 control-label">Contact Name</label>
-        
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputContractName" placeholder="Contract Name">
+                              <input type="text" class="form-control" id="inputContactNumber" name="inputContactNumber" placeholder="Contact Number">
                             </div>
                           </div>
                             <div class="form-group">
-                              <label for="inputType" class="col-sm-2 control-label">Status</label>
+                              <label for="inputProfile" class="col-sm-2 control-label">Profile</label>
                               <div class="col-sm-10">
-                                <select class="form-control select2" style="width: 100%;">
-                                  <option value=""selected=""></option>Select Contact Status</option>
+                                <select class="form-control select2" style="width: 100%;" name="inputProfile">
+                                  <option value="" selected></option>Select Contact Status</option>
                                   <option value="new">New</option>
                                   <option value="old">Old</option>
                                   <option value="changed">Changed</option>
@@ -507,30 +527,23 @@
                             <div class="form-group">
                               <label for="inputType" class="col-sm-2 control-label">Contact Type</label>
                               <div class="col-sm-10">
-                                <select class="form-control select2" style="width: 100%;">
-                                  <option value=""selected=""></option>Select Contact Type</option>
+                                <select class="form-control select2" style="width: 100%;" name="inputContactType">
+                                  <option value="" selected></option>Select Contact Type</option>
                                   <option value="email">Email</option>
                                   <option value="number">Number</option>
                                 </select>
                               </div>
                             </div>
                               <div class="form-group">
-                                <label for="inputConsigneeName" class="col-sm-2 control-label">Contact No.</label>
+                                <label for="inputContactDetail" class="col-sm-2 control-label">Contact Detail</label>
             
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputConsigneeName" placeholder="Consignee Name">
+                                  <input type="text" class="form-control" id="inputContactDetail" name="inputContactDetail" placeholder="Contact Detail">
                                 </div>
                               </div>
-                              <div class="form-group">
-                                  <label for="inputConsigneeName" class="col-sm-2 control-label">Email</label>
-              
-                                  <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputContactEmail" placeholder="Consignee Name">
-                                  </div>
-                                </div>
                           <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                              <button type="submit" class="btn btn-danger">Submit</button>
+                              <button type="submit" class="btn btn-danger" name="inputSubmit">Submit</button>
                             </div>
                           </div>
                         </form>
@@ -763,7 +776,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page Script -->
-<script src="../../dist/js/pages/concession-contract.js"></script>
+<script src="../../dist/js/pages/concession-Contact.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()

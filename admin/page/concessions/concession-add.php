@@ -1,39 +1,72 @@
 <?php
+session_start();
 include('../dbconfig.php');
-$inputConcessionNumber = $inputAddress = $inputConcessionName = $inputDateApplied = $inputEmail ="";
-$inputFunction = $inputNumber = $inputOwnerName = $inputRemarks = $inputStallArea ="";
-
-$sql = "INSERT INTO `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`,`CRM_Concession_Stall_Number`, `CRM_Concession_Area`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Status`, `CRM_Concession_Address`, `CRM_Concession_Email`, `CRM_Concession_Date_Applied`, `CRM_Concession_Remarks`, `CRM_Concession_IsActive`) VALUES ('$inputConcessionNumber','$inputNumber','$inputStallArea','$inputConcessionName','$inputFunction','$inputOwnerName','Active','$inputAddress','$inputEmail','$inputDateApplied','$inputRemarks','1')";
-
-if(mysqli_query($conn,$sql)){
-  echo $sucess ="Record Successfully.";
-}else{
-  echo $error = "Error: Could not Execute." .mysqli_error($conn);
+//We need to use sessions, so you should always start sessions using the below code.
+//If the user is not logged in redirect to the login page...
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+  header("location: ../../login.php");
+  exit;
 }
 
 
 
+$inputAddress = $inputConcessionName = $inputDateApplied = $inputEmail ="";
+$inputFunction = $inputNumber = $inputOwnerName = $inputRemarks = $inputStallArea ="";
+$inputConcessionNumber = '';
 
-if($_SERVER["REQUEST_METHOD"] == "post"){
-  if(empty($_POST["inputNumber"])){
-    $inputNumberError = "Is Required";
+if (isset($_POST['inputSubmit'])){
+  $inputConcessionNumber = $_POST['inputConcessionNumber'];
+  $inputNumber = $_POST['inputNumber'];
+  $inputStallArea = $_POST['inputStallArea'];
+  $inputConcessionName = $_POST['inputConcessionName'];
+  $inputOwnerName = $_POST['inputOwnerName'];
+  $inputEmail = $_POST['inputEmail'];
+  $inputFunction = $_POST['inputFunction'];
+  $inputAddress = $_POST['inputAddress'];
+  $inputDateApplied = $_POST['inputDateApplied'];
+  $inputRemarks = $_POST['inputRemarks'];
+
+
+  $sql = "INSERT INTO `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`,`CRM_Concession_Stall_Number`, `CRM_Concession_Area`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Address`, `CRM_Concession_Email`, `CRM_Concession_Date_Applied`, `CRM_Concession_Remarks`) VALUES ($inputConcessionNumber,'$inputNumber','$inputStallArea','$inputConcessionName','$inputFunction','$inputOwnerName','$inputAddress','$inputEmail',$inputDateApplied,'$inputRemarks')";
+
+
+  if(mysqli_query($conn,$sql)){
+    echo "Record Successfully.";
+    header('location: concession-profile.html');
   }else{
-
+    echo "Error: Could not Execute. " .mysqli_error($conn);
+    header('location: concession-add.php');
   }
-};
+
+}
+
+$rand = rand(0,99999999999);
+$inputError = '';
+    if(empty($_POST['inputNumber'])){
+    $inputNumError = "is required";
+  }else{
+    $inputNumber = trim($_POST['inputNumber']);
+  }
+  if(empty($_POST['inputStallArea'])){
+    $inputStallError = "is required";
+  }else{
+    $inputStallArea = trim($_POST['inputStallArea']);
+  }
 
 
+  $sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Area` FROM `crm_concession_profile`";
+  $result = mysqli_query($conn,$sql1);
 
-
-mysqli_close($conn);
+  mysqli_close($conn); 
 ?>
 
-<!DOCTYPE html>
+
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Concession Contract</title>
+  <title>PUPCCRMs | Concession Profile</title>
   <link rel="shortcut icon" href="../../../img/icon.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -259,8 +292,8 @@ mysqli_close($conn);
               </span>
             </a>
             <ul class="treeview-menu">
-              <li ><a href="../../index.html"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+              <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -474,13 +507,13 @@ mysqli_close($conn);
                     </div>
                     <div class="box-body no-padding">
                         <table class="table table-striped">
-                            <tbody>
+                            <thead>
                                 <tr>
                                     <th>Profile No.</th>
                                     <th style="width: 90px">Stall No.</th>
-                                    <th style="width: 130px">Area</th>
+                                    <th style="width: 100px">Area</th>
                                 </tr>
-                            </tbody>
+                            </thead>
                         </table>
                     </div>
                 </div>
@@ -493,23 +526,24 @@ mysqli_close($conn);
                         <h3 class="box-title"><strong>Add Concession</strong></h3>
                     </div>
                     <div class="box-body no-padding">
-                                <form class="form-horizontal" style="padding: 30px" method="post">
+                                <form class="form-horizontal" style="padding: 30px" method="post" >
                                     <div class="form-group">
                                       <label for="inputConcessionNumber" class="col-sm-2 control-label">Concession Number</label>
                                       <div class="col-sm-10">
-                                      <input type="text" class="form-control" placeholder="Concession Number" id="inputConcessionNumber" value="<?php echo $inputConcessionNumber; ?>">
+                                      <input type="text" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber" value="<?php echo $rand;?>" disabled>
                                       </div>
                                     </div>
                                     <div class="form-group">
                                       <label for="inputNumber" class="col-sm-2 control-label">Stall Number</label>
-                                      <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Stall Number" id="inputNumber" value="<?php echo $inputNumber; ?>">
+                                      <div class="col-sm-10 <?php echo (!empty($inputNumError)) ? 'has-error' : ''; ?>">
+                                        <input type="text" class="form-control" placeholder="Stall Number" name="inputNumber" id="inputNumber">
+                                        <span class ="help-block text-red"><?php echo $inputNumError; ?></span>
                                       </div>
                                     </div>
                                       <div class="form-group">
                                         <label for="inputArea" class="col-sm-2 control-label">Stall Area</label>
-                                        <div class="col-sm-10">
-                                          <select class="form-control select2" style="width: 100%;" value = "<?php echo $inputStallArea;?>">
+                                        <div class="col-sm-10" <?php echo (!empty($inputStallError)) ? 'has-error' : ''; ?>">
+                                          <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
                                             <option value="" selected>Select Area</option>
                                             <option value="north">North</option>
                                             <option value="west">West</option>
@@ -519,6 +553,7 @@ mysqli_close($conn);
                                             <option value="lagoon">Lagoon</option>
                                             <option value="other">Other</option>
                                           </select>
+                                          <span class = "help-block text-red"> <?php echo $inputStallError; ?> </span>
                                         </div>
                                       </div>
                                       <!-- /.form-group -->
@@ -526,27 +561,27 @@ mysqli_close($conn);
                                       <label for="inputConcessionName" class="col-sm-2 control-label">Concession Name</label>
                   
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputConcessionName" placeholder="Concession Name" value="<?php echo $inputConcessionName;?>">
+                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" >
                                       </div>
                                     </div>
                                     <div class="form-group">
                                       <label for="inputOwnerName" class="col-sm-2 control-label">Owner's Name</label>
                   
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputOwnerName" placeholder="Owner's Name" value="<?php echo $inputOwnerName;?>">
+                                        <input type="text" class="form-control" name="inputOwnerName" id="inputOwnerName" placeholder="Owner's Name">
                                       </div>
                                     </div>
                                       <div class="form-group">
                                         <label for="inputEmail" class="col-sm-2 control-label">Email</label>
                     
                                         <div class="col-sm-10">
-                                          <input type="email" class="form-control" id="inputEmail" placeholder="Email" value="<?php echo $inputEmail;?>">
+                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
                                         </div>
                                       </div>
                                       <div class="form-group">
                                           <label for="inputFunction" class="col-sm-2 control-label">Function</label>
                                         <div class="col-sm-10">
-                                          <select class="form-control select2" style="width: 100%;" id="inputFunction">
+                                          <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction">
                                             <option value = ""selected="">Select Function</option>
                                             <option value="food">Food</option>
                                             <option value="nonfood">Non-Food</option>
@@ -557,7 +592,7 @@ mysqli_close($conn);
                                       <label for="inputAddress" class="col-sm-2 control-label">Address</label>
                   
                                       <div class="col-sm-10">
-                                        <textarea class="form-control" id="inputAddress" placeholder="Address" value = "<?php echo $inputAddress;?>"></textarea>
+                                        <textarea class="form-control" name="inputAddress" id="inputAddress" placeholder="Address" ></textarea>
                                       </div>
                                     </div>
                                       <div class="form-group">
@@ -566,19 +601,19 @@ mysqli_close($conn);
                                             <div class="input-group-addon">
                                               <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="inputDateApplied" placeholder="mm/dd/yyyy" value="<?php echo $inputDateApplied;?>">
+                                            <input type="text" class="form-control pull-right" name="inputDateApplied" id="inputDateApplied" placeholder="mm/dd/yyyy">
                                           </div>
                                       </div>
                                       <div class="form-group">
                                         <label for="inputRemarks" class="col-sm-2 control-label">Remarks</label>
                     
                                         <div class="col-sm-10">
-                                          <textarea class="form-control" id="inputRemarks" placeholder="Remarks" value="<?php echo $inputRemarks;?>"></textarea>
+                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" placeholder="Remarks" ></textarea>
                                         </div>
                                       </div> 
                                     <div class="form-group">
                                       <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-danger">Submit</button>
+                                        <button type="submit" class="btn btn-danger" name = "inputSubmit">Submit</button>
                                       </div>
                                     </div>
                                   </form>
@@ -823,9 +858,21 @@ mysqli_close($conn);
     $('#inputDateApplied').datepicker({
       autoclose: true
     })
+
+    $($sucess).alert();
+    $($error).alert();
+
+    window.onbeforeunload = function() {
+   if (data_needs_saving()) {
+       return "Opps! Wait a minute! You Forgot Something";
+   } else {
+      return;
+   }
+   };
   })
 </script>
 
 
 </body>
 </html>
+

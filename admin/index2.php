@@ -1,3 +1,21 @@
+<?php
+session_start();
+require_once('page/dbconfig.php');
+//We need to use sessions, so you should always start sessions using the below code.
+//If the user is not logged in redirect to the login page...
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(!isset($_SESSION["loggedin"]) & empty($_SESSION["loggedin"])){
+  header("location: login.php");
+  }
+$adminid = $_SESSION['loggedin'];
+
+$sql = "SELECT * FROM `crm_admin_user_login` WHERE `CRM_Login_Username` = $adminid";
+$res = mysqli_query($conn,$sql);
+$r = mysqli_fetch_assoc($res);
+
+$conn -> close();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +55,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -338,8 +356,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="./index.html"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-            <li class="active"><a href="./index2.html"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+            <li><a href="./index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+            <li class="active"><a href="./index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
           </ul>
         </li>
         <li class="treeview">

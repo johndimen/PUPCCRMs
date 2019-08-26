@@ -1,11 +1,16 @@
-<!--<?php
-// We need to use sessions, so you should always start sessions using the below code.
-// If the user is not logged in redirect to the login page...
-/*if (!isset($_SESSION['loggedin'])) {
-	header('Location: login.php');
-	exit();
-}*/
-?>-->
+<?php
+session_start();
+require_once('page/dbconfig.php');
+//We need to use sessions, so you should always start sessions using the below code.
+//If the user is not logged in redirect to the login page...
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+  header("location: login.php");
+  exit;
+}
+
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -53,7 +58,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -351,8 +356,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="./index.html"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-            <li><a href="./index2.html"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+            <li class="active"><a href="./index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+            <li><a href="./index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
           </ul>
         </li>
         <li class="treeview">

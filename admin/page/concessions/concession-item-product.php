@@ -1,4 +1,23 @@
-<!DOCTYPE html>
+<?php
+session_start();
+include('../dbconfig.php');
+//We need to use sessions, so you should always start sessions using the below code.
+//If the user is not logged in redirect to the login page...
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+  header("location: ../../login.php");
+  exit;
+}
+
+$sqlfood = "SELECT `CRM_Concession_Item_SerialNo`, `CRM_Concession_Item_Profile_Name`, `CRM_Concession_Item_Name`, `CRM_Concession_Item_Price`, `CRM_Concession_Item_Description`FROM crm_concession_items WHERE `CRM_Concession_Item_Type` = 'food'";
+$sqlnonfood = "SELECT `CRM_Concession_Item_SerialNo`, `CRM_Concession_Item_Profile_Name`, `CRM_Concession_Item_Name`, `CRM_Concession_Item_Price`, `CRM_Concession_Item_Description`FROM crm_concession_items WHERE `CRM_Concession_Item_Type` = 'non-food'";
+$sqlother = "SELECT `CRM_Concession_Item_SerialNo`, `CRM_Concession_Item_Profile_Name`, `CRM_Concession_Item_Name`, `CRM_Concession_Item_Price`, `CRM_Concession_Item_Description`FROM crm_concession_items WHERE `CRM_Concession_Item_Type` = 'other'";
+
+$foodresult = mysqli_query($conn,$sqlfood);
+$nonfoodresult = mysqli_query($conn,$sqlnonfood);
+$otherresult = mysqli_query($conn,$sqlother);
+
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -34,7 +53,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="../../index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -224,8 +243,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li ><a href="../../index.html"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+              <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+              <li><a href="../../index.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -417,7 +436,7 @@
           <small>All Concession Items/Products</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
           <li class="active"><a href="#">Items/Products</a></li>
         </ol>
       </section>
@@ -427,10 +446,10 @@
 
       <div class="row">
           <div class="col-md-3">
-              <a href="../../index.html" class="btn btn-primary btn-block">Back to Dashboard</a>
+              <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
               <a href="./concession.html" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
               
-              <a href="./concession-item-product-new.html" class="btn btn-primary btn-block margin-bottom">Add Item</a>
+              <a href="./concession-item-product-new.php" class="btn btn-primary btn-block margin-bottom">Add Item</a>
                   
               <div class="box box-solid">
                 <div class="box-header with-border">
@@ -498,12 +517,38 @@
                                     <table class="table table-striped">
                                         <tbody>
                                             <tr>
+                                                <th style="width:150px">Action</th>
                                                 <th style="width: 20px">Number</th>
+                                                <th style="width: 200px">Profile Name</th>
                                                 <th style="width: 200px">Item Name</th>
                                                 <th style="width: 400px">Description</th>
                                                 <th style="width: 100px">Price</th>
-                                                <th style="width:150px">Action</th>
                                             </tr>
+                                            <?php
+                                            while($food = mysqli_fetch_assoc($foodresult)){
+                                            ?>
+                                            <tr>
+                                              <th>
+                                                <div class="btn-group">
+                                                  <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewConcession" id="viewConcessionModalBtn">View</button>
+                                                    <button type="button" class="btn btn-info btn-flat dropdown-toggle" style="height: 34px" data-toggle="dropdown">
+                                                      <span class="caret"></span>
+                                                        <span class="sr-only">Actions</span>
+                                                  </button>
+                                                  <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Edit</a></li>
+                                                    <li><a href="#">Archive</a></li>
+                                                    <li><a href="#">Trash</a></li>
+                                                  </ul>
+                                                </div>
+                                              </th>
+                                              <th><?php echo $food['CRM_Concession_Item_SerialNo']; ?></th>
+                                              <th><?php echo $food['CRM_Concession_Item_Profile_Name']; ?></th>
+                                              <th><?php echo $food['CRM_Concession_Item_Name']; ?></th>
+                                              <th><?php echo $food['CRM_Concession_Item_Description']; ?></th>
+                                              <th><?php echo $food['CRM_Concession_Item_Price']; ?></th>
+                                            </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -525,12 +570,38 @@
                                     <table class="table table-striped">
                                         <tbody>
                                             <tr>
+                                                <th style="width:150px">Action</th>
                                                 <th style="width: 20px">Number</th>
+                                                <th>Profile Name</th>
                                                 <th style="width: 200px">Item Name</th>
                                                 <th style="width: 400px">Description</th>
                                                 <th style="width: 100px">Price</th>
-                                                <th style="width:150px">Action</th>
                                             </tr>
+                                            <?php
+                                              while($nonfood = mysqli_fetch_assoc($nonfoodresult)){
+                                            ?>
+                                            <tr>
+                                              <th>
+                                                <div class="btn-group">
+                                                  <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewConcession" id="viewConcessionModalBtn">View</button>
+                                                    <button type="button" class="btn btn-info btn-flat dropdown-toggle" style="height: 34px" data-toggle="dropdown">
+                                                      <span class="caret"></span>
+                                                        <span class="sr-only">Actions</span>
+                                                  </button>
+                                                  <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Edit</a></li>
+                                                    <li><a href="#">Archive</a></li>
+                                                    <li><a href="#">Trash</a></li>
+                                                  </ul>
+                                                </div>
+                                              </th>
+                                              <th><?php echo $nonfood['CRM_Concession_Item_SerialNo']; ?></th>
+                                              <th><?php echo $nonfood['CRM_Concession_Item_Profile_Name']; ?></th>
+                                              <th><?php echo $nonfood['CRM_Concession_Item_Name']; ?></th>
+                                              <th><?php echo $nonfood['CRM_Concession_Item_Description']; ?></th>
+                                              <th><?php echo $nonfood['CRM_Concession_Item_Price']; ?></th>
+                                            </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -552,12 +623,38 @@
                                     <table class="table table-striped">
                                         <tbody>
                                             <tr>
+                                                <th style="width:150px">Action</th>
                                                 <th style="width: 20px">Number</th>
+                                                <th>Profile Name</th>
                                                 <th style="width: 200px">Item Name</th>
                                                 <th style="width: 400px">Description</th>
                                                 <th style="width: 100px">Price</th>
-                                                <th style="width:150px">Action</th>
                                             </tr>
+                                            <?php
+                                              while($other = mysqli_fetch_assoc($otherresult)){
+                                            ?>
+                                            <tr>
+                                              <th>
+                                                <div class="btn-group">
+                                                  <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewConcession" id="viewConcessionModalBtn">View</button>
+                                                    <button type="button" class="btn btn-info btn-flat dropdown-toggle" style="height: 34px" data-toggle="dropdown">
+                                                      <span class="caret"></span>
+                                                        <span class="sr-only">Actions</span>
+                                                  </button>
+                                                  <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Edit</a></li>
+                                                    <li><a href="#">Archive</a></li>
+                                                    <li><a href="#">Trash</a></li>
+                                                  </ul>
+                                                </div>
+                                              </th>
+                                              <th><?php echo $other['CRM_Concession_Item_SerialNo']; ?></th>
+                                              <th><?php echo $other['CRM_Concession_Item_Profile_Name']; ?></th>
+                                              <th><?php echo $other['CRM_Concession_Item_Name']; ?></th>
+                                              <th><?php echo $other['CRM_Concession_Item_Description']; ?></th>
+                                              <th><?php echo $other['CRM_Concession_Item_Price']; ?></th>
+                                            </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>

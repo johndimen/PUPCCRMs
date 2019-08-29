@@ -1,15 +1,35 @@
-<!DOCTYPE html>
+<?php
+session_start();
+include('../dbconfig.php');
+//We need to use sessions, so you should always start sessions using the below code.
+//If the user is not logged in redirect to the login page...
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+  header("location: ../../login.php");
+  exit;
+}
+
+$sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Name` FROM `crm_concession_profile`";
+$result = mysqli_query($conn,$sql1);
+
+
+?>
+
+
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>PUPCCRMs | Concession Contract</title>
+  <link rel="shortcut icon" href="../../../img/icon.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
@@ -34,7 +54,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="../../index2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -224,8 +244,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li ><a href="../../index.html"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+              <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -282,9 +302,8 @@
                   <ul class="treeview-menu">
                     <li><a href="./concession-profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
                     <li><a href="./concession-map-images.html"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                    <li><a href="./concession-contact.html"><i class="fa fa-circle-o"></i> Contact</a></li>
-                    <li><a href="./concession-item-product.html"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                    <li class="active"><a href="./concession-services.html"><i class="fa fa-circle-o"></i> Services</a></li>
+                    <li class="active"><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                    <li><a href="./concession-services.html"><i class="fa fa-circle-o"></i> Services</a></li>
                     <li><a href="./concession-equipment.html"><i class="fa fa-circle-o"></i> Equipments</a></li>
                     <li><a href="./concession-experience.html"><i class="fa fa-circle-o"></i> Experience</a></li>
                   </ul>
@@ -413,12 +432,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          Services
-          <small>All Concession Services</small>
+          Items/Products
+          <small>All Concession Items/Products</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active"><a href="#">Services</a></li>
+          <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active"><a href="#">Items/Products</a></li>
         </ol>
       </section>
 
@@ -427,11 +446,11 @@
 
       <div class="row">
           <div class="col-md-3">
-              <a href="../../index.html" class="btn btn-primary btn-block">Back to Dashboard</a>
-              <a href="./concession.html" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
+              <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
+              <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
               
-              <a href="./concession-services-new" class="btn btn-primary btn-block margin-bottom">Add Service</a>
-                 
+              <a href="./concession-item-product-new.php" class="btn btn-primary btn-block margin-bottom">Add Item</a>
+                  
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Folders</h3>
@@ -443,9 +462,9 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="./concession-services.html"><i class="fa fa-th-large"></i> Servicebox</a></li>
-                    <li><a href="./concession-services-archive.html"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-services-trash.html"><i class="fa fa-trash"></i> Trash</a></li>
+                    <li class="active"><a href="./concession-item-product.html"><i class="fa fa-th-large"></i> Itembox</a></li>
+                    <li><a href="./concession-item-product-archive.html"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
+                    <li><a href="./concession-item-product-trash.html"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -472,57 +491,77 @@
               <!-- /.box -->
             </div>
             <!-- /.col -->
-              <div class="col-md-9">
+            <div class="col-md-9">
                 <div class="box box-primary">
-                  <div class="box-header with-border">
-                    <h3 class="box-title"><strong>ServiceBox</strong></h3>
-                    <div class="box-tools pull-right">
-                      <div class="has-feedback">
-                        <input type="text" class="form-control input-sm" placeholder="Search Service">
-                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                      </div>
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><strong>Add Items</strong></h3>
                     </div>
-                  </div>
-  
-                  <div class="box-body no-padding">
-                    <div class="mailbox-controls">
-                      <!-- Check all button -->
-                      <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
-                      </div>
-                      <!-- /.btn-group -->
-                      <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                      <div class="pull-right">
-                        1/1
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                        </div>
-                      <!-- /.btn-group -->
-                      </div>
-                      <!-- /.pull-right -->
+                    <div class="box-body">
+                        <form class= "form-horizontal" action="" method="post">
+                            <div class="form-group">
+                                <label for="inputItemNumber" class="col-sm-2 control-label">Item Number</label>
+        
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputItemNumber" name="inputItemNumber" placeholder="Item Number">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputProfile" class="col-sm-2 control-label">Profile Name</label>
+        
+                                <div class="col-sm-10">
+                                    <select class="form-control select2" style="width: 100%;" name="inputProfile" id="inputProfile">
+                                        <option value="" selected>Select Profile</option>
+                                        <option value= "" disabled>'Serial No' = 'Concession Name'</option>
+                                        <?php
+                                            $s = " = ";
+                                            while($r = mysqli_fetch_assoc($result)){
+                                        ?>
+                                        <option value="<?php echo $r['CRM_Concession_Name']; ?>" > <?php echo $r['CRM_Concession_Profile_SerialNo'].$s.$r['CRM_Concession_Name']; ?></option>
+                                        <?php } ?>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputItemName" class="col-sm-2 control-label">Item Name</label>
+        
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputItemName" name="inputItemName" placeholder="Item Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputItemType" class="col-sm-2 control-label">Item Type</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control select2" style="width: 100%;" name="inputItemType" id="inputItemType">
+                                        <option value = ""selected="">Select Type</option>
+                                        <option value="food">Food</option>
+                                        <option value="non-food">Non-Food</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputItemPrice" class="col-sm-2 control-label">Item Price</label>
+        
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputItemPrice" name="inputItemPrice" placeholder="Item Price">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputItemDesc" class="col-sm-2 control-label">Item Description</label>
+        
+                                <div class="col-sm-10">
+                                    <textarea type="text" class="form-control" id="inputItemDesc" name="inputItemDesc" placeholder="Item Description"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-danger" name="inputSubmit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-   
-                    <div class="table-responsive mailbox-massages">
-                      <table class="table table-hover table-striped">
-                        <tbody>
-                          <tr>
-                            <td style="width: 20px">Select</td>
-                            <td style="width: 200px">Concession Name</td>
-                            <td>Service Name</td>
-                            <td>Price</td>
-                            <td>Description</td>
-                            <td style="width: 150px">Action</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
                 </div>
-              </div>
+            </div>
       </div>
     </section>
     <!-- /.content -->
@@ -742,6 +781,8 @@
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -751,6 +792,8 @@
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+  //initialize select2 elements
+  $('.select2').select2()
   })
 </script>
 

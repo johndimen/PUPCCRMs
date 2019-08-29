@@ -10,7 +10,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 }
 
 
-
+$error = $sucess = "";
 $inputAddress = $inputConcessionName = $inputDateApplied = $inputEmail ="";
 $inputFunction = $inputNumber = $inputOwnerName = $inputRemarks = $inputStallArea ="";
 $inputConcessionNumber = '';
@@ -28,20 +28,19 @@ if (isset($_POST['inputSubmit'])){
   $inputRemarks = $_POST['inputRemarks'];
 
 
-  $sql = "INSERT INTO `crm_concession_profile` (`CRM_Concession_Profile_SerialNo`,`CRM_Concession_Stall_Number`, `CRM_Concession_Area`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Address`, `CRM_Concession_Email`, `CRM_Concession_Date_Applied`, `CRM_Concession_Remarks`) VALUES ($inputConcessionNumber,'$inputNumber','$inputStallArea','$inputConcessionName','$inputFunction','$inputOwnerName','$inputAddress','$inputEmail',$inputDateApplied,'$inputRemarks')";
-
+  $sql = "INSERT INTO `crm_concession_profile`(`CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Area`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Address`, `CRM_Concession_Email`, `CRM_Concession_Date_Applied`, `CRM_Concession_Remarks`) VALUES ($inputConcessionNumber,$inputNumber,'$inputStallArea','$inputConcessionName','$inputOwnerName','$inputFunction','$inputAddress','$inputEmail',$inputDateApplied,'$inputRemarks')";
 
   if(mysqli_query($conn,$sql)){
-    echo "Record Successfully.";
+    $sucess = "Record Successfully.";
     header('location: concession-profile.html');
   }else{
-    echo "Error: Could not Execute. " .mysqli_error($conn);
+    $error = "Error: Could not Execute. " .mysqli_error($conn);
     header('location: concession-add.php');
   }
 
 }
 
-$rand = rand(0,99999999999);
+$rand = rand(0,99999999);
 $inputError = '';
     if(empty($_POST['inputNumber'])){
     $inputNumError = "is required";
@@ -58,7 +57,6 @@ $inputError = '';
   $sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Area` FROM `crm_concession_profile`";
   $result = mysqli_query($conn,$sql1);
 
-  mysqli_close($conn); 
 ?>
 
 
@@ -497,7 +495,7 @@ $inputError = '';
       <div class="row">
             <div class="col-md-3">
               <a href="../../index.html" class="btn btn-primary btn-block">Back to Dashboard</a>
-              <a href="./concession.html" class="btn btn-primary btn-block ">Go to Concession List</a>
+              <a href="./concession.php" class="btn btn-primary btn-block ">Go to Concession List</a>
               
               <a href="./concession-profile.html" class="btn btn-primary btn-block margin-bottom">Go to Concession Profile</a>
 
@@ -513,6 +511,15 @@ $inputError = '';
                                     <th style="width: 90px">Stall No.</th>
                                     <th style="width: 100px">Area</th>
                                 </tr>
+                                <?php 
+                                while($r = mysqli_fetch_assoc($result)){
+                                ?>
+                                <tr>
+                                  <th><?php echo $r['CRM_Concession_Profile_SerialNo'] ?></th>
+                                  <th><?php echo $r['CRM_Concession_Stall_Number'] ?></th>
+                                  <th><?php echo $r['CRM_Concession_Area'] ?></th>
+                                </tr>
+                                <?php } ?>
                             </thead>
                         </table>
                     </div>
@@ -524,6 +531,10 @@ $inputError = '';
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title"><strong>Add Concession</strong></h3>
+                    </div>
+                    <div class="alert alert-primary" role="alert">
+                      <?php echo $sucess ?>
+                      <?php echo $error ?>
                     </div>
                     <div class="box-body no-padding">
                                 <form class="form-horizontal" style="padding: 30px" method="post" >
@@ -851,6 +862,7 @@ $inputError = '';
 <script src="../../dist/js/pages/concession-contract.js"></script>
 <script>
   $(document).ready(function () {
+    $(".form-group").removeClass('has-error').removeClass('has-success');
     $('.sidebar-menu').tree()
     //initialize select2 elements
     $('.select2').select2()
@@ -859,8 +871,8 @@ $inputError = '';
       autoclose: true
     })
 
-    $($sucess).alert();
-    $($error).alert();
+    $('.inputSubmit').alert($sucess);
+    $('.inputSubmit').alert($error);
 
     window.onbeforeunload = function() {
    if (data_needs_saving()) {
@@ -872,7 +884,7 @@ $inputError = '';
   })
 </script>
 
-
+<?php $conn ->close(); ?>
 </body>
 </html>
 

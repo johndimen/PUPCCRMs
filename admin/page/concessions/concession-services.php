@@ -1,31 +1,34 @@
 <?php
-session_start();
-require_once('../dbconfig.php');
-
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-  header("location: ../../login.php");
-  exit;
-}
-
-if(isset($_POST['inputSubmit'])){
-  $inputContactNumber = $_POST['inputContactNumber'];
-  $inputProfile = $_POST['inputProfile'];
-  $inputContactType = $_POST['inputContactType'];
-  $inputContactDetail = $_POST['inputContactDetail'];
+  session_start();
+  include('../dbconfig.php');
+  //We need to use sessions, so you should always start sessions using the below code.
+  //If the user is not logged in redirect to the login page...
+  // Check if the user is already logged in, if yes then redirect him to welcome page
+  if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+    header("location: ../../login.php");
+    exit;
+  }
   
-$sql = "INSERT INTO `crm_concession_contact`(`CRM_Concession_Contact_SerialNo`, `CRM_Contact_Profile_Name`, `CRM_Concession_Contact_Type`, `CRM_Concession_Contact_Detail`) VALUES ($inputContactNumber, '$inputProfile','$inputContactType','$inputContactDetail')";
+  $sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Name` FROM `crm_concession_profile`";
+  $result1 = mysqli_query($conn,$sql1);
 
-if(mysqli_query($conn,$sql)){
-  echo "Record Successfully.";
-}else{
-  echo "Error: Could not Execute, " .mysqli_error($conn);
-}
 
-}
+  $sql = "SELECT `CRM_Service_Concession_Name`, `CRM_Concession_Services_Name`, `CRM_Concession_Services_Price_Range_Lower`, `CRM_Concession_Services_Price_Range_Higher`, `CRM_Concession_Services_Desc` FROM crm_concession_service";
+  $result = mysqli_query($conn,$sql);
 
-$sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Name` FROM `crm_concession_profile`";
-$result = mysqli_query($conn,$sql1);
+ // $conName = $servName = $priceLow = $priceHigh = $servStatus = $servDesc ="";
 
+  $sql2 = "SELECT `CRM_Service_Concession_Name`, `CRM_Concession_Services_Name`, `CRM_Concession_Services_Price_Range_Lower`, `CRM_Concession_Services_Price_Range_Higher`, `CRM_Concession_Service_Status`, `CRM_Concession_Services_Desc` FROM crm_concession_service WHERE ";
+  $s1 = " ~ ";
+  $result2 = mysqli_query($conn,$sql2);
+  while($r = mysqli_fetch_array($result2)){
+    $conName = $r['CRM_Service_Concession_Name'];
+    $r['CRM_Concession_Services_Name'];
+    $r['CRM_Concession_Services_Price_Range_Lower'];
+    $r['CRM_Concession_Services_Price_Range_Higher'];
+    $r['CRM_Concession_Service_Status'];
+    $r['CRM_Concession_Services_Desc'];
+  }
 
 
 ?>
@@ -33,18 +36,17 @@ $result = mysqli_query($conn,$sql1);
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Concession Contact</title>
-  <link rel="shortcut icon" href="../../../img/icon.png">
+  <title>PUPCCRMs | Concession Contract</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -315,9 +317,9 @@ $result = mysqli_query($conn,$sql1);
                   <ul class="treeview-menu">
                     <li><a href="./concession-profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
                     <li><a href="./concession-map-images.html"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                    <li class="active"><a href="./concession-contact.html"><i class="fa fa-circle-o"></i> Contact</a></li>
+                    <li><a href="./concession-contact.html"><i class="fa fa-circle-o"></i> Contact</a></li>
                     <li><a href="./concession-item-product.html"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                    <li><a href="./concession-services.html"><i class="fa fa-circle-o"></i> Services</a></li>
+                    <li class="active"><a href="./concession-services.html"><i class="fa fa-circle-o"></i> Services</a></li>
                     <li><a href="./concession-equipment.html"><i class="fa fa-circle-o"></i> Equipments</a></li>
                     <li><a href="./concession-experience.html"><i class="fa fa-circle-o"></i> Experience</a></li>
                   </ul>
@@ -446,12 +448,12 @@ $result = mysqli_query($conn,$sql1);
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          Contacts
-          <small>New Concession Contact</small>
+          Services
+          <small>All Concession Services</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active"><a href="#">Contact</a></li>
+          <li class="active"><a href="#">Services</a></li>
         </ol>
       </section>
 
@@ -462,7 +464,10 @@ $result = mysqli_query($conn,$sql1);
           <div class="col-md-3">
               <a href="../../index.html" class="btn btn-primary btn-block">Back to Dashboard</a>
               <a href="./concession.html" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
-              
+              <button type="button" class="btn btn-primary btn-block margin-bottom" data-toggle="modal" data-target="#addServices">
+                Add Service
+              </button>
+
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Folders</h3>
@@ -474,9 +479,9 @@ $result = mysqli_query($conn,$sql1);
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li><a href="./concession-contact.html"><i class="fa fa-th-large"></i> Contactbox</a></li>
-                    <li><a href="./concession-contact-archive.html"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-contact-trash.html"><i class="fa fa-trash"></i> Trash</a></li>
+                    <li class="active"><a href="./concession-services.html"><i class="fa fa-th-large"></i> Servicebox</a></li>
+                    <li><a href="./concession-services-archive.html"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
+                    <li><a href="./concession-services-trash.html"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -503,59 +508,79 @@ $result = mysqli_query($conn,$sql1);
               <!-- /.box -->
             </div>
             <!-- /.col -->
-            <div class="col-md-9">
+              <div class="col-md-9">
                 <div class="box box-primary">
                   <div class="box-header with-border">
-                    <h3 class="box-title"><strong>Add Contact</strong></h3>
+                    <h3 class="box-title"><strong>ServiceBox</strong></h3>
+                    <div class="box-tools pull-right">
+                      <div class="has-feedback">
+                        <input type="text" class="form-control input-sm" placeholder="Search Service">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                      </div>
+                    </div>
                   </div>
-                  <div class="box-body " style="padding-left: 40px; padding-right: 30px">
-                      <form class="form-horizontal" method="post">
-                          <div class="form-group">
-                            <label for="inputContactNumber" class="col-sm-2 control-label">Contact Number</label>
-        
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputContactNumber" name="inputContactNumber" placeholder="Contact Number">
-                            </div>
-                          </div>
-                            <div class="form-group">
-                              <label for="inputProfile" class="col-sm-2 control-label">Profile</label>
-                              <div class="col-sm-10">
-                                <select class="form-control select2" style="width: 100%;" name="inputProfile" id="inputProfile">
-                                  <option value="" selected>Select Profile</option>
-                                  <option value= "" disabled>'Serial No' = 'Concession Name'</option>
-                                  <?php
-                                  $s = " = ";
-                                  while($r = mysqli_fetch_assoc($result)){
-                                  ?>
-                                  
-                                  <option value="<?php echo $r['CRM_Concession_Name']; ?>" > <?php echo $r['CRM_Concession_Profile_SerialNo'].$s.$r['CRM_Concession_Name']; ?></option>
-                                  <?php } ?>
-                                </select>
+  
+                  <div class="box-body no-padding">
+                    <div class="mailbox-controls">
+                      <!-- Check all button -->
+                      <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
+                      </div>
+                      <!-- /.btn-group -->
+                      <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                      <div class="pull-right">
+                        1/1
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                        </div>
+                      <!-- /.btn-group -->
+                      </div>
+                      <!-- /.pull-right -->
+                    </div>
+   
+                    <div class="table-responsive mailbox-massages" style= "height:1000px">
+                      <table class="table table-hover table-striped">
+                        <tbody>
+                          <tr>
+                            <td style="width: 100px">Action</td>
+                            <td style="width: 200px">Concession Name</td>
+                            <td>Service Name</td>
+                            <td>Price</td>
+                            <td>Description</td>
+                          </tr>
+                            <?php
+                            $range = " ~ ";
+                              while($r = mysqli_fetch_assoc($result)){
+                            ?>
+                          <tr>
+                            <th>
+                              <div class="btn-group">
+                                  <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewService" id="#viewServiceBtn">View</button>
+                                    <button type="button" class="btn btn-info btn-flat dropdown-toggle" style="height: 34px" data-toggle="dropdown">
+                                  <span class="caret"></span>
+                                  <span class="sr-only">Actions</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="#">Edit</a></li>
+                                  <li><a href="#">Archive</a></li>
+                                  <li><a href="#">Trash</a></li>
+                                </ul>
                               </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="inputType" class="col-sm-2 control-label">Contact Type</label>
-                              <div class="col-sm-10">
-                                <select class="form-control select2" style="width: 100%;" name="inputContactType">
-                                  <option value="" selected>Select Contact Type</option>
-                                  <option value="email">Email</option>
-                                  <option value="number">Number</option>
-                                </select>
-                              </div>
-                            </div>
-                              <div class="form-group">
-                                <label for="inputContactDetail" class="col-sm-2 control-label">Contact Detail</label>
-            
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputContactDetail" name="inputContactDetail" placeholder="Contact Detail">
-                                </div>
-                              </div>
-                          <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                              <button type="submit" class="btn btn-danger" name="inputSubmit">Submit</button>
-                            </div>
-                          </div>
-                        </form>
+                            </th>
+                            <th><?php echo $r['CRM_Service_Concession_Name']; ?></th>
+                            <th><?php echo $r['CRM_Concession_Services_Name']; ?></th>
+                            <th><?php echo $r['CRM_Concession_Services_Price_Range_Lower'].$range.$r['CRM_Concession_Services_Price_Range_Higher']; ?></th>
+                            <th><?php echo $r['CRM_Concession_Services_Desc']; ?></th>
+                          </tr>
+                          <?php } ?>
+
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -564,6 +589,122 @@ $result = mysqli_query($conn,$sql1);
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <div class="modal modal-default fade" id="addServices">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title"><strong>Add Services</strong></h4>
+        </div>
+      <form class="form-horizontal" action="" method="post">
+        <div class="modal-body ">
+            <div class="form-group">
+              <label for="inputProfile" class="col-sm-2 control-label">Profile Name</label>
+        
+              <div class="col-sm-10">
+              <select class="form-control select2" style="width: 100%;" name="inputProfile" id="inputProfile">
+                  <option value="" selected>Select Profile</option>
+                  <option value= "" disabled>'Serial No' = 'Concession Name'</option>
+                    <?php
+                      $s = " = ";
+                      while($r = mysqli_fetch_assoc($result1)){
+                    ?>
+                  <option value="<?php echo $r['CRM_Concession_Name']; ?>" > <?php echo $r['CRM_Concession_Profile_SerialNo'].$s.$r['CRM_Concession_Name']; ?></option>
+                <?php } ?>
+              </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputServiceName" class="col-sm-2 control-label">Service Name</label>
+        
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputServiceName" name="inputServiceName" placeholder="Service Name">
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="inputServicePrice" class="col-sm-2 control-label">Price</label>
+        
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputServicePriceLower" name="inputServicePriceLower" placeholder="Price (lower)">
+                </div>
+                <div class="col-sm-10" style="padding-left:115px; padding-top: 5px; width:100%">
+                  <input type="text" class="form-control" id="inputServicePriceHigher" name="inputServicePriceHigher" placeholder="Price (Higher)">
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="inputServiceDesc" class="col-sm-2 control-label">Description</label>
+        
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputServiceDesc" name="inputServiceDesc" placeholder="Description">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="button" name="inputSubmit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+  <div class="modal fade" id="viewService">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">View</h4>
+              </div>
+              <form class="form-horizontal" action="" method="">
+       
+                <div class="modal-body ">
+                  <div class="form-group">
+                    <label for="inputProfileName" class="col-sm-2 control-label">Profile Name</label>
+                        
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputProfileName" name="inputProfileName" placeholder="Profile Name" value="<?php echo $conName?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputServiceName" class="col-sm-2 control-label">Service Name</label>
+        
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputServiceName" name="inputServiceName" placeholder="Service Name" value="<?php echo $servName ?>">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputServicePrice" class="col-sm-2 control-label">Price</label>
+        
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputServicePrice" name="inputServicePrice" placeholder="Price " value="<?php echo $priceLow.$s1.$priceHigh ?>">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputServiceDesc" class="col-sm-2 control-label">Description</label>
+        
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputServiceDesc" name="inputServiceDesc" placeholder="Description" value="<?php echo $servDesc ?>">
+                      </div>
+                  </div>
+                </div>
+                
+                <div class="modal-footer">
+                  <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                  <button type="button" name="inputSubmit" class="btn btn-primary">Submit</button>
+                </div>
+                   
+              </form>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -785,13 +926,13 @@ $result = mysqli_query($conn,$sql1);
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page Script -->
-<script src="../../dist/js/pages/concession-Contact.js"></script>
+<script src="../../dist/js/pages/concession-contract.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+    //initialize select2 elements
+    $('.select2').select2()
   })
-  //initialize select2 elements
-  $('.select2').select2()
 </script>
 
 

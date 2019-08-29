@@ -1,9 +1,26 @@
-<!DOCTYPE html>
+<?php
+session_start();
+include('../dbconfig.php');
+//We need to use sessions, so you should always start sessions using the below code.
+//If the user is not logged in redirect to the login page...
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+  header("location: ../../login.php");
+  exit;
+}
+
+$sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Date_Applied` FROM `crm_concession_profile`";
+$result = mysqli_query($conn,$sql1);
+
+
+
+?>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>PUPCCRMs | Concession Contract</title>
+  <link rel="shortcut icon" href="../../../img/icon.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -17,6 +34,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="../../plugins/iCheck/all.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,7 +53,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="../../index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -224,8 +243,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li ><a href="../../index.html"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+              <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -417,7 +436,7 @@
           <small>All Concession List</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
           <li class="active"><a href="#">Concession</a></li>
         </ol>
       </section>
@@ -427,7 +446,7 @@
 
       <div class="row">
           <div class="col-md-3">
-              <a href="../../index.html" class="btn btn-primary btn-block">Back to Dashboard</a>
+              <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
               
               <a href="./concession-add.php" class="btn btn-primary btn-block margin-bottom">Add Concession</a>
                  
@@ -478,7 +497,7 @@
                         <h3 class="box-title"><strong>ConcessionBox</strong></h3>
                         <div class="box-tools pull-right">
                           <div class="has-feedback">
-                            <input type="text" class="form-control input-sm" placeholder="Search Contact">
+                            <input type="text" class="form-control input-sm" placeholder="Search Concession">
                             <span class="glyphicon glyphicon-search form-control-feedback"></span>
                           </div>
                         </div>
@@ -510,15 +529,42 @@
                           <table class="table table-hover table-striped">
                             <tbody>
                               <tr>
-                                <td style="width: 20px">Select</td>
+                                <td></td>
+                                <td style="width: 100px">Actions</td>
                                 <td style="width: 80px">Profile No.</td>
                                 <td style="width: 80px">Stall No.</td>
                                 <td>Concession Name</td>
                                 <td>Owner's Name</td>
                                 <td>Function</td>
                                 <td>Date Applied</td>
-                                <td style="width: 100px">Actions</td>
                               </tr>
+                              <tr>
+                              <?php
+                              while($r = mysqli_fetch_assoc($result)){
+                              ?>
+                                <td> <input type="checkbox" class = "checkbox icheck" style="padding-left:20px; padding-top: 30px"></td>
+                                <td>
+                                  <div class="btn-group">
+                                    <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewConcession" id="viewConcessionModalBtn">View</button>
+                                      <button type="button" class="btn btn-info btn-flat dropdown-toggle" style="height: 34px" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Actions</span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                      <li><a href="#">Edit</a></li>
+                                      <li><a href="#">Archive</a></li>
+                                      <li><a href="#">Trash</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                                <td><?php echo $r['CRM_Concession_Profile_SerialNo'] ?></td>
+                                <td><?php echo $r['CRM_Concession_Stall_Number'] ?></td>
+                                <td><?php echo $r['CRM_Concession_Name'] ?></td>
+                                <td><?php echo $r['CRM_Concession_Owner_Name'] ?></td>
+                                <td><?php echo $r['CRM_Concession_Function'] ?></td>
+                                <td><?php echo $r['CRM_Concession_Date_Applied'] ?></td>
+                              </tr>
+                              <?php } ?>
                             </tbody>
                           </table>
                         </div>
@@ -530,6 +576,30 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <div class="modal modal-info fade" id="viewConcession">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                <h4 class="modal-title">Info Modal</h4>
+        </div>
+        <div class="modal-body">
+          <p>One fine body&hellip;</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -748,11 +818,19 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<!-- iCheck -->
+<script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- Page Script -->
 <script src="../../dist/js/pages/concession-contract.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
   })
 </script>
 

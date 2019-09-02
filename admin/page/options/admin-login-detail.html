@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
@@ -403,7 +405,7 @@
               <small>Admin Login Detail</small>
             </h1>
             <ol class="breadcrumb">
-              <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Home</a></li>
+              <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
               <li><a href="#">Options</a></li>
               <li><a href="#">Admins</a></li>
               <li class="active">Admin Login</li>
@@ -423,7 +425,14 @@
             </div>
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+          <a>
+            <button type="button" data-toggle="modal" data-target="#addAdmin" class="btn btn-primary">
+              New Admin
+            </button>
+          </a>
+          <a>
+            <button type="button" data-toggle="modal" data-target="#addRole" class="pull-right btn btn-primary">Add Role</button>
+          </a>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -450,6 +459,152 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <div class="modal fade" id="addRole">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius: 10px">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Add Roles</h4>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="modal-body">
+            
+            <div class="form-group">
+              <label for="adminRole" class="col-sm-3 control-label">Role</label>
+              <div class="col-sm-9">
+                <input type="text" id="adminRole" name="adminRole" class="form-control" placeholder="Admin Role">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="adminName" class="col-sm-3 control-label">Description</label>
+              <div class="col-sm-9">
+                <textarea type="text" id="adminRole" name="adminRole" class="form-control" rows="10" placeholder="Role Description"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="close" name="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" id="submitRole" name="submitRole" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="addAdmin">
+    <div class="modal-dialog">
+      <div class="modal-content" style="width: 120%; border-radius: 10px">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add New Admin</h4>
+        </div>
+        <form class="form-horizontal" action="" method="POST">
+ 
+          <div class="modal-body ">
+            <h4>Login Details</h4>
+            <div class="form-group">
+              <label for="username" class="col-sm-2 control-label">Username</label>
+              <div class="col-sm-10">
+                <input id="username" name ="username" type="text" class="form-control" placeholder="Username">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="col-sm-2 control-label">Password</label>
+              <div class="col-sm-10">
+                <input id="password" name ="password" type="text" class="form-control" placeholder="Password">
+              </div>
+            </div>
+            <hr>
+            <h4>Profile Details</h4>
+            <div class="form-group">
+              <label for="profile" class="col-sm-2 control-label">Profile No</label>
+              <div class="col-sm-10">
+                <input id="profile" name ="profile" type="text" class="form-control" placeholder="Profile No.">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="profile" class="col-sm-2 control-label">Name</label>
+              <div class="row">
+                <div class="col-sm-2" style="width: 10%; padding-right: 5px">
+                  <input id="salutation" name ="salutation" type="text" class="form-control" placeholder="Mr./Ms./Mrs.">
+                </div>
+                <div class="col-sm-3" style="width: 170px;padding-left: 5px; padding-right: 5px">
+                  <input type="text" id="firstName" name="firstName" class="form-control" placeholder="First Name">
+                </div>
+                <div class="col-sm-2" style="width:100px;padding-left: 5px; padding-right: 5px">
+                  <input type="text" id="middleName" name="middleName" class="form-control" placeholder="Middle Name">
+                </div>
+                <div class="col-md-3" style="width: 170px;padding-right:5px;padding-left: 5px">
+                  <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last Name">
+                </div>
+                <div class="col-md-2" style="width: 85.5px;padding-left: 5px">
+                  <input type="text" id="extName" name="extName" class="form-control" placeholder="jr">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="jobTitle" class="col-sm-2 control-label">Job Title</label>
+              <div class="col-sm-10">
+                <input type="text" id="jobTitle" name="jobTitle" class="form-control" placeholder="Job Title">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="gender" class="col-sm-2 control-label">Gender</label>
+              <div class="col-sm-10">
+                <select name="gender" id="gender" class="select2 form-controll" style="width: 100%">
+                  <option value="" selected>Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="lgbtq">LGBTQ</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-sm-2 control-label">E-mail</label>
+              <div class="col-sm-10">
+                <input type="text" id="email" name="email" class="form-control" placeholder="E-mail">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="highestEducation" class="col-sm-2 control-label">Highest Education</label>
+              <div class="col-sm-10">
+                <input type="text" id="highestEducation" name="highestEducation" class="form-control" placeholder="Highest Education">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="location" class="col-sm-2 control-label">Address</label>
+              <div class="col-sm-10">
+                <input type="text" id="location" name="location" class="form-control" placeholder="Address">
+              </div>
+            </div>
+            <hr>
+            <h4>Role Details</h4>
+            <div class="form-group">
+              <label for="roleType" class="col-sm-2 control-label">Admin Role</label>
+              <div class="col-sm-10">
+                <select name="jobtitle" id="jobtitle" style="width: 100%" class="select2 form-control">
+                  <option value="" selected>Select Role</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" name="inputClose" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" name="inputSubmit" class="btn btn-primary">Submit</button>
+          </div>
+             
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -664,6 +819,8 @@
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -673,6 +830,8 @@
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+    $('.select2').select2()
+
   })
 </script>
 

@@ -9,6 +9,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   exit;
 }
 
+//table
 $sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Date_Applied` FROM `crm_concession_profile`";
 $result = mysqli_query($conn,$sql1);
 
@@ -551,7 +552,7 @@ $result = mysqli_query($conn,$sql1);
                                         <span class="sr-only">Actions</span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
-                                      <li><a href="#">Edit</a></li>
+                                      <li><a href="#" id = "editConcession">Edit</a></li>
                                       <li><a href="#">Archive</a></li>
                                       <li><a href="#">Trash</a></li>
                                     </ul>
@@ -577,22 +578,120 @@ $result = mysqli_query($conn,$sql1);
   </div>
   <!-- /.content-wrapper -->
 
-  <div class="modal modal-info fade" id="viewConcession">
-    <div class="modal-dialog">
+  <!-- view modal -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="viewConcession">
+    <div class="modal-dialog" role = "document">
       <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-                <h4 class="modal-title">Info Modal</h4>
+                <h4 class="modal-title"><span class="glyphicon glyphicon-edit"></span>Concession Info</h4>
         </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline">Save changes</button>
-        </div>
+        <form class="form-horizontal" style="padding: 30px" method="post" id="viewCons">
+            <div class="modal-body">
+              <div class="view-messages"></div>
+              <div class="form-group">
+                <label for="viewConcessionNumber" class="col-sm-2 control-label">Concession Number</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="Concession Number" name="viewConcessionNumber" id="viewConcessionNumber" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="viewNumber" class="col-sm-2 control-label">Stall Number</label>
+                <div class="col-sm-10 ">
+                  <input type="text" class="form-control" placeholder="Stall Number" name="viewNumber" id="viewNumber">
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewArea" class="col-sm-2 control-label">Stall Area</label>
+                <div class="col-sm-10">
+                  <select class="form-control select2" style="width: 100%;" name="viewStallArea" id="viewStallArea" >
+                    <option value="" selected>Select Area</option>
+                    <option value="north">North</option>
+                    <option value="west">West</option>
+                    <option value="south">South</option>
+                    <option value="east">East</option>
+                    <option value="sampaguita">sampaguita</option>
+                    <option value="lagoon">Lagoon</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <!-- /.form-group -->
+              <div class="form-group">
+                  <label for="viewConcessionName" class="col-sm-2 control-label">Concession Name</label>
+                  
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="viewConcessionName" id="viewConcessionName" placeholder="Concession Name" >
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewOwnerName" class="col-sm-2 control-label">Owner's Name</label>
+                  
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="viewOwnerName" id="viewOwnerName" placeholder="Owner's Name">
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewEmail" class="col-sm-2 control-label">Email</label>
+                    
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" name="viewEmail" id="viewEmail" placeholder="Email" >
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewFunction" class="col-sm-2 control-label">Function</label>
+                <div class="col-sm-10">
+                  <select class="form-control select2" style="width: 100%;" name="viewFunction" id="viewFunction">
+                    <option value = ""selected="">Select Function</option>
+                    <option value="food">Food</option>
+                    <option value="nonfood">Non-Food</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewStatus" class="col-sm-2 control-label">Status</label>
+                <div class="col-sm-10">
+                  <select class="form-control select2" style="width: 100%;" name="viewStatus" id="viewStatus">
+                    <option value = ""selected="">Select Status</option>
+                    <option value="active">Active</option>
+                    <option value="withdrawn">Withdrawn</option>
+                    <option value="due">Due</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewAddress" class="col-sm-2 control-label">Address</label>
+                  
+                <div class="col-sm-10">
+                  <textarea class="form-control" name="viewAddress" id="viewAddress" placeholder="Address" ></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="viewDateApplied" class="col-sm-2 control-label">Date Applied</label>
+                <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" name="viewDateApplied" id="viewDateApplied" placeholder="mm/dd/yyyy">
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewRemarks" class="col-sm-2 control-label">Remarks</label>
+                    
+                <div class="col-sm-10">
+                  <textarea class="form-control" name="viewRemarks" id="viewRemarks" placeholder="Remarks" ></textarea>
+                </div>
+              </div>
+            </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
       </div>
       <!-- /.modal-content -->
     </div>
@@ -831,9 +930,42 @@ $result = mysqli_query($conn,$sql1);
       radioClass: 'iradio_square-blue',
       increaseArea: '20%' /* optional */
     });
+
+    function viewConcession(CRM_Concession_Profile_SerialNo = null){
+      if(CRM_Concession_Profile_SerialNo){
+        $(".form-group").removeClass('has-error').removeClass('has-success');
+        $("text-danger").remove();
+        $("view-messages").html("");
+        //$("inputConcessionNumber").remove();
+        $.ajax({
+          url: 'getselected.php',
+          type: 'post',
+          data: {inputConcessionNumber : CRM_Concession_Profile_SerialNo}
+          dataType: 'json';
+          success:function(response){
+            $("#viewConcessionNumber").val(response.CRM_Concession_Profile_SerialNo);
+            $("#viewNumber").val(response.CRM_Concession_Stall_Number);
+            $("#viewStallArea").val(response.CRM_Concession_Area);
+            $("#viewConcessionName").val(response.CRM_Concession_Name);
+            $("#viewOwnerName").val(response.CRM_Concession_Owner_Name);
+            $("#viewEmail").val(response.CRM_Concession_Email);
+            $("#viewFunction").val(response.CRM_Concession_Function);
+            $("#viewStatus").val(response.CRM_Concession_Status)
+            $("#viewAddress").val(response.CRM_Concession_Address);
+            $("#viewDateApplied").val(response.CRM_Concession_Date_Applied);
+            $("viewRemarks").val(response.CRM_Concession_Remarks);
+          }
+        })
+      }else{
+        alert("Error: Please refresh the page again.");
+      }
+
+    }
+
+
   })
 </script>
 
-
+<?php $connect->close(); ?>
 </body>
 </html>

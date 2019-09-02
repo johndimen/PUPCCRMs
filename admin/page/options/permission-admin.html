@@ -10,8 +10,12 @@
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="../../plugins/iCheck/all.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -423,10 +427,13 @@
             </div>
         </div>
         <div class="box-body">
-            <div class="has-feedback pull-right">
-                <input type="text" class="form-control input-sm" placeholder="Search Items">
+          <div class="pull-left">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPermission">Add General Permission</button>
+          </div>
+          <div class="has-feedback pull-right">
+              <input type="text" class="form-control input-sm" placeholder="Search Items">
                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
-            </div>
+          </div>
         </div>
         <div class="box-body">
             <table class="table table-striped">
@@ -472,6 +479,73 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <div class="modal modal-fade" id="addPermission">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius: 10px">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add New General Permission</h4>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="adminName" class="col-sm-3 control-label">Admin</label>
+            <div class="col-sm-9">
+              <select class="select2 form-control" style="width:100%" name="adminName" id="adminName">
+                <option value="">Select Admin</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="adminRole" class="col-sm-3 control-label">Admin Role</label>
+            <div class="col-sm-9">
+              <input type="text" id="adminRole" name="adminRole" class="form-control" placeholder="Admin Role">
+            </div>
+          </div>
+          <hr>
+          <h4>Permissions</h4>
+          <div class="form-group">
+            <div class="row" style="padding-right: 100px">
+              <label class="col-sm-4 control-label"> Tasks
+                <input type="checkbox" class="flat-red form-control" >
+              </label>
+              <label class="col-sm-4 control-label"> Cases
+                <input type="checkbox" class="flat-red form-control" >
+              </label>
+              <label class="col-sm-4 control-label"> Concessions
+                <input type="checkbox" class="flat-red form-control" >
+              </label>
+              <label class="col-sm-4 control-label"> Admin
+                <input type="checkbox" class="flat-red form-control" >
+              </label>
+              <label class="col-sm-4 control-label"> Reports
+                <input type="checkbox" class="flat-red form-control" >
+              </label>
+              <label class="col-sm-4 control-label"> Calendar
+                <input type="checkbox" class="flat-red form-control" >
+              </label>
+              <label class="col-sm-4 control-label"> Export
+                <input type="checkbox" class="flat-red form-control" >
+              </label>
+              <label class="col-sm-4 control-label"> System Trail
+                <input type="checkbox" class="flat-red form-control" >
+              </label>
+              <label class="col-sm-4 control-label"> System Permission
+                <input type="checkbox" class="flat-red form-control" >
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="close" name="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" id="submitPermission" name="submitPermission" class="btn btn-primary">Submit</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -684,8 +758,12 @@
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -695,6 +773,11 @@
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+    $('.select2').select2()
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass   : 'iradio_flat-green'
+    })
   })
 </script>
 

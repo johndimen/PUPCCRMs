@@ -21,14 +21,14 @@
   $sql2 = "SELECT `CRM_Service_Concession_Name`, `CRM_Concession_Services_Name`, `CRM_Concession_Services_Price_Range_Lower`, `CRM_Concession_Services_Price_Range_Higher`, `CRM_Concession_Service_Status`, `CRM_Concession_Services_Desc` FROM crm_concession_service WHERE ";
   $s1 = " ~ ";
   $result2 = mysqli_query($conn,$sql2);
-  while($r = mysqli_fetch_array($result2)){
+  /*while($r = mysqli_fetch_row($result2)){
     $conName = $r['CRM_Service_Concession_Name'];
     $r['CRM_Concession_Services_Name'];
     $r['CRM_Concession_Services_Price_Range_Lower'];
     $r['CRM_Concession_Services_Price_Range_Higher'];
     $r['CRM_Concession_Service_Status'];
     $r['CRM_Concession_Services_Desc'];
-  }
+  }*/
 
 
 ?>
@@ -546,18 +546,18 @@
                       <table class="table table-hover table-striped">
                         <tbody>
                           <tr>
-                            <td style="width: 100px">Action</td>
-                            <td style="width: 200px">Concession Name</td>
-                            <td>Service Name</td>
-                            <td>Price</td>
-                            <td>Description</td>
+                            <th style="width: 100px">Action</th>
+                            <th style="width: 200px">Concession Name</th>
+                            <th>Service Name</th>
+                            <th>Price</th>
+                            <th>Description</th>
                           </tr>
                             <?php
                             $range = " ~ ";
                               while($r = mysqli_fetch_assoc($result)){
                             ?>
                           <tr>
-                            <th>
+                            <td>
                               <div class="btn-group">
                                   <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewService" id="#viewServiceBtn">View</button>
                                     <button type="button" class="btn btn-info btn-flat dropdown-toggle" style="height: 34px" data-toggle="dropdown">
@@ -570,11 +570,11 @@
                                   <li><a href="#">Trash</a></li>
                                 </ul>
                               </div>
-                            </th>
-                            <th><?php echo $r['CRM_Service_Concession_Name']; ?></th>
-                            <th><?php echo $r['CRM_Concession_Services_Name']; ?></th>
-                            <th><?php echo $r['CRM_Concession_Services_Price_Range_Lower'].$range.$r['CRM_Concession_Services_Price_Range_Higher']; ?></th>
-                            <th><?php echo $r['CRM_Concession_Services_Desc']; ?></th>
+                            </td>
+                            <td><?php echo $r['CRM_Service_Concession_Name']; ?></td>
+                            <td><?php echo $r['CRM_Concession_Services_Name']; ?></td>
+                            <td><?php echo $r['CRM_Concession_Services_Price_Range_Lower'].$range.$r['CRM_Concession_Services_Price_Range_Higher']; ?></td>
+                            <td><?php echo $r['CRM_Concession_Services_Desc']; ?></td>
                           </tr>
                           <?php } ?>
 

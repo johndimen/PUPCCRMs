@@ -10,13 +10,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 }
 
 
-$error = $sucess = "";
-$inputAddress = $inputConcessionName = $inputDateApplied = $inputEmail ="";
-$inputFunction = $inputNumber = $inputOwnerName = $inputRemarks = $inputStallArea ="";
-$inputConcessionNumber = '';
+
 
 if (isset($_POST['inputSubmit'])){
-  $inputConcessionNumber = $_POST['inputConcessionNumber'];
+  $inputConcessionNumber = $rand;
   $inputNumber = $_POST['inputNumber'];
   $inputStallArea = $_POST['inputStallArea'];
   $inputConcessionName = $_POST['inputConcessionName'];
@@ -28,9 +25,10 @@ if (isset($_POST['inputSubmit'])){
   $inputRemarks = $_POST['inputRemarks'];
 
 
-  $sql = "INSERT INTO `crm_concession_profile`(`CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Area`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Address`, `CRM_Concession_Email`, `CRM_Concession_Date_Applied`, `CRM_Concession_Remarks`) VALUES ($inputConcessionNumber,$inputNumber,'$inputStallArea','$inputConcessionName','$inputOwnerName','$inputFunction','$inputAddress','$inputEmail',$inputDateApplied,'$inputRemarks')";
+  $sql = "INSERT INTO `crm_concession_profile`(`CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Area`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Address`, `CRM_Concession_Email`, `CRM_Concession_Date_Applied`, `CRM_Concession_Remarks`) 
+                                            VALUES ($inputConcessionNumber,$inputNumber,'$inputStallArea','$inputConcessionName','$inputOwnerName','$inputFunction','$inputAddress','$inputEmail',$inputDateApplied,'$inputRemarks')";
 
-  if(mysqli_query($conn,$sql)){
+  if(mysqli_query($conn,$sql,$result1)){
     $sucess = "Record Successfully.";
     header('location: concession-profile.html');
   }else{
@@ -100,7 +98,7 @@ $inputError = '';
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="../../index2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -532,10 +530,6 @@ $inputError = '';
                     <div class="box-header with-border">
                         <h3 class="box-title"><strong>Add Concession</strong></h3>
                     </div>
-                    <div class="alert alert-primary" role="alert">
-                      <?php echo $sucess ?>
-                      <?php echo $error ?>
-                    </div>
                     <div class="box-body no-padding">
                                 <form class="form-horizontal" style="padding: 30px" method="post" >
                                     <div class="form-group">
@@ -859,10 +853,12 @@ $inputError = '';
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page Script -->
-<script src="../../dist/js/pages/concession-contract.js"></script>
+<script src="../../dist/js/pages/concession-add.js"></script>
 <script>
   $(document).ready(function () {
+    $("inputSubmit").on('click',function()){
     $(".form-group").removeClass('has-error').removeClass('has-success');
+    }
     $('.sidebar-menu').tree()
     //initialize select2 elements
     $('.select2').select2()
@@ -874,13 +870,7 @@ $inputError = '';
     $('.inputSubmit').alert($sucess);
     $('.inputSubmit').alert($error);
 
-    window.onbeforeunload = function() {
-   if (data_needs_saving()) {
-       return "Opps! Wait a minute! You Forgot Something";
-   } else {
-      return;
-   }
-   };
+    
   })
 </script>
 

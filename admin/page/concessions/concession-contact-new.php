@@ -450,7 +450,7 @@ $result = mysqli_query($conn,$sql1);
           <small>New Concession Contact</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
           <li class="active"><a href="#">Contact</a></li>
         </ol>
       </section>
@@ -460,8 +460,8 @@ $result = mysqli_query($conn,$sql1);
 
       <div class="row">
           <div class="col-md-3">
-              <a href="../../index.html" class="btn btn-primary btn-block">Back to Dashboard</a>
-              <a href="./concession.html" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
+              <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
+              <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
               
               <div class="box box-solid">
                 <div class="box-header with-border">

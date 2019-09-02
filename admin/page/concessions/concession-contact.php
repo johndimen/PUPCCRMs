@@ -1,3 +1,8 @@
+<?php
+require_once('../dbconfig.php')
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -224,8 +229,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li ><a href="../../index.html"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+              <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -284,7 +289,7 @@
                     <li><a href="./concession-map-images.html"><i class="fa fa-circle-o"></i> Map/Images</a></li>
                     <li class="active"><a href="./concession-contact.html"><i class="fa fa-circle-o"></i> Contact</a></li>
                     <li><a href="./concession-item-product.html"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                    <li><a href="./concession-services.html"><i class="fa fa-circle-o"></i> Services</a></li>
+                    <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                     <li><a href="./concession-equipment.html"><i class="fa fa-circle-o"></i> Equipments</a></li>
                     <li><a href="./concession-experience.html"><i class="fa fa-circle-o"></i> Experience</a></li>
                   </ul>
@@ -417,7 +422,7 @@
           <small>All Concession Contacts</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
           <li class="active"><a href="#">Contacts</a></li>
         </ol>
       </section>
@@ -427,10 +432,10 @@
 
       <div class="row">
           <div class="col-md-3">
-              <a href="../../index.html" class="btn btn-primary btn-block">Back to Dashboard</a>
-              <a href="./concession.html" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
+              <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
+              <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
               
-              <a href="./concession-contact-new.php" class="btn btn-primary btn-block margin-bottom">Add Contact</a>
+              <button type="button" data-toggle="modal" data-target="#addContact" class="btn btn-primary btn-block margin-bottom">Add Contact</button>
                   
               <div class="box box-solid">
                 <div class="box-header with-border">
@@ -507,16 +512,46 @@
                     </div>
    
                     <div class="table-responsive mailbox-massages">
-                      <table class="table table-hover table-striped">
+                      <table class="table table-hover table-striped" id = "contacttable">
                         <tbody>
                           <tr>
-                            <td style="width: 20px">Select</td>
-                            <td style="width: 200px">Concession Name</td>
-                            <td>Contact</td>
-                            <td>Type</td>
-                            <td>Status</td>
-                            <td style="width: 150px">Action</td>
+                            <th style="width: 150px">Action</th>
+                            <th style="width: 200px">Concession Name</th>
+                            <th>Contact</th>
+                            <th>Type</th>
+                            <th>Status</th>
                           </tr>
+                          <?php
+                            $tablesql = "SELECT  `CRM_Contact_Profile_Name`, `CRM_Concession_Contact_Type`, `CRM_Concession_Contact_Detail`, `CRM_Concession_Contact_Status` FROM `crm_concession_contact`";
+                            $result = $conn->query($tablesql);
+                            if($result->num_rows > 0){
+                              while($row = $result->fetch_assoc()){
+                              ?>
+                                      <tr>
+                                        <td>
+                                          <div class="btn-group">
+                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewService" id="#viewServiceBtn">View</button>
+                                            <button type="button" class="btn btn-info btn-flat dropdown-toggle" style="height: 34px" data-toggle="dropdown">
+                                              <span class="caret"></span>
+                                              <span class="sr-only">Actions</span>
+                                            </button>
+                                              <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">Edit</a></li>
+                                                <li><a href="#">Archive</a></li>
+                                                <li><a href="#">Trash</a></li>
+                                              </ul>
+                                          </div>
+                                        </td>
+                                        <td> <?php echo $row['CRM_Contact_Profile_Name'];?> </td>
+                                        <td> <?php echo $row['CRM_Concession_Contact_Detail']; ?></td>
+                                        <td> <?php echo $row['CRM_Concession_Contact_Type']; ?></td>
+                                        <td> <?php echo $row['CRM_Concession_Contact_Status']; ?></td>
+                                      </tr>
+                            <?php }
+                            }else {
+                              echo "<tr><td colspan='5'><center>No Data Available</center></td></tr>";
+                            }
+                          ?>
                         </tbody>
                       </table>
                     </div>
@@ -528,6 +563,77 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <div class="modal modal-default fade" id="addContact">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title"><strong>Add Contact</strong></h4>
+        </div>
+      <form class="form-horizontal" action="" method="post">
+        <div class="modal-body ">
+        <form class="form-horizontal" method="post">
+                          <div class="form-group">
+                            <label for="inputContactNumber" class="col-sm-2 control-label">Contact Number</label>
+        
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="inputContactNumber" name="inputContactNumber" placeholder="Contact Number">
+                            </div>
+                          </div>
+                            <div class="form-group">
+                              <label for="inputProfile" class="col-sm-2 control-label">Profile</label>
+                              <div class="col-sm-10">
+                                <select class="form-control select2" style="width: 100%;" name="inputProfile" id="inputProfile">
+                                  <option value="" selected>Select Profile</option>
+                                  <option value= "" disabled>'Serial No' = 'Concession Name'</option>
+                                  <?php
+                                  
+                                  $profilesql = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Name` FROM `crm_concession_profile`";
+                                  $s = " = ";
+                                  $result1 = $conn->query($profilesql);
+                                  if($result1->num_rows > 0){
+                                    while($r = $result1->fetch_assoc()){
+                                    ?>
+                                      <option value="<?php echo $r['CRM_Concession_Name']; ?>" > <?php echo $r['CRM_Concession_Profile_SerialNo'].$s.$r['CRM_Concession_Name']; ?></option>
+                                  <?php  }
+                                  }else {
+                                    echo "<option disabled>No Data Available</option>";
+                                  }
+                                  ?>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="inputType" class="col-sm-2 control-label">Contact Type</label>
+                              <div class="col-sm-10">
+                                <select class="form-control select2" style="width: 100%;" name="inputContactType">
+                                  <option value="" selected>Select Contact Type</option>
+                                  <option value="email">Email</option>
+                                  <option value="number">Number</option>
+                                </select>
+                              </div>
+                            </div>
+                              <div class="form-group">
+                                <label for="inputContactDetail" class="col-sm-2 control-label">Contact Detail</label>
+            
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="inputContactDetail" name="inputContactDetail" placeholder="Contact Detail">
+                                </div>
+                              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="button" name="inputSubmit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">

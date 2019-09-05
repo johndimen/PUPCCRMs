@@ -1,42 +1,41 @@
+
 <?php
-session_start();
-include('../dbconfig.php');
-//We need to use sessions, so you should always start sessions using the below code.
-//If the user is not logged in redirect to the login page...
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-  header("location: ../../login.php");
-  exit;
-}
+require_once('../dbconfig.php');
 
-//table
-$sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Date_Applied` FROM `crm_concession_profile`";
-$result = mysqli_query($conn,$sql1);
 
+  $countsql = "SELECT COUNT(*) FROM `crm_tasklist` where `CRM_isArchived` = 0";
+  $countresult = $conn->query($countsql);
+                  
+                
 
 
 ?>
+
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Concession Contract</title>
-  <link rel="shortcut icon" href="../../../img/icon.png">
+  <title>PUPCCRMs | Task</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="../../plugins/iCheck/all.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="../../plugins/iCheck/all.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,7 +53,7 @@ $result = mysqli_query($conn,$sql1);
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index.php" class="logo">
+    <a href="../../index2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -192,7 +191,7 @@ $result = mysqli_query($conn,$sql1);
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -276,7 +275,7 @@ $result = mysqli_query($conn,$sql1);
               <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
-          <li class="treeview">
+          <li class="treeview active">
             <a href="#">
               <i class="fa fa-tasks"></i> <span>Task</span>
               <span class="pull-right-container">
@@ -284,12 +283,15 @@ $result = mysqli_query($conn,$sql1);
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li class="active"><a href="./task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">
+                
+              </span></a>
+              </li>
+              <li><a href="./new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="./pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
-          <li class="treeview active">
+          <li class="treeview">
             <a href="#">
               <i class="fa fa-address-card"></i>
               <span>Concessions</span>
@@ -298,18 +300,18 @@ $result = mysqli_query($conn,$sql1);
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="treeview active"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                  <ul class="treeview-menu">
-                    <li><a href="./concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
-                    <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                    <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
-                    <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                    <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
-                    <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
-                    <li><a href="./concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
-                  </ul>
+              <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                <ul class="treeview-menu">
+                  <li><a href="../concessions/concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
+                  <li><a href="../concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                  <li><a href="../concessions/concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
+                  <li><a href="../concessions/concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                  <li><a href="../concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
+                  <li><a href="../concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
+                  <li><a href="../concessions/concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
+                </ul>
               </li>
-              <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
+              <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -388,7 +390,7 @@ $result = mysqli_query($conn,$sql1);
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
-          <li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+          <li class="treeview"><a href="../documentation/documentation.php "><i class="fa fa-book"></i> <span>Documentation</span></a></li>
           <li class="header">LABELS</li>
           <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
@@ -433,12 +435,12 @@ $result = mysqli_query($conn,$sql1);
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          Concession
-          <small>All Concession List</small>
+          Task
+          <small>All task</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active"><a href="#">Concession</a></li>
+          <li class="active"><a href="#">Task</a></li>
         </ol>
       </section>
 
@@ -447,10 +449,10 @@ $result = mysqli_query($conn,$sql1);
 
       <div class="row">
           <div class="col-md-3">
-              <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
+              <a href="../../index.php" class="btn btn-primary btn-block margin-bottom">Back to Dashboard</a>
               
-              <a href="./concession-add.php" class="btn btn-primary btn-block margin-bottom">Add Concession</a>
-                 
+              <button data-toggle="modal" data-target="#addTask" class="btn btn-primary btn-block margin-bottom">Add Task</button>
+              
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Folders</h3>
@@ -462,9 +464,10 @@ $result = mysqli_query($conn,$sql1);
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="./concession.php"><i class="fa fa-th-large"></i> Concessionbox</a></li>
-                    <li><a href="./concession-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
+                    <li class="active"><a href="./task.php"><i class="fa fa-th-large"></i> Taskbox
+                      <span class="label label-primary pull-right">12</span></a></li>
+                    <li><a href="./pending-task.php"><i class="fa fa-exclamation-circle"></i> Pending Task</a></li>
+                    <li><a href="./archive-task.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -481,9 +484,14 @@ $result = mysqli_query($conn,$sql1);
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#"><i class="fa fa-circle-o text-green"></i> Active</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> New</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> Urgent</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-green"></i> New</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Pending</a></li>
                     <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Due</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o " style ="color: whitesmoke;"></i> Low</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-primary"></i> Normal</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-orange"></i> High</a></li>
+                    
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -492,219 +500,429 @@ $result = mysqli_query($conn,$sql1);
             </div>
             <!-- /.col -->
 
-            <div class="col-md-9">
-                    <div class="box box-primary">
-                      <div class="box-header with-border">
-                        <h3 class="box-title"><strong>ConcessionBox</strong></h3>
-                        <div class="box-tools pull-right">
-                          <div class="has-feedback">
-                            <input type="text" class="form-control input-sm" placeholder="Search Concession">
-                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                          </div>
-                        </div>
-                      </div>
-      
-                      <div class="box-body no-padding">
-                        <div class="mailbox-controls">
-                          <!-- Check all button -->
-                          <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
-                          </div>
-                          <!-- /.btn-group -->
-                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                          <div class="pull-right">
-                            1/1
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                              <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                            </div>
-                          <!-- /.btn-group -->
-                          </div>
-                          <!-- /.pull-right -->
-                        </div>
-       
-                        <div class="table-responsive mailbox-massages">
-                          <table class="table table-hover table-striped">
-                            <tbody>
-                              <tr>
-                                <td></td>
-                                <td style="width: 100px">Actions</td>
-                                <td style="width: 80px">Profile No.</td>
-                                <td style="width: 80px">Stall No.</td>
-                                <td>Concession Name</td>
-                                <td>Owner's Name</td>
-                                <td>Function</td>
-                                <td>Date Applied</td>
-                              </tr>
-                              <tr>
-                              <?php
-                              while($r = mysqli_fetch_assoc($result)){
-                              ?>
-                                <td> <input type="checkbox" class = "checkbox icheck" style="padding-left:20px; padding-top: 30px"></td>
-                                <td>
-                                  <div class="btn-group">
-                                    <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewConcession" id="viewConcessionModalBtn">View</button>
-                                      <button type="button" class="btn btn-info btn-flat dropdown-toggle" style="height: 34px" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Actions</span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                      <li><a href="#" id = "editConcession">Edit</a></li>
-                                      <li><a href="#">Archive</a></li>
-                                      <li><a href="#">Trash</a></li>
-                                    </ul>
-                                  </div>
-                                </td>
-                                <td><?php echo $r['CRM_Concession_Profile_SerialNo'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Stall_Number'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Name'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Owner_Name'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Function'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Date_Applied'] ?></td>
-                              </tr>
-                              <?php } ?>
-                            </tbody>
-                          </table>
-                        </div>
+              <div class="col-md-9">
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>TaskBox</strong></h3>
+                    <div class="box-tools pull-right">
+                      <div class="has-feedback">
+                        <input type="text" class="form-control input-sm" placeholder="Search Contact">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
                       </div>
                     </div>
                   </div>
+  
+                  <div class="box-body no-padding">
+                    <div class="mailbox-controls">
+                      <!-- Check all button -->
+                      <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
+                      </div>
+                      <!-- /.btn-group -->
+                      <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                      <div class="pull-right">
+                        1/1
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                        </div>
+                      <!-- /.btn-group -->
+                      </div>
+                      <!-- /.pull-right -->
+                    </div>
+   
+                    <div class="table-responsive mailbox-massages">
+                      <table class="table table-hover table-striped">
+                        <tbody>
+                              <tr>
+                                <td style="width: 20px">Select</td>
+                                <td style="width: 100px">Action</td>
+                                <td style="width: 150px">Name</td>
+                                <td style="width: 70px">Priority</td>
+                                <td style="width: 70px">Status</td>
+                                <td style="width: 160px">Duration</td>
+                                <td style="width: 100px">Case</td>
+                                <td style="width: 100px">Admin Name</td>
+                              </tr>
+                              <?php
+                              $tablesql = "SELECT `CRM_Task_SerialNo`, `CRM_Task_Status_Type`, `CRM_Task_Assigned_UserName`, `CRM_Task_Priority_Type`, `CRM_Task_Name`, `CRM_Task_Case_Name`, `CRM_Start_Date`, `CRM_Due_Date`, `CRM_Task_Description` FROM `crm_tasklist`";
+                              $tableresult = $conn->query($tablesql);
+                              $action = '
+                                          <div class="btn-group">
+                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                                            
+                                          </div>
+                                ';
+                              if($tableresult->num_rows > 0){
+                                while($row = $tableresult->fetch_assoc()){
+                                  $priority = '';
+                                  if($row['CRM_Task_Priority_Type'] == 'Urgent'){
+                                    $priority = '<label class="label label-danger">Urgent</label>';
+                                  }else if($row['CRM_Task_Priority_Type'] == 'high'){
+                                    $priority = '<label class="label label-warning">High</label>';
+                                  }else if($row['CRM_Task_Priority_Type'] == 'normal'){
+                                    $priority = '<label class="label label-primary">Normal</label>';
+                                  }else{
+                                    $priority = '<label class="label label-default">Low</label>';
+                                  }
+
+                                  $status = '';
+                                  if($row['CRM_Task_Status_Type'] == 'new'){
+                                    $status = '<label class="label label-success">New Task</label>';
+                                  }else if($row['CRM_Task_Status_Type'] == 'urgent'){
+                                    $status = '<label class="label label-danger">Urgent Task</label>';
+                                  }else if($row['CRM_Task_Status_Type'] == 'pending') {
+                                    $status = '<label class="label label-primary">Pending</label>';
+                                  }else if($row['CRM_Task_Status_Type'] == 'due'){
+                                    $status ='<label class="label label-primary">Due</label>';
+                                  } else{
+                                    $status = '<label class="label label-default">Old Task</label>';
+                                  }
+                                  ?>
+                              <tr>
+                                <td>
+                                  <input type="checkbox" class="flat-red form-control" >
+                                </td>
+                                <td><?php echo $action ?></td>
+                                <td><?php echo $row['CRM_Task_Name']; ?></td>
+                                <td><?php echo $priority; ?></td>
+                                <td><?php echo $status; ?></td>
+                                <td><?php echo $row['CRM_Start_Date'].' ~ '.$row['CRM_Due_Date']; ?></td>
+                                <td><?php echo $row['CRM_Task_Case_Name']; ?></td>
+                                <td><?php echo $row['CRM_Task_Assigned_UserName']; ?></td>
+                              </tr>
+                                <?php }
+                              }else {
+                              $data = "<tr><td colspan='7'><center><label class=\"label label-danger\">No Data Available</label></center></td></tr>";
+                              echo $data;
+                              }
+                              ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
       </div>
+
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
-  <!-- view modal -->
-  <div class="modal fade" tabindex="-1" role="dialog" id="viewConcession">
-    <div class="modal-dialog" role = "document">
-      <div class="modal-content">
+  <div class="modal modal-default fade" id="addTask">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius: 10px">
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-                <h4 class="modal-title"><span class="glyphicon glyphicon-edit"></span>Concession Info</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title"><strong>Add Task</strong></h4>
         </div>
-        <form class="form-horizontal" style="padding: 30px" method="post" id="viewCons">
-            <div class="modal-body">
-              <div class="view-messages"></div>
+        <form class="form-horizontal" action="task.php" method="post" id="createTask">
+          <div class="modal-body">
               <div class="form-group">
-                <label for="viewConcessionNumber" class="col-sm-2 control-label">Concession Number</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="Concession Number" name="viewConcessionNumber" id="viewConcessionNumber" disabled>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="viewNumber" class="col-sm-2 control-label">Stall Number</label>
-                <div class="col-sm-10 ">
-                  <input type="text" class="form-control" placeholder="Stall Number" name="viewNumber" id="viewNumber">
-                  
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewArea" class="col-sm-2 control-label">Stall Area</label>
-                <div class="col-sm-10">
-                  <select class="form-control select2" style="width: 100%;" name="viewStallArea" id="viewStallArea" >
-                    <option value="" selected>Select Area</option>
-                    <option value="north">North</option>
-                    <option value="west">West</option>
-                    <option value="south">South</option>
-                    <option value="east">East</option>
-                    <option value="sampaguita">sampaguita</option>
-                    <option value="lagoon">Lagoon</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-              </div>
-              <!-- /.form-group -->
-              <div class="form-group">
-                  <label for="viewConcessionName" class="col-sm-2 control-label">Concession Name</label>
-                  
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="viewConcessionName" id="viewConcessionName" placeholder="Concession Name" >
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewOwnerName" class="col-sm-2 control-label">Owner's Name</label>
-                  
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="viewOwnerName" id="viewOwnerName" placeholder="Owner's Name">
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewEmail" class="col-sm-2 control-label">Email</label>
-                    
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" name="viewEmail" id="viewEmail" placeholder="Email" >
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewFunction" class="col-sm-2 control-label">Function</label>
-                <div class="col-sm-10">
-                  <select class="form-control select2" style="width: 100%;" name="viewFunction" id="viewFunction">
-                    <option value = ""selected="">Select Function</option>
-                    <option value="food">Food</option>
-                    <option value="nonfood">Non-Food</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewStatus" class="col-sm-2 control-label">Status</label>
-                <div class="col-sm-10">
-                  <select class="form-control select2" style="width: 100%;" name="viewStatus" id="viewStatus">
-                    <option value = ""selected="">Select Status</option>
-                    <option value="active">Active</option>
-                    <option value="withdrawn">Withdrawn</option>
-                    <option value="due">Due</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewAddress" class="col-sm-2 control-label">Address</label>
-                  
-                <div class="col-sm-10">
-                  <textarea class="form-control" name="viewAddress" id="viewAddress" placeholder="Address" ></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="viewDateApplied" class="col-sm-2 control-label">Date Applied</label>
-                <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
+                  <label for="inputtaskname" class="col-sm-2 control-label">Task Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="taskname" name="taskname" placeholder="Task Name">
                   </div>
-                  <input type="text" class="form-control pull-right" name="viewDateApplied" id="viewDateApplied" placeholder="mm/dd/yyyy">
                 </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewRemarks" class="col-sm-2 control-label">Remarks</label>
-                    
-                <div class="col-sm-10">
-                  <textarea class="form-control" name="viewRemarks" id="viewRemarks" placeholder="Remarks" ></textarea>
+                <div class="form-group">
+                  <label for="casename" class="col-sm-2 control-label">Case Name</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="casename" name="casename" placeholder="Case Name">
+                  </div>
                 </div>
-              </div>
-            </div>
-          
+                  <div class="form-group">
+                    <label for="inputStatus" class="col-sm-2 control-label">Status</label>
+                    <div class="col-sm-10">
+                      <select class="form-control select2" style="width: 100%;" id="status" name="status">
+                        <option selected="selected">Select Status</option>
+                        <option value="urgent">Urgent</option>
+                        <option value="new">New</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="inputPriority" class="col-sm-2 control-label">Priority</label>
+                      <div class="col-sm-10">
+                        <select class="form-control select2" style="width: 100%;" id="priority" name="priority">
+                          <option selected="selected">Select Priority</option>
+                          <option value="Urgent">Urgent</option>
+                          <option value="high">High</option>
+                          <option value="Normal">Normal</option>
+                          <option value="low">Low</option>
+                        </select>
+                      </div>
+                    </div>
+                  <!-- /.form-group -->
+                    <div class="form-group">
+                      <label for="inputDateStart" class="col-sm-2 control-label">Date Start</label>
+                        <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="inputDateStart" name="datestart" placeholder="mm/dd/yyyy">
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label for="inputDateDue" class="col-sm-2 control-label">Date Due</label>
+                          <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="inputDateDue" name="datedue" placeholder="mm/dd/yyyy">
+                          </div>
+                      </div>
+                <div class="form-group">
+                  <label for="inputDescription" class="col-sm-2 control-label">Task Description</label>
+
+                  <div class="col-sm-10">
+                    <textarea class="form-control" id="inputDescription" name="description" placeholder="Task Description"></textarea>
+                  </div>
+                </div>
+                  <div class="form-group">
+                    <label for="inputAdminName" class="col-sm-2 control-label">Assigned Admin</label>
+
+                    <div class="col-sm-10">
+                      <select class="form-control select2" style="width: 100%" name="adminname" id="inputAdminName">
+                        <option value="" selected>Select Admin</option>
+                        <?php
+                          $adminsql = "SELECT `crm_admin_user_login`.`CRM_Login_Username`, `crm_admin_user_details`.`CRM_First_Name`, `crm_admin_user_details`.`CRM_Last_Name`
+                          FROM `crm_admin_user_login` 
+                            LEFT JOIN `crm_admin_user_details` ON `crm_admin_user_details`.`CRM_User_Login_SerialNo_FK` = `crm_admin_user_login`.`CRM_User_Login_SerialNo`;";
+                          $s = " = ";
+                          $adminresult = $conn->query($adminsql);
+                          if($adminresult ->num_rows > 0){
+                            while($row = $adminresult->fetch_assoc()){
+                              ?>
+                              <option value="<?php echo $row['CRM_Login_Username']; ?>"><?php echo $row['CRM_Login_Username'].$s.$row['CRM_First_Name'].' '.$row['CRM_Last_Name']; ?></option>
+                            <?php }
+                        }else {
+                          $data = "<option class=\"label label-danger\">No Data Available</option>";
+                          echo $data;
+                        }
+                        ?>
+                      </select>
+                    </div>
+                  </div>
+          </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" name="inputSubmit" class="btn btn-primary">Submit</button>
           </div>
         </form>
       </div>
-      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
   </div>
-  <!-- /.modal -->
 
+  <?php
+  $taskname = $_POST['taskname'];
+  $casenumber = $_POST['casenumber'];
+  $casename = $_POST['casename'];
+  $status1 = $_POST['status'];
+  $priority1 = $_POST['priority'];
+  $datestart = $_POST['datestart'];
+  $datedue = $_POST['datedue'];
+  $description = $_POST['description'];
+  $assigned = $_POST['adminname'];
+
+  $rand = rand(0,999999999);
+
+  $addtasksql = "INSERT INTO `crm_tasklist`(`CRM_Task_SerialNo`, `CRM_Task_Case_SerialNo_FK` , `CRM_Task_Status_Type`, `CRM_Task_Assigned_UserName`, `CRM_Task_Priority_Type`, `CRM_Task_Name`, `CRM_Task_Case_Name`, `CRM_Start_Date`, `CRM_Due_Date`, `CRM_Task_Description`) 
+    VALUES ('$rand','$casenumber','$status1','$assigned','$priority1','$taskname','$casename','$datestart','$datedue','$description')";
+
+    $addtaskquery = $conn->query($addtasksql);
+    if($addtaskquery == true){
+      echo "<script> alert('Success');</script>";
+    }else{
+      echo "<script> alert('Failed');</script>";
+    }
+  ?>
+
+  <div class="modal modal-default fade" id="viewModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">View Task</h3>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="modal-body">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="editTaskName" class="col-sm-3 control-label">Task Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="editTaskName" name="editTaskname" placeholder="Task Name" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editCaseName" class="col-sm-3 control-label">Case Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="editCaseName" name="editCaseName" placeholder="Case Name" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editStatus" class="col-sm-3 control-label">Status</label>
+                <div class="col-sm-9">
+                  <input class="form-control"  id="editStatus" name="editStatus" placeholder="Status" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editPriority" class="col-sm-3 control-label">Priority</label>
+                <div class="col-sm-9">
+                  <input class="form-control"  id="editPriority" name="editPriority" placeholder="Priority" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editDateStart" class="col-sm-3 control-label">Date Start</label>
+                <div class="col-sm-9 input-group date" style="width: 72.8%;padding-left: 15px;">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="editDateStart" name="editDateStart" placeholder="mm/dd/yyyy" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editDateDue" class="col-sm-3 control-label">Date Due</label>
+              <div class="col-sm-9 input-group date" style="width: 72.8%;padding-left: 15px;">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" id="editDateDue" name="editDateDue" placeholder="mm/dd/yyyy" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="editDescription" class="col-sm-3 control-label">Task Description</label>
+                <div class="col-sm-9">
+                  <textarea class="form-control" id="editDescription" name="editDescription" placeholder="Task Description" disabled></textarea>
+                </div>
+            </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
+            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+            <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+            <button type="submit" name="inputSubmit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id ="editModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title">Edit Task</h3>
+        </div>
+        <form class="form-horizontal"action="" method="post">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="editTaskName" class="col-sm-2 control-label">Task Name</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="editTaskName" name="editTaskname" placeholder="Task Name">
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editCaseName" class="col-sm-2 control-label">Case Name</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="editCaseName" name="editCaseName" placeholder="Case Name">
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editPriority" class="col-sm-2 control-label">Priority</label>
+                <div class="col-sm-10">
+                  <select class="form-control select2" style="width: 100%;" id="editPriority" name="editPriority">
+                    <option selected="selected">Select Priority</option>
+                    <option value="Urgent">Urgent</option>
+                    <option value="high">High</option>
+                    <option value="Normal">Normal</option>
+                    <option value="low">Low</option>
+                  </select>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editDateStart" class="col-sm-2 control-label">Date Start</label>
+                <div class="col-sm-10 input-group date" style="width: 80.8%;padding-left: 15px;">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="editDateStart" name="editDateStart" placeholder="mm/dd/yyyy">
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editDateDue" class="col-sm-2 control-label">Date Due</label>
+              <div class="col-sm-10 input-group date" style="width: 80.8%;padding-left: 15px;">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" id="editDateDue" name="editDateDue" placeholder="mm/dd/yyyy">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="editDescription" class="col-sm-2 control-label">Task Description</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" id="editDescription" name="editDescription" placeholder="Task Description"></textarea>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" name="inputSubmit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="archiveModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> beta 1.0
         </div>
-        <strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+        <strong>Copyright &copy;2019 <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
         reserved.
   </footer>
 
@@ -911,61 +1129,46 @@ $result = mysqli_query($conn,$sql1);
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- iCheck -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- Page Script -->
-<script src="../../dist/js/pages/concession-contract.js"></script>
+<script src="../../dist/js/pages/task.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="../../plugins/iCheck/icheck.min.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
-
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-
-    function viewConcession(CRM_Concession_Profile_SerialNo = null){
-      if(CRM_Concession_Profile_SerialNo){
-        $(".form-group").removeClass('has-error').removeClass('has-success');
-        $("text-danger").remove();
-        $("view-messages").html("");
-        //$("inputConcessionNumber").remove();
-        $.ajax({
-          url: 'getselected.php',
-          type: 'post',
-          data: {inputConcessionNumber : CRM_Concession_Profile_SerialNo}
-          dataType: 'json';
-          success:function(response){
-            $("#viewConcessionNumber").val(response.CRM_Concession_Profile_SerialNo);
-            $("#viewNumber").val(response.CRM_Concession_Stall_Number);
-            $("#viewStallArea").val(response.CRM_Concession_Area);
-            $("#viewConcessionName").val(response.CRM_Concession_Name);
-            $("#viewOwnerName").val(response.CRM_Concession_Owner_Name);
-            $("#viewEmail").val(response.CRM_Concession_Email);
-            $("#viewFunction").val(response.CRM_Concession_Function);
-            $("#viewStatus").val(response.CRM_Concession_Status)
-            $("#viewAddress").val(response.CRM_Concession_Address);
-            $("#viewDateApplied").val(response.CRM_Concession_Date_Applied);
-            $("viewRemarks").val(response.CRM_Concession_Remarks);
-          }
-        })
-      }else{
-        alert("Error: Please refresh the page again.");
-      }
-
-    }
-
-
+    $('.select2').select2()
+    //Date picker
+    $('#inputDateStart').datepicker({
+      autoclose: true
+    })
+    $('#inputDateDue').datepicker({
+      autoclose: true
+    })
+    $('#editDateStart').datepicker({
+      autoclose:true
+    })
+    $('#editDateDue').datepicker({
+      autoclose:true
+    })
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass   : 'iradio_flat-green'
+    })
   })
 </script>
+<?php 
+$conn->close();
+?>
 
-<?php $connect->close(); ?>
 </body>
 </html>

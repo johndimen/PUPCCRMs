@@ -69,7 +69,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="../../index2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -259,8 +259,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li ><a href="../../index.html"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+              <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -272,9 +272,9 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../feedback/feedback.html"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.html"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.html"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
+                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
+                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class=" treeview">
@@ -286,9 +286,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="../cases/cases.html"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.html"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.html"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
+              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -299,9 +299,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="../task/task.html"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.html"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.html"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
+              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -315,20 +315,20 @@
             <ul class="treeview-menu">
               <li class="treeview active"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                   <ul class="treeview-menu">
-                    <li><a href="./concession-profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                    <li><a href="./concession-map-images.html"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                    <li><a href="./concession-contact.html"><i class="fa fa-circle-o"></i> Contact</a></li>
-                    <li><a href="./concession-item-product.html"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                    <li class="active"><a href="./concession-services.html"><i class="fa fa-circle-o"></i> Services</a></li>
-                    <li><a href="./concession-equipment.html"><i class="fa fa-circle-o"></i> Equipments</a></li>
-                    <li><a href="./concession-experience.html"><i class="fa fa-circle-o"></i> Experience</a></li>
+                    <li><a href="./concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
+                    <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                    <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
+                    <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                    <li class="active"><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
+                    <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
+                    <li><a href="./concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
                   </ul>
               </li>
-              <li><a href="./concession-contract.html"><i class="fa fa-circle-o"></i> Contracts </a></li>
+              <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
           <li class="treeview">
-            <a href="../calendar/calendar.html">
+            <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
               <span class="pull-right-container">
                 <small class="label pull-right label-info">17</small>
@@ -336,7 +336,7 @@
             </a>
             <ul class="treeview-menu">
                 <li>
-                  <a href="../calendar/activity.html"><i class="fa fa-circle-o"></i> Activity 
+                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
                     <span class="pull-right-container">
                       <small class="label pull-right label-warning"> 3</small> 
                       <small class="label pull-right bg-blue"> 14</small> 
@@ -346,7 +346,7 @@
             </ul>
           </li>
           <li class="treeview">
-            <a href="../mail/mailbox.html">
+            <a href="../mail/mailbox.php">
               <i class="fa fa-envelope"></i> <span>Mailbox</span>
               <span class="pull-right-container">
                 <small class="label pull-right bg-yellow">12</small>
@@ -356,28 +356,28 @@
             </a>
             <ul class="treeview-menu">
               <li class="">
-                <a href="../mail/mailbox.html"><i class="fa fa-circle-o"></i>Inbox
+                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
                   <span class="pull-right-container">
                     <span class="label label-primary pull-right">13</span>
                   </span>
                 </a>
               </li>
-              <li><a href="../mail/compose.html"><i class="fa fa-circle-o"></i>Compose</a></li>
-              <li><a href="../mail/read-mail.html"><i class="fa fa-circle-o"></i>Read</a></li>
+              <li><a href="../mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
           </li>
           <li class="treeview">
-              <a href="../reports/report.html">
+              <a href="../reports/report.php">
                 <i class="fa fa-file-archive-o"></i> <span>Reports</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li class=""><a href="../reports/report-concession.html"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-                <li><a href="../reports/report-feedback.html"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-                <li><a href="../reports/report-cases.html"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-                <li><a href="../reports/report-system-trail.html"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
+                <li class=""><a href="../reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
+                <li><a href="../reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
+                <li><a href="../reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
+                <li><a href="../reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
               </ul>
             </li>
           <li class="treeview">
@@ -390,17 +390,17 @@
             <ul class="treeview-menu">
               <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                    <li><a href="../options/admin-profile.html"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
-                    <li><a href="../options/admin-login-detail.html"><i class="fa fa-circle-o"></i> Admin Login </a></li>
+                    <li><a href="../options/admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
+                    <li><a href="../options/admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login </a></li>
                 </ul>
               </li>
-              <li class="treeview"><a href="../options/permission.html"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+              <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                    <li><a href="../options/permission-module.html"><i class="fa fa-circle-o"></i> Module Permission</a></li>
-                    <li><a href="../options/permission-admin.html"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
+                    <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
+                    <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
-              <li><a href="../options/audit-trail.html"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
+              <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
           <li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
@@ -452,7 +452,7 @@
           <small>All Concession Services</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
           <li class="active"><a href="#">Services</a></li>
         </ol>
       </section>
@@ -462,8 +462,8 @@
 
       <div class="row">
           <div class="col-md-3">
-              <a href="../../index.html" class="btn btn-primary btn-block">Back to Dashboard</a>
-              <a href="./concession.html" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
+              <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
+              <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
               <button type="button" class="btn btn-primary btn-block margin-bottom" data-toggle="modal" data-target="#addServices">
                 Add Service
               </button>
@@ -479,9 +479,9 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="./concession-services.html"><i class="fa fa-th-large"></i> Servicebox</a></li>
-                    <li><a href="./concession-services-archive.html"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-services-trash.html"><i class="fa fa-trash"></i> Trash</a></li>
+                    <li class="active"><a href="./concession-services.php"><i class="fa fa-th-large"></i> Servicebox</a></li>
+                    <li><a href="./concession-services-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
+                    <li><a href="./concession-services-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->

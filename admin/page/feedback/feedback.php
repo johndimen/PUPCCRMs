@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Read Feedbox</title>
+  <title>PUPCCRMs | Mailbox</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -34,7 +34,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="../../index2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -171,7 +171,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../../logout.php" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -220,8 +220,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../../index.html"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+            <li><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+            <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
           </ul>
         </li>
         <li class="treeview active">
@@ -233,9 +233,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="./feedback.html"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="./unread-feedback.html"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-            <li class="active"><a href="./read-feedback.html"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+            <li class="active"><a href="./feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
+            <li><a href="./unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
+            <li><a href="./read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -248,8 +248,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../cases/newcases.html"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-            <li><a href="../cases/pending-cases.html"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
+            <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -261,8 +261,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../task/new-task.html"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-            <li><a href="../task/pending-task.html"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
+            <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -274,30 +274,30 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="treeview"><a href="../concessions/concession.html"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+            <li class="treeview"><a href="../concessions/concession.php"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                  <li><a href="../concessions/concession-profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                  <li><a href="../concessions/concession-map-images.html"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                  <li><a href="../concessions/concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
+                  <li><a href="../concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
                   <li><a href="../concessions/concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
                   <li><a href="../concessions/concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                   <li><a href="../concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
-                  <li><a href="../concessions/concession-equipment.html"><i class="fa fa-circle-o"></i> Equipments</a></li>
-                  <li><a href="../concessions/concession-experience.html"><i class="fa fa-circle-o"></i> Experience</a></li>
+                  <li><a href="../concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
+                  <li><a href="../concessions/concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
                 </ul>
             </li>
-            <li><a href="../concessions/concession-contract.html"><i class="fa fa-circle-o"></i> Contracts </a></li>
+            <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
           </ul>
         </li>
         <li class="treeview">
-            <a href="../calendar/calendar.html">
-              <i class="fa fa-calendar"></i> <span>Calendar</span>
-              <span class="pull-right-container">
-                <small class="label pull-right label-info">17</small>
-              </span>
+          <a href="../calendar/calendar.php">
+            <i class="fa fa-calendar"></i> <span>Calendar</span>
+            <span class="pull-right-container">
+              <small class="label pull-right label-info">17</small>
+            </span>
           </a>
           <ul class="treeview-menu">
               <li>
-                <a href="../calendar/activity.html"><i class="fa fa-circle-o"></i> Activity 
+                <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
                   <span class="pull-right-container">
                     <small class="label pull-right label-warning"> 3</small> 
                     <small class="label pull-right bg-blue"> 14</small> 
@@ -317,28 +317,28 @@
         </a>
         <ul class="treeview-menu">
           <li class="">
-            <a href="../mail/mailbox.html"><i class="fa fa-circle-o"></i>Inbox
+            <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
               <span class="pull-right-container">
                 <span class="label label-primary pull-right">13</span>
               </span>
             </a>
           </li>
-          <li><a href="../mail/compose.html"><i class="fa fa-circle-o"></i>Compose</a></li>
-          <li><a href="../mail/read-mail.html"><i class="fa fa-circle-o"></i>Read</a></li>
+          <li><a href="../mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+          <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
         </ul>
       </li>
       <li class="treeview">
-          <a href="../reports/report.html">
+          <a href="../reports/report.php">
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="../reports/report-concession.html"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-            <li><a href="../reports/report-feedback.html"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-            <li><a href="../reports/report-cases.html"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-            <li><a href="../reports/report-system-trail.html"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
+            <li class=""><a href="../reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
+            <li><a href="../reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
+            <li><a href="../reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
+            <li><a href="../reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
           </ul>
         </li>
       <li class="treeview">
@@ -351,20 +351,20 @@
         <ul class="treeview-menu">
           <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
-                <li><a href="../options/admin-profile.html"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
-                <li><a href="../options/admin-login-detail.html"><i class="fa fa-circle-o"></i> Admin Login  </a></li>
+                <li><a href="../options/admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
+                <li><a href="../options/admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login  </a></li>
             </ul>
           </li>
-          <li class="treeview"><a href="../options/permission.html"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+          <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
-                <li><a href="../options/permission-module.html"><i class="fa fa-circle-o"></i> Module Permission</a></li>
-                <li><a href="../options/permission-admin.html"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
+                <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
+                <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
             </ul>
           </li>
-          <li><a href="../options/audit-trail.html"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
+          <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
         </ul>
       </li>
-      <li><a href="../documentation/documentation.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+      <li><a href="../documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
       <li class="header">LABELS</li>
           <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
@@ -408,12 +408,11 @@
     <section class="content-header">
       <h1>
         Feedbox
-        <small>All read messages</small>
+        <small>13 new messages</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="./feedback.html">Feedback</a></li>
-        <li class="active">Read Feedback</li>
+        <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Feedback</li>
       </ol>
     </section>
 
@@ -421,8 +420,11 @@
     <section class="content">
       <div class="row">
         <div class="col-md-3">
-            <a href="./feedback.html" class="btn btn-primary btn-block ">Back to Dashboard</a>
-        <a href="./feedback.html" class="btn btn-primary btn-block margin-bottom">Back to Feedbox</a>
+          <a href="../../index.php" class="btn btn-primary btn-block margin-bottom">Back to Dashboard</a>
+          
+          <a href="#" class="btn btn-primary btn-block ">Add Task</a>
+          <a href="#" class="btn btn-primary btn-block margin-bottom">Add Cases</a>
+          
           <div class="box box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Folders</h3>
@@ -434,12 +436,12 @@
             </div>
             <div class="box-body no-padding">
                 <ul class="nav nav-pills nav-stacked">
-                    <li ><a href="./feedback.html"><i class="fa fa-inbox"></i> Feedbox
+                    <li class="active"><a href="./feedback.php"><i class="fa fa-inbox"></i> Feedbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./unread-feedback.html"><i class="fa fa-envelope"></i> Unread</a></li>
-                    <li class="active"><a href="./read-feedback.html"><i class="fa fa-envelope-open"></i> Read</a></li>
-                    <li><a href="./archive-feedback.html"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./trash-feedback.html"><i class="fa fa-trash""></i> Trash</a></li>
+                    <li><a href="./unread-feedback.php"><i class="fa fa-envelope"></i> Unread</a></li>
+                    <li><a href="./read-feedback.php"><i class="fa fa-envelope-open"></i> Read</a></li>
+                    <li><a href="./archive-feedback.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
+                    <li><a href="./trash-feedback.php"><i class="fa fa-trash""></i> Trash</a></li>
                   </ul>
             </div>
             <!-- /.box-body -->
@@ -469,7 +471,7 @@
         <div class="col-md-9">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Feedbox</h3>
+              <h3 class="box-title"><strong>Feedbox</strong></h3>
 
               <div class="box-tools pull-right">
                 <div class="has-feedback">
@@ -486,15 +488,15 @@
                 <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
                 </button>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
                 </div>
                 <!-- /.btn-group -->
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
                 <div class="pull-right">
-                  1-50/200
+                  1/1
                   <div class="btn-group">
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
@@ -506,140 +508,33 @@
               <div class="table-responsive mailbox-messages">
                 <table class="table table-hover table-striped">
                   <tbody>
+                    <tr>
+                      <td style="width: 20px">Select</td>
+                      <td></td>
+                      <td>Sender Name</td>
+                      <td>Message</td>
+                      <td>Area</td>
+                      <td></td>
+                      <td>Date</td>
+                      <td>Action</td>
+                    </tr>
+                  <?php
+                  $action = '
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                  </div>
+                  ';
+                  ?>
                   <tr>
                     <td><input type="checkbox"></td>
                     <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
+                    <td class="mailbox-name"><a href="feedback-read.php">Alexander Pierce</a></td>
                     <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
                     </td>
+                    <td>Lagoon</td>
                     <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date">5 mins ago</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                    <td class="mailbox-date">28 mins ago</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                    <td class="mailbox-date">11 hours ago</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date">15 hours ago</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                    <td class="mailbox-date">Yesterday</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                    <td class="mailbox-date">2 days ago</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                    <td class="mailbox-date">2 days ago</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date">2 days ago</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date">2 days ago</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date">2 days ago</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                    <td class="mailbox-date">4 days ago</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date">12 days ago</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                    <td class="mailbox-date">12 days ago</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                    <td class="mailbox-date">14 days ago</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.html">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                    <td class="mailbox-date">15 days ago</td>
+                    <td class="mailbox-date"></td>
+                    <td><?php echo $action ?></td>
                   </tr>
                   </tbody>
                 </table>
@@ -661,7 +556,7 @@
                 <!-- /.btn-group -->
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
                 <div class="pull-right">
-                  1-50/200
+                  1/1
                   <div class="btn-group">
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
@@ -681,6 +576,154 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <div class="modal modal-default fade" id="viewModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Feedback Detail</h3>
+        </div>
+        <div class="modal-body form-horizontal">
+          <div class="form-group">
+            <label for="stallno" class="col-sm-3 control-label">Stall No</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="stallno" name="stallno" placeholder="Stall Number">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="stallarea" class="col-sm-3 control-label">Stall Area</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="stallarea" name="stallarea" placeholder="Stall Area">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="evaluation" class="col-sm-3 control-label">Evaluation</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="evaluation" name="evaluation" placeholder="Evaluation">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message" class="col-sm-3 control-label">Message</label>
+            <div class="col-sm-9">
+              <textarea name="message" id="message" class="form-control" rows="5" Placeholder="Feedback Message"></textarea>
+            </div>
+          </div>
+          <hr>
+          <h4>Questions</h4>
+          <div class="form-group">
+            <label for="question1" class="col-sm-3 control-label">Question 1</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question1" name="question1" placeholder="Question 1">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="question2" class="col-sm-3 control-label">Question 2</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question2" name="question2" placeholder="Question 2">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="question3" class="col-sm-3 control-label">Question 3</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question3" name="question3" placeholder="Question 3">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="question4" class="col-sm-3 control-label">Question 4</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question4" name="question4" placeholder="Question 4">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="question5" class="col-sm-3 control-label">Question 5</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question5" name="question5" placeholder="Question 5">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="question6" class="col-sm-3 control-label">Question 6</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question6" name="question6" placeholder="Question 6">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="question7" class="col-sm-3 control-label">Question 7</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question7" name="question7" placeholder="Question 7">
+            </div>
+          </div>
+          <hr>
+          <h4>Sender Detail</h4>
+          <div class="form-group">
+            <label for="sendername" class="col-sm-3 control-label">Sender Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="sendername" name="sendername" placeholder="Sender Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="idno" class="col-sm-3 control-label">ID No</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="idno" name="idno" placeholder="ID Number">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">E-mail</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="email" name="email" placeholder="E-mail">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contactno" class="col-sm-3 control-label">Contact No</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="contactno" name="contactno" placeholder="Contact No">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
+          <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="archiveModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> beta 1.0
@@ -898,7 +941,7 @@
 <!-- iCheck -->
 <script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- Page Script -->
-<script src="../../dist/js/pages/read-feedback.js"></script>
+<script src="../../dist/js/pages/feedback.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 </body>

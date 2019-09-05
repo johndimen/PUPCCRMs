@@ -1,33 +1,19 @@
-<?php
-session_start();
-include('../dbconfig.php');
-//We need to use sessions, so you should always start sessions using the below code.
-//If the user is not logged in redirect to the login page...
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-  header("location: ../../login.php");
-  exit;
-}
-
-//table
-$sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Date_Applied` FROM `crm_concession_profile`";
-$result = mysqli_query($conn,$sql1);
-
-
-
-?>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>PUPCCRMs | Concession Contract</title>
-  <link rel="shortcut icon" href="../../../img/icon.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
@@ -35,8 +21,6 @@ $result = mysqli_query($conn,$sql1);
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="../../plugins/iCheck/all.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,7 +38,7 @@ $result = mysqli_query($conn,$sql1);
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index.php" class="logo">
+    <a href="../../index2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -492,213 +476,103 @@ $result = mysqli_query($conn,$sql1);
             </div>
             <!-- /.col -->
 
-            <div class="col-md-9">
+                <div class="col-md-9">
                     <div class="box box-primary">
-                      <div class="box-header with-border">
-                        <h3 class="box-title"><strong>ConcessionBox</strong></h3>
-                        <div class="box-tools pull-right">
-                          <div class="has-feedback">
-                            <input type="text" class="form-control input-sm" placeholder="Search Concession">
-                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                          </div>
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><strong>Edit Concession</strong></h3>
                         </div>
-                      </div>
-      
-                      <div class="box-body no-padding">
-                        <div class="mailbox-controls">
-                          <!-- Check all button -->
-                          <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
-                          </div>
-                          <!-- /.btn-group -->
-                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                          <div class="pull-right">
-                            1/1
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                              <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                            </div>
-                          <!-- /.btn-group -->
-                          </div>
-                          <!-- /.pull-right -->
+                        <div class="box-body no-padding">
+                                    <form class="form-horizontal" style="padding: 30px">
+                                        <div class="form-group">
+                                          <label for="inputNumber" class="col-sm-2 control-label">Stall Number</label>
+                                          <div class="col-sm-10">
+                                            <input type="text" class="form-control" placeholder="Stall Number" disabled>
+                                          </div>
+                                        </div>
+                                          <div class="form-group">
+                                            <label for="inputArea" class="col-sm-2 control-label">Stall Area</label>
+                                            <div class="col-sm-10">
+                                              <select class="form-control select2" style="width: 100%;">
+                                                <option selected="selected"></option>Select Area</option>
+                                                <option value="north">North</option>
+                                                <option value="west">West</option>
+                                                <option value=south"">South</option>
+                                                <option value="east">East</option>
+                                                <option value="sampaguita">sampaguita</option>
+                                                <option value="lagoon">Lagoon</option>
+                                                <option value="other">Other</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                          <!-- /.form-group -->
+                                        <div class="form-group">
+                                          <label for="inputConcessionName" class="col-sm-2 control-label">Concession Name</label>
+                      
+                                          <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputConcessionName" placeholder="Concession Name">
+                                          </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="inputOwnerName" class="col-sm-2 control-label">Owner's Name</label>
+                      
+                                          <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputOwnerName" placeholder="Owner's Name">
+                                          </div>
+                                        </div>
+                                          <div class="form-group">
+                                            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                        
+                                            <div class="col-sm-10">
+                                              <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+                                              <label for="inputFunction" class="col-sm-2 control-label">Function</label>
+                                            <div class="col-sm-10">
+                                              <select class="form-control select2" style="width: 100%;" id="intpuFunction">
+                                                <option selected="selected"></option>Select Function</option>
+                                                <option value="north">Food</option>
+                                                <option value="west">Non-Food</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                        <div class="form-group">
+                                          <label for="inputAddress" class="col-sm-2 control-label">Address</label>
+                      
+                                          <div class="col-sm-10">
+                                            <textarea class="form-control" id="inputAddress" placeholder="Address"></textarea>
+                                          </div>
+                                        </div>
+                                          <div class="form-group">
+                                            <label for="inputDateApplied" class="col-sm-2 control-label">Date Applied</label>
+                                              <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
+                                                <div class="input-group-addon">
+                                                  <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-right" id="inputDateApplied">
+                                              </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="inputRemarks" class="col-sm-2 control-label">Remarks</label>
+                        
+                                            <div class="col-sm-10">
+                                              <textarea class="form-control" id="inputRemarks" placeholder="Remarks"></textarea>
+                                            </div>
+                                          </div> 
+                                        <div class="form-group">
+                                          <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-danger">Submit</button>
+                                          </div>
+                                        </div>
+                                      </form>
                         </div>
-       
-                        <div class="table-responsive mailbox-massages">
-                          <table class="table table-hover table-striped">
-                            <tbody>
-                              <tr>
-                                <td></td>
-                                <td style="width: 100px">Actions</td>
-                                <td style="width: 80px">Profile No.</td>
-                                <td style="width: 80px">Stall No.</td>
-                                <td>Concession Name</td>
-                                <td>Owner's Name</td>
-                                <td>Function</td>
-                                <td>Date Applied</td>
-                              </tr>
-                              <tr>
-                              <?php
-                              while($r = mysqli_fetch_assoc($result)){
-                              ?>
-                                <td> <input type="checkbox" class = "checkbox icheck" style="padding-left:20px; padding-top: 30px"></td>
-                                <td>
-                                  <div class="btn-group">
-                                    <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewConcession" id="viewConcessionModalBtn">View</button>
-                                      <button type="button" class="btn btn-info btn-flat dropdown-toggle" style="height: 34px" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Actions</span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                      <li><a href="#" id = "editConcession">Edit</a></li>
-                                      <li><a href="#">Archive</a></li>
-                                      <li><a href="#">Trash</a></li>
-                                    </ul>
-                                  </div>
-                                </td>
-                                <td><?php echo $r['CRM_Concession_Profile_SerialNo'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Stall_Number'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Name'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Owner_Name'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Function'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Date_Applied'] ?></td>
-                              </tr>
-                              <?php } ?>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
                     </div>
-                  </div>
+                </div>
       </div>
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <!-- view modal -->
-  <div class="modal fade" tabindex="-1" role="dialog" id="viewConcession">
-    <div class="modal-dialog" role = "document">
-      <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-                <h4 class="modal-title"><span class="glyphicon glyphicon-edit"></span>Concession Info</h4>
-        </div>
-        <form class="form-horizontal" style="padding: 30px" method="post" id="viewCons">
-            <div class="modal-body">
-              <div class="view-messages"></div>
-              <div class="form-group">
-                <label for="viewConcessionNumber" class="col-sm-2 control-label">Concession Number</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="Concession Number" name="viewConcessionNumber" id="viewConcessionNumber" disabled>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="viewNumber" class="col-sm-2 control-label">Stall Number</label>
-                <div class="col-sm-10 ">
-                  <input type="text" class="form-control" placeholder="Stall Number" name="viewNumber" id="viewNumber">
-                  
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewArea" class="col-sm-2 control-label">Stall Area</label>
-                <div class="col-sm-10">
-                  <select class="form-control select2" style="width: 100%;" name="viewStallArea" id="viewStallArea" >
-                    <option value="" selected>Select Area</option>
-                    <option value="north">North</option>
-                    <option value="west">West</option>
-                    <option value="south">South</option>
-                    <option value="east">East</option>
-                    <option value="sampaguita">sampaguita</option>
-                    <option value="lagoon">Lagoon</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-              </div>
-              <!-- /.form-group -->
-              <div class="form-group">
-                  <label for="viewConcessionName" class="col-sm-2 control-label">Concession Name</label>
-                  
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="viewConcessionName" id="viewConcessionName" placeholder="Concession Name" >
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewOwnerName" class="col-sm-2 control-label">Owner's Name</label>
-                  
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="viewOwnerName" id="viewOwnerName" placeholder="Owner's Name">
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewEmail" class="col-sm-2 control-label">Email</label>
-                    
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" name="viewEmail" id="viewEmail" placeholder="Email" >
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewFunction" class="col-sm-2 control-label">Function</label>
-                <div class="col-sm-10">
-                  <select class="form-control select2" style="width: 100%;" name="viewFunction" id="viewFunction">
-                    <option value = ""selected="">Select Function</option>
-                    <option value="food">Food</option>
-                    <option value="nonfood">Non-Food</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewStatus" class="col-sm-2 control-label">Status</label>
-                <div class="col-sm-10">
-                  <select class="form-control select2" style="width: 100%;" name="viewStatus" id="viewStatus">
-                    <option value = ""selected="">Select Status</option>
-                    <option value="active">Active</option>
-                    <option value="withdrawn">Withdrawn</option>
-                    <option value="due">Due</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewAddress" class="col-sm-2 control-label">Address</label>
-                  
-                <div class="col-sm-10">
-                  <textarea class="form-control" name="viewAddress" id="viewAddress" placeholder="Address" ></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="viewDateApplied" class="col-sm-2 control-label">Date Applied</label>
-                <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" name="viewDateApplied" id="viewDateApplied" placeholder="mm/dd/yyyy">
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewRemarks" class="col-sm-2 control-label">Remarks</label>
-                    
-                <div class="col-sm-10">
-                  <textarea class="form-control" name="viewRemarks" id="viewRemarks" placeholder="Remarks" ></textarea>
-                </div>
-              </div>
-            </div>
-          
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-          </div>
-        </form>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -911,61 +785,30 @@ $result = mysqli_query($conn,$sql1);
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- iCheck -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- Page Script -->
 <script src="../../dist/js/pages/concession-contract.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
-
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-
-    function viewConcession(CRM_Concession_Profile_SerialNo = null){
-      if(CRM_Concession_Profile_SerialNo){
-        $(".form-group").removeClass('has-error').removeClass('has-success');
-        $("text-danger").remove();
-        $("view-messages").html("");
-        //$("inputConcessionNumber").remove();
-        $.ajax({
-          url: 'getselected.php',
-          type: 'post',
-          data: {inputConcessionNumber : CRM_Concession_Profile_SerialNo}
-          dataType: 'json';
-          success:function(response){
-            $("#viewConcessionNumber").val(response.CRM_Concession_Profile_SerialNo);
-            $("#viewNumber").val(response.CRM_Concession_Stall_Number);
-            $("#viewStallArea").val(response.CRM_Concession_Area);
-            $("#viewConcessionName").val(response.CRM_Concession_Name);
-            $("#viewOwnerName").val(response.CRM_Concession_Owner_Name);
-            $("#viewEmail").val(response.CRM_Concession_Email);
-            $("#viewFunction").val(response.CRM_Concession_Function);
-            $("#viewStatus").val(response.CRM_Concession_Status)
-            $("#viewAddress").val(response.CRM_Concession_Address);
-            $("#viewDateApplied").val(response.CRM_Concession_Date_Applied);
-            $("viewRemarks").val(response.CRM_Concession_Remarks);
-          }
-        })
-      }else{
-        alert("Error: Please refresh the page again.");
-      }
-
-    }
-
-
+    //initialize select2 elements
+    $('.select2').select2()
+    //Date picker
+    $('#inputDateApplied').datepicker({
+      autoclose: true
+    })
   })
 </script>
 
-<?php $connect->close(); ?>
+
 </body>
 </html>

@@ -1,42 +1,25 @@
-<?php
-session_start();
-require_once('page/dbconfig.php');
-//We need to use sessions, so you should always start sessions using the below code.
-//If the user is not logged in redirect to the login page...
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(!isset($_SESSION["loggedin"]) & empty($_SESSION["loggedin"])){
-  header("location: login.php");
-  }
-$adminid = $_SESSION['loggedin'];
-
-$sql = "SELECT * FROM `crm_admin_user_login` WHERE `CRM_Login_Username` = $adminid";
-$res = mysqli_query($conn,$sql);
-$r = mysqli_fetch_assoc($res);
-
-$conn -> close();
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="shortcut icon" href="../img/icon.png">
-  <title>PUPCCRMs | Dashboard</title>
+  <title>PUPCCRMs | Calendar</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- fullCalendar -->
+  <link rel="stylesheet" href="../../bower_components/fullcalendar/dist/fullcalendar.min.css">
+  <link rel="stylesheet" href="../../bower_components/fullcalendar/dist/fullcalendar.print.min.css" media="print">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins-->
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -53,22 +36,23 @@ $conn -> close();
 <div class="wrapper">
 
   <header class="main-header">
-
     <!-- Logo -->
-    <a href="index.php" class="logo">
+    <a href="../index2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>PUP</b>CCRMs</span>
     </a>
-
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </a>
-      <!-- Navbar Right Menu -->
+
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
@@ -85,7 +69,7 @@ $conn -> close();
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -98,7 +82,7 @@ $conn -> close();
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -110,7 +94,7 @@ $conn -> close();
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Developers
@@ -122,7 +106,7 @@ $conn -> close();
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Sales Department
@@ -134,7 +118,7 @@ $conn -> close();
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Reviewers
@@ -175,6 +159,7 @@ $conn -> close();
                       <i class="fa fa-users text-red"></i> 5 new members joined
                     </a>
                   </li>
+
                   <li>
                     <a href="#">
                       <i class="fa fa-shopping-cart text-green"></i> 25 sales made
@@ -268,16 +253,18 @@ $conn -> close();
               </li>
             </ul>
           </li>
+          
+          
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   Alexander Pierce - Web Developer
@@ -288,13 +275,13 @@ $conn -> close();
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
-                    <a href="./page/task/task.php">Task</a>
+                    <a href="#">Followers</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="./page/options/permission.php">Permissions</a>
+                    <a href="#">Sales</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Role</a>
+                    <a href="#">Friends</a>
                   </div>
                 </div>
                 <!-- /.row -->
@@ -302,21 +289,16 @@ $conn -> close();
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="./page/options/admin-profile.php" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
           </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
         </ul>
       </div>
-
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
@@ -326,7 +308,7 @@ $conn -> close();
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
@@ -338,8 +320,7 @@ $conn -> close();
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
               </span>
         </div>
@@ -348,7 +329,7 @@ $conn -> close();
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -356,24 +337,24 @@ $conn -> close();
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="./index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-            <li class="active"><a href="./index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+            <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+            <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
           </ul>
         </li>
         <li class="treeview">
-            <a href="#">
-              <i class="fa fa-comments"></i>
-              <span>Feedback</span>
-              <span class="pull-right-container">
-                <small class="label label-primary pull-right">12</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="./page/feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
-            </ul>
-          </li>
+          <a href="#">
+            <i class="fa fa-comments"></i>
+            <span>Feedback</span>
+            <span class="pull-right-container">
+              <small class="label label-primary pull-right">12</small>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
+            <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
+            <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+          </ul>
+        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-suitcase"></i>
@@ -383,9 +364,9 @@ $conn -> close();
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="./page/cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="./page/cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-            <li><a href="./page/cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
+            <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
+            <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -396,9 +377,9 @@ $conn -> close();
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="./page/task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="./page/task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-            <li><a href="./page/task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
+            <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
+            <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -410,40 +391,41 @@ $conn -> close();
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+            <li class="treeview"><a href="../concessions/concession.php"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
-                <li><a href="./page/concessions/concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
-                <li><a href="./page/concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                <li><a href="./page/concessions/concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
-                <li><a href="./page/concessions/concession-item.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                <li><a href="./page/concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
-                <li><a href="./page/concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
-                <li><a href="./page/concessions/concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
+                <li><a href="./concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
+                <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
+                <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
+                <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
+                <li><a href="./concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
               </ul>
             </li>
-            <li><a href="./page/concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
+            <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="./page/calendar/calendar.php">
+        <li class="active">
+          <a href="./calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
-              <small class="label pull-right label-info">17</small>
+              <small class="label pull-right bg-red">3</small>
+              <small class="label pull-right bg-blue">17</small>
             </span>
           </a>
           <ul class="treeview-menu">
-              <li>
-                <a href="./page/calendar/calendar.php"><i class="fa fa-circle-o"></i> Activity 
-                  <span class="pull-right-container">
-                    <small class="label pull-right label-warning"> 3</small> 
-                    <small class="label pull-right bg-blue"> 14</small> 
-                  </span>
-                </a>
-              </li>
-          </ul>
+            <li class="active">
+              <a href="./activity.php"><i class="fa fa-circle-o"></i> Activity 
+                <span class="pull-right-container">
+                  <small class="label pull-right label-warning"> 3</small> 
+                  <small class="label pull-right bg-blue"> 14</small> 
+                </span>
+              </a>
+            </li>
+        </ul>
         </li>
         <li class="treeview">
-          <a href="./page/mail/mailbox.php">
+          <a href="">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-yellow">12</small>
@@ -452,15 +434,15 @@ $conn -> close();
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active">
-              <a href="./page/mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
+            <li >
+              <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
                 <span class="pull-right-container">
                   <span class="label label-primary pull-right">13</span>
                 </span>
               </a>
             </li>
-            <li><a href="./page/mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
-            <li><a href="./page/mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
+            <li><a href="../mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+            <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -471,10 +453,10 @@ $conn -> close();
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class=""><a href="./reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-              <li><a href="./reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-              <li><a href="./reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-              <li><a href="./reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
+              <li class=""><a href="../reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
+              <li><a href="../reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
+              <li><a href="../reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
+              <li><a href="../reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
             </ul>
           </li>
         <li class="treeview">
@@ -487,52 +469,52 @@ $conn -> close();
           <ul class="treeview-menu">
             <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
-                  <li><a href="./page/options/admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
-                  <li><a href="./page/options/admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login </a></li>
+                  <li><a href="../options/admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
+                  <li><a href="../options/admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login  </a></li>
               </ul>
             </li>
-            <li class="treeview"><a href="./page/options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+            <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
-                  <li><a href="./page/options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
-                  <li><a href="./page/options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
+                  <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
+                  <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
               </ul>
             </li>
-            <li><a href="./page/options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
+            <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
           </ul>
         </li>
-        <li ><a href="./page/documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li><a href="../documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
         <li class="header">LABELS</li>
-            <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Danger</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Normal</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> <span>Information</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Success</span></a></li>
-              </ul>   
-            </li>
-            <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Mail</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Spam</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Junk</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Unread</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> <span>Read</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Sent</span></a></li>
-              </ul>   
-            </li>
-            <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Feedback/Task/Cases</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Urgent</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>New</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-orange"></i> <span>Due</span></a></li>
-              </ul>   
-            </li>
-            <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Calendar/Concession</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o text-orange"></i> <span>Due</span></a></li>
-              </ul>   
-            </li>
+        <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Danger</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Normal</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> <span>Information</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Success</span></a></li>
+          </ul>   
+        </li>
+        <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Mail</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Spam</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Junk</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Unread</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> <span>Read</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Sent</span></a></li>
+          </ul>   
+        </li>
+        <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Feedback/Task/Cases</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Urgent</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>New</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-orange"></i> <span>Due</span></a></li>
+          </ul>   
+        </li>
+        <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Calendar/Concession</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o text-orange"></i> <span>Due</span></a></li>
+          </ul>   
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -543,238 +525,92 @@ $conn -> close();
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Reports</small>
+        Calendar
+        <small>Calendar Events</small>
       </h1>
-      <h4>Today <b>(<script>var today = new Date();
-          var dd = String(today.getDate()).padStart(2, '0');
-          var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-          var yyyy = today.getFullYear();
-          
-          today = mm + '/' + dd + '/' + yyyy;
-          document.write(today);</script>)</b></h4>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li class="active">Calendar</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-12">
-          <div class="box">
+        <div class="col-md-3">
+            <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
+            <a href="./activity.php" class="btn btn-primary btn-block margin-bottom">Back to Activity</a>
+
+          <div class="box box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title">Monthly Recap Report</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-wrench"></i></button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                  </ul>
-                </div>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
+              <h4 class="box-title">Draggable Events</h4>
             </div>
-            <!-- /.box-header -->
             <div class="box-body">
-              <div class="row">
-                <div class="col-md-8">
-                  <p class="text-center">
-                    <strong> 1 Jan, 2019 - 30 Jul, 2014</strong>
-                  </p>
-
-                  <div class="chart">
-                    <!-- Sales Chart Canvas -->
-                    <canvas id="salesChart" style="height: 180px;"></canvas>
-                  </div>
-                  <!-- /.chart-responsive -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                  <p class="text-center">
-                    <strong>Goal Completion</strong>
-                  </p>
-
-                  <div class="progress-group">
-                    <span class="progress-text">Completed Task</span>
-                    <span class="progress-number"><b>160</b>/200</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Completed Cases</span>
-                    <span class="progress-number"><b>310</b>/400</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-red" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Feedback Sent</span>
-                    <span class="progress-number"><b>480</b>/800</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Inquiries Sent</span>
-                    <span class="progress-number"><b>250</b>/500</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
-            <!-- ./box-body -->
-            <div class="box-footer">
-              <div class="row">
-                <div class="col-sm-3 col-xs-6">
-                  <div class="description-block border-right">
-                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
-                    <h5 class="description-header"> 33</h5>
-                    <span class="description-text">TOTAL FEEDBACK</span>
-                  </div>
-                  <!-- /.description-block -->
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-xs-6">
-                  <div class="description-block border-right">
-                    <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
-                    <h5 class="description-header"> 10</h5>
-                    <span class="description-text">TOTAL CASES</span>
-                  </div>
-                  <!-- /.description-block -->
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-xs-6">
-                  <div class="description-block border-right">
-                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
-                    <h5 class="description-header"> 23</h5>
-                    <span class="description-text">TOTAL TASK</span>
-                  </div>
-                  <!-- /.description-block -->
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-xs-6">
-                  <div class="description-block">
-                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
-                    <h5 class="description-header">12</h5>
-                    <span class="description-text">GOAL COMPLETIONS</span>
-                  </div>
-                  <!-- /.description-block -->
+              <!-- the events -->
+              <div id="external-events">
+                <div class="external-event bg-green">Lunch</div>
+                <div class="external-event bg-yellow">Go home</div>
+                <div class="external-event bg-aqua">Do homework</div>
+                <div class="external-event bg-light-blue">Work on UI design</div>
+                <div class="external-event bg-red">Sleep tight</div>
+                <div class="checkbox">
+                  <label for="drop-remove">
+                    <input type="checkbox" id="drop-remove">
+                    remove after drop
+                  </label>
                 </div>
               </div>
-              <!-- /.row -->
             </div>
-            <!-- /.box-footer -->
+            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
+          <!-- /. box -->
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Create Event</h3>
+            </div>
+            <div class="box-body">
+              <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
+                <ul class="fc-color-picker" id="color-chooser">
+                  <li><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-light-blue" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-teal" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-yellow" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
+                </ul>
+              </div>
+              <!-- /btn-group -->
+              <div class="input-group">
+                <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+
+                <div class="input-group-btn">
+                  <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
+                </div>
+                <!-- /btn-group -->
+              </div>
+              <!-- /input-group -->
+            </div>
+          </div>
         </div>
         <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
-      <!-- Main row -->
-      <div class="row">
-        <!-- Left col -->      
-        <div class="col-md-6">
-          <!-- Info Boxes Style 2 -->
-          <div class="info-box bg-yellow">
-            <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text"> Concessions</span>
-              <span class="info-box-number">5</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 50%"></div>
-              </div>
-              <span class="progress-description">
-                    50% Increase in 30 Days
-                  </span>
+        <div class="col-md-9">
+          <div class="box box-primary">
+            <div class="box-body no-padding">
+              <!-- THE CALENDAR -->
+              <div id="calendar"></div>
             </div>
-            <!-- /.info-box-content -->
+            <!-- /.box-body -->
           </div>
-          <!-- /.info-box -->
-          <div class="info-box bg-green">
-            <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Activities</span>
-              <span class="info-box-number">92</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 20%"></div>
-              </div>
-              <span class="progress-description">
-                    20% Increase in 30 Days
-                  </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-          </div>
-          <div class="col-md-6">
-          <div class="info-box bg-red">
-            <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Downloads</span>
-              <span class="info-box-number">114,381</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 70%"></div>
-              </div>
-              <span class="progress-description">
-                    70% Increase in 30 Days
-                  </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-          <div class="info-box bg-aqua">
-            <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Inquiries</span>
-              <span class="info-box-number">16</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 40%"></div>
-              </div>
-              <span class="progress-description">
-                    40% Increase in 30 Days
-                  </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-
-          <!-- /.box -->
-
-
+          <!-- /. box -->
         </div>
-        
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -784,12 +620,12 @@ $conn -> close();
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> beta 1.0
-      </div>
-      <strong>Copyright &copy;2019 <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-      reserved.
-    </footer>
+    <div class="pull-right hidden-xs">
+      <b>Version</b> beta 1.0
+    </div>
+    <strong>Copyright &copy;2019 <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+    reserved.
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -906,7 +742,9 @@ $conn -> close();
 
       </div>
       <!-- /.tab-pane -->
-
+      <!-- Stats tab content -->
+      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+      <!-- /.tab-pane -->
       <!-- Settings tab content -->
       <div class="tab-pane" id="control-sidebar-settings-tab">
         <form method="post">
@@ -982,30 +820,27 @@ $conn -> close();
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
-
 </div>
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="../../bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Slimscroll -->
+<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-<!-- Sparkline -->
-<script src="bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-<!-- jvectormap  -->
-<script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- SlimScroll -->
-<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- ChartJS -->
-<script src="bower_components/chart.js/Chart.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard2.js"></script>
+<script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../../dist/js/demo.js"></script>
+<!-- fullCalendar -->
+<script src="../../bower_components/moment/moment.js"></script>
+<script src="../../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<!-- Page specific script -->
+<script src="../../dist/js/pages/calendar.js"></script>
 </body>
 </html>

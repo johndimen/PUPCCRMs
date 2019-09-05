@@ -1,33 +1,17 @@
-<?php
-session_start();
-include('../dbconfig.php');
-//We need to use sessions, so you should always start sessions using the below code.
-//If the user is not logged in redirect to the login page...
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-  header("location: ../../login.php");
-  exit;
-}
-
-//table
-$sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Date_Applied` FROM `crm_concession_profile`";
-$result = mysqli_query($conn,$sql1);
-
-
-
-?>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Concession Contract</title>
-  <link rel="shortcut icon" href="../../../img/icon.png">
+  <title>PUPCCRMs | Admin Login Detail</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
@@ -35,8 +19,6 @@ $result = mysqli_query($conn,$sql1);
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="../../plugins/iCheck/all.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,7 +36,7 @@ $result = mysqli_query($conn,$sql1);
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index.php" class="logo">
+    <a href="../../index2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -262,7 +244,7 @@ $result = mysqli_query($conn,$sql1);
                 <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
-          <li class=" treeview">
+          <li class="treeview">
             <a href="#">
               <i class="fa fa-suitcase"></i>
               <span>Cases</span>
@@ -271,9 +253,9 @@ $result = mysqli_query($conn,$sql1);
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="./cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
+              <li><a href="./new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="./pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -289,7 +271,7 @@ $result = mysqli_query($conn,$sql1);
               <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
-          <li class="treeview active">
+          <li class="treeview">
             <a href="#">
               <i class="fa fa-address-card"></i>
               <span>Concessions</span>
@@ -298,18 +280,18 @@ $result = mysqli_query($conn,$sql1);
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="treeview active"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                  <ul class="treeview-menu">
-                    <li><a href="./concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
-                    <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                    <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
-                    <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                    <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
-                    <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
-                    <li><a href="./concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
-                  </ul>
+              <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                <ul class="treeview-menu">
+                  <li><a href="../concessions/concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
+                  <li><a href="../concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                  <li><a href="../concessions/concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
+                  <li><a href="../concessions/concession-item.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                  <li><a href="../concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
+                  <li><a href="../concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
+                  <li><a href="../concessions/concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
+                </ul>
               </li>
-              <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -321,7 +303,7 @@ $result = mysqli_query($conn,$sql1);
             </a>
             <ul class="treeview-menu">
                 <li>
-                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
+                  <a href="../calendar/calendar.php"><i class="fa fa-circle-o"></i> Activity 
                     <span class="pull-right-container">
                       <small class="label pull-right label-warning"> 3</small> 
                       <small class="label pull-right bg-blue"> 14</small> 
@@ -341,53 +323,39 @@ $result = mysqli_query($conn,$sql1);
             </a>
             <ul class="treeview-menu">
               <li class="">
-                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
+                <a href="../mail/mailbox.php">Inbox
                   <span class="pull-right-container">
                     <span class="label label-primary pull-right">13</span>
                   </span>
                 </a>
               </li>
-              <li><a href="../mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
-              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
+              <li><a href="../mail/compose.php">Compose</a></li>
+              <li><a href="../mail/read-mail.php">Read</a></li>
             </ul>
           </li>
-          <li class="treeview">
-              <a href="../reports/report.php">
-                <i class="fa fa-file-archive-o"></i> <span>Reports</span>
-                <span class="pull-right-container">
+          <li class="treeview active">
+                <a href="#">
+                  <i class="fa fa-cog"></i> <span>Options</span>
+                  <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class=""><a href="../reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-                <li><a href="../reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-                <li><a href="../reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-                <li><a href="../reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
-              </ul>
-            </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-cog"></i> <span>Options</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                  </span>
+                </a>
                 <ul class="treeview-menu">
-                    <li><a href="../options/admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
-                    <li><a href="../options/admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login </a></li>
+                  <li class="treeview active"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                    <ul class="treeview-menu">
+                        <li><a href="./admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
+                        <li class="active"><a href="./admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login </a></li>
+                    </ul>
+                  </li>
+                  <li class="treeview "><a href="./permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                    <ul class="treeview-menu">
+                        <li><a href="./permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
+                        <li><a href="./permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="./audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
                 </ul>
               </li>
-              <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                <ul class="treeview-menu">
-                    <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
-                    <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
-                </ul>
-              </li>
-              <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
-            </ul>
-          </li>
           <li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
           <li class="header">LABELS</li>
           <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
@@ -399,7 +367,7 @@ $result = mysqli_query($conn,$sql1);
               <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Success</span></a></li>
             </ul>   
           </li>
-          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Mail</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Mail</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
               <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Spam</span></a></li>
               <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Junk</span></a></li>
@@ -408,7 +376,7 @@ $result = mysqli_query($conn,$sql1);
               <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Sent</span></a></li>
             </ul>   
           </li>
-          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Feedback/Task/Cases</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Feedback/Task/Cases</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
               <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
               <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Urgent</span></a></li>
@@ -432,279 +400,217 @@ $result = mysqli_query($conn,$sql1);
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>
-          Concession
-          <small>All Concession List</small>
-        </h1>
-        <ol class="breadcrumb">
-          <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active"><a href="#">Concession</a></li>
-        </ol>
-      </section>
+            <h1>
+              Admin Login
+              <small>Admin Login Detail</small>
+            </h1>
+            <ol class="breadcrumb">
+              <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+              <li><a href="#">Options</a></li>
+              <li><a href="#">Admins</a></li>
+              <li class="active">Admin Login</li>
+            </ol>
+          </section>
 
     <!-- Main content -->
     <section class="content">
 
-      <div class="row">
-          <div class="col-md-3">
-              <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
-              
-              <a href="./concession-add.php" class="btn btn-primary btn-block margin-bottom">Add Concession</a>
-                 
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Folders</h3>
-    
-                  <div class="box-tools">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="box-body no-padding">
-                  <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="./concession.php"><i class="fa fa-th-large"></i> Concessionbox</a></li>
-                    <li><a href="./concession-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
-                  </ul>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- /. box -->
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Labels</h3>
-    
-                  <div class="box-tools">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="box-body no-padding">
-                  <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#"><i class="fa fa-circle-o text-green"></i> Active</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> New</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Due</a></li>
-                  </ul>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- /.box -->
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title"><strong>Login Detail</strong> </h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fa fa-minus"></i></button>
             </div>
-            <!-- /.col -->
-
-            <div class="col-md-9">
-                    <div class="box box-primary">
-                      <div class="box-header with-border">
-                        <h3 class="box-title"><strong>ConcessionBox</strong></h3>
-                        <div class="box-tools pull-right">
-                          <div class="has-feedback">
-                            <input type="text" class="form-control input-sm" placeholder="Search Concession">
-                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                          </div>
-                        </div>
-                      </div>
-      
-                      <div class="box-body no-padding">
-                        <div class="mailbox-controls">
-                          <!-- Check all button -->
-                          <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
-                          </div>
-                          <!-- /.btn-group -->
-                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                          <div class="pull-right">
-                            1/1
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                              <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                            </div>
-                          <!-- /.btn-group -->
-                          </div>
-                          <!-- /.pull-right -->
-                        </div>
-       
-                        <div class="table-responsive mailbox-massages">
-                          <table class="table table-hover table-striped">
-                            <tbody>
-                              <tr>
-                                <td></td>
-                                <td style="width: 100px">Actions</td>
-                                <td style="width: 80px">Profile No.</td>
-                                <td style="width: 80px">Stall No.</td>
-                                <td>Concession Name</td>
-                                <td>Owner's Name</td>
-                                <td>Function</td>
-                                <td>Date Applied</td>
-                              </tr>
-                              <tr>
-                              <?php
-                              while($r = mysqli_fetch_assoc($result)){
-                              ?>
-                                <td> <input type="checkbox" class = "checkbox icheck" style="padding-left:20px; padding-top: 30px"></td>
-                                <td>
-                                  <div class="btn-group">
-                                    <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewConcession" id="viewConcessionModalBtn">View</button>
-                                      <button type="button" class="btn btn-info btn-flat dropdown-toggle" style="height: 34px" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Actions</span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                      <li><a href="#" id = "editConcession">Edit</a></li>
-                                      <li><a href="#">Archive</a></li>
-                                      <li><a href="#">Trash</a></li>
-                                    </ul>
-                                  </div>
-                                </td>
-                                <td><?php echo $r['CRM_Concession_Profile_SerialNo'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Stall_Number'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Name'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Owner_Name'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Function'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Date_Applied'] ?></td>
-                              </tr>
-                              <?php } ?>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+        </div>
+        <div class="box-body">
+          <a>
+            <button type="button" data-toggle="modal" data-target="#addAdmin" class="btn btn-primary">
+              New Admin
+            </button>
+          </a>
+          <a>
+            <button type="button" data-toggle="modal" data-target="#addRole" class="pull-right btn btn-primary">Add Role</button>
+          </a>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <div class="pull-right">
+            System Time: 
+            <script>
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear();
+                var hh = String(today.getHours()).padStart(2,'0') ;
+                var mn = String(today.getMinutes()).padStart(2,'0');
+                var ss = String(today.getSeconds()).padStart(2,'0');
+                
+                today = mm + '/' + dd + '/' + yyyy + '  ' + hh + ':' + mn + ':' + ss ;
+                document.write(today);</script>
+            </div>
+        </div>
+        <!-- /.box-footer-->
       </div>
+      <!-- /.box -->
+
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
-  <!-- view modal -->
-  <div class="modal fade" tabindex="-1" role="dialog" id="viewConcession">
-    <div class="modal-dialog" role = "document">
-      <div class="modal-content">
+  <div class="modal fade" id="addRole">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius: 10px">
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-                <h4 class="modal-title"><span class="glyphicon glyphicon-edit"></span>Concession Info</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Add Roles</h4>
         </div>
-        <form class="form-horizontal" style="padding: 30px" method="post" id="viewCons">
-            <div class="modal-body">
-              <div class="view-messages"></div>
-              <div class="form-group">
-                <label for="viewConcessionNumber" class="col-sm-2 control-label">Concession Number</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="Concession Number" name="viewConcessionNumber" id="viewConcessionNumber" disabled>
-                </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="modal-body">
+            
+            <div class="form-group">
+              <label for="adminRole" class="col-sm-3 control-label">Role</label>
+              <div class="col-sm-9">
+                <input type="text" id="adminRole" name="adminRole" class="form-control" placeholder="Admin Role">
               </div>
-              <div class="form-group">
-                <label for="viewNumber" class="col-sm-2 control-label">Stall Number</label>
-                <div class="col-sm-10 ">
-                  <input type="text" class="form-control" placeholder="Stall Number" name="viewNumber" id="viewNumber">
-                  
-                </div>
+            </div>
+            <div class="form-group">
+              <label for="adminName" class="col-sm-3 control-label">Description</label>
+              <div class="col-sm-9">
+                <textarea type="text" id="adminRole" name="adminRole" class="form-control" rows="10" placeholder="Role Description"></textarea>
               </div>
-              <div class="form-group">
-                  <label for="viewArea" class="col-sm-2 control-label">Stall Area</label>
-                <div class="col-sm-10">
-                  <select class="form-control select2" style="width: 100%;" name="viewStallArea" id="viewStallArea" >
-                    <option value="" selected>Select Area</option>
-                    <option value="north">North</option>
-                    <option value="west">West</option>
-                    <option value="south">South</option>
-                    <option value="east">East</option>
-                    <option value="sampaguita">sampaguita</option>
-                    <option value="lagoon">Lagoon</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="close" name="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" id="submitRole" name="submitRole" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="addAdmin">
+    <div class="modal-dialog">
+      <div class="modal-content" style="width: 120%; border-radius: 10px">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add New Admin</h4>
+        </div>
+        <form class="form-horizontal" action="" method="POST">
+ 
+          <div class="modal-body ">
+            <h4>Login Details</h4>
+            <div class="form-group">
+              <label for="username" class="col-sm-2 control-label">Username</label>
+              <div class="col-sm-10">
+                <input id="username" name ="username" type="text" class="form-control" placeholder="Username">
               </div>
-              <!-- /.form-group -->
-              <div class="form-group">
-                  <label for="viewConcessionName" class="col-sm-2 control-label">Concession Name</label>
-                  
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="viewConcessionName" id="viewConcessionName" placeholder="Concession Name" >
-                </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="col-sm-2 control-label">Password</label>
+              <div class="col-sm-10">
+                <input id="password" name ="password" type="text" class="form-control" placeholder="Password">
               </div>
-              <div class="form-group">
-                  <label for="viewOwnerName" class="col-sm-2 control-label">Owner's Name</label>
-                  
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="viewOwnerName" id="viewOwnerName" placeholder="Owner's Name">
-                </div>
+            </div>
+            <hr>
+            <h4>Profile Details</h4>
+            <div class="form-group">
+              <label for="profile" class="col-sm-2 control-label">Profile No</label>
+              <div class="col-sm-10">
+                <input id="profile" name ="profile" type="text" class="form-control" placeholder="Profile No.">
               </div>
-              <div class="form-group">
-                  <label for="viewEmail" class="col-sm-2 control-label">Email</label>
-                    
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" name="viewEmail" id="viewEmail" placeholder="Email" >
+            </div>
+            <div class="form-group">
+              <label for="profile" class="col-sm-2 control-label">Name</label>
+              <div class="row">
+                <div class="col-sm-2" style="width: 10%; padding-right: 5px">
+                  <input id="salutation" name ="salutation" type="text" class="form-control" placeholder="Mr./Ms./Mrs.">
                 </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewFunction" class="col-sm-2 control-label">Function</label>
-                <div class="col-sm-10">
-                  <select class="form-control select2" style="width: 100%;" name="viewFunction" id="viewFunction">
-                    <option value = ""selected="">Select Function</option>
-                    <option value="food">Food</option>
-                    <option value="nonfood">Non-Food</option>
-                  </select>
+                <div class="col-sm-3" style="width: 170px;padding-left: 5px; padding-right: 5px">
+                  <input type="text" id="firstName" name="firstName" class="form-control" placeholder="First Name">
                 </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewStatus" class="col-sm-2 control-label">Status</label>
-                <div class="col-sm-10">
-                  <select class="form-control select2" style="width: 100%;" name="viewStatus" id="viewStatus">
-                    <option value = ""selected="">Select Status</option>
-                    <option value="active">Active</option>
-                    <option value="withdrawn">Withdrawn</option>
-                    <option value="due">Due</option>
-                  </select>
+                <div class="col-sm-2" style="width:100px;padding-left: 5px; padding-right: 5px">
+                  <input type="text" id="middleName" name="middleName" class="form-control" placeholder="Middle Name">
                 </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewAddress" class="col-sm-2 control-label">Address</label>
-                  
-                <div class="col-sm-10">
-                  <textarea class="form-control" name="viewAddress" id="viewAddress" placeholder="Address" ></textarea>
+                <div class="col-md-3" style="width: 170px;padding-right:5px;padding-left: 5px">
+                  <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last Name">
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="viewDateApplied" class="col-sm-2 control-label">Date Applied</label>
-                <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" name="viewDateApplied" id="viewDateApplied" placeholder="mm/dd/yyyy">
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewRemarks" class="col-sm-2 control-label">Remarks</label>
-                    
-                <div class="col-sm-10">
-                  <textarea class="form-control" name="viewRemarks" id="viewRemarks" placeholder="Remarks" ></textarea>
+                <div class="col-md-2" style="width: 85.5px;padding-left: 5px">
+                  <input type="text" id="extName" name="extName" class="form-control" placeholder="jr">
                 </div>
               </div>
             </div>
-          
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <div class="form-group">
+              <label for="jobTitle" class="col-sm-2 control-label">Job Title</label>
+              <div class="col-sm-10">
+                <input type="text" id="jobTitle" name="jobTitle" class="form-control" placeholder="Job Title">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="gender" class="col-sm-2 control-label">Gender</label>
+              <div class="col-sm-10">
+                <select name="gender" id="gender" class="select2 form-controll" style="width: 100%">
+                  <option value="" selected>Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="lgbtq">LGBTQ</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-sm-2 control-label">E-mail</label>
+              <div class="col-sm-10">
+                <input type="text" id="email" name="email" class="form-control" placeholder="E-mail">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="highestEducation" class="col-sm-2 control-label">Highest Education</label>
+              <div class="col-sm-10">
+                <input type="text" id="highestEducation" name="highestEducation" class="form-control" placeholder="Highest Education">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="location" class="col-sm-2 control-label">Address</label>
+              <div class="col-sm-10">
+                <input type="text" id="location" name="location" class="form-control" placeholder="Address">
+              </div>
+            </div>
+            <hr>
+            <h4>Role Details</h4>
+            <div class="form-group">
+              <label for="roleType" class="col-sm-2 control-label">Admin Role</label>
+              <div class="col-sm-10">
+                <select name="jobtitle" id="jobtitle" style="width: 100%" class="select2 form-control">
+                  <option value="" selected>Select Role</option>
+                </select>
+              </div>
+            </div>
           </div>
+
+          <div class="modal-footer">
+            <button type="button" name="inputClose" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" name="inputSubmit" class="btn btn-primary">Submit</button>
+          </div>
+             
         </form>
       </div>
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
   </div>
-  <!-- /.modal -->
-
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> beta 1.0
         </div>
-        <strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+        <strong>Copyright &copy;2019 <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
         reserved.
   </footer>
 
@@ -913,59 +819,22 @@ $result = mysqli_query($conn,$sql1);
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- iCheck -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- Page Script -->
-<script src="../../dist/js/pages/concession-contract.js"></script>
+<script src="../../dist/js/pages/admin-login-detail.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
-
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-
-    function viewConcession(CRM_Concession_Profile_SerialNo = null){
-      if(CRM_Concession_Profile_SerialNo){
-        $(".form-group").removeClass('has-error').removeClass('has-success');
-        $("text-danger").remove();
-        $("view-messages").html("");
-        //$("inputConcessionNumber").remove();
-        $.ajax({
-          url: 'getselected.php',
-          type: 'post',
-          data: {inputConcessionNumber : CRM_Concession_Profile_SerialNo}
-          dataType: 'json';
-          success:function(response){
-            $("#viewConcessionNumber").val(response.CRM_Concession_Profile_SerialNo);
-            $("#viewNumber").val(response.CRM_Concession_Stall_Number);
-            $("#viewStallArea").val(response.CRM_Concession_Area);
-            $("#viewConcessionName").val(response.CRM_Concession_Name);
-            $("#viewOwnerName").val(response.CRM_Concession_Owner_Name);
-            $("#viewEmail").val(response.CRM_Concession_Email);
-            $("#viewFunction").val(response.CRM_Concession_Function);
-            $("#viewStatus").val(response.CRM_Concession_Status)
-            $("#viewAddress").val(response.CRM_Concession_Address);
-            $("#viewDateApplied").val(response.CRM_Concession_Date_Applied);
-            $("viewRemarks").val(response.CRM_Concession_Remarks);
-          }
-        })
-      }else{
-        alert("Error: Please refresh the page again.");
-      }
-
-    }
-
+    $('.select2').select2()
 
   })
 </script>
 
-<?php $connect->close(); ?>
+
 </body>
 </html>

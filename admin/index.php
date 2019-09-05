@@ -290,10 +290,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
               <li class="user-body">
                   <div class="row">
                       <div class="col-xs-4 text-center">
-                        <a href="./page/task/task.html">Task</a>
+                        <a href="./page/task/task.php">Task</a>
                       </div>
                       <div class="col-xs-4 text-center">
-                        <a href="./page/options/permission.html">Permissions</a>
+                        <a href="./page/options/permission.php">Permissions</a>
                       </div>
                       <div class="col-xs-4 text-center">
                         <a href="#">Role</a>
@@ -304,7 +304,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="./page/options/admin-profile.html" class="btn btn-default btn-flat">Profile</a>
+                  <a href="./page/options/admin-profile.php" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
@@ -369,7 +369,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="./page/feedback/feedback.html"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
+              <li><a href="./page/feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
               <li><a href="#"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
               <li><a href="#"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
             </ul>
@@ -383,9 +383,9 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="./page/cases/cases.html"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="./page/cases/new-cases.html"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-            <li><a href="./page/cases/pending-cases.html"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="./page/cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
+            <li><a href="./page/cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="./page/cases/Trash-cases.php"><i class="fa fa-circle-o"></i> Trash Cases <span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -396,9 +396,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="./page/task/task.html"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="./page/task/new-task.html"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-            <li><a href="./page/task/pending-task.html"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="./page/task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
+            <li><a href="./page/task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="./page/task/archive-task.php"><i class="fa fa-circle-o"></i>Archived Task <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="./page/task/trash-task.php"><i class="fa fa-circle-o"></i>Trash Task <span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -412,20 +413,20 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           <ul class="treeview-menu">
             <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
-                  <li><a href="./page/concessions/concession-profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                  <li><a href="./page/concessions/concession-map-images.html"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                  <li><a href="./page/concessions/concession-contact.html"><i class="fa fa-circle-o"></i> Contact</a></li>
-                  <li><a href="./page/concessions/concession-item.html"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                  <li><a href="./page/concessions/concession-services.html"><i class="fa fa-circle-o"></i> Services</a></li>
-                  <li><a href="./page/concessions/concession-equipment.html"><i class="fa fa-circle-o"></i> Equipments</a></li>
-                  <li><a href="./page/concessions/concession-experience.html"><i class="fa fa-circle-o"></i> Experience</a></li>
+                  <li><a href="./page/concessions/concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
+                  <li><a href="./page/concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                  <li><a href="./page/concessions/concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
+                  <li><a href="./page/concessions/concession-item.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                  <li><a href="./page/concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
+                  <li><a href="./page/concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
+                  <li><a href="./page/concessions/concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
               </ul>
             </li>
-            <li><a href="./page/concessions/concession-contract.html"><i class="fa fa-circle-o"></i> Contracts </a></li>
+            <li><a href="./page/concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
           </ul>
         </li>
         <li class="treeview">
-          <a href="./page/calendar/calendar.html">
+          <a href="./page/calendar/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
               <small class="label pull-right label-info">17</small>
@@ -433,7 +434,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           </a>
           <ul class="treeview-menu">
               <li>
-                <a href="./page/calendar/activity.html"><i class="fa fa-circle-o"></i> Activity 
+                <a href="./page/calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
                   <span class="pull-right-container">
                     <small class="label pull-right label-warning"> 3</small> 
                     <small class="label pull-right bg-blue"> 14</small> 
@@ -443,7 +444,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           </ul>
         </li>
         <li class="treeview">
-          <a href="./page/mail/mailbox.html">
+          <a href="./page/mail/mailbox.php">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-yellow">12</small>
@@ -453,28 +454,28 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           </a>
           <ul class="treeview-menu">
             <li class="">
-              <a href="./page/mail/mailbox.html"><i class="fa fa-circle-o"></i>Inbox
+              <a href="./page/mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
                 <span class="pull-right-container">
                   <span class="label label-primary pull-right">13</span>
                 </span>
               </a>
             </li>
-            <li><a href="./page/mail/compose.html"><i class="fa fa-circle-o"></i>Compose</a></li>
-            <li><a href="./page/mail/read-mail.html"><i class="fa fa-circle-o"></i>Read</a></li>
+            <li><a href="./page/mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+            <li><a href="./page/mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
           </ul>
         </li>
-        <li class="treeview">
-            <a href="../reports/report.html">
+          <li class="treeview">
+            <a href="../reports/report.php">
               <i class="fa fa-file-archive-o"></i> <span>Reports</span>
               <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class=""><a href="./reports/report-concession.html"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-              <li><a href="./reports/report-feedback.html"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-              <li><a href="./reports/report-cases.html"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-              <li><a href="./reports/report-system-trail.html"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
+              <li class=""><a href="./reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
+              <li><a href="./reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
+              <li><a href="./reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
+              <li><a href="./reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
             </ul>
           </li>
         <li class="treeview">
@@ -487,20 +488,20 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           <ul class="treeview-menu">
             <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
-                  <li><a href="./page/options/admin-profile.html"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
-                  <li><a href="./page/options/admin-login-detail.html"><i class="fa fa-circle-o"></i> Admin Login </a></li>
+                  <li><a href="./page/options/admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
+                  <li><a href="./page/options/admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login </a></li>
               </ul>
             </li>
-            <li class="treeview"><a href="./page/options/permission.html"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+            <li class="treeview"><a href="./page/options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
-                  <li><a href="./page/options/permission-module.html"><i class="fa fa-circle-o"></i> Module Permission</a></li>
-                  <li><a href="./page/options/permission-admin.html"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
+                  <li><a href="./page/options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
+                  <li><a href="./page/options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
               </ul>
             </li>
-            <li><a href="./page/options/audit-trail.html"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
+            <li><a href="./page/options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
           </ul>
         </li>
-        <li><a href="./page/documentation/documentation.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li><a href="./page/documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
         <li class="header">LABELS</li>
             <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
@@ -711,8 +712,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-              <a href="./page/feedback/feedback.html" class="btn btn-sm btn-info btn-flat pull-left">View All Feedback</a>
-              <a href="./page/feedback/archive-feedback.html" class="btn btn-sm btn-default btn-flat pull-right">View Archived Feedback</a>
+              <a href="./page/feedback/feedback.php" class="btn btn-sm btn-info btn-flat pull-left">View All Feedback</a>
+              <a href="./page/feedback/archive-feedback.php" class="btn btn-sm btn-default btn-flat pull-right">View Archived Feedback</a>
             </div>
             <!-- /.box-footer -->
           </div>

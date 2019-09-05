@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Read Feedback</title>
+  <title>PUPCCRMs | Unread Feedbox</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -34,11 +34,11 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="../../index2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>PUP</b>CCRMs</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -220,11 +220,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../../index.html"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+            <li><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+            <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
           </ul>
         </li>
-        <li class=" active treeview">
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-comments"></i>
             <span>Feedback</span>
@@ -233,9 +233,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="./feedback.html"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="./unread-feedback.html"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-            <li><a href="./read-feedback.html"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+            <li><a href="./feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
+            <li class="active"><a href="./unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
+            <li ><a href="./read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -247,9 +247,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../cases/cases.html"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../cases/new-cases.html"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-            <li><a href="../cases/pending-cases.html"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
+            <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
+            <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -260,9 +260,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../task/task.html"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../task/new-task.html"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-            <li><a href="../task/pending-task.html"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
+            <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+            <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -274,19 +274,19 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="treeview"><a href="../concessions/concession.html"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+            <li class="treeview"><a href="../concessions/concession.php"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
-                  <li><a href="../concessions/concession-profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                  <li><a href="../concessions/concession-item-product.html"><i class="fa fa-circle-o"></i> Items</a></li>
-                  <li><a href="../concessions/concession-product.html"><i class="fa fa-circle-o"></i> Products </a></li>
-                  <li><a href="../concessions/concession-equipment.html"><i class="fa fa-circle-o"></i> Equipments</a></li>
+                  <li><a href="../concessions/concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
+                  <li><a href="../concessions/concession-item.php"><i class="fa fa-circle-o"></i> Items</a></li>
+                  <li><a href="../concessions/concession-product.php"><i class="fa fa-circle-o"></i> Products </a></li>
+                  <li><a href="../concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
               </ul>
             </li>
-            <li><a href="../concessions/concession-contract.html"><i class="fa fa-circle-o"></i> Contracts </a></li>
+            <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
           </ul>
         </li>
         <li class="treeview">
-          <a href="../calendar/calendar.html">
+          <a href="../calendar/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
               <small class="label pull-right label-info">17</small>
@@ -294,7 +294,7 @@
           </a>
           <ul class="treeview-menu">
               <li>
-                <a href="../calendar/activity.html"><i class="fa fa-circle-o"></i> Activity 
+                <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
                   <span class="pull-right-container">
                     <small class="label pull-right label-warning"> 3</small> 
                     <small class="label pull-right bg-blue"> 14</small> 
@@ -303,98 +303,100 @@
               </li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-envelope"></i> <span>Mailbox</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li>
-              <a href="../mail/mailbox.html"><i class="fa fa-circle-o"></i>Inbox
-                <span class="pull-right-container">
-                  <span class="label label-primary pull-right">13</span>
-                </span>
-              </a>
-            </li>
-            <li><a href="../mail/compose.html"><i class="fa fa-circle-o"></i>Compose</a></li>
-            <li><a href="../mail/read-mail.html"><i class="fa fa-circle-o"></i>Read</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-            <a href="../reports/report.html">
-              <i class="fa fa-file-archive-o"></i> <span>Reports</span>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-envelope"></i> <span>Mailbox</span>
+          <span class="pull-right-container">
+            <small class="label pull-right bg-yellow">12</small>
+            <small class="label pull-right bg-green">16</small>
+            <small class="label pull-right bg-red">5</small>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="">
+            <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
               <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
+                <span class="label label-primary pull-right">13</span>
               </span>
             </a>
-            <ul class="treeview-menu">
-              <li class=""><a href="../reports/report-concession.html"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-              <li><a href="../reports/report-feedback.html"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-              <li><a href="../reports/report-cases.html"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-              <li><a href="../reports/report-system-trail.html"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
-            </ul>
           </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-cog"></i> <span>Options</span>
+          <li><a href="../mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+          <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+          <a href="../reports/report.php">
+            <i class="fa fa-file-archive-o"></i> <span>Reports</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-              <ul class="treeview-menu">
-                  <li><a href="../options/admin-profile.html"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
-                  <li><a href="../options/admin-login-detail.html"><i class="fa fa-circle-o"></i> Admin Login  </a></li>
-              </ul>
-            </li>
-            <li class="treeview"><a href="../options/permission.html"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-              <ul class="treeview-menu">
-                  <li><a href="../options/permission-module.html"><i class="fa fa-circle-o"></i> Module Permission</a></li>
-                  <li><a href="../options/permission-admin.html"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
-              </ul>
-            </li>
-            <li><a href="../options/audit-trail.html"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
+            <li class=""><a href="../reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
+            <li><a href="../reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
+            <li><a href="../reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
+            <li><a href="../reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
           </ul>
         </li>
-        <li><a href="../documentation/documentation.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-        <li class="header">LABELS</li>
-        <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Danger</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Normal</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> <span>Information</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Success</span></a></li>
-          </ul>   
-        </li>
-        <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Mail</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Spam</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Junk</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Unread</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> <span>Read</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Sent</span></a></li>
-          </ul>   
-        </li>
-        <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Feedback/Task/Cases</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Urgent</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>New</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-orange"></i> <span>Due</span></a></li>
-          </ul>   
-        </li>
-        <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Calendar/Concession</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o text-orange"></i> <span>Due</span></a></li>
-          </ul>   
-        </li>
-      </ul>
-    </section>
-    <!-- /.sidebar -->
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-cog"></i> <span>Options</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+            <ul class="treeview-menu">
+                <li><a href="../options/admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
+                <li><a href="../options/admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login  </a></li>
+            </ul>
+          </li>
+          <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+            <ul class="treeview-menu">
+                <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
+                <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
+            </ul>
+          </li>
+          <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
+        </ul>
+      </li>
+      <li><a href="../documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+      <li class="header">LABELS</li>
+          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+            <ul class="treeview-menu">
+              <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Danger</span></a></li>
+              <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+              <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Normal</span></a></li>
+              <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> <span>Information</span></a></li>
+              <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Success</span></a></li>
+            </ul>   
+          </li>
+          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Mail</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+            <ul class="treeview-menu">
+              <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Spam</span></a></li>
+              <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Junk</span></a></li>
+              <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Unread</span></a></li>
+              <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> <span>Read</span></a></li>
+              <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Sent</span></a></li>
+            </ul>   
+          </li>
+          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Feedback/Task/Cases</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+            <ul class="treeview-menu">
+              <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+              <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Urgent</span></a></li>
+              <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>New</span></a></li>
+              <li><a href="#"><i class="fa fa-circle-o text-orange"></i> <span>Due</span></a></li>
+            </ul>   
+          </li>
+          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Calendar/Concession</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+            <ul class="treeview-menu">
+              <li><a href="#"><i class="fa fa-circle-o text-orange"></i> <span>Due</span></a></li>
+            </ul>   
+          </li>
+    </ul>
+  </section>
+  <!-- /.sidebar -->
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
@@ -402,12 +404,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Read Feedback
+        Feedbox
+        <small>All unread messages</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="./feedback.html">Feedbox</a></li>
-        <li class="active">Read Feedback</li>
+        <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="./feedback.php">Feedback</a></li>
+        <li class="active">Unread Feedback</li>
       </ol>
     </section>
 
@@ -415,9 +418,8 @@
     <section class="content">
       <div class="row">
         <div class="col-md-3">
-                <a href="./feedback.html" class="btn btn-primary btn-block ">Back to Dashboard</a>
-          <a href="./feedback.html" class="btn btn-primary btn-block margin-bottom">Back to Feedbox</a>
-
+        <a href="./feedback.php" class="btn btn-primary btn-block ">Back to Dashboard</a>
+        <a href="./feedback.php" class="btn btn-primary btn-block margin-bottom">Back to Feedbox</a>
           <div class="box box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Folders</h3>
@@ -428,14 +430,14 @@
               </div>
             </div>
             <div class="box-body no-padding">
-                    <ul class="nav nav-pills nav-stacked">
-                            <li><a href="./feedback.html"><i class="fa fa-inbox"></i> Feedbox
-                              <span class="label label-primary pull-right">12</span></a></li>
-                            <li><a href="./unread-feedback.html"><i class="fa fa-envelope"></i> Unread</a></li>
-                            <li><a href="./read-feedback.html"><i class="fa fa-envelope-open"></i> Read</a></li>
-                            <li><a href="./archive-feedback.html"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                            <li><a href="./trash-feedback.html"><i class="fa fa-trash""></i> Trash</a></li>
-                          </ul>
+                <ul class="nav nav-pills nav-stacked">
+                    <li ><a href="./feedback.php"><i class="fa fa-inbox"></i> Feedbox
+                      <span class="label label-primary pull-right">12</span></a></li>
+                    <li class="active"><a href="./unread-feedback.php"><i class="fa fa-envelope"></i> Unread</a></li>
+                    <li><a href="./read-feedback.php"><i class="fa fa-envelope-open"></i> Read</a></li>
+                    <li><a href="./archive-feedback.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
+                    <li><a href="./trash-feedback.php"><i class="fa fa-trash""></i> Trash</a></li>
+                  </ul>
             </div>
             <!-- /.box-body -->
           </div>
@@ -464,132 +466,97 @@
         <div class="col-md-9">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Read Feedback</h3>
+              <h3 class="box-title">Feedbox</h3>
 
               <div class="box-tools pull-right">
-                <a href="#" class="btn btn-box-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-chevron-left"></i></a>
-                <a href="#" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
+                <div class="has-feedback">
+                  <input type="text" class="form-control input-sm" placeholder="Search Feedback">
+                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
               </div>
+              <!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
-              <div class="mailbox-read-info">
-                <h3>Message Subject Is Placed Here</h3>
-                <h5>From: help@example.com
-                  <span class="mailbox-read-time pull-right">15 Feb. 2016 11:03 PM</span></h5>
-              </div>
-              <!-- /.mailbox-read-info -->
-              <div class="mailbox-controls with-border text-center">
+              <div class="mailbox-controls">
+                <!-- Check all button -->
+                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                </button>
                 <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
-                    <i class="fa fa-trash-o"></i></button>
-                  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
-                    <i class="fa fa-reply"></i></button>
-                  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Forward">
-                    <i class="fa fa-share"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
                 </div>
                 <!-- /.btn-group -->
-                <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Print">
-                  <i class="fa fa-print"></i></button>
+                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                <div class="pull-right">
+                  1-50/200
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                  </div>
+                  <!-- /.btn-group -->
+                </div>
+                <!-- /.pull-right -->
               </div>
-              <!-- /.mailbox-controls -->
-              <div class="mailbox-read-message">
-                <p>Hello John,</p>
-
-                <p>Keffiyeh blog actually fashion axe vegan, irony biodiesel. Cold-pressed hoodie chillwave put a bird
-                  on it aesthetic, bitters brunch meggings vegan iPhone. Dreamcatcher vegan scenester mlkshk. Ethical
-                  master cleanse Bushwick, occupy Thundercats banjo cliche ennui farm-to-table mlkshk fanny pack
-                  gluten-free. Marfa butcher vegan quinoa, bicycle rights disrupt tofu scenester chillwave 3 wolf moon
-                  asymmetrical taxidermy pour-over. Quinoa tote bag fashion axe, Godard disrupt migas church-key tofu
-                  blog locavore. Thundercats cronut polaroid Neutra tousled, meh food truck selfies narwhal American
-                  Apparel.</p>
-
-                <p>Raw denim McSweeney's bicycle rights, iPhone trust fund quinoa Neutra VHS kale chips vegan PBR&amp;B
-                  literally Thundercats +1. Forage tilde four dollar toast, banjo health goth paleo butcher. Four dollar
-                  toast Brooklyn pour-over American Apparel sustainable, lumbersexual listicle gluten-free health goth
-                  umami hoodie. Synth Echo Park bicycle rights DIY farm-to-table, retro kogi sriracha dreamcatcher PBR&amp;B
-                  flannel hashtag irony Wes Anderson. Lumbersexual Williamsburg Helvetica next level. Cold-pressed
-                  slow-carb pop-up normcore Thundercats Portland, cardigan literally meditation lumbersexual crucifix.
-                  Wayfarers raw denim paleo Bushwick, keytar Helvetica scenester keffiyeh 8-bit irony mumblecore
-                  whatever viral Truffaut.</p>
-
-                <p>Post-ironic shabby chic VHS, Marfa keytar flannel lomo try-hard keffiyeh cray. Actually fap fanny
-                  pack yr artisan trust fund. High Life dreamcatcher church-key gentrify. Tumblr stumptown four dollar
-                  toast vinyl, cold-pressed try-hard blog authentic keffiyeh Helvetica lo-fi tilde Intelligentsia. Lomo
-                  locavore salvia bespoke, twee fixie paleo cliche brunch Schlitz blog McSweeney's messenger bag swag
-                  slow-carb. Odd Future photo booth pork belly, you probably haven't heard of them actually tofu ennui
-                  keffiyeh lo-fi Truffaut health goth. Narwhal sustainable retro disrupt.</p>
-
-                <p>Skateboard artisan letterpress before they sold out High Life messenger bag. Bitters chambray
-                  leggings listicle, drinking vinegar chillwave synth. Fanny pack hoodie American Apparel twee. American
-                  Apparel PBR listicle, salvia aesthetic occupy sustainable Neutra kogi. Organic synth Tumblr viral
-                  plaid, shabby chic single-origin coffee Etsy 3 wolf moon slow-carb Schlitz roof party tousled squid
-                  vinyl. Readymade next level literally trust fund. Distillery master cleanse migas, Vice sriracha
-                  flannel chambray chia cronut.</p>
-
-                <p>Thanks,<br>Jane</p>
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                  <tbody>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th style="width:100px">Action</th>
+                    </tr>
+                    <?php
+                    $action = '
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                    </div>
+                    ';
+                    ?>
+                    <tr>
+                      <td><input type="checkbox"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td><?php echo $action ?></td>
+                    </tr>
+                  
+                  </tbody>
+                </table>
+                <!-- /.table -->
               </div>
-              <!-- /.mailbox-read-message -->
+              <!-- /.mail-box-messages -->
             </div>
             <!-- /.box-body -->
-            <div class="box-footer">
-              <ul class="mailbox-attachments clearfix">
-                <li>
-                  <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
-
-                  <div class="mailbox-attachment-info">
-                    <a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Sep2014-report.pdf</a>
-                        <span class="mailbox-attachment-size">
-                          1,245 KB
-                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-                        </span>
+            <div class="box-footer no-padding">
+              <div class="mailbox-controls">
+                <!-- Check all button -->
+                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                </button>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                </div>
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                <div class="pull-right">
+                  1-50/200
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
                   </div>
-                </li>
-                <li>
-                  <span class="mailbox-attachment-icon"><i class="fa fa-file-word-o"></i></span>
-
-                  <div class="mailbox-attachment-info">
-                    <a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> App Description.docx</a>
-                        <span class="mailbox-attachment-size">
-                          1,245 KB
-                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-                        </span>
-                  </div>
-                </li>
-                <li>
-                  <span class="mailbox-attachment-icon has-img"><img src="../../dist/img/photo1.png" alt="Attachment"></span>
-
-                  <div class="mailbox-attachment-info">
-                    <a href="#" class="mailbox-attachment-name"><i class="fa fa-camera"></i> photo1.png</a>
-                        <span class="mailbox-attachment-size">
-                          2.67 MB
-                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-                        </span>
-                  </div>
-                </li>
-                <li>
-                  <span class="mailbox-attachment-icon has-img"><img src="../../dist/img/photo2.png" alt="Attachment"></span>
-
-                  <div class="mailbox-attachment-info">
-                    <a href="#" class="mailbox-attachment-name"><i class="fa fa-camera"></i> photo2.png</a>
-                        <span class="mailbox-attachment-size">
-                          1.9 MB
-                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-                        </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <!-- /.box-footer -->
-            <div class="box-footer">
-              <div class="pull-right">
-                <button type="button" class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
-                <button type="button" class="btn btn-default"><i class="fa fa-share"></i> Forward</button>
+                  <!-- /.btn-group -->
+                </div>
+                <!-- /.pull-right -->
               </div>
-              <button type="button" class="btn btn-default"><i class="fa fa-trash-o"></i> Delete</button>
-              <button type="button" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
             </div>
-            <!-- /.box-footer -->
           </div>
           <!-- /. box -->
         </div>
@@ -600,13 +567,168 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+  <div class="modal modal-default fade" id = "viewModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">View Feedback</h3>
+        </div>
+        <div class="modal-body form-horizontal" >
+        <h4>Feedback Details</h4>
+          <hr>
+          <div class="form-group">
+            <label for="stallno" class="col-sm-3 control-label">Stall No</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="stallno" name="stallno" placeholder="Stall Number">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="stallarea" class="col-sm-3 control-label">Stall Area</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="stallarea" name="stallarea" placeholder="Stall Area">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="evaluation" class="col-sm-3 control-label">Evaluation</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="evaluation" name="evaluation" placeholder="Evaluation">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message" class="col-sm-3 control-label">Message</label>
+            <div class="col-sm-9">
+              <textarea name="message" id="message" class="form-control" rows="5" Placeholder="Feedback Message"></textarea>
+            </div>
+          </div>
+          <hr>
+          <h4>Questions</h4>
+          <div class="form-group">
+            <label for="question1" class="col-sm-3 control-label">Question 1</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question1" name="question1" placeholder="Question 1">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="question2" class="col-sm-3 control-label">Question 2</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question2" name="question2" placeholder="Question 2">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="question3" class="col-sm-3 control-label">Question 3</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question3" name="question3" placeholder="Question 3">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="question4" class="col-sm-3 control-label">Question 4</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question4" name="question4" placeholder="Question 4">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="question5" class="col-sm-3 control-label">Question 5</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question5" name="question5" placeholder="Question 5">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="question6" class="col-sm-3 control-label">Question 6</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question6" name="question6" placeholder="Question 6">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="question7" class="col-sm-3 control-label">Question 7</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="question7" name="question7" placeholder="Question 7">
+            </div>
+          </div>
+          <hr>
+          <h4>Sender Detail</h4>
+          <div class="form-group">
+            <label for="sendername" class="col-sm-3 control-label">Sender Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="sendername" name="sendername" placeholder="Sender Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="idno" class="col-sm-3 control-label">ID No</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="idno" name="idno" placeholder="ID Number">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">E-mail</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="email" name="email" placeholder="E-mail">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contactno" class="col-sm-3 control-label">Contact No</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="contactno" name="contactno" placeholder="Contact No">
+            </div>
+          </div>
+        </div>
+          <div class="modal-footer">
+            <button type="button" name="close"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
+            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="archiveModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.12
+      <b>Version</b> beta 1.0
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+    <strong>Copyright &copy;2019 <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
     reserved.
   </footer>
+
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
@@ -813,9 +935,11 @@
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
+<!-- iCheck -->
+<script src="../../plugins/iCheck/icheck.min.js"></script>
+<!-- Page Script -->
+<script src="../../dist/js/pages/unread-feedback.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- Page Script -->
-<script src="../../dist/js/pages/feedback-read.js"></script>
 </body>
 </html>

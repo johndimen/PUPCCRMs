@@ -370,8 +370,8 @@ $conn -> close();
             </a>
             <ul class="treeview-menu">
               <li><a href="./page/feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+              <li><a href="./page/feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="./page/feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
             </ul>
           </li>
         <li class="treeview">
@@ -384,8 +384,8 @@ $conn -> close();
           </a>
           <ul class="treeview-menu">
             <li><a href="./page/cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="./page/cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-            <li><a href="./page/cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="./page/cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
+            <li><a href="./page/cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -397,8 +397,8 @@ $conn -> close();
           </a>
           <ul class="treeview-menu">
             <li><a href="./page/task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="./page/task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-            <li><a href="./page/task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="./page/task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+            <li><a href="./page/task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">

@@ -252,8 +252,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -265,8 +265,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="./task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="./new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="./pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="./trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li class="active"><a href="./archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -368,7 +368,7 @@
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
-          <li class="treeview"><a href="../documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+          <li><a href="../documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
           <li class="header">LABELS</li>
           <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
@@ -443,7 +443,7 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li ><a href="./task.php"><i class="fa fa-th-large"></i> Taskbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./pending-task.php"><i class="fa fa-exclamation-circle"></i> Pending Task</a></li>
+                    <li><a href="./trash-task.php"><i class="fa fa-trash"></i> Trash</a></li>
                     <li class="active"><a href="./archive-task.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
@@ -476,7 +476,7 @@
             <div class="col-md-9">
                 <div class="box box-primary">
                   <div class="box-header with-border">
-                    <h3 class="box-title"><strong>Archived TaskBox</strong></h3>
+                    <h3 class="box-title"><strong>Archivebox</strong></h3>
                     <div class="box-tools pull-right">
                       <div class="has-feedback">
                         <input type="text" class="form-control input-sm" placeholder="Search Contact">
@@ -511,13 +511,31 @@
                       <table class="table table-hover table-striped">
                         <tbody>
                               <tr>
-                                <td style="width: 20px">Select</td>
-                                <td style="width: 150px">Name</td>
-                                <td style="width: 100px">Priority</td>
-                                <td style="width: 100px">Status</td>
-                                <td style="width: 150px">Duration</td>
-                                <td style="width: 120px">Case</td>
-                                <td style="width: 100px">Admin Name</td>
+                                <th style="width: 20px">Select</th>
+                                <th style="width: 150px">Name</th>
+                                <th style="width: 100px">Priority</th>
+                                <th style="width: 100px">Status</th>
+                                <th style="width: 150px">Duration</th>
+                                <th style="width: 120px">Case</th>
+                                <th style="width: 100px">Admin Name</th>
+                                <th>Action</th>
+                              </tr>
+                              <?php 
+                              $action = 
+                              '<div class="btn-group">
+                                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                              </div>
+                              ';
+                              ?>
+                              <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><?php echo $action ?></td>
                               </tr>
                         </tbody>
                       </table>
@@ -532,6 +550,113 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  
+  <div class="modal modal-default fade" id="viewModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="modal-body">
+            <h4>Task Details</h4>
+            <hr>
+            <div class="form-group">
+              <label for="editTaskName" class="col-sm-3 control-label">Task Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="editTaskName" name="editTaskname" placeholder="Task Name" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editCaseName" class="col-sm-3 control-label">Case Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="editCaseName" name="editCaseName" placeholder="Case Name" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editStatus" class="col-sm-3 control-label">Status</label>
+                <div class="col-sm-9">
+                  <input class="form-control"  id="editStatus" name="editStatus" placeholder="Status" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editPriority" class="col-sm-3 control-label">Priority</label>
+                <div class="col-sm-9">
+                  <input class="form-control"  id="editPriority" name="editPriority" placeholder="Priority" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editDateStart" class="col-sm-3 control-label">Date Start</label>
+                <div class="col-sm-9 input-group date" style="width: 72.8%;padding-left: 15px;">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="editDateStart" name="editDateStart" placeholder="mm/dd/yyyy" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="editDateDue" class="col-sm-3 control-label">Date Due</label>
+              <div class="col-sm-9 input-group date" style="width: 72.8%;padding-left: 15px;">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" id="editDateDue" name="editDateDue" placeholder="mm/dd/yyyy" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="editDescription" class="col-sm-3 control-label">Task Description</label>
+                <div class="col-sm-9">
+                  <textarea class="form-control" id="editDescription" name="editDescription" placeholder="Task Description" disabled></textarea>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Restore</button>
+            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="restoreModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Restore</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at Task folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">

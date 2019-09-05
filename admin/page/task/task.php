@@ -271,8 +271,8 @@ require_once('../dbconfig.php');
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -287,8 +287,8 @@ require_once('../dbconfig.php');
                 
               </span></a>
               </li>
-              <li><a href="./new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="./pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="./trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="./archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -401,7 +401,7 @@ require_once('../dbconfig.php');
               <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Success</span></a></li>
             </ul>   
           </li>
-          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Mail</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+          <li class=""><a class="../documentation/documentation.php"><i class="fa fa-circle-o text-white"></i> <span>Mail</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
               <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Spam</span></a></li>
               <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Junk</span></a></li>
@@ -466,7 +466,7 @@ require_once('../dbconfig.php');
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="./task.php"><i class="fa fa-th-large"></i> Taskbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./pending-task.php"><i class="fa fa-exclamation-circle"></i> Pending Task</a></li>
+                    <li><a href="./trash-task.php"><i class="fa fa-trash"></i> Trash</a></li>
                     <li><a href="./archive-task.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
@@ -539,20 +539,20 @@ require_once('../dbconfig.php');
                         <tbody>
                               <tr>
                                 <td style="width: 20px">Select</td>
-                                <td style="width: 100px">Action</td>
                                 <td style="width: 150px">Name</td>
                                 <td style="width: 70px">Priority</td>
                                 <td style="width: 70px">Status</td>
                                 <td style="width: 160px">Duration</td>
                                 <td style="width: 100px">Case</td>
                                 <td style="width: 100px">Admin Name</td>
+                                <td style="width: 100px">Action</td>
                               </tr>
                               <?php
                               $tablesql = "SELECT `CRM_Task_SerialNo`, `CRM_Task_Status_Type`, `CRM_Task_Assigned_UserName`, `CRM_Task_Priority_Type`, `CRM_Task_Name`, `CRM_Task_Case_Name`, `CRM_Start_Date`, `CRM_Due_Date`, `CRM_Task_Description` FROM `crm_tasklist`";
                               $tableresult = $conn->query($tablesql);
                               $action = '
                                           <div class="btn-group">
-                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
                                             
                                           </div>
                                 ';
@@ -586,13 +586,14 @@ require_once('../dbconfig.php');
                                 <td>
                                   <input type="checkbox" class="flat-red form-control" >
                                 </td>
-                                <td><?php echo $action ?></td>
+                                
                                 <td><?php echo $row['CRM_Task_Name']; ?></td>
                                 <td><?php echo $priority; ?></td>
                                 <td><?php echo $status; ?></td>
                                 <td><?php echo $row['CRM_Start_Date'].' ~ '.$row['CRM_Due_Date']; ?></td>
                                 <td><?php echo $row['CRM_Task_Case_Name']; ?></td>
                                 <td><?php echo $row['CRM_Task_Assigned_UserName']; ?></td>
+                                <td><?php echo $action ?></td>
                               </tr>
                                 <?php }
                               }else {
@@ -751,7 +752,8 @@ require_once('../dbconfig.php');
         </div>
         <form class="form-horizontal" action="" method="post">
           <div class="modal-body">
-          <div class="modal-body">
+            <h4>Task Details</h4>
+            <hr>
             <div class="form-group">
               <label for="editTaskName" class="col-sm-3 control-label">Task Name</label>
                 <div class="col-sm-9">
@@ -800,7 +802,6 @@ require_once('../dbconfig.php');
                   <textarea class="form-control" id="editDescription" name="editDescription" placeholder="Task Description" disabled></textarea>
                 </div>
             </div>
-          </div>
           </div>
           <div class="modal-footer">
             <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>

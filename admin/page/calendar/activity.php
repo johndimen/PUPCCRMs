@@ -252,8 +252,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash <span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -265,8 +265,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="./task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="./task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -368,7 +368,7 @@
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
-          <li class="treeview"><a href="../documentation/documentation.php "><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+          <li class=""><a href="../documentation/documentation.php "><i class="fa fa-book"></i> <span>Documentation</span></a></li>
           <li class="header">LABELS</li>
           <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
@@ -446,7 +446,7 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="./activity.php"><i class="fa fa-th-large"></i> Activitybox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./pending-activity.php"><i class="fa fa-exclamation-circle"></i> Pending Activity</a></li>
+                    <li><a href="./trash-activity.php"><i class="fa fa-trash"></i> Trash</a></li>
                     <li><a href="./activity-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>

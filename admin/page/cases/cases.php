@@ -260,8 +260,8 @@ require_once('../dbconfig.php');
             </a>
             <ul class="treeview-menu">
               <li class="active"><a href="./cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="./new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="./pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="./trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="./archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class= "label bg-green pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -273,8 +273,8 @@ require_once('../dbconfig.php');
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -376,7 +376,7 @@ require_once('../dbconfig.php');
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
-          <li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+          <li class=""><a href="../documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
           <li class="header">LABELS</li>
           <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
@@ -452,7 +452,7 @@ require_once('../dbconfig.php');
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="./cases.php"><i class="fa fa-th-large"></i> Casebox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./pending-cases.php"><i class="fa fa-exclamation-circle"></i> Pending Cases</a></li>
+                    <li><a href="./trash-cases.php"><i class="fa fa-trash"></i> trash</a></li>
                     <li><a href="./archive-cases.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
@@ -523,13 +523,12 @@ require_once('../dbconfig.php');
                         <tbody>
                               <tr>
                                 <td style="width: 10px">Select</td>
-                                <td style="width: 110px">Action</td>
                                 <td style="width: 150px">Name</td>
                                 <td style="width: 200px">Description</td>
                                 <td style="width: 100px">Type</td>
                                 <td style="width: 50px">Priority</td>
                                 <td style="width: 100px">Status</td>
-                                <td style="width: 130px">Admin Username</td>
+                                <td style="width: 110px">Action</td>
                               </tr>
                               <?php
                                 $tablesql = "SELECT `CRM_Case_Status_Type`, `CRM_Case_Priority_Type`, `CRM_Case_Type`, `CRM_Case_Login_Username`, `CRM_Case_Name`, `CRM_Case_Description` FROM `crm_caselist`"; 
@@ -565,13 +564,12 @@ require_once('../dbconfig.php');
                                     ?>
                                     <tr>
                                       <td><input type="checkbox" class="flat-red form-control" ></td>
-                                      <td><?php echo $action ?></td>
                                       <td><?php echo $row['CRM_Case_Name']; ?></td>
                                       <td><?php echo $row['CRM_Case_Description'];?></td>
                                       <td><?php echo $row['CRM_Case_Type'];?></td>
                                       <td><?php echo $priority;?></td>
                                       <td><?php echo $status;?></td>
-                                      <td><?php echo $row['CRM_Case_Login_Username'];?></td>
+                                      <td><?php echo $action ?></td>
                                     </tr>
                               <?php }
                               }else {
@@ -658,13 +656,6 @@ require_once('../dbconfig.php');
                 <textarea class="form-control" id="inputDescription" placeholder="Task Description"></textarea>
               </div>
             </div>
-            <div class="form-group">
-              <label for="inputAdminName" class="col-sm-2 control-label">Assigned Admin</label>
-        
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputAdminName" placeholder="Admin Name">
-              </div>
-            </div>
           </div>
           <div class="modal-footer">
             <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -682,6 +673,8 @@ require_once('../dbconfig.php');
           <h3 class="modal-title">View Case</h3>
         </div>
         <div class="modal-body form-horizontal" >
+          <h4>Case Details</h4>
+          <hr>
           <div class="form-group">
             <label for="viewCasename" class="col-sm-3 control-label">Case Name</label>
             <div class="col-sm-9">
@@ -706,13 +699,7 @@ require_once('../dbconfig.php');
             <div class="col-sm-9">
               <textarea class="form-control" id="viewDescription" name="viewDescription" placeholder="Task Description" disabled></textarea>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="viewAssigned" class="col-sm-3 control-label">Admin Assigned</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewAssigned" name="viewAssigned" placeholder="Assigned Admin" disabled>
-            </div>
-          </div>
+          </div>  
         </div>
           <div class="modal-footer">
             <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -727,7 +714,7 @@ require_once('../dbconfig.php');
 
   <div class="modal modal-default fade" id="editModal">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
           <h3 class="modal-title">Edit Cases</h3>
         </div>
@@ -755,12 +742,6 @@ require_once('../dbconfig.php');
             <label for="editDescription" class="col-sm-3 control-label">Case Description</label>
             <div class="col-sm-9">
               <textarea class="form-control" id="editDescription" name="editDescription" placeholder="Task Description" ></textarea>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="editAssigned" class="col-sm-3 control-label">Assigned Admin</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="editAssigned" name="editAssigned" placeholder="Assigned Admin">
             </div>
           </div>
         </div>

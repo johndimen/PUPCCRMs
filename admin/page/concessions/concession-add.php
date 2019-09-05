@@ -540,14 +540,14 @@ $inputError = '';
                                     </div>
                                     <div class="form-group">
                                       <label for="inputNumber" class="col-sm-2 control-label">Stall Number</label>
-                                      <div class="col-sm-10 <?php echo (!empty($inputNumError)) ? 'has-error' : ''; ?>">
+                                      <div class="col-sm-10">
                                         <input type="text" class="form-control" placeholder="Stall Number" name="inputNumber" id="inputNumber">
                                         <span class ="help-block text-red"><?php echo $inputNumError; ?></span>
                                       </div>
                                     </div>
                                       <div class="form-group">
                                         <label for="inputArea" class="col-sm-2 control-label">Stall Area</label>
-                                        <div class="col-sm-10" <?php echo (!empty($inputStallError)) ? 'has-error' : ''; ?>">
+                                        <div class="col-sm-10">
                                           <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
                                             <option value="" selected>Select Area</option>
                                             <option value="north">North</option>

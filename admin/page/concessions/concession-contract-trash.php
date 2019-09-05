@@ -252,8 +252,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -265,8 +265,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -472,12 +472,227 @@
               <!-- /.box -->
             </div>
             <!-- /.col -->
+              <div class="col-md-9">
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>Trashbox</strong></h3>
+                    <div class="box-tools pull-right">
+                      <div class="has-feedback">
+                        <input type="text" class="form-control input-sm" placeholder="Search Contact">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="box-body no-padding">
+                    <div class="mailbox-controls">
+                      <!-- Check all button -->
+                      <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
+                      </div>
+                      <!-- /.btn-group -->
+                      <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                      <div class="pull-right">
+                        1/1
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                        </div>
+                      <!-- /.btn-group -->
+                      </div>
+                      <!-- /.pull-right -->
+                    </div>
+   
+                    <div class="table-responsive mailbox-massages">
+                      <table class="table table-hover table-striped">
+                        <tbody>
+                          <tr>
+                            <td style="width: 20px">Select</td>
+                            <td style="width: 150px">Name</td>
+                            <td style="width: 150px">Stall Name</td>
+                            <td style="width: 100px">Function</td>
+                            <td style="width: 120px">Consignor</td>
+                            <td style="width: 120px">Consignee</td>
+                            <td style="width: 100px">Date Signed</td>
+                            <td>Contract Duration</td>
+                            <td>Action</td>
+                          </tr>
+                          <?php 
+                                $action = 
+                                '<div class="btn-group">
+                                  <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                               </div>
+                                ';
+                                ?>
+
+                                <tr>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td><?php echo $action ?></td>
+                                </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
       </div>
 
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+  <div class="modal modal-default fade" id = "viewModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body form-horizontal" >
+          <h4>Contract Details</h4>
+          <hr>
+          <div class="form-group">
+            <label for="viewcontractnumber" class ="col-sm-3 control-label">Contract Number</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewcontractnumber" name="viewcontractnumber" placeholder="Contract Number" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewcontractname" class ="col-sm-3 control-label">Contract Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewcontractname" name="viewcontractname" placeholder="Contract Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewstallname" class ="col-sm-3 control-label">Stall Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewstallname" name="viewstallname" placeholder="Stall Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewfunction" class ="col-sm-3 control-label">Function</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewfunction" name="viewfunction" placeholder="Function" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewcontractname" class ="col-sm-3 control-label">Consignee Name</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="viewconsigneefirstname" name="viewconsigneefirstname" placeholder="First Name" disabled>
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="viewconsigneemiddlename" name="viewconsigneemiddlename" placeholder="Middle Name" disabled>
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="viewconsigneelastname" name="viewconsigneelastname" placeholder="Last Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewconsigneesign" class ="col-sm-3 control-label">Consignee Signature</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewconsigneesign" name="viewconsigneesign" placeholder="Consignee Signature" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewcontractname" class ="col-sm-3 control-label">Consignor Name</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="viewconsignorfirstname" name="viewconsignorfirstname" placeholder="First Name" disabled>
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="viewconsignormiddlename" name="viewconsignormiddlename" placeholder="Middle Name" disabled>
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="viewconsignorlastname" name="viewconsignorlastname" placeholder="Last Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewconsignorsign" class ="col-sm-3 control-label">Consignor Signature</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewconsignorsign" name="viewconsignorsign" placeholder="Consignor Signature" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewstatus" class ="col-sm-3 control-label">Status</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewstatus" name="viewstatus" placeholder="Status" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewdescription" class ="col-sm-3 control-label">Description</label>
+            <div class="col-sm-9">
+              <textarea name="viewdescription" id="viewdescription" class="form-control" rows="5" placeholder="Description" disabled></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewdatesigned" class ="col-sm-3 control-label">Date Signed</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewdatesigned" name="viewdatesigned" placeholder="Date Signed" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewduration" class ="col-sm-3 control-label">Duration</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewduration" name="viewduration" placeholder="Duration" disabled>
+            </div>
+          </div>
+        </div>
+          <div class="modal-footer">
+            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Archive</button>
+            <button type="button" name="delete" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal modal-default fade" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Delete</h3>
+        </div>
+        <div class="modal-body">
+          <p>you want to thoroughly delete this?.  </p>
+          <P>Are you sure?</P>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="restoreModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at Archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">

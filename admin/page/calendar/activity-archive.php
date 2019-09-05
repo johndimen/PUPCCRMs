@@ -252,8 +252,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> trash <span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -265,8 +265,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="./task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash <span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="./task/archive-task.php"><i class="fa fa-circle-o"></i>Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -446,7 +446,7 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li><a href="./activity.php"><i class="fa fa-th-large"></i> Activitybox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./pending-activity.php"><i class="fa fa-exclamation-circle"></i> Pending Activity</a></li>
+                    <li><a href="./trash-activity.php"><i class="fa fa-trash"></i> Trash</a></li>
                     <li class="active"><a href="./activity-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
@@ -479,7 +479,7 @@
             <div class="col-md-9">
                 <div class="box box-primary">
                   <div class="box-header with-border">
-                    <h3 class="box-title"><strong>Archive ActivityBox</strong></h3>
+                    <h3 class="box-title"><strong>Archivebox</strong></h3>
                     <div class="box-tools pull-right">
                       <div class="has-feedback">
                         <input type="text" class="form-control input-sm" placeholder="Search Activity">
@@ -522,6 +522,23 @@
                                 <td style="width: 100px">Date End</td>
                                 <td style="width: 100px">Actions</td>
                               </tr>
+                              <?php 
+                              $action = 
+                              '<div class="btn-group">
+                                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                              </div>
+                              ';
+                              ?>
+
+                              <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><?php echo $action ?></td>
+                              </tr>
                         </tbody>
                       </table>
                     </div>
@@ -535,6 +552,122 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+    <div class="modal modal-default fade" id="viewModal">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:10px">
+          <div class="modal-header">
+            <h3 class="modal-title">View Archive</h3>
+          </div>
+          <form class="form-horizontal" action="" method="post">
+            <div class="modal-body">
+              <h4>Activity Details</h4>
+              <hr>
+              <div class="form-group">
+                <label for="viewActivityName" class="col-sm-3 control-label">Activity Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="viewActivityName" name="viewActivityName" placeholder="Activity Name" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="viewDateStart" class="col-sm-3 control-label">Date Start</label>
+                  <div class="col-sm-9 input-group date" style="width: 72.8%;padding-left: 15px;">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="date" class="form-control pull-right" id="viewDateStart" name="viewDateStart" disabled>
+                  </div>
+              </div>
+                <div class="form-group">
+                  <label for="viewDateEnd" class="col-sm-3 control-label">Date End</label>
+                    <div class="col-sm-9 input-group date" style="width: 72.8%;padding-left: 15px;">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="date" class="form-control pull-right" id="viewDateEnd" name="viewDateEnd" disabled>
+                    </div>
+                </div>
+              
+                  <div class="form-group">
+                    <label for="viewTimeStart" class="col-sm-3 control-label">Time Start:</label>
+  
+                    <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
+                      <input type="time" class="form-control notifTimePicker" id="viewTimeStart" name="viewTimeStart" disabled>
+  
+                      <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                      </div>
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+                  <!-- /.form group -->
+                  <div class="form-group">
+                    <label for="viewTimeEnd" class="col-sm-3 control-label">Time End:</label>
+  
+                    <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
+                      <input type="time" class="form-control notifTimePicker" id="viewTimeEnd" name="viewTimeEnd" disabled>
+  
+                      <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                      </div>
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+                  <!-- /.form group -->
+              <div class="form-group">
+                <label for="viewDescription" class="col-sm-3 control-label">Description</label>
+                  
+                <div class="col-sm-9">
+                  <textarea class="form-control" id="viewDescription" name="viewDescription" placeholder="Description" disabled></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" name="viewClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+              <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Archive</button>
+              <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="restoreModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Restore</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at Activity folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">

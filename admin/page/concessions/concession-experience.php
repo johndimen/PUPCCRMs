@@ -252,8 +252,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -265,8 +265,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -430,7 +430,7 @@
               <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
               <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
               
-              <a href="#" class="btn btn-primary btn-block margin-bottom ">Add Experience</a>
+              <a data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-block margin-bottom ">Add Experience</a>
                   
               <div class="box box-solid">
                 <div class="box-header with-border">
@@ -510,12 +510,25 @@
                       <table class="table table-hover table-striped">
                         <tbody>
                           <tr>
-                            <td style="width: 20px">Select</td>
-                            <td style="width: 200px">Concession Name</td>
-                            <td>Place</td>
-                            <td>Year Started</td>
-                            <td>Year Ended</td>
-                            <td style="width: 150px">Action</td>
+                            <th style="width: 20px">Select</th>
+                            <th style="width: 200px">Concession Name</th>
+                            <th>Place</th>
+                            <th>Year Started</th>
+                            <th>Year Ended</th>
+                            <th style="width: 150px">Action</th>
+                          </tr>
+                          <?php
+                          $action = '<div class="btn-group">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewModal">View</button>
+                          </div>';
+                          ?>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><?php echo $action ?></td>
                           </tr>
                         </tbody>
                       </table>
@@ -528,6 +541,153 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+  <div class="modal modal-default fade" id="addModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Add Concession Experience</h3>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="modal-body">
+            <h4>Concession Experience Details</h4>
+            <hr>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="xpplace">Place</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" names="xpplace" id="xpplace" placeholder="Place">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="xpdatestart">Date Start</label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" names="xpdatestart" id="xpdatestart" placeholder="Date Started">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="xpdateend">Date Ended</label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" names="xpdateend" id="xpdateend" placeholder="Date Ended">
+              </div>
+            </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" name="inputSubmit" class="btn btn-success">Submit</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- view modal -->
+  <div class="modal modal-default fade"  id="viewModal">
+    <div class="modal-dialog" role = "document">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-edit"></span>Concession Experience</h4>
+        </div>
+        <form class="form-horizontal" method="post" id="viewCons">
+          <div class="modal-body">
+            <h4>Concession Experience Details</h4>
+            <hr>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="xpplace">Place</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" names="xpplace" id="xpplace" placeholder="Place" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="xpdatestart">Date Start</label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" names="xpdatestart" id="xpdatestart" placeholder="Date Started" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="xpdateend">Date Ended</label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" names="xpdateend" id="xpdateend" placeholder="Date Ended" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
+            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+            <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+
+  <div class="modal modal-default fade" id="editModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Edit Concession Experience</h3>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="modal-body">
+            <h4>Concession Experience Details</h4>
+            <hr>
+
+          </div>
+        <div class="modal-footer">
+          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" name="inputSubmit" class="btn btn-success">Submit</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="archiveModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">

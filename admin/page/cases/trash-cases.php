@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Pending Cases</title>
+  <title>PUPCCRMs | Trash Cases</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -252,8 +252,8 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="./cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="./new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-                <li class="active"><a href="./pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+                <li class="active"><a href="./trash-cases.php"><i class="fa fa-circle-o"></i> Trash <span class= "label bg-green pull-right">4</span></a></li>
+                <li><a href="./archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -265,8 +265,8 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-                <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+                <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash <span class="label bg-green pull-right">4</span></a></li>
+                <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -368,7 +368,7 @@
                 <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
               </ul>
             </li>
-            <li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+            <li class=""><a href="../documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             <li class="header">LABELS</li>
             <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
@@ -414,12 +414,12 @@
     <section class="content-header">
             <h1>
               Cases
-              <small>Pending Cases</small>
+              <small>Trash Cases</small>
             </h1>
             <ol class="breadcrumb">
               <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
               <li ><a href="./cases.php">Cases</a></li>
-              <li class="active" >Pending Case</li>
+              <li class="active" >Trash Case</li>
             </ol>
     </section>
 
@@ -430,7 +430,7 @@
             <div class="col-md-3">
                 <div class="">
                     <a href="../../index.php" class="btn btn-primary btn-block margin-bottom">Back to Dashboard</a>
-                    <a href="./cases.php" class="btn btn-primary btn-block margin-bottom">Back to Cases</a>
+                    
                 </div>
                 <div class="box box-solid">
                   <div class="box-header with-border">
@@ -445,7 +445,7 @@
                     <ul class="nav nav-pills nav-stacked">
                       <li ><a href="./cases.php"><i class="fa fa-th-large"></i> Casebox
                         <span class="label label-primary pull-right">12</span></a></li>
-                      <li class="active"><a href="./pending-cases.php"><i class="fa fa-exclamation-circle"></i> Pending Cases</a></li>
+                      <li class="active"><a href="./trash-cases.php"><i class="fa fa-trash"></i> Trash</a></li>
                       <li><a href="./archive-cases.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                     </ul>
                   </div>
@@ -477,7 +477,7 @@
                 <div class="col-md-9">
                   <div class="box box-primary">
                     <div class="box-header with-border">
-                      <h3 class="box-title"><strong>Pending CaseBox</strong></h3>
+                      <h3 class="box-title"><strong>Trashbox</strong></h3>
                       <div class="box-tools pull-right">
                         <div class="has-feedback">
                           <input type="text" class="form-control input-sm" placeholder="Search Cases">
@@ -518,7 +518,24 @@
                                   <td style="width: 100px">Type</td>
                                   <td style="width: 50px">Priority</td>
                                   <td style="width: 100px">Status</td>
-                                  <td style="width: 130px">Admin Name</td>
+                                  <td style="width: 130px">Action</td>
+                                </tr>
+                                <?php 
+                                $action = 
+                                '<div class="btn-group">
+                                  <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                               </div>
+                                ';
+                                ?>
+
+                                <tr>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td><?php echo $action ?></td>
                                 </tr>
                           </tbody>
                         </table>
@@ -533,6 +550,86 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <div class="modal modal-default fade" id = "viewModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">View Case</h3>
+        </div>
+        <div class="modal-body form-horizontal" >
+          <h4>Case Details</h4>
+          <hr>
+          <div class="form-group">
+            <label for="viewCasename" class="col-sm-3 control-label">Case Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewCasename" name="viewCasename" placeholder="Case Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="casetype" class="col-sm-3 control-label">Case Type</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewCasetype" name="viewCasetype" placeholder="Case Type" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewPriority" class="col-sm-3 control-label">Priority</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewPriority" name="viewPriority" placeholder="Priority" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewDescription" class="col-sm-3 control-label">Case Description</label>
+      
+            <div class="col-sm-9">
+              <textarea class="form-control" id="viewDescription" name="viewDescription" placeholder="Task Description" disabled></textarea>
+            </div>
+          </div>  
+        </div>
+          <div class="modal-footer">
+            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Archive</button>
+            <button type="button" name="delete" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Delete</h3>
+        </div>
+        <div class="modal-body">
+          <p>you want to thoroughly delete this?.  </p>
+          <P>Are you sure?</P>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="restoreModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at Archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">

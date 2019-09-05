@@ -272,8 +272,8 @@ $result = mysqli_query($conn,$sql1);
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i>Trash <span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -285,8 +285,8 @@ $result = mysqli_query($conn,$sql1);
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -449,7 +449,7 @@ $result = mysqli_query($conn,$sql1);
           <div class="col-md-3">
               <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
               
-              <a href="./concession-add.php" class="btn btn-primary btn-block margin-bottom">Add Concession</a>
+              <a data-toggle="modal" data-target="#addConcession" class="btn btn-primary btn-block margin-bottom">Add Concession</a>
                  
               <div class="box box-solid">
                 <div class="box-header with-border">
@@ -541,22 +541,18 @@ $result = mysqli_query($conn,$sql1);
                               </tr>
                               <tr>
                               <?php
+                              $action = '<div class="btn-group">
+                                    <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewConcession" id="viewConcessionModalBtn">View</button>
+                                  </div>';
+                              $profile ='<div class="btn-group">
+                                    <a type="button" class="btn btn-info " href="./concession-profile.php" id="viewProfileBtn">Profile</a>
+                                  </div>';
+
                               while($r = mysqli_fetch_assoc($result)){
                               ?>
-                                <td> <input type="checkbox" class = "checkbox icheck" style="padding-left:20px; padding-top: 30px"></td>
+                                <td><?php echo $profile ?></td>
                                 <td>
-                                  <div class="btn-group">
-                                    <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewConcession" id="viewConcessionModalBtn">View</button>
-                                      <button type="button" class="btn btn-info btn-flat dropdown-toggle" style="height: 34px" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Actions</span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                      <li><a href="#" id = "editConcession">Edit</a></li>
-                                      <li><a href="#">Archive</a></li>
-                                      <li><a href="#">Trash</a></li>
-                                    </ul>
-                                  </div>
+                                  <?php echo $action; ?>
                                 </td>
                                 <td><?php echo $r['CRM_Concession_Profile_SerialNo'] ?></td>
                                 <td><?php echo $r['CRM_Concession_Stall_Number'] ?></td>
@@ -578,35 +574,245 @@ $result = mysqli_query($conn,$sql1);
   </div>
   <!-- /.content-wrapper -->
 
+  <div class="modal modal-default fade" id="addConcession">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Add Concession</h3>
+        </div>
+        <form class ="form-horizontal" action="" method="post">
+          <div class="modal-body">
+            <h4>Concession Details</h4>
+            <hr>
+            <div class="form-group">
+                                      <label for="inputConcessionNumber" class="col-sm-2 control-label">Concession Number</label>
+                                      <div class="col-sm-10">
+                                      <input type="text" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputNumber" class="col-sm-2 control-label">Stall Number</label>
+                                      <div class="col-sm-10">
+                                        <input type="text" class="form-control" placeholder="Stall Number" name="inputNumber" id="inputNumber">
+                                        
+                                      </div>
+                                    </div>
+                                      <div class="form-group">
+                                        <label for="inputArea" class="col-sm-2 control-label">Stall Area</label>
+                                        <div class="col-sm-10">
+                                          <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
+                                            <option value="" selected>Select Area</option>
+                                            <option value="north">North</option>
+                                            <option value="west">West</option>
+                                            <option value="south">South</option>
+                                            <option value="east">East</option>
+                                            <option value="sampaguita">sampaguita</option>
+                                            <option value="lagoon">Lagoon</option>
+                                            <option value="other">Other</option>
+                                          </select>
+                                          
+                                        </div>
+                                      </div>
+                                      <!-- /.form-group -->
+                                    <div class="form-group">
+                                      <label for="inputConcessionName" class="col-sm-2 control-label">Concession Name</label>
+                  
+                                      <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" >
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputOwnerName" class="col-sm-2 control-label">Owner's Name</label>
+                  
+                                      <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="inputOwnerName" id="inputOwnerName" placeholder="Owner's Name">
+                                      </div>
+                                    </div>
+                                      <div class="form-group">
+                                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                    
+                                        <div class="col-sm-10">
+                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="inputFunction" class="col-sm-2 control-label">Function</label>
+                                        <div class="col-sm-10">
+                                          <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction">
+                                            <option value = ""selected="">Select Function</option>
+                                            <option value="food">Food</option>
+                                            <option value="nonfood">Non-Food</option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                    <div class="form-group">
+                                      <label for="inputAddress" class="col-sm-2 control-label">Address</label>
+                  
+                                      <div class="col-sm-10">
+                                        <textarea class="form-control" name="inputAddress" id="inputAddress" placeholder="Address" ></textarea>
+                                      </div>
+                                    </div>
+                                      <div class="form-group">
+                                        <label for="inputDateApplied" class="col-sm-2 control-label">Date Applied</label>
+                                          <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
+                                            <div class="input-group-addon">
+                                              <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="date" class="form-control pull-right" name="inputDateApplied" id="inputDateApplied" placeholder="mm/dd/yyyy">
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="inputRemarks" class="col-sm-2 control-label">Remarks</label>
+                    
+                                        <div class="col-sm-10">
+                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" placeholder="Remarks" ></textarea>
+                                        </div>
+                                      </div> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- view modal -->
-  <div class="modal fade" tabindex="-1" role="dialog" id="viewConcession">
+  <div class="modal modal-default fade"  id="viewConcession">
     <div class="modal-dialog" role = "document">
-      <div class="modal-content">
+      <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-                <h4 class="modal-title"><span class="glyphicon glyphicon-edit"></span>Concession Info</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-edit"></span>Concession Info</h4>
         </div>
-        <form class="form-horizontal" style="padding: 30px" method="post" id="viewCons">
+        <form class="form-horizontal" method="post" id="viewCons">
             <div class="modal-body">
               <div class="view-messages"></div>
+              <h4>Concession Details</h4>
+              <hr>
               <div class="form-group">
-                <label for="viewConcessionNumber" class="col-sm-2 control-label">Concession Number</label>
-                <div class="col-sm-10">
+                <label for="viewConcessionNumber" class="col-sm-3 control-label">Concession Number</label>
+                <div class="col-sm-9">
                   <input type="text" class="form-control" placeholder="Concession Number" name="viewConcessionNumber" id="viewConcessionNumber" disabled>
                 </div>
               </div>
               <div class="form-group">
-                <label for="viewNumber" class="col-sm-2 control-label">Stall Number</label>
-                <div class="col-sm-10 ">
+                <label for="viewNumber" class="col-sm-3 control-label">Stall Number</label>
+                <div class="col-sm-9 ">
+                  <input type="text" class="form-control" placeholder="Stall Number" name="viewNumber" id="viewNumber" disabled>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewArea" class="col-sm-3 control-label">Stall Area</label>
+                <div class="col-sm-9">
+                  <input type="text" name="viewArea" id="viewArea" class="form-control" placeholder="Concession Area" disabled>
+                  </select>
+                </div>
+              </div>
+              <!-- /.form-group -->
+              <div class="form-group">
+                  <label for="viewConcessionName" class="col-sm-3 control-label">Concession Name</label>
+                  
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" name="viewConcessionName" id="viewConcessionName" placeholder="Concession Name" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewOwnerName" class="col-sm-3 control-label">Owner's Name</label>
+                  
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" name="viewOwnerName" id="viewOwnerName" placeholder="Owner's Name" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewEmail" class="col-sm-3 control-label">Email</label>
+                    
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" name="viewEmail" id="viewEmail" placeholder="Email" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewFunction" class="col-sm-3 control-label">Function</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" name="viewFunction" id="viewFunction" placeholder="Function" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewStatus" class="col-sm-3 control-label">Status</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" name="viewStatus" id="viewStatus" placeholder="Status" disabled>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewAddress" class="col-sm-3 control-label">Address</label>
+                  
+                <div class="col-sm-9">
+                  <textarea class="form-control" name="viewAddress" id="viewAddress" placeholder="Address" disabled></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="viewDateApplied" class="col-sm-3 control-label">Date Applied</label>
+                <div class="col-sm-9 input-group date" style="width: 72.4%;padding-left: 15px;">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" name="viewDateApplied" id="viewDateApplied" placeholder="mm/dd/yyyy" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="viewRemarks" class="col-sm-3 control-label">Remarks</label>
+                    
+                <div class="col-sm-9">
+                  <textarea class="form-control" name="viewRemarks" id="viewRemarks" placeholder="Remarks" disabled></textarea>
+                </div>
+              </div>
+            </div>
+          <div class="modal-footer">
+            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
+            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+            <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+
+  <div class="modal modal-default fade" id="editModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Edit Cases</h3>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+        <div class="modal-body">
+            <h4>Concession Details</h4>
+              <hr>
+              <div class="form-group">
+                <label for="viewConcessionNumber" class="col-sm-3 control-label">Concession Number</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" placeholder="Concession Number" name="viewConcessionNumber" id="viewConcessionNumber" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="viewNumber" class="col-sm-3 control-label">Stall Number</label>
+                <div class="col-sm-9 ">
                   <input type="text" class="form-control" placeholder="Stall Number" name="viewNumber" id="viewNumber">
                   
                 </div>
               </div>
               <div class="form-group">
-                  <label for="viewArea" class="col-sm-2 control-label">Stall Area</label>
-                <div class="col-sm-10">
+                  <label for="viewArea" class="col-sm-3 control-label">Stall Area</label>
+                <div class="col-sm-9">
                   <select class="form-control select2" style="width: 100%;" name="viewStallArea" id="viewStallArea" >
                     <option value="" selected>Select Area</option>
                     <option value="north">North</option>
@@ -621,29 +827,29 @@ $result = mysqli_query($conn,$sql1);
               </div>
               <!-- /.form-group -->
               <div class="form-group">
-                  <label for="viewConcessionName" class="col-sm-2 control-label">Concession Name</label>
+                  <label for="viewConcessionName" class="col-sm-3 control-label">Concession Name</label>
                   
-                <div class="col-sm-10">
+                <div class="col-sm-9">
                   <input type="text" class="form-control" name="viewConcessionName" id="viewConcessionName" placeholder="Concession Name" >
                 </div>
               </div>
               <div class="form-group">
-                  <label for="viewOwnerName" class="col-sm-2 control-label">Owner's Name</label>
+                  <label for="viewOwnerName" class="col-sm-3 control-label">Owner's Name</label>
                   
-                <div class="col-sm-10">
+                <div class="col-sm-9">
                   <input type="text" class="form-control" name="viewOwnerName" id="viewOwnerName" placeholder="Owner's Name">
                 </div>
               </div>
               <div class="form-group">
-                  <label for="viewEmail" class="col-sm-2 control-label">Email</label>
+                  <label for="viewEmail" class="col-sm-3 control-label">Email</label>
                     
-                <div class="col-sm-10">
+                <div class="col-sm-9">
                   <input type="email" class="form-control" name="viewEmail" id="viewEmail" placeholder="Email" >
                 </div>
               </div>
               <div class="form-group">
-                  <label for="viewFunction" class="col-sm-2 control-label">Function</label>
-                <div class="col-sm-10">
+                  <label for="viewFunction" class="col-sm-3 control-label">Function</label>
+                <div class="col-sm-9">
                   <select class="form-control select2" style="width: 100%;" name="viewFunction" id="viewFunction">
                     <option value = ""selected="">Select Function</option>
                     <option value="food">Food</option>
@@ -652,8 +858,8 @@ $result = mysqli_query($conn,$sql1);
                 </div>
               </div>
               <div class="form-group">
-                  <label for="viewStatus" class="col-sm-2 control-label">Status</label>
-                <div class="col-sm-10">
+                  <label for="viewStatus" class="col-sm-3 control-label">Status</label>
+                <div class="col-sm-9">
                   <select class="form-control select2" style="width: 100%;" name="viewStatus" id="viewStatus">
                     <option value = ""selected="">Select Status</option>
                     <option value="active">Active</option>
@@ -663,15 +869,15 @@ $result = mysqli_query($conn,$sql1);
                 </div>
               </div>
               <div class="form-group">
-                  <label for="viewAddress" class="col-sm-2 control-label">Address</label>
+                  <label for="viewAddress" class="col-sm-3 control-label">Address</label>
                   
-                <div class="col-sm-10">
+                <div class="col-sm-9">
                   <textarea class="form-control" name="viewAddress" id="viewAddress" placeholder="Address" ></textarea>
                 </div>
               </div>
               <div class="form-group">
-                <label for="viewDateApplied" class="col-sm-2 control-label">Date Applied</label>
-                <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
+                <label for="viewDateApplied" class="col-sm-3 control-label">Date Applied</label>
+                <div class="col-sm-9 input-group date" style="width: 72.4%;padding-left: 15px;">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
@@ -679,25 +885,57 @@ $result = mysqli_query($conn,$sql1);
                 </div>
               </div>
               <div class="form-group">
-                  <label for="viewRemarks" class="col-sm-2 control-label">Remarks</label>
+                  <label for="viewRemarks" class="col-sm-3 control-label">Remarks</label>
                     
-                <div class="col-sm-10">
+                <div class="col-sm-9">
                   <textarea class="form-control" name="viewRemarks" id="viewRemarks" placeholder="Remarks" ></textarea>
                 </div>
               </div>
-            </div>
-          
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" name="inputSubmit" class="btn btn-success">Submit</button>
+        </div>
         </form>
       </div>
-      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
   </div>
-  <!-- /.modal -->
+
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="archiveModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <footer class="main-footer">

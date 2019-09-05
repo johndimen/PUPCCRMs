@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Documentation</title>
+  <title>PUPCCRMs | Activity </title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -253,7 +253,7 @@
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
               <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -266,7 +266,7 @@
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
               <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="./task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -283,7 +283,7 @@
                     <li><a href="../concessions/concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
                     <li><a href="../concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
                     <li><a href="../concessions/concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
-                    <li><a href="../concessions/concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                    <li><a href="../concessions/concession-item.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                     <li><a href="../concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                     <li><a href="../concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
                     <li><a href="../concessions/concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
@@ -292,16 +292,16 @@
               <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
-          <li class="treeview">
-            <a href="../calendar/calendar.php">
+          <li class="treeview active">
+            <a href="./calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
               <span class="pull-right-container">
                 <small class="label pull-right label-info">17</small>
               </span>
             </a>
             <ul class="treeview-menu">
-                <li>
-                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
+                <li class="active">
+                  <a href="./activity.php"><i class="fa fa-circle-o"></i> Activity 
                     <span class="pull-right-container">
                       <small class="label pull-right label-warning"> 3</small> 
                       <small class="label pull-right bg-blue"> 14</small> 
@@ -368,7 +368,7 @@
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
-          <li class="treeview active"><a href="./documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+          <li class="treeview"><a href="../documentation/documentation.php "><i class="fa fa-book"></i> <span>Documentation</span></a></li>
           <li class="header">LABELS</li>
           <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
@@ -413,12 +413,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          Documentation
-          <small>All system documentation</small>
+          Activity
+          <small>All activity within this month</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active"><a href="#">Documentation</a></li>
+          <li><a href="./calendar.php">Calendar</a></li>
+          <li class="active"><a href="#">Activity</a></li>
         </ol>
       </section>
 
@@ -427,7 +428,11 @@
 
       <div class="row">
           <div class="col-md-3">
-              <a href="../../index.php" class="btn btn-primary btn-block margin-bottom">Back to Dashboard</a>
+              <a href="../../index.php" class="btn btn-primary btn-block ">Back to Dashboard</a>
+              <a href="./calendar.php" class="btn btn-primary btn-block margin-bottom">Back to Calendar</a>
+              
+              <a href="./activity-new.php" class="btn btn-primary btn-block margin-bottom">Add Activity</a>
+              
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Folders</h3>
@@ -439,15 +444,10 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li><a href=""><i class="fa fa-book"></i> Introduction</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Feedback</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Task</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Case</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Concession</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Calendar</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Mail</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Reports</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Options</a></li>
+                    <li><a href="./activity.php"><i class="fa fa-th-large"></i> Activitybox
+                      <span class="label label-primary pull-right">12</span></a></li>
+                    <li class="active"><a href="./trash-activity.php"><i class="fa fa-trash"></i> Trash</a></li>
+                    <li><a href="./activity-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -464,9 +464,10 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> Notice</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-green"></i> Note</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Information</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> Urgent</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-green"></i> New</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Pending</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Due</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -474,12 +475,198 @@
               <!-- /.box -->
             </div>
             <!-- /.col -->
+            <div class="col-md-9">
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>Trashbox</strong></h3>
+                    <div class="box-tools pull-right">
+                      <div class="has-feedback">
+                        <input type="text" class="form-control input-sm" placeholder="Search Contact">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="box-body no-padding">
+                    <div class="mailbox-controls">
+                      <!-- Check all button -->
+                      <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
+                      </div>
+                      <!-- /.btn-group -->
+                      <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                      <div class="pull-right">
+                        1/1
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                        </div>
+                      <!-- /.btn-group -->
+                      </div>
+                      <!-- /.pull-right -->
+                    </div>
+   
+                    <div class="table-responsive mailbox-massages">
+                      <table class="table table-hover table-striped">
+                        <tbody>
+                            <tr>
+                                <td style="width: 20px">Select</td>
+                                <td style="width: 150px">Activity Name</td>
+                                <td style="width: 200px">Description</td>
+                                <td style="width: 150px">Task Name</td>
+                                <td style="width: 100px">Date Start</td>
+                                <td style="width: 100px">Date End</td>
+                                <td style="width: 100px">Actions</td>
+                              </tr>
+                              <?php 
+                              $action = 
+                              '<div class="btn-group">
+                                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                              </div>
+                              ';
+                              ?>
+
+                              <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><?php echo $action ?></td>
+                              </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
       </div>
 
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+    <div class="modal modal-default fade" id="viewModal">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:10px">
+          <div class="modal-header">
+            <h3 class="modal-title">View Archive</h3>
+          </div>
+          <form class="form-horizontal" action="" method="post">
+            <div class="modal-body">
+              <h4>Activity Details</h4>
+              <hr>
+              <div class="form-group">
+                <label for="viewActivityName" class="col-sm-3 control-label">Activity Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="viewActivityName" name="viewActivityName" placeholder="Activity Name" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="viewDateStart" class="col-sm-3 control-label">Date Start</label>
+                  <div class="col-sm-9 input-group date" style="width: 72.8%;padding-left: 15px;">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="date" class="form-control pull-right" id="viewDateStart" name="viewDateStart" disabled>
+                  </div>
+              </div>
+                <div class="form-group">
+                  <label for="viewDateEnd" class="col-sm-3 control-label">Date End</label>
+                    <div class="col-sm-9 input-group date" style="width: 72.8%;padding-left: 15px;">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="date" class="form-control pull-right" id="viewDateEnd" name="viewDateEnd" disabled>
+                    </div>
+                </div>
+              
+                  <div class="form-group">
+                    <label for="viewTimeStart" class="col-sm-3 control-label">Time Start:</label>
+  
+                    <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
+                      <input type="time" class="form-control notifTimePicker" id="viewTimeStart" name="viewTimeStart" disabled>
+  
+                      <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                      </div>
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+                  <!-- /.form group -->
+                  <div class="form-group">
+                    <label for="viewTimeEnd" class="col-sm-3 control-label">Time End:</label>
+  
+                    <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
+                      <input type="time" class="form-control notifTimePicker" id="viewTimeEnd" name="viewTimeEnd" disabled>
+  
+                      <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                      </div>
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+                  <!-- /.form group -->
+              <div class="form-group">
+                <label for="viewDescription" class="col-sm-3 control-label">Description</label>
+                  
+                <div class="col-sm-9">
+                  <textarea class="form-control" id="viewDescription" name="viewDescription" placeholder="Description" disabled></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" name="viewClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+              <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Archive</button>
+              <button type="button" name="delete" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  <div class="modal modal-default fade" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Delete</h3>
+        </div>
+        <div class="modal-body">
+          <p>you want to thoroughly delete this?.  </p>
+          <P>Are you sure?</P>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="restoreModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at Archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -699,7 +886,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page Script -->
-<script src="../../dist/js/pages/documentation.js"></script>
+<script src="../../dist/js/pages/pending-activity.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()

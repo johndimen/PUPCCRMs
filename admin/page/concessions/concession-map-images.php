@@ -252,8 +252,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i>Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -265,8 +265,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -430,7 +430,7 @@
               <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
               <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
               
-              <a href="./concession-images-new.php" class="btn btn-primary btn-block margin-bottom">Add Image</a>
+              <a data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-block margin-bottom">Add Image</a>
                  
               <div class="box box-solid">
                 <div class="box-header with-border">
@@ -512,10 +512,26 @@
                         <tbody>
                           <tr>
                             <td style="width: 20px">Select</td>
+                            <td>Concession Name</td>
                             <td style="width: 200px">Thumbnail</td>
-                            <td style="width: 350px">Description</td>
+                            <td style="width: 250px">Description</td>
                             <td>Date Uploaded</td>
-                            <td style="width: 150px">Action</td>
+                            <td style="width: 70px">Action</td>
+                          </tr>
+                          <?php 
+                          $action = '
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-info  " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button> 
+                              </div>
+                            ';
+                            ?>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><?php echo $action ?></td>
                           </tr>
                         </tbody>
                       </table>
@@ -528,6 +544,156 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  
+  <div class="modal modal-default fade" id="addModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title"><strong>Add Concession Map/Images</strong></h4>
+        </div>
+      <form class="form-horizontal" action="" method="post">
+        <div class="modal-body ">
+          <h4>Map/Image Upload</h4>
+          <hr>
+              <div class="nav-tabs-custom" id="image_tab">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#map" data-toggle="tab">Map</a></li>
+                            <li><a href="#image" data-toggle="tab">Image</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="map"> 
+                                <div class="box box-solid">
+                                    <div class="box-header with-striped">
+                                        <h3 class="box-title"><strong>Map</strong></h3>
+                                    </div>
+    
+                                    
+                                    <div class="box-body form-group" >
+                                        <div  style="padding-left: 10px">
+                                            <label for="name" class="control-label">Concession Name</label>
+                                            <select class="form-control" id="name" name="name" >
+                                              <option value=""selected>Select Concession</option>
+                                            </select>
+                                            <label class="control-label" for="mapInputFile">Map Input</label>
+                                            <input type="file" id="mapInputFile">
+                                            <p class="help-block">Input Concession Map Here</p>
+                                            <label for="mapInputFileDesc" class="control-label">Description</label>
+                                            <textarea name="mapInputFileDesc" style="padding:10px" id="mapInputFileDesc" class ="form-control" rows="5"></textarea>
+                                            <hr>
+                                            <button type="button"  class="btn btn-primary" name="mapUploadFile" id="mapUploadFile">Upload</button>
+                                        </div>
+                                        <hr>
+                                        <div class="box-body">
+                                        Map here.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="tab-pane" id="image">
+                                <div class="box box-solid">
+                                    <div class="box-header with-striped">
+                                        <h3 class="box-title"><strong>Image</strong></h3>
+                                    </div>
+                                    
+                                    <div class="box-body form-group" >
+                                        <div  style="padding-left: 10px">
+                                            <label for="name" class="control-label">Concession Name</label>
+                                            <select class="form-control" id="name" name="name" >
+                                              <option value=""selected>Select Concession</option>
+                                            </select>
+                                            <label class="control-label" for="imageInputFile">Image Input</label>
+                                            <input type="file" id="imageInputFile">
+                                            <p class="help-block">Input Concession Images Here</p>
+                                            <label for="imageInputFileDesc" class="control-label">Description</label>
+                                            <textarea name="imageInputFileDesc" style="padding:10px" id="imageInputFileDesc" class ="form-control" rows="5"></textarea>
+                                            <hr>
+                                            <button class="btn btn-primary" id="imageUploadFile">Upload</button>
+                                        </div>
+                                        <hr>
+                                        <div class="box-body">
+                                            Image here.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" name="inputSubmit" class="btn btn-primary">Done</button>
+        </div>
+      </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+  <div class="modal fade" id="viewModal">
+          <div class="modal-dialog">
+            <div class="modal-content" style="border-radius:10px">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">View Concession Map/Images</h4>
+              </div>
+                <div class="modal-body form-horizontal ">
+                <h4>Map/Images Details</h4>
+                <hr>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                  <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
+                  <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+                  <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="archiveModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">

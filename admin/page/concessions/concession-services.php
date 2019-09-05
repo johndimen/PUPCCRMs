@@ -287,8 +287,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -300,8 +300,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -464,7 +464,7 @@
           <div class="col-md-3">
               <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
               <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
-              <button type="button" class="btn btn-primary btn-block margin-bottom" data-toggle="modal" data-target="#addServices">
+              <button type="button" class="btn btn-primary btn-block margin-bottom" data-toggle="modal" data-target="#addModal">
                 Add Service
               </button>
 
@@ -546,35 +546,29 @@
                       <table class="table table-hover table-striped">
                         <tbody>
                           <tr>
-                            <th style="width: 100px">Action</th>
                             <th style="width: 200px">Concession Name</th>
                             <th>Service Name</th>
                             <th>Price</th>
                             <th>Description</th>
+                            <th style="width: 100px">Action</th>
                           </tr>
+                          
                             <?php
+                            $action = '
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewModal">View</button>
+                          </div>
+                          ';
                             $range = " ~ ";
                               while($r = mysqli_fetch_assoc($result)){
                             ?>
                           <tr>
-                            <td>
-                              <div class="btn-group">
-                                  <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewService" id="#viewServiceBtn">View</button>
-                                    <button type="button" class="btn btn-info btn-flat dropdown-toggle" style="height: 34px" data-toggle="dropdown">
-                                  <span class="caret"></span>
-                                  <span class="sr-only">Actions</span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                  <li><a href="#">Edit</a></li>
-                                  <li><a href="#">Archive</a></li>
-                                  <li><a href="#">Trash</a></li>
-                                </ul>
-                              </div>
-                            </td>
+                           
                             <td><?php echo $r['CRM_Service_Concession_Name']; ?></td>
                             <td><?php echo $r['CRM_Concession_Services_Name']; ?></td>
                             <td><?php echo $r['CRM_Concession_Services_Price_Range_Lower'].$range.$r['CRM_Concession_Services_Price_Range_Higher']; ?></td>
                             <td><?php echo $r['CRM_Concession_Services_Desc']; ?></td>
+                            <td> <?php echo $action ?></td>
                           </tr>
                           <?php } ?>
 
@@ -590,7 +584,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <div class="modal modal-default fade" id="addServices">
+  <div class="modal modal-default fade" id="addModal">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -600,10 +594,12 @@
         </div>
       <form class="form-horizontal" action="" method="post">
         <div class="modal-body ">
+            <h4>Services Details</h4>
+            <hr>
             <div class="form-group">
-              <label for="inputProfile" class="col-sm-2 control-label">Profile Name</label>
+              <label for="inputProfile" class="col-sm-3 control-label">Profile Name</label>
         
-              <div class="col-sm-10">
+              <div class="col-sm-9">
               <select class="form-control select2" style="width: 100%;" name="inputProfile" id="inputProfile">
                   <option value="" selected>Select Profile</option>
                   <option value= "" disabled>'Serial No' = 'Concession Name'</option>
@@ -617,26 +613,28 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="inputServiceName" class="col-sm-2 control-label">Service Name</label>
+              <label for="inputServiceName" class="col-sm-3 control-label">Service Name</label>
         
-                <div class="col-sm-10">
+                <div class="col-sm-9">
                   <input type="text" class="form-control" id="inputServiceName" name="inputServiceName" placeholder="Service Name">
                 </div>
             </div>
             <div class="form-group">
-              <label for="inputServicePrice" class="col-sm-2 control-label">Price</label>
-        
-                <div class="col-sm-10">
+              <label for="inputServicePrice" class="col-sm-3 control-label">Price</label>
+              <div class="row">
+                <div class="col-sm-3">
                   <input type="text" class="form-control" id="inputServicePriceLower" name="inputServicePriceLower" placeholder="Price (lower)">
                 </div>
-                <div class="col-sm-10" style="padding-left:115px; padding-top: 5px; width:100%">
+                <div class="col-sm-2"><span><center>~</center> </span></div>
+                <div class="col-sm-3">
                   <input type="text" class="form-control" id="inputServicePriceHigher" name="inputServicePriceHigher" placeholder="Price (Higher)">
                 </div>
+              </div>
             </div>
             <div class="form-group">
-              <label for="inputServiceDesc" class="col-sm-2 control-label">Description</label>
+              <label for="inputServiceDesc" class="col-sm-3 control-label">Description</label>
         
-                <div class="col-sm-10">
+                <div class="col-sm-9">
                   <input type="text" class="form-control" id="inputServiceDesc" name="inputServiceDesc" placeholder="Description">
                 </div>
             </div>
@@ -653,58 +651,163 @@
   </div>
   <!-- /.modal -->
 
-  <div class="modal fade" id="viewService">
+  <div class="modal fade" id="viewModal">
           <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius:10px">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">View</h4>
+                <h4 class="modal-title">View Concession Service</h4>
               </div>
-              <form class="form-horizontal" action="" method="">
-       
-                <div class="modal-body ">
+                <div class="modal-body form-horizontal ">
+                  <h4>Service Detail</h4>
+                  <hr>
                   <div class="form-group">
-                    <label for="inputProfileName" class="col-sm-2 control-label">Profile Name</label>
+                    <label for="inputProfileName" class="col-sm-3 control-label">Profile Name</label>
                         
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputProfileName" name="inputProfileName" placeholder="Profile Name" value="<?php echo $conName?>">
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="inputProfileName" name="inputProfileName" placeholder="Profile Name" disabled>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputServiceName" class="col-sm-2 control-label">Service Name</label>
+                    <label for="inputServiceName" class="col-sm-3 control-label">Service Name</label>
         
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputServiceName" name="inputServiceName" placeholder="Service Name" value="<?php echo $servName ?>">
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputServiceName" name="inputServiceName" placeholder="Service Name" disabled>
                       </div>
                   </div>
-                  <div class="form-group">
-                    <label for="inputServicePrice" class="col-sm-2 control-label">Price</label>
-        
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputServicePrice" name="inputServicePrice" placeholder="Price " value="<?php echo $priceLow.$s1.$priceHigh ?>">
+                    <div class="form-group">
+                      <label for="inputServicePrice" class="col-sm-3 control-label">Price</label>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <input type="text" class="form-control" id="inputServicePriceLower" name="inputServicePriceLower" placeholder="Price (lower)" disabled>
+                        </div>
+                        <div class="col-sm-2"><span><center>~</center> </span></div>
+                        <div class="col-sm-3">
+                          <input type="text" class="form-control" id="inputServicePriceHigher" name="inputServicePriceHigher" placeholder="Price (Higher)" disabled>
+                        </div>
                       </div>
-                  </div>
+                    </div>
                   <div class="form-group">
-                    <label for="inputServiceDesc" class="col-sm-2 control-label">Description</label>
+                    <label for="inputServiceDesc" class="col-sm-3 control-label">Description</label>
         
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputServiceDesc" name="inputServiceDesc" placeholder="Description" value="<?php echo $servDesc ?>">
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputServiceDesc" name="inputServiceDesc" placeholder="Description" disabled>
                       </div>
                   </div>
                 </div>
-                
                 <div class="modal-footer">
                   <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                  <button type="button" name="inputSubmit" class="btn btn-primary">Submit</button>
+                  <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
+                  <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+                  <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
                 </div>
-                   
-              </form>
             </div>
             <!-- /.modal-content -->
           </div>
           <!-- /.modal-dialog -->
         </div>
+
+        
+  <div class="modal modal-default fade" id="editModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Edit Concession Services</h3>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="modal-body">
+            <h4>Services Details</h4>
+            <hr>
+            <div class="form-group">
+              <label for="inputProfile" class="col-sm-3 control-label">Profile Name</label>
+        
+              <div class="col-sm-9">
+              <select class="form-control select2" style="width: 100%;" name="inputProfile" id="inputProfile">
+                  <option value="" selected>Select Profile</option>
+                  <option value= "" disabled>'Serial No' = 'Concession Name'</option>
+                    <?php
+                      $s = " = ";
+                      while($r = mysqli_fetch_assoc($result1)){
+                    ?>
+                  <option value="<?php echo $r['CRM_Concession_Name']; ?>" > <?php echo $r['CRM_Concession_Profile_SerialNo'].$s.$r['CRM_Concession_Name']; ?></option>
+                <?php } ?>
+              </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputServiceName" class="col-sm-3 control-label">Service Name</label>
+        
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="inputServiceName" name="inputServiceName" placeholder="Service Name">
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="inputServicePrice" class="col-sm-3 control-label">Price</label>
+              <div class="row">
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" id="inputServicePriceLower" name="inputServicePriceLower" placeholder="Price (lower)">
+                </div>
+                <div class="col-sm-2"><span><center>~</center> </span></div>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" id="inputServicePriceHigher" name="inputServicePriceHigher" placeholder="Price (Higher)">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputServiceDesc" class="col-sm-3 control-label">Description</label>
+        
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="inputServiceDesc" name="inputServiceDesc" placeholder="Description">
+                </div>
+            </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" name="inputSubmit" class="btn btn-success">Submit</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="archiveModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">

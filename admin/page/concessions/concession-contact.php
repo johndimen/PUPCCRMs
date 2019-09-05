@@ -212,7 +212,7 @@ require_once('../dbconfig.php')
           <div class="input-group">
             <input type="text" name="q" class="form-control" placeholder="Search...">
             <span class="input-group-btn">
-                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                  <button type="submit" name="search" id="search-btn" class="btn  "><i class="fa fa-search"></i>
                   </button>
                 </span>
           </div>
@@ -257,8 +257,8 @@ require_once('../dbconfig.php')
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -270,8 +270,8 @@ require_once('../dbconfig.php')
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -515,27 +515,18 @@ require_once('../dbconfig.php')
                       <table class="table table-hover table-striped" id = "contacttable">
                         <tbody>
                           <tr>
-                            <th style="width: 150px">Action</th>
                             <th style="width: 200px">Concession Name</th>
                             <th>Contact</th>
                             <th>Type</th>
                             <th>Status</th>
+                            <th style="width: 150px">Action</th>
                           </tr>
                           <?php
                             $tablesql = "SELECT  `CRM_Contact_Profile_Name`, `CRM_Concession_Contact_Type`, `CRM_Concession_Contact_Detail`, `CRM_Concession_Contact_Status`, `CRM_Contact_Date_Added` FROM `crm_concession_contact`";
                             $result = $conn->query($tablesql);
                             $action = '
                                           <div class="btn-group">
-                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#viewService" id="#viewServiceBtn">View</button>
-                                            <button type="button" class="btn btn-info btn-flat dropdown-toggle" style="height: 34px" data-toggle="dropdown">
-                                              <span class="caret"></span>
-                                              <span class="sr-only">Actions</span>
-                                            </button>
-                                              <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Edit</a></li>
-                                                <li><a href="#">Archive</a></li>
-                                                <li><a href="#">Trash</a></li>
-                                              </ul>
+                                            <button type="button" class="btn btn-info  " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button> 
                                           </div>
                             ';
                             
@@ -555,13 +546,13 @@ require_once('../dbconfig.php')
 
                               ?>
                                       <tr>
-                                        <td>
-                                          <?php echo $action; ?>
-                                        </td>
                                         <td> <?php echo $row['CRM_Contact_Profile_Name'];?> </td>
                                         <td> <?php echo $row['CRM_Concession_Contact_Detail']; ?></td>
                                         <td> <?php echo $row['CRM_Concession_Contact_Type']; ?></td>
                                         <td> <?php echo $status; ?></td>
+                                        <td>
+                                          <?php echo $action; ?>
+                                        </td>
                                       </tr>
                             <?php }
                             }else {
@@ -582,7 +573,7 @@ require_once('../dbconfig.php')
 
   <div class="modal modal-default fade" id="addContact">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
@@ -590,17 +581,16 @@ require_once('../dbconfig.php')
         </div>
       <form class="form-horizontal" action="" method="post">
         <div class="modal-body ">
-        <form class="form-horizontal" method="post">
                           <div class="form-group">
-                            <label for="inputContactNumber" class="col-sm-2 control-label">Contact Number</label>
+                            <label for="inputContactNumber" class=" col-sm-3 control-label">Contact Number</label>
         
-                            <div class="col-sm-10">
+                            <div class=" col-sm-9">
                               <input type="text" class="form-control" id="inputContactNumber" name="inputContactNumber" placeholder="Contact Number">
                             </div>
                           </div>
                             <div class="form-group">
-                              <label for="inputProfile" class="col-sm-2 control-label">Profile</label>
-                              <div class="col-sm-10">
+                              <label for="inputProfile" class=" col-sm-3 control-label">Profile</label>
+                              <div class=" col-sm-9">
                                 <select class="form-control select2" style="width: 100%;" name="inputProfile" id="inputProfile">
                                   <option value="" selected>Select Profile</option>
                                   <option value= "" disabled>'Serial No' = 'Concession Name'</option>
@@ -622,8 +612,8 @@ require_once('../dbconfig.php')
                               </div>
                             </div>
                             <div class="form-group">
-                              <label for="inputType" class="col-sm-2 control-label">Contact Type</label>
-                              <div class="col-sm-10">
+                              <label for="inputType" class=" col-sm-3 control-label">Contact Type</label>
+                              <div class=" col-sm-9">
                                 <select class="form-control select2" style="width: 100%;" name="inputContactType">
                                   <option value="" selected>Select Contact Type</option>
                                   <option value="email">Email</option>
@@ -632,9 +622,9 @@ require_once('../dbconfig.php')
                               </div>
                             </div>
                               <div class="form-group">
-                                <label for="inputContactDetail" class="col-sm-2 control-label">Contact Detail</label>
+                                <label for="inputContactDetail" class=" col-sm-3 control-label">Contact Detail</label>
             
-                                <div class="col-sm-10">
+                                <div class=" col-sm-9">
                                   <input type="text" class="form-control" id="inputContactDetail" name="inputContactDetail" placeholder="Contact Detail">
                                 </div>
                               </div>
@@ -650,6 +640,160 @@ require_once('../dbconfig.php')
     <!-- /.modal-dialog -->
   </div>
   <!-- /.modal -->
+
+  <div class="modal fade" id="viewModal">
+          <div class="modal-dialog">
+            <div class="modal-content" style="border-radius:10px">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">View Concession Contact</h4>
+              </div>
+                <div class="modal-body form-horizontal ">
+                <h4>Contact Details</h4>
+                <hr>
+                <div class="form-group">
+                            <label for=" viewContactNumber" class=" col-sm-3 control-label">Contact Number</label>
+        
+                            <div class=" col-sm-9">
+                              <input type="text" class="form-control" id=" viewContactNumber" name=" viewContactNumber" placeholder="Contact Number" disabled>
+                            </div>
+                          </div>
+                            <div class="form-group">
+                              <label for=" viewProfile" class=" col-sm-3 control-label">Profile</label>
+                              <div class=" col-sm-9">
+                                <input type="text" class="form-control" name="viewProfile" id="viewProfile" placeholder="Profile" disabled>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for=" viewType" class=" col-sm-3 control-label">Contact Type</label>
+                              <div class=" col-sm-9">
+                                <input type="text" class="form-control" name="viewType" id="viewType" placeholder="Type" disabled>
+                              </div>
+                            </div>
+                              <div class="form-group">
+                                <label for=" viewContactDetail" class=" col-sm-3 control-label">Contact Detail</label>
+            
+                                <div class=" col-sm-9">
+                                  <input type="text" class="form-control" id="inputContactDetail" name="inputContactDetail" placeholder="Contact Detail" disabled>
+                                </div>
+                              </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                  <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
+                  <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+                  <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+
+        
+  <div class="modal modal-default fade" id="editModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Edit Concession Contact</h3>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="modal-body">
+          <h4>Contact Details</h4>
+          <hr>
+          <div class="form-group">
+                            <label for="inputContactNumber" class=" col-sm-3 control-label">Contact Number</label>
+        
+                            <div class=" col-sm-9">
+                              <input type="text" class="form-control" id="inputContactNumber" name="inputContactNumber" placeholder="Contact Number" disabled>
+                            </div>
+                          </div>
+                            <div class="form-group">
+                              <label for="inputProfile" class=" col-sm-3 control-label">Profile</label>
+                              <div class=" col-sm-9">
+                                <select class="form-control select2" style="width: 100%;" name="inputProfile" id="inputProfile">
+                                  <option value="" selected>Select Profile</option>
+                                  <option value= "" disabled>'Serial No' = 'Concession Name'</option>
+                                  <?php
+                                  
+                                  $profilesql = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Name` FROM `crm_concession_profile`";
+                                  $s = " = ";
+                                  $result1 = $conn->query($profilesql);
+                                  if($result1->num_rows > 0){
+                                    while($r = $result1->fetch_assoc()){
+                                    ?>
+                                      <option value="<?php echo $r['CRM_Concession_Name']; ?>" > <?php echo $r['CRM_Concession_Profile_SerialNo'].$s.$r['CRM_Concession_Name']; ?></option>
+                                  <?php  }
+                                  }else {
+                                    echo "<option disabled>No Data Available</option>";
+                                  }
+                                  ?>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="inputType" class=" col-sm-3 control-label">Contact Type</label>
+                              <div class=" col-sm-9">
+                                <select class="form-control select2" style="width: 100%;" name="inputContactType">
+                                  <option value="" selected>Select Contact Type</option>
+                                  <option value="email">Email</option>
+                                  <option value="number">Number</option>
+                                </select>
+                              </div>
+                            </div>
+                              <div class="form-group">
+                                <label for="inputContactDetail" class=" col-sm-3 control-label">Contact Detail</label>
+            
+                                <div class=" col-sm-9">
+                                  <input type="text" class="form-control" id="inputContactDetail" name="inputContactDetail" placeholder="Contact Detail">
+                                </div>
+                              </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" name="inputSubmit" class="btn btn-success">Submit</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="archiveModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">

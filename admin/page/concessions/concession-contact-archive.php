@@ -252,8 +252,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i>Trash<span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i>Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -265,8 +265,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -430,8 +430,6 @@
               <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
               <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
               
-              <a href="./concession-contact-new.php" class="btn btn-primary btn-block margin-bottom">Add Contact</a>
-                  
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Folders</h3>
@@ -511,12 +509,27 @@
                       <table class="table table-hover table-striped">
                         <tbody>
                           <tr>
-                            <td style="width: 20px">Select</td>
-                            <td style="width: 200px">Concession Name</td>
-                            <td>Contact</td>
-                            <td>Type</td>
-                            <td>Status</td>
-                            <td style="width: 150px">Action</td>
+                            <th style="width: 20px">Select</th>
+                            <th style="width: 200px">Concession Name</th>
+                            <th>Contact</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th style="width: 150px">Action</th>
+                          </tr>
+                          <?php 
+                          $action = '
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-info  " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button> 
+                              </div>
+                            ';
+                            ?>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><?php echo $action ?></td>
                           </tr>
                         </tbody>
                       </table>
@@ -529,6 +542,93 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  
+
+  <div class="modal fade" id="viewModal">
+          <div class="modal-dialog">
+            <div class="modal-content" style="border-radius:10px">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">View Concession Contact</h4>
+              </div>
+                <div class="modal-body form-horizontal ">
+                <h4>Contact Details</h4>
+                <hr>
+                <div class="form-group">
+                            <label for=" viewContactNumber" class=" col-sm-3 control-label">Contact Number</label>
+        
+                            <div class=" col-sm-9">
+                              <input type="text" class="form-control" id=" viewContactNumber" name=" viewContactNumber" placeholder="Contact Number" disabled>
+                            </div>
+                          </div>
+                            <div class="form-group">
+                              <label for=" viewProfile" class=" col-sm-3 control-label">Profile</label>
+                              <div class=" col-sm-9">
+                                <input type="text" class="form-control" name="viewProfile" id="viewProfile" placeholder="Profile" disabled>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for=" viewType" class=" col-sm-3 control-label">Contact Type</label>
+                              <div class=" col-sm-9">
+                                <input type="text" class="form-control" name="viewType" id="viewType" placeholder="Type" disabled>
+                              </div>
+                            </div>
+                              <div class="form-group">
+                                <label for=" viewContactDetail" class=" col-sm-3 control-label">Contact Detail</label>
+            
+                                <div class=" col-sm-9">
+                                  <input type="text" class="form-control" id="inputContactDetail" name="inputContactDetail" placeholder="Contact Detail" disabled>
+                                </div>
+                              </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                  <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Restore</button>
+                  <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+
+        
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="restoreModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Restore</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at Contactbox folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">

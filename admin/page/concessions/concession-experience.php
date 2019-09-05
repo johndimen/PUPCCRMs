@@ -640,7 +640,24 @@
           <div class="modal-body">
             <h4>Concession Experience Details</h4>
             <hr>
-
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="xpplace">Place</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" names="xpplace" id="xpplace" placeholder="Place">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="xpdatestart">Date Start</label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" names="xpdatestart" id="xpdatestart" placeholder="Date Started">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="xpdateend">Date Ended</label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" names="xpdateend" id="xpdateend" placeholder="Date Ended">
+              </div>
+            </div>
           </div>
         <div class="modal-footer">
           <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>

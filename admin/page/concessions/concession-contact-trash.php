@@ -519,6 +519,21 @@
                             <td>Status</td>
                             <td style="width: 150px">Action</td>
                           </tr>
+                          <?php 
+                          $action = '
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-info  " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button> 
+                              </div>
+                            ';
+                            ?>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><?php echo $action ?></td>
+                          </tr>
                         </tbody>
                       </table>
                     </div>
@@ -530,6 +545,92 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+    
+
+  <div class="modal modal-default fade" id="viewModal">
+          <div class="modal-dialog">
+            <div class="modal-content" style="border-radius:10px">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">View Concession Contact</h4>
+              </div>
+                <div class="modal-body form-horizontal ">
+                <h4>Contact Details</h4>
+                <hr>
+                <div class="form-group">
+                            <label for=" viewContactNumber" class=" col-sm-3 control-label">Contact Number</label>
+        
+                            <div class=" col-sm-9">
+                              <input type="text" class="form-control" id=" viewContactNumber" name=" viewContactNumber" placeholder="Contact Number" disabled>
+                            </div>
+                          </div>
+                            <div class="form-group">
+                              <label for=" viewProfile" class=" col-sm-3 control-label">Profile</label>
+                              <div class=" col-sm-9">
+                                <input type="text" class="form-control" name="viewProfile" id="viewProfile" placeholder="Profile" disabled>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for=" viewType" class=" col-sm-3 control-label">Contact Type</label>
+                              <div class=" col-sm-9">
+                                <input type="text" class="form-control" name="viewType" id="viewType" placeholder="Type" disabled>
+                              </div>
+                            </div>
+                              <div class="form-group">
+                                <label for=" viewContactDetail" class=" col-sm-3 control-label">Contact Detail</label>
+            
+                                <div class=" col-sm-9">
+                                  <input type="text" class="form-control" id="inputContactDetail" name="inputContactDetail" placeholder="Contact Detail" disabled>
+                                </div>
+                              </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                  <button type="button" name="success" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Restore</button>
+                  <button type="button" name="delete" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Trash</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+  
+   <div class="modal modal-default fade" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Delete</h3>
+        </div>
+        <div class="modal-body">
+          <p>you want to thoroughly delete this?.  </p>
+          <P>Are you sure?</P>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal modal-default fade" id="restoreModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at Archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">

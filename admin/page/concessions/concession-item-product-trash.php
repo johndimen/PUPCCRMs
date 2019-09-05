@@ -1,4 +1,4 @@
-  <?php
+<?php
   session_start();
   include('../dbconfig.php');
   //We need to use sessions, so you should always start sessions using the below code.
@@ -449,8 +449,6 @@
                 <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
                 <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
                 
-                <a data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-block margin-bottom">Add Item</a>
-                    
                 <div class="box box-solid">
                   <div class="box-header with-border">
                     <h3 class="box-title">Folders</h3>
@@ -462,9 +460,9 @@
                   </div>
                   <div class="box-body no-padding">
                     <ul class="nav nav-pills nav-stacked">
-                      <li class="active"><a href="./concession-item-product.php"><i class="fa fa-th-large"></i> Itembox</a></li>
+                      <li><a href="./concession-item-product.php"><i class="fa fa-th-large"></i> Itembox</a></li>
                       <li><a href="./concession-item-product-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                      <li><a href="./concession-item-product-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
+                      <li class="active"><a href="./concession-item-product-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                     </ul>
                   </div>
                   <!-- /.box-body -->
@@ -517,6 +515,7 @@
                                       <table class="table table-striped">
                                           <tbody>
                                               <tr>
+                                                  
                                                   <th style="width: 20px">Number</th>
                                                   <th style="width: 200px">Profile Name</th>
                                                   <th style="width: 200px">Item Name</th>
@@ -531,6 +530,7 @@
                                               while($food = mysqli_fetch_assoc($foodresult)){
                                               ?>
                                               <tr>
+                                                
                                                 <td><?php echo $food['CRM_Concession_Item_SerialNo']; ?></td>
                                                 <td><?php echo $food['CRM_Concession_Item_Profile_Name']; ?></td>
                                                 <td><?php echo $food['CRM_Concession_Item_Name']; ?></td>
@@ -576,6 +576,7 @@
                                                 while($nonfood = mysqli_fetch_assoc($nonfoodresult)){
                                               ?>
                                               <tr>
+                                                
                                                 <td><?php echo $nonfood['CRM_Concession_Item_SerialNo']; ?></td>
                                                 <td><?php echo $nonfood['CRM_Concession_Item_Profile_Name']; ?></td>
                                                 <td><?php echo $nonfood['CRM_Concession_Item_Name']; ?></td>
@@ -616,11 +617,12 @@
                                               </tr>
                                               <?php
                                               $action = '<div class="btn-group">
-                                              <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="viewModalBtn">View</button>
-                                            </div>';
+                                                    <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="viewModalBtn">View</button>
+                                                  </div>';
                                                 while($other = mysqli_fetch_assoc($otherresult)){
                                               ?>
                                               <tr>
+                                                
                                                 <td><?php echo $other['CRM_Concession_Item_SerialNo']; ?></td>
                                                 <td><?php echo $other['CRM_Concession_Item_Profile_Name']; ?></td>
                                                 <td><?php echo $other['CRM_Concession_Item_Name']; ?></td>
@@ -645,88 +647,8 @@
     </div>
     <!-- /.content-wrapper -->
     
-  <div class="modal modal-default fade" id="addModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="border-radius:10px">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><strong>Add Items/Products</strong></h4>
-        </div>
-      <form class="form-horizontal" action="" method="post">
-        <div class="modal-body ">
-            <h4>Items/Product Details</h4>
-            <hr>
-            <div class="form-group">
-                                <label for="inputItemNumber" class="col-sm-3 control-label">Item Number</label>
-        
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputItemNumber" name="inputItemNumber" placeholder="Item Number">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputProfile" class="col-sm-3 control-label">Profile Name</label>
-        
-                                <div class="col-sm-9">
-                                    <select class="form-control select2" style="width: 100%;" name="inputProfile" id="inputProfile">
-                                        <option value="" selected>Select Profile</option>
-                                        <option value= "" disabled>'Serial No' = 'Concession Name'</option>
-                                        <?php
-                                            $s = " = ";
-                                            while($r = mysqli_fetch_assoc($result)){
-                                        ?>
-                                        <option value="<?php echo $r['CRM_Concession_Name']; ?>" > <?php echo $r['CRM_Concession_Profile_SerialNo'].$s.$r['CRM_Concession_Name']; ?></option>
-                                        <?php } ?>
-                                </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItemName" class="col-sm-3 control-label">Item Name</label>
-        
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputItemName" name="inputItemName" placeholder="Item Name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItemType" class="col-sm-3 control-label">Item Type</label>
-                                <div class="col-sm-9">
-                                    <select class="form-control select2" style="width: 100%;" name="inputItemType" id="inputItemType">
-                                        <option value = ""selected="">Select Type</option>
-                                        <option value="food">Food</option>
-                                        <option value="non-food">Non-Food</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItemPrice" class="col-sm-3 control-label">Item Price</label>
-        
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputItemPrice" name="inputItemPrice" placeholder="Item Price">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItemDesc" class="col-sm-3 control-label">Item Description</label>
-        
-                                <div class="col-sm-9">
-                                    <textarea type="text" class="form-control" id="inputItemDesc" name="inputItemDesc" placeholder="Item Description"></textarea>
-                                </div>
-                            </div>
-            
-        </div>
-        <div class="modal-footer">
-          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button type="button" name="inputSubmit" class="btn btn-primary">Submit</button>
-        </div>
-      </form>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
 
-  <div class="modal fade" id="viewModal">
+  <div class="modal modal-default fade" id="viewModal">
           <div class="modal-dialog">
             <div class="modal-content" style="border-radius:10px">
               <div class="modal-header">
@@ -735,9 +657,9 @@
                 <h4 class="modal-title">View Concession Items/Products</h4>
               </div>
                 <div class="modal-body form-horizontal ">
-                <h4>Items/Product Details</h4>
-            <hr>
-            <div class="form-group">
+                <h4>Item/Product Details</h4>
+                <hr>
+                        <div class="form-group">
                                 <label for="viewItemNumber" class="col-sm-3 control-label">Item Number</label>
         
                                 <div class="col-sm-9">
@@ -778,106 +700,27 @@
                                     <textarea type="text" class="form-control" id="viewItemDesc" name="viewItemDesc" placeholder="Item Description" disabled></textarea>
                                 </div>
                             </div>
-            
                 </div>
                 <div class="modal-footer">
                   <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                  <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
-                  <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
-                  <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+                  <button type="button" name="success" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Restore</button>
+                  <button type="button" name="delete" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Trash</button>
                 </div>
             </div>
             <!-- /.modal-content -->
           </div>
           <!-- /.modal-dialog -->
         </div>
-
-        
-  <div class="modal modal-default fade" id="editModal">
+  
+   <div class="modal modal-default fade" id="deleteModal">
     <div class="modal-dialog">
       <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
-          <h3 class="modal-title">Edit Concession Items/Products</h3>
-        </div>
-        <form class="form-horizontal" action="" method="post">
-          <div class="modal-body">
-          <h4>Items/Product Details</h4>
-            <hr>
-            <div class="form-group">
-                                <label for="inputItemNumber" class="col-sm-3 control-label">Item Number</label>
-        
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputItemNumber" name="inputItemNumber" placeholder="Item Number" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputProfile" class="col-sm-3 control-label">Profile Name</label>
-        
-                                <div class="col-sm-9">
-                                    <select class="form-control select2" style="width: 100%;" name="inputProfile" id="inputProfile">
-                                        <option value="" selected>Select Profile</option>
-                                        <option value= "" disabled>'Serial No' = 'Concession Name'</option>
-                                        <?php
-                                            $s = " = ";
-                                            while($r = mysqli_fetch_assoc($result)){
-                                        ?>
-                                        <option value="<?php echo $r['CRM_Concession_Name']; ?>" > <?php echo $r['CRM_Concession_Profile_SerialNo'].$s.$r['CRM_Concession_Name']; ?></option>
-                                        <?php } ?>
-                                </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItemName" class="col-sm-3 control-label">Item Name</label>
-        
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputItemName" name="inputItemName" placeholder="Item Name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItemType" class="col-sm-3 control-label">Item Type</label>
-                                <div class="col-sm-9">
-                                    <select class="form-control select2" style="width: 100%;" name="inputItemType" id="inputItemType">
-                                        <option value = ""selected="">Select Type</option>
-                                        <option value="food">Food</option>
-                                        <option value="non-food">Non-Food</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItemPrice" class="col-sm-3 control-label">Item Price</label>
-        
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputItemPrice" name="inputItemPrice" placeholder="Item Price">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItemDesc" class="col-sm-3 control-label">Item Description</label>
-        
-                                <div class="col-sm-9">
-                                    <textarea type="text" class="form-control" id="inputItemDesc" name="inputItemDesc" placeholder="Item Description"></textarea>
-                                </div>
-                            </div>
-            
-          </div>
-        <div class="modal-footer">
-          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button type="submit" name="inputSubmit" class="btn btn-success">Submit</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal modal-default fade" id="trashModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="border-radius:10px">
-        <div class="modal-header">
-          <h3 class="modal-title">Trash</h3>
+          <h3 class="modal-title">Delete</h3>
         </div>
         <div class="modal-body">
+          <p>you want to thoroughly delete this?.  </p>
           <P>Are you sure?</P>
-          <p>you can restore this at trash folder.  </p>
         </div>
         <div class="modal-footer">
           <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
@@ -886,8 +729,8 @@
       </div>
     </div>
   </div>
-
-  <div class="modal modal-default fade" id="archiveModal">
+  
+  <div class="modal modal-default fade" id="restoreModal">
     <div class="modal-dialog">
       <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
@@ -895,7 +738,7 @@
         </div>
         <div class="modal-body">
           <P>Are you sure?</P>
-          <p>you can see this at archive folder.  </p>
+          <p>you can see this at Archive folder.  </p>
         </div>
         <div class="modal-footer">
           <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>

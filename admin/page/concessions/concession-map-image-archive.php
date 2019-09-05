@@ -34,7 +34,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="../../index2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -224,8 +224,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li ><a href="../../index.html"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+              <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -237,9 +237,9 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../feedback/feedback.html"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.html"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.html"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
+                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
+                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class=" treeview">
@@ -251,9 +251,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="../cases/cases.html"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.html"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.html"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash <span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -264,9 +264,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="../task/task.html"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.html"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.html"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -280,20 +280,20 @@
             <ul class="treeview-menu">
               <li class="treeview active"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                   <ul class="treeview-menu">
-                    <li><a href="./concession-profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                    <li class="active"><a href="./concession-map-images.html"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                    <li><a href="./concession-contact.html"><i class="fa fa-circle-o"></i> Contact</a></li>
-                    <li><a href="./concession-item-product.html"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                    <li><a href="./concession-services.html"><i class="fa fa-circle-o"></i> Services</a></li>
-                    <li><a href="./concession-equipment.html"><i class="fa fa-circle-o"></i> Equipments</a></li>
-                    <li><a href="./concession-experience.html"><i class="fa fa-circle-o"></i> Experience</a></li>
+                    <li><a href="./concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
+                    <li class="active"><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                    <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
+                    <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                    <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
+                    <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
+                    <li><a href="./concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
                   </ul>
               </li>
-              <li><a href="./concession-contract.html"><i class="fa fa-circle-o"></i> Contracts </a></li>
+              <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
           <li class="treeview">
-            <a href="../calendar/calendar.html">
+            <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
               <span class="pull-right-container">
                 <small class="label pull-right label-info">17</small>
@@ -301,7 +301,7 @@
             </a>
             <ul class="treeview-menu">
                 <li>
-                  <a href="../calendar/activity.html"><i class="fa fa-circle-o"></i> Activity 
+                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
                     <span class="pull-right-container">
                       <small class="label pull-right label-warning"> 3</small> 
                       <small class="label pull-right bg-blue"> 14</small> 
@@ -311,7 +311,7 @@
             </ul>
           </li>
           <li class="treeview">
-            <a href="../mail/mailbox.html">
+            <a href="../mail/mailbox.php">
               <i class="fa fa-envelope"></i> <span>Mailbox</span>
               <span class="pull-right-container">
                 <small class="label pull-right bg-yellow">12</small>
@@ -321,28 +321,28 @@
             </a>
             <ul class="treeview-menu">
               <li class="">
-                <a href="../mail/mailbox.html"><i class="fa fa-circle-o"></i>Inbox
+                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
                   <span class="pull-right-container">
                     <span class="label label-primary pull-right">13</span>
                   </span>
                 </a>
               </li>
-              <li><a href="../mail/compose.html"><i class="fa fa-circle-o"></i>Compose</a></li>
-              <li><a href="../mail/read-mail.html"><i class="fa fa-circle-o"></i>Read</a></li>
+              <li><a href="../mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
           </li>
           <li class="treeview">
-              <a href="../reports/report.html">
+              <a href="../reports/report.php">
                 <i class="fa fa-file-archive-o"></i> <span>Reports</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li class=""><a href="../reports/report-concession.html"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-                <li><a href="../reports/report-feedback.html"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-                <li><a href="../reports/report-cases.html"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-                <li><a href="../reports/report-system-trail.html"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
+                <li class=""><a href="../reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
+                <li><a href="../reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
+                <li><a href="../reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
+                <li><a href="../reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
               </ul>
             </li>
           <li class="treeview">
@@ -355,17 +355,17 @@
             <ul class="treeview-menu">
               <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                    <li><a href="../options/admin-profile.html"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
-                    <li><a href="../options/admin-login-detail.html"><i class="fa fa-circle-o"></i> Admin Login </a></li>
+                    <li><a href="../options/admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
+                    <li><a href="../options/admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login </a></li>
                 </ul>
               </li>
-              <li class="treeview"><a href="../options/permission.html"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+              <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                    <li><a href="../options/permission-module.html"><i class="fa fa-circle-o"></i> Module Permission</a></li>
-                    <li><a href="../options/permission-admin.html"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
+                    <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
+                    <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
-              <li><a href="../options/audit-trail.html"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
+              <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
           <li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
@@ -417,7 +417,7 @@
           <small>All Concession Location Map and Images</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
           <li class="active"><a href="#">Map/Images</a></li>
         </ol>
       </section>
@@ -427,11 +427,9 @@
 
       <div class="row">
           <div class="col-md-3">
-              <a href="../../index.html" class="btn btn-primary btn-block">Back to Dashboard</a>
-              <a href="./concession.html" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
+              <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
+              <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
               
-              <a href="./concession-images-new.html" class="btn btn-primary btn-block margin-bottom">Add Image</a>
-                 
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Folders</h3>
@@ -443,9 +441,9 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li><a href="./concession-map-images.html"><i class="fa fa-th-large"></i> Imagebox</a></li>
-                    <li class="active"><a href="./concession-map-image-archive.html"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-map-image-trash.html"><i class="fa fa-trash"></i> Trash</a></li>
+                    <li><a href="./concession-map-images.php"><i class="fa fa-th-large"></i> Imagebox</a></li>
+                    <li class="active"><a href="./concession-map-image-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
+                    <li><a href="./concession-map-image-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -475,7 +473,7 @@
                 <div class="col-md-9">
                     <div class="box box-primary">
                       <div class="box-header with-border">
-                        <h3 class="box-title"><strong>Imagebox</strong></h3>
+                        <h3 class="box-title"><strong> Archivebox</strong></h3>
                       </div>
       
                       <div class="box-body no-padding">
@@ -502,17 +500,29 @@
        
                         <div class="table-responsive mailbox-massages">
                           <table class="table table-hover table-striped">
-                            <tbody>
-                                  <tr>
-                                    <td style="width: 20px">Select</td>
-                                    <td style="width: 150px">Name</td>
-                                    <td style="width: 100px">Priority</td>
-                                    <td style="width: 100px">Status</td>
-                                    <td style="width: 150px">Duration</td>
-                                    <td style="width: 120px">Case</td>
-                                    <td style="width: 100px">Admin Name</td>
-                                  </tr>
-                            </tbody>
+                          <tbody>
+                          <tr>
+                            <td style="width: 20px">Select</td>
+                            <td style="width: 200px">Thumbnail</td>
+                            <td style="width: 350px">Description</td>
+                            <td>Date Uploaded</td>
+                            <td style="width: 100px">Action</td>
+                          </tr>
+                          <?php 
+                          $action = '
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-info  " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button> 
+                              </div>
+                            ';
+                            ?>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><?php echo $action ?></td>
+                          </tr>
+                        </tbody>
                           </table>
                         </div>
                       </div>
@@ -523,6 +533,84 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  
+  <div class="modal fade" id="viewModal">
+          <div class="modal-dialog">
+            <div class="modal-content" style="border-radius:10px">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">View Concession Contact</h4>
+              </div>
+                <div class="modal-body form-horizontal ">
+                <h4>Map/Image Details</h4>
+                <hr>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="name">Concession Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" name ="name" id="name" class = "form-control" placeholder="Concession Name" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="thumbnail">Thumbnail</label>
+                    <div class="col-sm-9">
+                        <input type="image"  name="thumbnail" id="thumbnail">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="description">Description</label>
+                    <div class="col-sm-9">
+                        <textarea rows="5" name ="description" id="description" class = "form-control" placeholder="Concession Name" disabled></textarea>
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                  <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Restore</button>
+                  <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+
+        
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="restoreModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Restore</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at Map/Imagebox folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">

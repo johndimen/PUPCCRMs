@@ -3,19 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Admin Permissions</title>
+  <title>PUPCCRMs | Concession Contract</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
-  <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="../../plugins/iCheck/all.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -246,7 +242,7 @@
                 <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
-            <li class="treeview">
+          <li class=" treeview">
             <a href="#">
               <i class="fa fa-suitcase"></i>
               <span>Cases</span>
@@ -255,9 +251,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="../case/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../case/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../case/archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i>Trash<span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -273,7 +269,7 @@
               <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
-          <li class="treeview">
+          <li class="treeview active">
             <a href="#">
               <i class="fa fa-address-card"></i>
               <span>Concessions</span>
@@ -282,18 +278,18 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                <ul class="treeview-menu">
-                  <li><a href="../concessions/concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
-                  <li><a href="../concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                  <li><a href="../concessions/concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
-                  <li><a href="../concessions/concession-item.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                  <li><a href="../concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
-                  <li><a href="../concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
-                  <li><a href="../concessions/concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
-                </ul>
+              <li class="treeview active"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                  <ul class="treeview-menu">
+                    <li><a href="./concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
+                    <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                    <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
+                    <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                    <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
+                    <li class="active"><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
+                    <li><a href="./concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
+                  </ul>
               </li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Contracts </a></li>
+              <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -305,7 +301,7 @@
             </a>
             <ul class="treeview-menu">
                 <li>
-                  <a href="../calendar/calendar.php"><i class="fa fa-circle-o"></i> Activity 
+                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
                     <span class="pull-right-container">
                       <small class="label pull-right label-warning"> 3</small> 
                       <small class="label pull-right bg-blue"> 14</small> 
@@ -325,39 +321,53 @@
             </a>
             <ul class="treeview-menu">
               <li class="">
-                <a href="../mail/mailbox.php">Inbox
+                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
                   <span class="pull-right-container">
                     <span class="label label-primary pull-right">13</span>
                   </span>
                 </a>
               </li>
-              <li><a href="../mail/compose.php">Compose</a></li>
-              <li><a href="../mail/read-mail.php">Read</a></li>
+              <li><a href="../mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
           </li>
-          <li class="treeview active">
-                <a href="#">
-                  <i class="fa fa-cog"></i> <span>Options</span>
-                  <span class="pull-right-container">
+          <li class="treeview">
+              <a href="../reports/report.php">
+                <i class="fa fa-file-archive-o"></i> <span>Reports</span>
+                <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
-                  </span>
-                </a>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li class=""><a href="../reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
+                <li><a href="../reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
+                <li><a href="../reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
+                <li><a href="../reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
+              </ul>
+            </li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-cog"></i> <span>Options</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                  <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                    <ul class="treeview-menu">
-                        <li><a href="./admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
-                        <li><a href="./admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login </a></li>
-                    </ul>
-                  </li>
-                  <li class="treeview active"><a href="./permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                    <ul class="treeview-menu">
-                        <li><a href="./permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
-                        <li class="active"><a href="./permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="./audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
+                    <li><a href="../options/admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
+                    <li><a href="../options/admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login </a></li>
                 </ul>
               </li>
+              <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                <ul class="treeview-menu">
+                    <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
+                    <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
+                </ul>
+              </li>
+              <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
+            </ul>
+          </li>
           <li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
           <li class="header">LABELS</li>
           <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
@@ -369,7 +379,7 @@
               <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Success</span></a></li>
             </ul>   
           </li>
-          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Mail</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Mail</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
               <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Spam</span></a></li>
               <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Junk</span></a></li>
@@ -378,7 +388,7 @@
               <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Sent</span></a></li>
             </ul>   
           </li>
-          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Feedback/Task/Cases</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Feedback/Task/Cases</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
               <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
               <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Urgent</span></a></li>
@@ -402,156 +412,226 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-            <h1>
-              Admin Permissions
-              <small>All Admin Permissions</small>
-            </h1>
-            <ol class="breadcrumb">
-              <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-              <li><a href="#">Options</a></li>
-              <li><a href="./permission.php">Permissions</a></li>
-              <li class="active">Admin Permissions</li>
-            </ol>
-          </section>
+        <h1>
+          Equipment
+          <small>All Concession Equipment</small>
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li><a href="#">Equipment</a></li>
+          <li class="active"><a href="#">Trash</a></li>
+        </ol>
+      </section>
 
     <!-- Main content -->
     <section class="content">
 
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title"><strong>General Permission</strong> </h3>
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fa fa-minus"></i></button>
-            </div>
-        </div>
-        <div class="box-body">
-          <div class="pull-left">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPermission">Add General Permission</button>
-          </div>
-          <div class="has-feedback pull-right">
-              <input type="text" class="form-control input-sm" placeholder="Search Items">
-                <span class="glyphicon glyphicon-search form-control-feedback"></span>
-          </div>
-        </div>
-        <div class="box-body">
-            <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <th style="width: 50px">Referrence Number</th>
-                        <th style="width: 200px">Admin Name</th>
-                        <th style="width: 100px">Role</th>
-                        <th style="width: 50px">Task</th>
-                        <th style="width: 50px">User</th>
-                        <th style="width: 50px">Export</th>
-                        <th style="width: 50PX">Cases</th>
-                        <th style="width: 50px">Reports</th>
-                        <th style="width: 50px">Concession</th>
-                        <th style="width: 100px">Status</th>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-          <div class="pull-right">
-          System Time: 
-            <script>
-              var today = new Date();
-              var dd = String(today.getDate()).padStart(2, '0');
-              var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-              var yyyy = today.getFullYear();
-              var hh = String(today.getHours()).padStart(2,'0') ;
-              var mn = String(today.getMinutes()).padStart(2,'0');
-              var ss = String(today.getSeconds()).padStart(2,'0');
+      <div class="row">
+          <div class="col-md-3">
+              <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
+              <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
               
-              today = mm + '/' + dd + '/' + yyyy + '  ' + hh + ':' + mn + ':' + ss ;
-              document.write(today);
-            </script>
-          </div>
-        </div>
-        <!-- /.box-footer-->
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Folders</h3>
+    
+                  <div class="box-tools">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="box-body no-padding">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li><a href="./concession-equipment.php"><i class="fa fa-th-large"></i> Equipmentbox</a></li>
+                    <li><a href="./concession-equipment-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
+                    <li class="active"><a href="./concession-equipment-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
+                  </ul>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /. box -->
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Labels</h3>
+    
+                  <div class="box-tools">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="box-body no-padding">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> Urgent</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-green"></i> New</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Due</a></li>
+                  </ul>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>Trashbox</strong></h3>
+                    <div class="box-tools pull-right">
+                      <div class="has-feedback">
+                        <input type="text" class="form-control input-sm" placeholder="Search Equipment">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="box-body no-padding">
+                    <div class="mailbox-controls">
+                      <!-- Check all button -->
+                      <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
+                      </div>
+                      <!-- /.btn-group -->
+                      <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                      <div class="pull-right">
+                        1/1
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                          <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                        </div>
+                      <!-- /.btn-group -->
+                      </div>
+                      <!-- /.pull-right -->
+                    </div>
+   
+                    <div class="table-responsive mailbox-massages">
+                      <table class="table table-hover table-striped">
+                        <tbody>
+                          <tr>
+                            <td style="width: 20px">Select</td>
+                            <td style="width: 200px">Concession Name</td>
+                            <td>Equipment Name</td>
+                            <td>Brand</td>
+                            <td>Wattage</td>
+                            <td>Description</td>
+                            <td style="width: 150px">Action</td>
+                          </tr>
+                          <?php 
+                          $action = '
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewModal">View</button>
+                          </div>
+                          ';
+                          ?>
+                          <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td><?php echo $action; ?></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
       </div>
-      <!-- /.box -->
-
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <div class="modal modal-fade" id="addPermission">
+      
+     
+  <div class="modal modal-default fade" id = "viewModal">
     <div class="modal-dialog">
-      <div class="modal-content" style="border-radius: 10px">
+      <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Add New General Permission</h4>
+          <h3 class="modal-title">Archive</h3>
         </div>
-        <form class="form-horizontal" action="" method="post">
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="adminName" class="col-sm-3 control-label">Admin</label>
-            <div class="col-sm-9">
-              <select class="select2 form-control" style="width:100%" name="adminName" id="adminName">
-                <option value="">Select Admin</option>
-              </select>
+        <div class="modal-body form-horizontal" >
+        <h4>Concession Equipment Details</h4>
+            <hr>
+            <div class="form-group">
+              <label for="name" class="col-sm-3 control-label">Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Name" disabled>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="adminRole" class="col-sm-3 control-label">Admin Role</label>
-            <div class="col-sm-9">
-              <input type="text" id="adminRole" name="adminRole" class="form-control" placeholder="Admin Role">
+            <div class="form-group">
+              <label for="brand" class="col-sm-3 control-label">Brand</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="brand" id="brand" placeholder="Brand" disabled>
+              </div>
             </div>
-          </div>
-          <hr>
-          <h4>Permissions</h4>
-          <div class="form-group">
-            <div class="row" style="padding-right: 100px">
-              <label class="col-sm-4 control-label"> Tasks
-                <input type="checkbox" class="flat-red form-control" >
-              </label>
-              <label class="col-sm-4 control-label"> Cases
-                <input type="checkbox" class="flat-red form-control" >
-              </label>
-              <label class="col-sm-4 control-label"> Concessions
-                <input type="checkbox" class="flat-red form-control" >
-              </label>
-              <label class="col-sm-4 control-label"> Admin
-                <input type="checkbox" class="flat-red form-control" >
-              </label>
-              <label class="col-sm-4 control-label"> Reports
-                <input type="checkbox" class="flat-red form-control" >
-              </label>
-              <label class="col-sm-4 control-label"> Calendar
-                <input type="checkbox" class="flat-red form-control" >
-              </label>
-              <label class="col-sm-4 control-label"> Export
-                <input type="checkbox" class="flat-red form-control" >
-              </label>
-              <label class="col-sm-4 control-label"> System Trail
-                <input type="checkbox" class="flat-red form-control" >
-              </label>
-              <label class="col-sm-4 control-label"> System Permission
-                <input type="checkbox" class="flat-red form-control" >
-              </label>
+            <div class="form-group">
+              <label for="wattage" class="col-sm-3 control-label">Wattage</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="wattage" id="wattage" placeholder="Wattage" disabled>
+              </div>
             </div>
-          </div>
+            <div class="form-group">
+              <label for="description" class="col-sm-3 control-label">Description</label>
+              <div class="col-sm-9">
+                <textarea type="text" rows="5" class="form-control" name="description" id="description" placeholder="Description" disabled></textarea>
+              </div>
+            </div>
         </div>
         <div class="modal-footer">
-          <button type="button" id="close" name="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button type="submit" id="submitPermission" name="submitPermission" class="btn btn-primary">Submit</button>
+          <button type="button" name="viewClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Restore</button>
+          <button type="button" name="delete" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
         </div>
-        </form>
       </div>
     </div>
   </div>
+
+  
+  <div class="modal modal-default fade" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Delete</h3>
+        </div>
+        <div class="modal-body">
+          <p>you want to thoroughly delete this?.  </p>
+          <P>Are you sure?</P>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="restoreModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at Archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> beta 1.0
         </div>
-        <strong>Copyright &copy;2019 <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+        <strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
         reserved.
   </footer>
 
@@ -758,26 +838,17 @@
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- Select2 -->
-<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page Script -->
-<script src="../../dist/js/pages/permission-admin.js"></script>
+<script src="../../dist/js/pages/concession-contract.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
-    $('.select2').select2()
-    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass   : 'iradio_flat-green'
-    })
   })
 </script>
 

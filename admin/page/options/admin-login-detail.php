@@ -253,9 +253,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="./cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="./new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="./pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../case/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
+              <li><a href="../case/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../case/archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -267,8 +267,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -433,6 +433,37 @@
           <a>
             <button type="button" data-toggle="modal" data-target="#addRole" class="pull-right btn btn-primary">Add Role</button>
           </a>
+
+            <table style="margin-top:10px" class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th style="width: 100px">Ref No.</th>
+                        <th style="width: 200px">Admin Name</th>
+                        <th style="width:200px">Username</th>
+                        <th style="width: 100px">Role</th>
+                        <th style="width: 100px">Date Added</th>
+                        <th style="width:200px">Action</th>
+                    </tr>
+                    <?php
+                    $action ='
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewModal">View</button>
+                      <a type="button" class="btn btn-primary" href="./admin-profile.php">Profile</a>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#resetModal">Change</button>
+                    </div>
+                    ';
+                    ?>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td><?php echo $action ?></td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -460,7 +491,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <div class="modal fade" id="addRole">
+  <div class="modal modal-default fade" id="addRole">
     <div class="modal-dialog">
       <div class="modal-content" style="border-radius: 10px">
         <div class="modal-header">
@@ -495,7 +526,7 @@
   </div>
 
 
-  <div class="modal fade" id="addAdmin">
+  <div class="modal modal-default fade" id="addAdmin">
     <div class="modal-dialog">
       <div class="modal-content" style="width: 120%; border-radius: 10px">
         <div class="modal-header">
@@ -519,6 +550,12 @@
                 <input id="password" name ="password" type="text" class="form-control" placeholder="Password">
               </div>
             </div>
+            <div class="form-group">
+              <label for="conpassword" class="col-sm-2 control-label">Password</label>
+              <div class="col-sm-10">
+                <input id="conpassword" name ="conpassword" type="text" class="form-control" placeholder="Confirm Password">
+              </div>
+            </div>  
             <hr>
             <h4>Profile Details</h4>
             <div class="form-group">
@@ -604,6 +641,271 @@
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
+  </div>
+
+  <div class="modal modal-default fade" id="resetModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Change Password</h3>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="modal-body">
+            <h4>Login Details</h4>
+            <div class="form-group">
+              <label for="username" class="col-sm-3 control-label">Username</label>
+              <div class="col-sm-9">
+                <input id="username" name ="username" type="text" class="form-control" placeholder="Username" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="oldpassword" class="col-sm-3 control-label">Old Password</label>
+              <div class="col-sm-9">
+                <input id="oldpassword" name ="oldpassword" type="text" class="form-control" placeholder="Old Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="newpassword" class="col-sm-3 control-label">New Password</label>
+              <div class="col-sm-9">
+                <input id="newpassword" name ="newpassword" type="text" class="form-control" placeholder="New Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="conpassword" class="col-sm-3 control-label">New Password</label>
+              <div class="col-sm-9">
+                <input id="conpassword" name ="conpassword" type="text" class="form-control" placeholder="Confirm New Password">
+              </div>
+            </div>  
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" name="submit" class="btn btn-success">Change</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="viewModal">
+          <div class="modal-dialog">
+            <div class="modal-content" style="border-radius:10px">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">View Admin</h4>
+              </div>
+                <div class="modal-body form-horizontal ">
+                <h4>Admin Details</h4>
+                <hr>
+                <h4>Login Details</h4>
+            <div class="form-group">
+              <label for="username" class="col-sm-2 control-label">Username</label>
+              <div class="col-sm-10">
+                <input id="username" name ="username" type="text" class="form-control" placeholder="Username">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="col-sm-2 control-label">Password</label>
+              <div class="col-sm-10">
+                <input id="password" name ="password" type="text" class="form-control" placeholder="Password">
+              </div>
+            </div>
+            
+            <hr>
+            <h4>Profile Details</h4>
+            <div class="form-group">
+              <label for="profile" class="col-sm-2 control-label">Profile No</label>
+              <div class="col-sm-10">
+                <input id="profile" name ="profile" type="text" class="form-control" placeholder="Profile No.">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="profile" class="col-sm-2 control-label">Name</label>
+              <div class="row">
+                <div class="col-sm-2" style="width: 10%; padding-right: 5px">
+                  <input id="salutation" name ="salutation" type="text" class="form-control" placeholder="Mr./Ms./Mrs.">
+                </div>
+                <div class="col-sm-3" style="width: 140px;padding-left: 5px; padding-right: 5px">
+                  <input type="text" id="firstName" name="firstName" class="form-control" placeholder="First Name">
+                </div>
+                <div class="col-sm-2" style="width:87px;padding-left: 5px; padding-right: 5px">
+                  <input type="text" id="middleName" name="middleName" class="form-control" placeholder="Middle Name">
+                </div>
+                <div class="col-md-3" style="width: 140px;padding-right:5px;padding-left: 5px">
+                  <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last Name">
+                </div>
+                <div class="col-md-2" style="width: 70.5px;padding-left: 5px">
+                  <input type="text" id="extName" name="extName" class="form-control" placeholder="jr">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="jobTitle" class="col-sm-2 control-label">Job Title</label>
+              <div class="col-sm-10">
+                <input type="text" id="jobTitle" name="jobTitle" class="form-control" placeholder="Job Title">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="gender" class="col-sm-2 control-label">Gender</label>
+              <div class="col-sm-10">
+                <select name="gender" id="gender" class="select2 form-controll" style="width: 100%">
+                  <option value="" selected>Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="lgbtq">LGBTQ</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-sm-2 control-label">E-mail</label>
+              <div class="col-sm-10">
+                <input type="text" id="email" name="email" class="form-control" placeholder="E-mail">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="highestEducation" class="col-sm-2 control-label">Highest Education</label>
+              <div class="col-sm-10">
+                <input type="text" id="highestEducation" name="highestEducation" class="form-control" placeholder="Highest Education">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="location" class="col-sm-2 control-label">Address</label>
+              <div class="col-sm-10">
+                <input type="text" id="location" name="location" class="form-control" placeholder="Address">
+              </div>
+            </div>
+            <hr>
+            <h4>Role Details</h4>
+            <div class="form-group">
+              <label for="roleType" class="col-sm-2 control-label">Admin Role</label>
+              <div class="col-sm-10">
+                <select name="jobtitle" id="jobtitle" style="width: 100%" class="select2 form-control">
+                  <option value="" selected>Select Role</option>
+                </select>
+              </div>
+            </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                  <button type="button" name="deactivate" class="btn btn-danger" data-toggle="modal" data-target="#deactivateModal">Deactivate</button>
+                  <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+
+        
+  <div class="modal modal-default fade" id="editModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Edit Admin</h3>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="modal-body">
+          <h4>Admin Details</h4>
+          <hr>
+          <h4>Profile Details</h4>
+            <div class="form-group">
+              <label for="profile" class="col-sm-2 control-label">Profile No</label>
+              <div class="col-sm-10">
+                <input id="profile" name ="profile" type="text" class="form-control" placeholder="Profile No." disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="profile" class="col-sm-2 control-label">Name</label>
+              <div class="row">
+                <div class="col-sm-2" style="width: 10%; padding-right: 5px">
+                  <input id="salutation" name ="salutation" type="text" class="form-control" placeholder="Mr./Ms./Mrs.">
+                </div>
+                <div class="col-sm-3" style="width: 140px;padding-left: 5px; padding-right: 5px">
+                  <input type="text" id="firstName" name="firstName" class="form-control" placeholder="First Name">
+                </div>
+                <div class="col-sm-2" style="width:87px;padding-left: 5px; padding-right: 5px">
+                  <input type="text" id="middleName" name="middleName" class="form-control" placeholder="Middle Name">
+                </div>
+                <div class="col-md-3" style="width: 140px;padding-right:5px;padding-left: 5px">
+                  <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last Name">
+                </div>
+                <div class="col-md-2" style="width: 70.5px;padding-left: 5px">
+                  <input type="text" id="extName" name="extName" class="form-control" placeholder="jr">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="jobTitle" class="col-sm-2 control-label">Job Title</label>
+              <div class="col-sm-10">
+                <input type="text" id="jobTitle" name="jobTitle" class="form-control" placeholder="Job Title">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="gender" class="col-sm-2 control-label">Gender</label>
+              <div class="col-sm-10">
+                <select name="gender" id="gender" class="select2 form-controll" style="width: 100%">
+                  <option value="" selected>Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="lgbtq">LGBTQ</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-sm-2 control-label">E-mail</label>
+              <div class="col-sm-10">
+                <input type="text" id="email" name="email" class="form-control" placeholder="E-mail">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="highestEducation" class="col-sm-2 control-label">Highest Education</label>
+              <div class="col-sm-10">
+                <input type="text" id="highestEducation" name="highestEducation" class="form-control" placeholder="Highest Education">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="location" class="col-sm-2 control-label">Address</label>
+              <div class="col-sm-10">
+                <input type="text" id="location" name="location" class="form-control" placeholder="Address">
+              </div>
+            </div>
+            <hr>
+            <h4>Role Details</h4>
+            <div class="form-group">
+              <label for="roleType" class="col-sm-2 control-label">Admin Role</label>
+              <div class="col-sm-10">
+                <select name="jobtitle" id="jobtitle" style="width: 100%" class="select2 form-control">
+                  <option value="" selected>Select Role</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" name="inputSubmit" class="btn btn-success">Submit</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="deactivateModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Deactivate</h3>
+        </div>
+        <div class="modal-body">
+          
+          <p>The Admin that is assigned with this account can no longer access the system </p>
+          <P>Are you sure you want to continue?</P>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer class="main-footer">

@@ -280,7 +280,7 @@
             <ul class="treeview-menu">
               <li class="treeview active"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                   <ul class="treeview-menu">
-                    <li><a href="./concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
+                    <li><a href="./concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
                     <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
                     <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
                     <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>

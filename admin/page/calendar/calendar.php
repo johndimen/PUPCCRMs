@@ -393,13 +393,13 @@
           <ul class="treeview-menu">
             <li class="treeview"><a href="../concessions/concession.php"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
-                <li><a href="./concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
-                <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
-                <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
-                <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
-                <li><a href="./concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
+                <li><a href="../concessions/concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
+                <li><a href="../concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                <li><a href="../concessions/concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
+                <li><a href="../concessions/concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                <li><a href="../concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
+                <li><a href="../concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
+                <li><a href="../concessions/concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
               </ul>
             </li>
             <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>

@@ -517,7 +517,6 @@
                   <li><a href="#items" data-toggle="tab">Items/Products</a></li>
                   <li><a href="#equipment" data-toggle="tab">Equipments</a></li>
                   <li><a href="#contract" data-toggle="tab">Contract</a></li>
-                  <li><a href="#settings" data-toggle="tab">Edit Concession</a></li>
                 </ul>
                 <div class="tab-content">
                   <div class="active tab-pane" id="activity">
@@ -942,106 +941,6 @@
                       </div>
                   </div><!-- /.tab-pane-->
     
-                  <div class="tab-pane" id="settings">
-                    <h3>Edit Concession Profile </h3>
-                    <form class="form-horizontal">
-                      <div class="form-group">
-                        <label for="inputNumber" class="col-sm-2 control-label">Stall Number</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" placeholder="Stall Number" disabled>
-                        </div>
-                      </div>
-                        <div class="form-group">
-                          <label for="inputArea" class="col-sm-2 control-label">Stall Area</label>
-                          <div class="col-sm-10">
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected"></option>Select Area</option>
-                              <option value="north">North</option>
-                              <option value="west">West</option>
-                              <option value=south"">South</option>
-                              <option value="east">East</option>
-                              <option value="sampaguita">Sampaguita</option>
-                              <option value="lagoon">Lagoon</option>
-                              <option value="other">Other</option>
-                            </select>
-                          </div>
-                        </div>
-                        <!-- /.form-group -->
-                      <div class="form-group">
-                        <label for="inputConcessionName" class="col-sm-2 control-label">Concession Name</label>
-    
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputConcessionName" placeholder="Concession Name">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="inputOwnerName" class="col-sm-2 control-label">Owner's Name</label>
-    
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputOwnerName" placeholder="Owner's Name">
-                        </div>
-                      </div>
-                        <div class="form-group">
-                          <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-      
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputFunction" class="col-sm-2 control-label">Function</label>
-                          <div class="col-sm-10">
-                            <select class="form-control select2" style="width: 100%;" id="intpuFunction">
-                              <option selected="selected"></option>Select Function</option>
-                              <option value="north">Food</option>
-                              <option value="west">Non-Food</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="inputStatus" class="col-sm-2 control-label">Status</label>
-      
-                            <div class="col-sm-10">
-                              <select class="form-control select2" id="inputStatus" style="width: 100%;">
-                                <option selected="selected"></option>Select Status</option>
-                                <option value="active">Active</option>
-                                <option value="withdrawn">Withdrawn</option>
-                                <option value="kickout">Kicked Out</option>
-                                <option value="archive">Archived</option>
-                              </select>
-                            </div>
-                        </div>
-                      <div class="form-group">
-                        <label for="inputAddress" class="col-sm-2 control-label">Address</label>
-    
-                        <div class="col-sm-10">
-                          <textarea class="form-control" id="inputAddress" placeholder="Address"></textarea>
-                        </div>
-                      </div>
-                        <div class="form-group">
-                          <label for="inputDateApplied" class="col-sm-2 control-label">Date Applied</label>
-                            <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                              </div>
-                              <input type="text" class="form-control pull-right" id="inputDateApplied">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="inputRemarks" class="col-sm-2 control-label">Remarks</label>
-      
-                          <div class="col-sm-10">
-                            <textarea class="form-control" id="inputRemarks" placeholder="Remarks"></textarea>
-                          </div>
-                        </div> 
-                      <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                          <button type="submit" class="btn btn-danger">Submit</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <!-- /.tab-pane -->
                 </div>
                 <!-- /.tab-content -->
               </div>
@@ -1050,7 +949,7 @@
             <!-- /.col -->
           </div>
           <!-- /.row -->
-
+        
     </section>
     <!-- /.content -->
   </div>

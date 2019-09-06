@@ -583,25 +583,25 @@
           <div class="form-group">
             <label for="stallno" class="col-sm-3 control-label">Stall No</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="stallno" name="stallno" placeholder="Stall Number">
+              <input type="text" class="form-control" id="stallno" name="stallno" placeholder="Stall Number" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="stallarea" class="col-sm-3 control-label">Stall Area</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="stallarea" name="stallarea" placeholder="Stall Area">
+              <input type="text" class="form-control" id="stallarea" name="stallarea" placeholder="Stall Area" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="evaluation" class="col-sm-3 control-label">Evaluation</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="evaluation" name="evaluation" placeholder="Evaluation">
+              <input type="text" class="form-control" id="evaluation" name="evaluation" placeholder="Evaluation" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="message" class="col-sm-3 control-label">Message</label>
             <div class="col-sm-9">
-              <textarea name="message" id="message" class="form-control" rows="5" Placeholder="Feedback Message"></textarea>
+              <textarea name="message" id="message" class="form-control" rows="5" Placeholder="Feedback Message" disabled></textarea>
             </div>
           </div>
           <hr>
@@ -609,43 +609,43 @@
           <div class="form-group">
             <label for="question1" class="col-sm-3 control-label">Question 1</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="question1" name="question1" placeholder="Question 1">
+              <input type="text" class="form-control" id="question1" name="question1" placeholder="Question 1" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="question2" class="col-sm-3 control-label">Question 2</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="question2" name="question2" placeholder="Question 2">
+              <input type="text" class="form-control" id="question2" name="question2" placeholder="Question 2" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="question3" class="col-sm-3 control-label">Question 3</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="question3" name="question3" placeholder="Question 3">
+              <input type="text" class="form-control" id="question3" name="question3" placeholder="Question 3" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="question4" class="col-sm-3 control-label">Question 4</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="question4" name="question4" placeholder="Question 4">
+              <input type="text" class="form-control" id="question4" name="question4" placeholder="Question 4" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="question5" class="col-sm-3 control-label">Question 5</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="question5" name="question5" placeholder="Question 5">
+              <input type="text" class="form-control" id="question5" name="question5" placeholder="Question 5" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="question6" class="col-sm-3 control-label">Question 6</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="question6" name="question6" placeholder="Question 6">
+              <input type="text" class="form-control" id="question6" name="question6" placeholder="Question 6" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="question7" class="col-sm-3 control-label">Question 7</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="question7" name="question7" placeholder="Question 7">
+              <input type="text" class="form-control" id="question7" name="question7" placeholder="Question 7" disabled>
             </div>
           </div>
           <hr>
@@ -653,25 +653,25 @@
           <div class="form-group">
             <label for="sendername" class="col-sm-3 control-label">Sender Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="sendername" name="sendername" placeholder="Sender Name">
+              <input type="text" class="form-control" id="sendername" name="sendername" placeholder="Sender Name" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="idno" class="col-sm-3 control-label">ID No</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="idno" name="idno" placeholder="ID Number">
+              <input type="text" class="form-control" id="idno" name="idno" placeholder="ID Number" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="email" class="col-sm-3 control-label">E-mail</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="email" name="email" placeholder="E-mail">
+              <input type="text" class="form-control" id="email" name="email" placeholder="E-mail" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="contactno" class="col-sm-3 control-label">Contact No</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="contactno" name="contactno" placeholder="Contact No">
+              <input type="text" class="form-control" id="contactno" name="contactno" placeholder="Contact No" disabled>
             </div>
           </div>
         </div>

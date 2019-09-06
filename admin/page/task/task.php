@@ -625,21 +625,21 @@ require_once('../dbconfig.php');
         <form class="form-horizontal" action="task.php" method="post" id="createTask">
           <div class="modal-body">
               <div class="form-group">
-                  <label for="inputtaskname" class="col-sm-2 control-label">Task Name</label>
-                  <div class="col-sm-10">
+                  <label for="inputtaskname" class="col-sm-3 control-label">Task Name</label>
+                  <div class="col-sm-9">
                     <input type="text" class="form-control" id="taskname" name="taskname" placeholder="Task Name">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="casename" class="col-sm-2 control-label">Case Name</label>
+                  <label for="casename" class="col-sm-3 control-label">Case Name</label>
 
-                  <div class="col-sm-10">
+                  <div class="col-sm-9">
                     <input type="text" class="form-control" id="casename" name="casename" placeholder="Case Name">
                   </div>
                 </div>
                   <div class="form-group">
-                    <label for="inputStatus" class="col-sm-2 control-label">Status</label>
-                    <div class="col-sm-10">
+                    <label for="inputStatus" class="col-sm-3 control-label">Status</label>
+                    <div class="col-sm-9">
                       <select class="form-control select2" style="width: 100%;" id="status" name="status">
                         <option selected="selected">Select Status</option>
                         <option value="urgent">Urgent</option>
@@ -648,8 +648,8 @@ require_once('../dbconfig.php');
                     </div>
                   </div>
                   <div class="form-group">
-                      <label for="inputPriority" class="col-sm-2 control-label">Priority</label>
-                      <div class="col-sm-10">
+                      <label for="inputPriority" class="col-sm-3 control-label">Priority</label>
+                      <div class="col-sm-9">
                         <select class="form-control select2" style="width: 100%;" id="priority" name="priority">
                           <option selected="selected">Select Priority</option>
                           <option value="Urgent">Urgent</option>
@@ -661,8 +661,8 @@ require_once('../dbconfig.php');
                     </div>
                   <!-- /.form-group -->
                     <div class="form-group">
-                      <label for="inputDateStart" class="col-sm-2 control-label">Date Start</label>
-                        <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
+                      <label for="inputDateStart" class="col-sm-3 control-label">Date Start</label>
+                        <div class="col-sm-9 input-group date" style="width: 81.8%;padding-left: 15px;">
                           <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                           </div>
@@ -670,8 +670,8 @@ require_once('../dbconfig.php');
                         </div>
                     </div>
                       <div class="form-group">
-                        <label for="inputDateDue" class="col-sm-2 control-label">Date Due</label>
-                          <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
+                        <label for="inputDateDue" class="col-sm-3 control-label">Date Due</label>
+                          <div class="col-sm-9 input-group date" style="width: 81.8%;padding-left: 15px;">
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
@@ -679,16 +679,16 @@ require_once('../dbconfig.php');
                           </div>
                       </div>
                 <div class="form-group">
-                  <label for="inputDescription" class="col-sm-2 control-label">Task Description</label>
+                  <label for="inputDescription" class="col-sm-3 control-label">Task Description</label>
 
-                  <div class="col-sm-10">
+                  <div class="col-sm-9">
                     <textarea class="form-control" id="inputDescription" name="description" placeholder="Task Description"></textarea>
                   </div>
                 </div>
                   <div class="form-group">
-                    <label for="inputAdminName" class="col-sm-2 control-label">Assigned Admin</label>
+                    <label for="inputAdminName" class="col-sm-3 control-label">Assigned Admin</label>
 
-                    <div class="col-sm-10">
+                    <div class="col-sm-9">
                       <select class="form-control select2" style="width: 100%" name="adminname" id="inputAdminName">
                         <option value="" selected>Select Admin</option>
                         <?php
@@ -808,7 +808,6 @@ require_once('../dbconfig.php');
             <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
             <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
             <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
-            <button type="submit" name="inputSubmit" class="btn btn-success">Submit</button>
           </div>
         </form>
       </div>
@@ -826,20 +825,20 @@ require_once('../dbconfig.php');
         <form class="form-horizontal"action="" method="post">
           <div class="modal-body">
             <div class="form-group">
-              <label for="editTaskName" class="col-sm-2 control-label">Task Name</label>
-                <div class="col-sm-10">
+              <label for="editTaskName" class="col-sm-3 control-label">Task Name</label>
+                <div class="col-sm-9">
                   <input type="text" class="form-control" id="editTaskName" name="editTaskname" placeholder="Task Name">
                 </div>
             </div>
             <div class="form-group">
-              <label for="editCaseName" class="col-sm-2 control-label">Case Name</label>
-                <div class="col-sm-10">
+              <label for="editCaseName" class="col-sm-3 control-label">Case Name</label>
+                <div class="col-sm-9">
                   <input type="text" class="form-control" id="editCaseName" name="editCaseName" placeholder="Case Name">
                 </div>
             </div>
             <div class="form-group">
-              <label for="editPriority" class="col-sm-2 control-label">Priority</label>
-                <div class="col-sm-10">
+              <label for="editPriority" class="col-sm-3 control-label">Priority</label>
+                <div class="col-sm-9">
                   <select class="form-control select2" style="width: 100%;" id="editPriority" name="editPriority">
                     <option selected="selected">Select Priority</option>
                     <option value="Urgent">Urgent</option>
@@ -850,26 +849,26 @@ require_once('../dbconfig.php');
                 </div>
             </div>
             <div class="form-group">
-              <label for="editDateStart" class="col-sm-2 control-label">Date Start</label>
-                <div class="col-sm-10 input-group date" style="width: 80.8%;padding-left: 15px;">
+              <label for="editDateStart" class="col-sm-3 control-label">Date Start</label>
+                <div class="col-sm-9 input-group date" style="width: 72.4%;padding-left: 15px;">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" class="form-control pull-right" id="editDateStart" name="editDateStart" placeholder="mm/dd/yyyy">
+                  <input type="date" class="form-control pull-right" id="editDateStart" name="editDateStart" placeholder="mm/dd/yyyy">
                 </div>
             </div>
             <div class="form-group">
-              <label for="editDateDue" class="col-sm-2 control-label">Date Due</label>
-              <div class="col-sm-10 input-group date" style="width: 80.8%;padding-left: 15px;">
+              <label for="editDateDue" class="col-sm-3 control-label">Date Due</label>
+              <div class="col-sm-9 input-group date" style="width: 72.4%;padding-left: 15px;">
                 <div class="input-group-addon">
                   <i class="fa fa-calendar"></i>
                 </div>
-                <input type="text" class="form-control pull-right" id="editDateDue" name="editDateDue" placeholder="mm/dd/yyyy">
+                <input type="date" class="form-control pull-right" id="editDateDue" name="editDateDue" placeholder="mm/dd/yyyy">
               </div>
             </div>
             <div class="form-group">
-              <label for="editDescription" class="col-sm-2 control-label">Task Description</label>
-                <div class="col-sm-10">
+              <label for="editDescription" class="col-sm-3 control-label">Task Description</label>
+                <div class="col-sm-9">
                   <textarea class="form-control" id="editDescription" name="editDescription" placeholder="Task Description"></textarea>
                 </div>
             </div>

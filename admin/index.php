@@ -320,6 +320,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
       </div>
     </nav>
   </header>
+
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -360,7 +361,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
             <li><a href="./index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
           </ul>
         </li>
-        <li class="treeview">
+          <li class="treeview">
             <a href="#">
               <i class="fa fa-comments"></i>
               <span>Feedback</span>

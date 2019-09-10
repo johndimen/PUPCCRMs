@@ -84,14 +84,133 @@
         <div class="whole-wrap">
             <div class="container">
                 <div class="section-top-border" id="feedback">
-                    <form method="POST" action="">
+                    <form action = "feedback.php" method = "post">
                     <div class="row">
                         <div class="col-lg-8 col-md-8">
                             
                             <h3 class="mb-30">Feedback Form</h3>
                             <p>You dont have to worry about information <b>leak</b>, Your Information is <b>secured</b> in our system. </p>
                             
-                                <div class="row">
+                                
+                                    <div class="col-sm-3">
+                                        <h5>Stall No.</h5>
+                                        <select class="default-select" name="stallno" id="stallno" required>
+                                            <option value="">Select Stall No.</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                            <h5>Stall Location</h5>
+                                                <select class="default-select" name = "area" required>
+                                                    <option value=""selected>Select Stall Location</option>
+                                                    <option value="North">North</option>
+                                                    <option value="East">East</option>
+                                                    <option value="South">South</option>
+                                                    <option value="West">West</option>
+                                                    <option value="lagoon">Lagoon</option>
+                                                    <option value="sampaguita">Sampaguita</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="mt-10">
+                                    <div class="col-md-12">
+                                        <h5>Questions (rate your answer)</h5>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="form-check">
+											
+                                                <P>Is the food good?</P>
+                                                <label for="question1" class="form-text-label" >
+                                                <select name = "food" class = "default-select" id = "default-select" required>
+													<option value = "1">Outstanding</option>
+													<option value = "2">Very Good</option>
+													<option value = "3">Good</option>
+													<option value = "4">Bad</option>
+												</select>
+												</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <P>How's the service(s)?</P>
+                                                <label for="question2" class="form-text-label" >
+                                                  <select name = "service" class = "default-select" id = "default-select" required>
+													<option value = "1">Outstanding</option>
+													<option value = "2">Very Good</option>
+													<option value = "3">Good</option>
+													<option value = "4">Bad</option>
+												</select> </label>
+                                            </div>
+											<div class="form-check">
+                                                <P>How about the hygiene?</P>
+                                                <label for="question3" class="form-text-label" >
+                                                <select name = "hygiene" class = "default-select" id = "default-select" required>
+													<option value = "1">Outstanding</option>
+													<option value = "2">Very Good</option>
+													<option value = "3">Good</option>
+													<option value = "4">Bad</option>
+												</select></label>
+                                            </div>
+                                            <div class="form-check">
+                                                <P>How about the hospitality of the attendant(s)?</P>
+                                                <label for="question3" class="form-text-label" >
+                                                <select name = "hospitable" class = "default-select" id = "default-select" required>
+													<option value = "1">Outstanding</option>
+													<option value = "2">Very Good</option>
+													<option value = "3">Good</option>
+													<option value = "4">Bad</option>
+												</select></label>
+                                            </div>
+                                        </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="form-check">
+                                                    <P>How's the product condition?</P>
+                                                    <label for="question4" class="form-text-label" >
+                                                     <select name = "condition" class = "default-select" id = "default-select" required>
+													<option value = "1">Outstanding</option>
+													<option value = "2">Very Good</option>
+													<option value = "3">Good</option>
+													<option value = "4">Bad</option>
+												</select></label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <P>How's the preparation of the food?</P>
+                                                    <label for="question5" class="form-text-label" >
+                                                     <select name = "gear" class = "default-select" id = "default-select" required>
+													<option value = "1">Outstanding</option>
+													<option value = "2">Very Good</option>
+													<option value = "3">Good</option>
+													<option value = "4">Bad</option>
+												</select></label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <P>How's the area around the stall?</P>
+                                                    <label for="question6" class="form-text-label" >
+                                                     <select name = "environment" class = "default-select" id = "default-select" required>
+													<option value = "1">Outstanding</option>
+													<option value = "2">Very Good</option>
+													<option value = "3">Good</option>
+													<option value = "4">Bad</option>
+												</select></label>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="form-check">
+                                                    <P>Is the Product at the fair price?</P>
+                                                    <label for="question7" class="form-text-label" >
+                                                     <select name = "price" class = "default-select" id = "default-select" required>
+													<option value = "1">Outstanding</option>
+													<option value = "2">Very Good</option>
+													<option value = "3">Good</option>
+													<option value = "4">Bad</option>
+												</select></label>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                    <div class="col-md-6">
                                     <fieldset id='rating' class="rating" style="padding-left: 10px; padding-right:15px">
                                         <h5>Overall Evaluation</h5>
                                             <input class="stars" type="radio" id="star53" name="rating" value="5" />
@@ -115,87 +234,21 @@
                                             <input class="stars" type="radio" id="starhalf3" name="rating" value="0.5" />
                                             <label class="half" for="starhalf3" title="Sucks big time - 0.5 stars"></label>
                                     </fieldset> 
-                                    <div class="col-sm-3">
-                                        <h5>Stall No.</h5>
-                                        <input type="text" name="stall_no" placeholder="Stall No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Stall No.'" required class="single-input">
+                                    <div class="col-md-4">
+                                        <h5>Feedback Type</h5>
+                                        <select name="feedbacktype" id="feebacktype" class="defalt-select">
+                                            <option value=""Seledted> Select Feedback Type</option>
+                                            <option value="complain">Complain</option>
+                                            <option value="suggestion">Suggestion</option>
+                                            <option value="commend">Commend</option>
+                                        </select>
                                     </div>
-                                    <div class="col-sm-3">
-                                            <h5>Area</h5>
-                                            <div class="default-select" id="default-select" required>
-                                                <select>
-                                                    <option selected disabled>Area</option>
-                                                    <option value="North">North</option>
-                                                    <option value="East">East</option>
-                                                    <option value="South">South</option>
-                                                    <option value="West">West</option>
-                                                    <option value="lagoon">Lagoon</option>
-                                                    <option value="sampaguita">Sampaguita</option>
-                                                    <option value="Others">Others</option>
-                                                </select>
-                                            </div>
                                     </div>
-                                </div>
-                                <hr>
-                                <div class="mt-10">
-                                    <div class="col-md-12">
-                                        <h5>Questions</h5>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="form-check">
-                                                <P>Is the food good?</P>
-                                                <label for="question1" class="form-text-label" >
-                                                    <input type="text" style="width: 150px" name="question1" placeholder="ex. yes" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. yes'" class="single-input">
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <P>How's the service(s)?</P>
-                                                <label for="question2" class="form-text-label" >
-                                                    <input type="text" style="width: 150px" name="question2" placeholder="ex. good" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. good'" class="single-input">
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <P>How about the hospitality of the attendant(s)?</P>
-                                                <label for="question3" class="form-text-label" >
-                                                    <input type="text" name="question3" placeholder="ex. hospitable" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. hospitable'" class="single-input">
-                                                </label>
-                                            </div>
-                                        </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="form-check">
-                                                    <P>How's the product condition?</P>
-                                                    <label for="question4" class="form-text-label" >
-                                                        <input type="text" name="question4" placeholder="ex. in good condition" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. in good condition'" class="single-input">
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <P>How's the preparation of the food?</P>
-                                                    <label for="question5" class="form-text-label" >
-                                                        <input type="text" name="question5" placeholder="ex. no headgear" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. no headgear'" class="single-input">
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <P>How's the area around the stall?</P>
-                                                    <label for="question6" class="form-text-label" >
-                                                        <input type="text" name="question6" placeholder="ex. clean environment" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. clean environment'" class="single-input">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="form-check">
-                                                    <P>Is the Product at the fair price?</P>
-                                                    <label for="question7" class="form-text-label" >
-                                                        <input type="text" name="question7" placeholder="ex. expensive" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. expensive'" class="single-input">
-                                                    </label>
-                                                </div>
-                                            </div>
                                     </div>
-                                    <hr>
-                                    <hr>
+                                    <br>
                                     <h5>Your message</h5>
                                     <p>Any feedbacks, questions, incidents, suggestions, and violent reactions. <br> Please write down below and let US know</p>
-                                    <textarea class="single-textarea" style="line-height:20px;height: 200px;border-radius: 5px;" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
+                                    <textarea id "message" name = "message" class="single-textarea" style="line-height:20px;height: 200px;border-radius: 5px;" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
                                 </div>
                                 
 						    
@@ -209,102 +262,48 @@
                             
                             
                         </div>
-                        <div class="tab-area">
-                            <h5>Feedback Details</h5>
+							<hr>
+ 
+                           <h5>Feedback Details</h5>
                             <p>(It is <b>required</b> to fill up this form.)</p>
                         <!-- Nav tabs -->
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#students">Students</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#employees">Employees</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#faculty">Faculty</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#others">Others</a>
-                            </li>
-                        </ul>
-  
                         <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane container fade" id="students">
-                                
-                                    <div class="mt-10">
-										<input type="text" name="student_name" placeholder="Student Name." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Student Name'" required class="single-input">
+                                    <div class="col-sm-3">
+										<h5>Name*</h5>
+										<input type="text" name="name" placeholder="Name." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" class="single-input" required>
                                     </div>
-                                    <div class="mt-10">
-										<input type="text" name="student_no" placeholder="Student No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Student No.'" required class="single-input">
-                                    </div>
-                                    <br>
-                                    <p>(in case of inquiry)<br>Please provide E-mail and Contact No.</p>
-                                    <div class="mt-10">
-										<input type="text" name="student_email" placeholder="E-mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'" required class="single-input">
-                                    </div>
-                                    <div class="mt-10">
-										<input type="text" name="student_contact_no" placeholder="Contact No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact No.'" required class="single-input">
-                                    </div>
-                                
-                            </div>
-                            <div class="tab-pane container fade" id="employees"> 
-                                
-                                    <div class="mt-10">
-										<input type="text" name="employees_name" placeholder="Employees Name." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Employees Name'" required class="single-input">
-                                    </div>
-                                    <div class="mt-10">
-										<input type="text" name="employees_no" placeholder="Employees No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Employees No.'" required class="single-input">
+									<div class="col-sm-3">
+										<h5>Sender Type*</h5>
+									   <label for="question7" class="form-text-label">
+                                                     <select name = "type" class = "default-select" id = "default-select" required>
+													<option value = "Student">Student</option>
+													<option value = "Employees">Employees</option>
+													<option value = "Faculty">Faculty</option>
+													<option value = "Others">Others</option>
+												</select></label>
+									</div>
+                                    <div class="col-sm-3">
+										<h5>Identification No.*</h5>
+										<input type="text" name="id_info" placeholder="ID No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'ID No.'"  class="single-input" required>
                                     </div>
                                     <br>
                                     <p>(in case of inquiry)<br>Please provide E-mail and Contact No.</p>
-                                    <div class="mt-10">
-										<input type="text" name="employees_email" placeholder="E-mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'" required class="single-input">
+                                    <div class="col-sm-3">
+										<h5>E-mail*</h5>
+										<input type="text" name="email" placeholder="E-mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'"  class="single-input" required>
                                     </div>
-                                    <div class="mt-10">
-										<input type="text" name="employees_contact_no" placeholder="Contact No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact No.'" required class="single-input">
+                                    <div class="col-sm-3">
+										<h5>Contact No.*</h5>
+										<input type="text" name="contact" placeholder="Contact No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact No.'" class="single-input" required>
                                     </div>
-                                
-                            </div>
-                            <div class="tab-pane container fade" id="faculty"> 
-                                
-                                    <div class="mt-10">
-										<input type="text" name="faculty_name" placeholder="Faculty Name." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Faculty Name'" required class="single-input">
-                                    </div>
-                                    <div class="mt-10">
-										<input type="text" name="faculty_no" placeholder="Faculty No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Faculty No.'" required class="single-input">
-                                    </div>
-                                    <br>
-                                    <p>(in case of inquiry)<br>Please provide E-mail and Contact No.</p>
-                                    <div class="mt-10">
-										<input type="text" name="faculty_email" placeholder="E-mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'" required class="single-input">
-                                    </div>
-                                    <div class="mt-10">
-										<input type="text" name="faculty_contact_no" placeholder="Contact No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact No.'" required class="single-input">
-                                    </div>
-                                
-                            </div>
-                            <div class="tab-pane container fade" id="others"> 
-                                
-                                    <div class="mt-10">
-										<input type="text" name="others_name" placeholder="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" required class="single-input">
-                                    </div>
-                                    <br>
-                                    <p>(in case of inquiry)<br>Please provide E-mail and Contact No.</p>
-                                    <div class="mt-10">
-										<input type="text" name="others_email" placeholder="E-mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'" required class="single-input">
-                                    </div>
-                                    <div class="mt-10">
-										<input type="text" name="others_contact_no" placeholder="Contact No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact No.'" required class="single-input">
-                                    </div>
-                                
-                            </div>
-                        </div>
-                        </div>
+                            
+                        
+                        
                         <hr>
-                        <a href="#" class="genric-btn primary circle arrow pull-right mt-10"><strong> Send</strong><span class="lnr lnr-rocket"></span></a>
+						<input type = "text" hidden = "true" value = "true" name = "sample">
+                        <button id = "feedback" name = "submit" class="genric-btn primary circle arrow pull-right mt-10"><strong> Send</strong><span class="lnr lnr-rocket"></span></button>
                     </form>
-                    </div>
+					</div>
                 </div>
             </div>
         </div>

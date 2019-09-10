@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Documentation</title>
+  <title>AdminLTE 2 | Blank Page</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -34,11 +34,11 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.php" class="logo">
+    <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>C</b>RM</span>
+      <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <span class="logo-lg"><b>Admin</b>LTE</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -188,223 +188,223 @@
 
   <!-- =============================================== -->
 
-  <!-- Left side column. contains the logo and sidebar -->
+  <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar">
-      <!-- sidebar: style can be found in sidebar.less -->
-      <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-          <div class="pull-left image">
-            <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-          </div>
-          <div class="pull-left info">
-            <p>Alexander Pierce</p>
-            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-          </div>
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
-        <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
-          <div class="input-group">
-            <input type="text" name="q" class="form-control" placeholder="Search...">
-            <span class="input-group-btn">
-                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                  </button>
-                </span>
-          </div>
-        </form>
-        <!-- /.search form -->
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu" data-widget="tree">
-          <li class="header">MAIN NAVIGATION</li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
+        <div class="pull-left info">
+          <p>Alexander Pierce</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
               </span>
-            </a>
-            <ul class="treeview-menu">
-              <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
-            </ul>
-          </li>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+            <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+          </ul>
+        </li>
           <li class="treeview">
-              <a href="#">
-                <i class="fa fa-comments"></i>
-                <span>Feedback</span>
-                <span class="pull-right-container">
-                  <small class="label label-primary pull-right">12</small>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
-              </ul>
-            </li>
-          <li class=" treeview">
             <a href="#">
-              <i class="fa fa-suitcase"></i>
-              <span>Cases</span>
+              <i class="fa fa-comments"></i>
+              <span>Feedback</span>
               <span class="pull-right-container">
                 <small class="label label-primary pull-right">12</small>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
+              <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
-            <a href="#">
-              <i class="fa fa-tasks"></i> <span>Task</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-green">12</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-address-card"></i>
-              <span>Concessions</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                  <ul class="treeview-menu">
-                    <li><a href="../concessions/concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
-                    <li><a href="../concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                    <li><a href="../concessions/concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
-                    <li><a href="../concessions/concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                    <li><a href="../concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
-                    <li><a href="../concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
-                    <li><a href="../concessions/concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
-                  </ul>
-              </li>
-              <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="../calendar/calendar.php">
-              <i class="fa fa-calendar"></i> <span>Calendar</span>
-              <span class="pull-right-container">
-                <small class="label pull-right label-info">17</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                    <span class="pull-right-container">
-                      <small class="label pull-right label-warning"> 3</small> 
-                      <small class="label pull-right bg-blue"> 14</small> 
-                    </span>
-                  </a>
-                </li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="../mail/mailbox.php">
-              <i class="fa fa-envelope"></i> <span>Mailbox</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-yellow">12</small>
-                <small class="label pull-right bg-green">16</small>
-                <small class="label pull-right bg-red">5</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="">
-                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
+          <a href="#">
+            <i class="fa fa-suitcase"></i>
+            <span>Cases</span>
+            <span class="pull-right-container">
+              <small class="label label-primary pull-right">12</small>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
+            <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-tasks"></i> <span>Task</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">12</small>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
+            <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archived <span class="label label-warning pull-right">4</span></a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-address-card"></i>
+            <span>Concessions</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+              <ul class="treeview-menu">
+                  <li><a href="../concessions/concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
+                  <li><a href="../concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                  <li><a href="../concessions/concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
+                  <li><a href="../concessions/concession-item.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                  <li><a href="../concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
+                  <li><a href="../concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
+                  <li><a href="../concessions/concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
+              </ul>
+            </li>
+            <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="../calendar/calendar.php">
+            <i class="fa fa-calendar"></i> <span>Calendar</span>
+            <span class="pull-right-container">
+              <small class="label pull-right label-info">17</small>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+                <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
                   <span class="pull-right-container">
-                    <span class="label label-primary pull-right">13</span>
+                    <small class="label pull-right label-warning"> 3</small> 
+                    <small class="label pull-right bg-blue"> 14</small> 
                   </span>
                 </a>
               </li>
-              <li><a href="../mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
-              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
-            </ul>
-          </li>
-          <li class="treeview">
-              <a href="../reports/report.php">
-                <i class="fa fa-file-archive-o"></i> <span>Reports</span>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="../mail/mailbox.php">
+            <i class="fa fa-envelope"></i> <span>Mailbox</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-yellow">12</small>
+              <small class="label pull-right bg-green">16</small>
+              <small class="label pull-right bg-red">5</small>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="">
+              <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
                 <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
+                  <span class="label label-primary pull-right">13</span>
                 </span>
               </a>
-              <ul class="treeview-menu">
-                <li class=""><a href="../reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-                <li><a href="../reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-                <li><a href="../reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-                <li><a href="../reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
-              </ul>
             </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-cog"></i> <span>Options</span>
+            <li><a href="../mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+            <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+            <a href="../reports/report.php">
+              <i class="fa fa-file-archive-o"></i> <span>Reports</span>
               <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
+                  <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                <ul class="treeview-menu">
-                    <li><a href="../options/admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
-                    <li><a href="../options/admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login </a></li>
-                </ul>
-              </li>
-              <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                <ul class="treeview-menu">
-                    <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
-                    <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
-                </ul>
-              </li>
-              <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
+              <li class=""><a href="./reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
+              <li><a href="./reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
+              <li><a href="./reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
+              <li><a href="./reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
             </ul>
           </li>
-          <li class="treeview active"><a href="./documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-          <li class="header">LABELS</li>
-          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Danger</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Normal</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> <span>Information</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Success</span></a></li>
-            </ul>   
-          </li>
-          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Mail</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Spam</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Junk</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Unread</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> <span>Read</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Sent</span></a></li>
-            </ul>   
-          </li>
-          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Feedback/Task/Cases</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Urgent</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>New</span></a></li>
-              <li><a href="#"><i class="fa fa-circle-o text-orange"></i> <span>Due</span></a></li>
-            </ul>   
-          </li>
-          <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Calendar/Concession</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o text-orange"></i> <span>Due</span></a></li>
-            </ul>   
-          </li>
-        </ul>
-      </section>
-      <!-- /.sidebar -->
-    </aside>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-cog"></i> <span>Options</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+              <ul class="treeview-menu">
+                  <li><a href="../options/admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
+                  <li><a href="../options/admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login </a></li>
+              </ul>
+            </li>
+            <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+              <ul class="treeview-menu">
+                  <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
+                  <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
+              </ul>
+            </li>
+            <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
+          </ul>
+        </li>
+        <li class="active"><a href="./documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li class="header">LABELS</li>
+            <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Danger</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Normal</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> <span>Information</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Success</span></a></li>
+              </ul>   
+            </li>
+            <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Mail</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Spam</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Junk</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Unread</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> <span>Read</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Sent</span></a></li>
+              </ul>   
+            </li>
+            <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i> <span>Feedback/Task/Cases</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Urgent</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>New</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-orange"></i> <span>Due</span></a></li>
+              </ul>   
+            </li>
+            <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Calendar/Concession</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o text-orange"></i> <span>Due</span></a></li>
+              </ul>   
+            </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
 
   <!-- =============================================== -->
 
@@ -420,7 +420,7 @@
           <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
           <li class="active"><a href="#">Documentation</a></li>
         </ol>
-      </section>
+    </section>
 
     <!-- Main content -->
     <section class="content">
@@ -474,19 +474,19 @@
               <!-- /.box -->
             </div>
             <!-- /.col -->
-      </div>
-
+        </div>
+  
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> beta 1.0
-        </div>
-        <strong>Copyright &copy;2019 <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-        reserved.
+    <div class="pull-right hidden-xs">
+      <b>Version</b> beta 1.0
+    </div>
+    <strong>Copyright &copy;2019<a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+    reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -698,14 +698,10 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- Page Script -->
-<script src="../../dist/js/pages/documentation.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
   })
 </script>
-
-
 </body>
 </html>

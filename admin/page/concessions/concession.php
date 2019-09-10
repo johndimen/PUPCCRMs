@@ -30,6 +30,7 @@ $result = mysqli_query($conn,$sql1);
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -300,7 +301,7 @@ $result = mysqli_query($conn,$sql1);
             <ul class="treeview-menu">
               <li class="treeview active"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                   <ul class="treeview-menu">
-                    <li><a href="./concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
+                    <li class="active"><a href="./concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
                     <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
                     <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
                     <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
@@ -388,7 +389,7 @@ $result = mysqli_query($conn,$sql1);
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
-          <li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+          <li><a href="../documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
           <li class="header">LABELS</li>
           <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
@@ -530,36 +531,35 @@ $result = mysqli_query($conn,$sql1);
                           <table class="table table-hover table-striped">
                             <tbody>
                               <tr>
-                                <td></td>
-                                <td style="width: 100px">Actions</td>
+                                
                                 <td style="width: 80px">Profile No.</td>
                                 <td style="width: 80px">Stall No.</td>
                                 <td>Concession Name</td>
                                 <td>Owner's Name</td>
-                                <td>Function</td>
-                                <td>Date Applied</td>
+                                <td>Category</td>
+                                <td style="width: 120px">Actions</td>
                               </tr>
                               <tr>
                               <?php
                               $action = '<div class="btn-group">
-                                    <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewConcession" id="viewConcessionModalBtn">View</button>
+                                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#viewConcession" id="viewConcessionModalBtn">View</button>
                                   </div>';
                               $profile ='<div class="btn-group">
-                                    <a type="button" class="btn btn-info " href="./concession-profile.php" id="viewProfileBtn">Profile</a>
+                                    <a type="button" class="btn btn-primary " href="./concession-profile.php" id="viewProfileBtn">Profile</a>
                                   </div>';
 
                               while($r = mysqli_fetch_assoc($result)){
                               ?>
-                                <td><?php echo $profile ?></td>
-                                <td>
-                                  <?php echo $action; ?>
-                                </td>
+                                
                                 <td><?php echo $r['CRM_Concession_Profile_SerialNo'] ?></td>
                                 <td><?php echo $r['CRM_Concession_Stall_Number'] ?></td>
                                 <td><?php echo $r['CRM_Concession_Name'] ?></td>
                                 <td><?php echo $r['CRM_Concession_Owner_Name'] ?></td>
                                 <td><?php echo $r['CRM_Concession_Function'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Date_Applied'] ?></td>
+                                <td>
+                                  <?php echo $profile ?>
+                                  <?php echo $action; ?>
+                                </td>
                               </tr>
                               <?php } ?>
                             </tbody>
@@ -575,7 +575,7 @@ $result = mysqli_query($conn,$sql1);
   <!-- /.content-wrapper -->
 
   <div class="modal modal-default fade" id="addConcession">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="margin-left: 100px;width: 1150px;">
       <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
           <h3 class="modal-title">Add Concession</h3>
@@ -584,22 +584,76 @@ $result = mysqli_query($conn,$sql1);
           <div class="modal-body">
             <h4>Concession Details</h4>
             <hr>
-            <div class="form-group">
-                                      <label for="inputConcessionNumber" class="col-sm-2 control-label">Concession Number</label>
-                                      <div class="col-sm-10">
+            <div class="row">
+              <div class="col-md-4">
+              <h4>Profile</h4>
+                                    <div class="form-group">
+                                      <label for="inputConcessionNumber" class="col-sm-4 control-label">Concession Number</label>
+                                      <div class="col-sm-8">
                                       <input type="text" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber">
                                       </div>
                                     </div>
                                     <div class="form-group">
-                                      <label for="inputNumber" class="col-sm-2 control-label">Stall Number</label>
-                                      <div class="col-sm-10">
+                                      <label for="inputNumber" class="col-sm-4 control-label">Stall Number</label>
+                                      <div class="col-sm-8">
                                         <input type="text" class="form-control" placeholder="Stall Number" name="inputNumber" id="inputNumber">
                                         
                                       </div>
                                     </div>
+                                    <div class="form-group">
+                                      <label for="inputConcessionName" class="col-sm-4 control-label">Business Name</label>
+                  
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" >
+                                      </div>
+                                    </div>
+                                    <h4>Owner's Info</h4>
+                                    <div class="form-group">
+                                      <label for="inputOwnerFName" class="col-sm-4 control-label">Owner's Name</label>
+                  
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="inputOwnerFName" id="inputOwnerFName" placeholder="Owner's First Name">
+                                        <input type="text" style="margin-top:5px;margin-bottom:5px" class="form-control" name="inputOwnerMName" id="inputOwnerMName" placeholder="Owner's Middle Name">
+                                        <input type="text" style="" class="form-control" name="inputOwnerLName" id="inputOwnerLName" placeholder="Owner's Last Name">
+                                      </div>
+                                    </div>
                                       <div class="form-group">
-                                        <label for="inputArea" class="col-sm-2 control-label">Stall Area</label>
-                                        <div class="col-sm-10">
+                                        <label for="inputnumber" class="col-sm-4 control-label">Contact No.</label>
+                    
+                                        <div class="col-sm-8">
+                                          <input type="email" class="form-control" name="inputnumber" id="inputnumber" placeholder="Number" >
+                                        </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4" style="margin-top:40px">
+                                      <div class="form-group">
+                                        <label for="inputRemarks" class="col-sm-4 control-label">Remarks</label>
+                    
+                                        <div class="col-sm-8">
+                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" rows="5" placeholder="Remarks" ></textarea>
+                                        </div>
+                                      </div> 
+                                    <div class="form-group" style="margin-top:72px">
+                                      <label for="inputAddress" class="col-sm-4 control-label">Owner's Address</label>
+                  
+                                      <div class="col-sm-8">
+                                        <textarea class="form-control" name="inputAddress" id="inputAddress" rows="4" placeholder="Address" ></textarea>
+                                      </div>
+                                    </div>
+                                      <div class="form-group" style="margin-top:32px">
+                                        <label for="inputEmail" class="col-sm-4 control-label">Email</label>
+                    
+                                        <div class="col-sm-8">
+                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                    <div class="col-md-4">
+                                      <h4>Stall Description</h4>
+                                      <div class="form-group">
+                                        <label for="inputArea" class="col-sm-4 control-label">Stall Area</label>
+                                        <div class="col-sm-8">
                                           <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
                                             <option value="" selected>Select Area</option>
                                             <option value="north">North</option>
@@ -613,61 +667,31 @@ $result = mysqli_query($conn,$sql1);
                                           
                                         </div>
                                       </div>
-                                      <!-- /.form-group -->
-                                    <div class="form-group">
-                                      <label for="inputConcessionName" class="col-sm-2 control-label">Concession Name</label>
-                  
-                                      <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" >
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="inputOwnerName" class="col-sm-2 control-label">Owner's Name</label>
-                  
-                                      <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="inputOwnerName" id="inputOwnerName" placeholder="Owner's Name">
-                                      </div>
-                                    </div>
                                       <div class="form-group">
-                                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-                    
-                                        <div class="col-sm-10">
-                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                          <label for="inputFunction" class="col-sm-2 control-label">Function</label>
-                                        <div class="col-sm-10">
-                                          <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction">
+                                          <label for="inputFunction" class="col-sm-4 control-label">Category</label>
+                                        <div class="col-sm-8">
+                                          <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction" onchange="showfield(this.options[this.selectedIndex].value)">
                                             <option value = ""selected="">Select Function</option>
                                             <option value="food">Food</option>
                                             <option value="nonfood">Non-Food</option>
                                           </select>
                                         </div>
                                       </div>
-                                    <div class="form-group">
-                                      <label for="inputAddress" class="col-sm-2 control-label">Address</label>
-                  
-                                      <div class="col-sm-10">
-                                        <textarea class="form-control" name="inputAddress" id="inputAddress" placeholder="Address" ></textarea>
+                                      <div id = "div1"></div>
+                                      <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="measurement">Stall Measurement</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="measurement" id="measurement" placeholder="Stall Measurement">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="rental">Monthly Rental</label>
+                                        <div class="col-sm-8">
+                                          <input type="number" min="0" class="form-control" name="rental" id="rental" placeholder="Monthly Rental">
+                                        </div>
                                       </div>
                                     </div>
-                                      <div class="form-group">
-                                        <label for="inputDateApplied" class="col-sm-2 control-label">Date Applied</label>
-                                          <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
-                                            <div class="input-group-addon">
-                                              <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <input type="date" class="form-control pull-right" name="inputDateApplied" id="inputDateApplied" placeholder="mm/dd/yyyy">
-                                          </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="inputRemarks" class="col-sm-2 control-label">Remarks</label>
-                    
-                                        <div class="col-sm-10">
-                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" placeholder="Remarks" ></textarea>
-                                        </div>
-                                      </div> 
+              </div>
           </div>
           <div class="modal-footer">
             <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -680,7 +704,7 @@ $result = mysqli_query($conn,$sql1);
 
   <!-- view modal -->
   <div class="modal modal-default fade"  id="viewConcession">
-    <div class="modal-dialog" role = "document">
+    <div class="modal-dialog" role = "document" style="margin-left: 100px;width: 1150px;">
       <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -690,92 +714,122 @@ $result = mysqli_query($conn,$sql1);
         </div>
         <form class="form-horizontal" method="post" id="viewCons">
             <div class="modal-body">
-              <div class="view-messages"></div>
-              <h4>Concession Details</h4>
-              <hr>
-              <div class="form-group">
-                <label for="viewConcessionNumber" class="col-sm-3 control-label">Concession Number</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="Concession Number" name="viewConcessionNumber" id="viewConcessionNumber" disabled>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="viewNumber" class="col-sm-3 control-label">Stall Number</label>
-                <div class="col-sm-9 ">
-                  <input type="text" class="form-control" placeholder="Stall Number" name="viewNumber" id="viewNumber" disabled>
+            <h4>Concession Details</h4>
+            <hr>
+            <div class="row">
+              <div class="col-md-4">
+              <h4>Profile</h4>
+                                    <div class="form-group">
+                                      <label for="inputConcessionNumber" class="col-sm-4 control-label">Concession Number</label>
+                                      <div class="col-sm-8">
+                                      <input type="text" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputNumber" class="col-sm-4 control-label">Stall Number</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="Stall Number" name="inputNumber" id="inputNumber">
+                                        
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputConcessionName" class="col-sm-4 control-label">Business Name</label>
                   
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewArea" class="col-sm-3 control-label">Stall Area</label>
-                <div class="col-sm-9">
-                  <input type="text" name="viewArea" id="viewArea" class="form-control" placeholder="Concession Area" disabled>
-                  </select>
-                </div>
-              </div>
-              <!-- /.form-group -->
-              <div class="form-group">
-                  <label for="viewConcessionName" class="col-sm-3 control-label">Concession Name</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" >
+                                      </div>
+                                    </div>
+                                    <h4>Owner's Info</h4>
+                                    <div class="form-group">
+                                      <label for="inputOwnerFName" class="col-sm-4 control-label">Owner's Name</label>
                   
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" name="viewConcessionName" id="viewConcessionName" placeholder="Concession Name" disabled>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewOwnerName" class="col-sm-3 control-label">Owner's Name</label>
-                  
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" name="viewOwnerName" id="viewOwnerName" placeholder="Owner's Name" disabled>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewEmail" class="col-sm-3 control-label">Email</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="inputOwnerFName" id="inputOwnerFName" placeholder="Owner's First Name">
+                                        <input type="text" style="margin-top:5px;margin-bottom:5px" class="form-control" name="inputOwnerMName" id="inputOwnerMName" placeholder="Owner's Middle Name">
+                                        <input type="text" style="" class="form-control" name="inputOwnerLName" id="inputOwnerLName" placeholder="Owner's Last Name">
+                                      </div>
+                                    </div>
+                                      <div class="form-group">
+                                        <label for="inputnumber" class="col-sm-4 control-label">Contact No.</label>
                     
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" name="viewEmail" id="viewEmail" placeholder="Email" disabled>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewFunction" class="col-sm-3 control-label">Function</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" name="viewFunction" id="viewFunction" placeholder="Function" disabled>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewStatus" class="col-sm-3 control-label">Status</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" name="viewStatus" id="viewStatus" placeholder="Status" disabled>
-                  
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewAddress" class="col-sm-3 control-label">Address</label>
-                  
-                <div class="col-sm-9">
-                  <textarea class="form-control" name="viewAddress" id="viewAddress" placeholder="Address" disabled></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="viewDateApplied" class="col-sm-3 control-label">Date Applied</label>
-                <div class="col-sm-9 input-group date" style="width: 72.4%;padding-left: 15px;">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" name="viewDateApplied" id="viewDateApplied" placeholder="mm/dd/yyyy" disabled>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewRemarks" class="col-sm-3 control-label">Remarks</label>
+                                        <div class="col-sm-8">
+                                          <input type="email" class="form-control" name="inputnumber" id="inputnumber" placeholder="Number" >
+                                        </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4" style="margin-top:40px">
+                                      
+                                      <div class="form-group">
+                                        <label for="inputRemarks" class="col-sm-4 control-label">Remarks</label>
                     
-                <div class="col-sm-9">
-                  <textarea class="form-control" name="viewRemarks" id="viewRemarks" placeholder="Remarks" disabled></textarea>
-                </div>
+                                        <div class="col-sm-8">
+                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" rows="5" placeholder="Remarks" ></textarea>
+                                        </div>
+                                      </div> 
+                                    <div class="form-group" style="margin-top:72px">
+                                      <label for="inputAddress" class="col-sm-4 control-label">Owner's Address</label>
+                  
+                                      <div class="col-sm-8">
+                                        <textarea class="form-control" name="inputAddress" id="inputAddress" rows="4" placeholder="Address" ></textarea>
+                                      </div>
+                                    </div>
+                                      <div class="form-group" style="margin-top:32px">
+                                        <label for="inputEmail" class="col-sm-4 control-label">Email</label>
+                    
+                                        <div class="col-sm-8">
+                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                    <div class="col-md-4">
+                                      <h4>Stall Description</h4>
+                                      <div class="form-group">
+                                        <label for="inputArea" class="col-sm-4 control-label">Stall Area</label>
+                                        <div class="col-sm-8">
+                                          <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
+                                            <option value="" selected>Select Area</option>
+                                            <option value="north">North</option>
+                                            <option value="west">West</option>
+                                            <option value="south">South</option>
+                                            <option value="east">East</option>
+                                            <option value="sampaguita">sampaguita</option>
+                                            <option value="lagoon">Lagoon</option>
+                                            <option value="other">Other</option>
+                                          </select>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="inputFunction" class="col-sm-4 control-label">Category</label>
+                                        <div class="col-sm-8">
+                                          <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction" onchange="showfield(this.options[this.selectedIndex].value)">
+                                            <option value = ""selected="">Select Function</option>
+                                            <option value="food">Food</option>
+                                            <option value="nonfood">Non-Food</option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                      <div id = "div1"></div>
+                                      <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="measurement">Stall Measurement</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="measurement" id="measurement" placeholder="Stall Measurement">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="rental">Monthly Rental</label>
+                                        <div class="col-sm-8">
+                                          <input type="number" min="0" class="form-control" name="rental" id="rental" placeholder="Monthly Rental">
+                                        </div>
+                                      </div>
+                                    </div>
               </div>
             </div>
           <div class="modal-footer">
             <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
-            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+            <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
+            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
             <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
           </div>
         </form>
@@ -788,108 +842,123 @@ $result = mysqli_query($conn,$sql1);
 
 
   <div class="modal modal-default fade" id="editModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="margin-left: 100px;width: 1150px;">
       <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
           <h3 class="modal-title">Edit Cases</h3>
         </div>
         <form class="form-horizontal" action="" method="post">
         <div class="modal-body">
-            <h4>Concession Details</h4>
-              <hr>
-              <div class="form-group">
-                <label for="viewConcessionNumber" class="col-sm-3 control-label">Concession Number</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="Concession Number" name="viewConcessionNumber" id="viewConcessionNumber" disabled>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="viewNumber" class="col-sm-3 control-label">Stall Number</label>
-                <div class="col-sm-9 ">
-                  <input type="text" class="form-control" placeholder="Stall Number" name="viewNumber" id="viewNumber">
+        <h4>Concession Details</h4>
+            <hr>
+            <div class="row">
+              <div class="col-md-4">
+              <h4>Profile</h4>
+                                    <div class="form-group">
+                                      <label for="inputConcessionNumber" class="col-sm-4 control-label">Concession Number</label>
+                                      <div class="col-sm-8">
+                                      <input type="text" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputNumber" class="col-sm-4 control-label">Stall Number</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="Stall Number" name="inputNumber" id="inputNumber">
+                                        
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputConcessionName" class="col-sm-4 control-label">Business Name</label>
                   
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewArea" class="col-sm-3 control-label">Stall Area</label>
-                <div class="col-sm-9">
-                  <select class="form-control select2" style="width: 100%;" name="viewStallArea" id="viewStallArea" >
-                    <option value="" selected>Select Area</option>
-                    <option value="north">North</option>
-                    <option value="west">West</option>
-                    <option value="south">South</option>
-                    <option value="east">East</option>
-                    <option value="sampaguita">sampaguita</option>
-                    <option value="lagoon">Lagoon</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-              </div>
-              <!-- /.form-group -->
-              <div class="form-group">
-                  <label for="viewConcessionName" class="col-sm-3 control-label">Concession Name</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" >
+                                      </div>
+                                    </div>
+                                    <h4>Owner's Info</h4>
+                                    <div class="form-group">
+                                      <label for="inputOwnerFName" class="col-sm-4 control-label">Owner's Name</label>
                   
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" name="viewConcessionName" id="viewConcessionName" placeholder="Concession Name" >
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewOwnerName" class="col-sm-3 control-label">Owner's Name</label>
-                  
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" name="viewOwnerName" id="viewOwnerName" placeholder="Owner's Name">
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewEmail" class="col-sm-3 control-label">Email</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="inputOwnerFName" id="inputOwnerFName" placeholder="Owner's First Name">
+                                        <input type="text" style="margin-top:5px;margin-bottom:5px" class="form-control" name="inputOwnerMName" id="inputOwnerMName" placeholder="Owner's Middle Name">
+                                        <input type="text" style="" class="form-control" name="inputOwnerLName" id="inputOwnerLName" placeholder="Owner's Last Name">
+                                      </div>
+                                    </div>
+                                      <div class="form-group">
+                                        <label for="inputnumber" class="col-sm-4 control-label">Contact No.</label>
                     
-                <div class="col-sm-9">
-                  <input type="email" class="form-control" name="viewEmail" id="viewEmail" placeholder="Email" >
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewFunction" class="col-sm-3 control-label">Function</label>
-                <div class="col-sm-9">
-                  <select class="form-control select2" style="width: 100%;" name="viewFunction" id="viewFunction">
-                    <option value = ""selected="">Select Function</option>
-                    <option value="food">Food</option>
-                    <option value="nonfood">Non-Food</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewStatus" class="col-sm-3 control-label">Status</label>
-                <div class="col-sm-9">
-                  <select class="form-control select2" style="width: 100%;" name="viewStatus" id="viewStatus">
-                    <option value = ""selected="">Select Status</option>
-                    <option value="active">Active</option>
-                    <option value="withdrawn">Withdrawn</option>
-                    <option value="due">Due</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewAddress" class="col-sm-3 control-label">Address</label>
-                  
-                <div class="col-sm-9">
-                  <textarea class="form-control" name="viewAddress" id="viewAddress" placeholder="Address" ></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="viewDateApplied" class="col-sm-3 control-label">Date Applied</label>
-                <div class="col-sm-9 input-group date" style="width: 72.4%;padding-left: 15px;">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" name="viewDateApplied" id="viewDateApplied" placeholder="mm/dd/yyyy">
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="viewRemarks" class="col-sm-3 control-label">Remarks</label>
+                                        <div class="col-sm-8">
+                                          <input type="email" class="form-control" name="inputnumber" id="inputnumber" placeholder="Number" >
+                                        </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4" style="margin-top:40px">
+                                      
+                                      <div class="form-group">
+                                        <label for="inputRemarks" class="col-sm-4 control-label">Remarks</label>
                     
-                <div class="col-sm-9">
-                  <textarea class="form-control" name="viewRemarks" id="viewRemarks" placeholder="Remarks" ></textarea>
-                </div>
+                                        <div class="col-sm-8">
+                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" rows="5" placeholder="Remarks" ></textarea>
+                                        </div>
+                                      </div> 
+                                    <div class="form-group" style="margin-top:72px">
+                                      <label for="inputAddress" class="col-sm-4 control-label">Owner's Address</label>
+                  
+                                      <div class="col-sm-8">
+                                        <textarea class="form-control" name="inputAddress" id="inputAddress" rows="4" placeholder="Address" ></textarea>
+                                      </div>
+                                    </div>
+                                      <div class="form-group" style="margin-top:32px">
+                                        <label for="inputEmail" class="col-sm-4 control-label">Email</label>
+                    
+                                        <div class="col-sm-8">
+                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                    <div class="col-md-4">
+                                      <h4>Stall Description</h4>
+                                      <div class="form-group">
+                                        <label for="inputArea" class="col-sm-4 control-label">Stall Area</label>
+                                        <div class="col-sm-8">
+                                          <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
+                                            <option value="" selected>Select Area</option>
+                                            <option value="north">North</option>
+                                            <option value="west">West</option>
+                                            <option value="south">South</option>
+                                            <option value="east">East</option>
+                                            <option value="sampaguita">sampaguita</option>
+                                            <option value="lagoon">Lagoon</option>
+                                            <option value="other">Other</option>
+                                          </select>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="inputFunction" class="col-sm-4 control-label">Category</label>
+                                        <div class="col-sm-8">
+                                          <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction" onchange="showfield(this.options[this.selectedIndex].value)">
+                                            <option value = ""selected="">Select Function</option>
+                                            <option value="food">Food</option>
+                                            <option value="nonfood">Non-Food</option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                      <div id = "div1"></div>
+                                      <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="measurement">Stall Measurement</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="measurement" id="measurement" placeholder="Stall Measurement">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="rental">Monthly Rental</label>
+                                        <div class="col-sm-8">
+                                          <input type="number" min="0" class="form-control" name="rental" id="rental" placeholder="Monthly Rental">
+                                        </div>
+                                      </div>
+                                    </div>
               </div>
         </div>
         <div class="modal-footer">
@@ -1159,6 +1228,7 @@ $result = mysqli_query($conn,$sql1);
 <script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- Page Script -->
 <script src="../../dist/js/pages/concession-contract.js"></script>
+
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
@@ -1168,6 +1238,7 @@ $result = mysqli_query($conn,$sql1);
       radioClass: 'iradio_square-blue',
       increaseArea: '20%' /* optional */
     });
+    
 
     function viewConcession(CRM_Concession_Profile_SerialNo = null){
       if(CRM_Concession_Profile_SerialNo){
@@ -1200,10 +1271,18 @@ $result = mysqli_query($conn,$sql1);
 
     }
 
-
+    
   })
+  function showfield(name){
+      if(name=='other'){
+        document.getElementById('div1').innerHTML='<div class="form-group"><label for="specify" class="col-sm-4 control-label">Please Specify</label><div class="col-sm-8"><input type="text" name="specify" id="specify" class="form-control"></div></div>';
+      }else{ 
+        document.getElementById('div1').innerHTML='';
+      };
+  }
+
 </script>
 
-<?php $connect->close(); ?>
+<?php $conn->close(); ?>
 </body>
 </html>

@@ -702,7 +702,7 @@
                                 <label for="inputItemPrice" class="col-sm-3 control-label">Item Price</label>
         
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputItemPrice" name="inputItemPrice" placeholder="Item Price">
+                                    <input type="number" min ="0" class="form-control" id="inputItemPrice" name="inputItemPrice" placeholder="Item Price">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -782,8 +782,8 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                  <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
-                  <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+                  <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
+                  <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Sed to Trash</button>
                   <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
                 </div>
             </div>
@@ -848,7 +848,7 @@
                                 <label for="inputItemPrice" class="col-sm-3 control-label">Item Price</label>
         
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputItemPrice" name="inputItemPrice" placeholder="Item Price">
+                                    <input type="number" min="0" class="form-control" id="inputItemPrice" name="inputItemPrice" placeholder="Item Price">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -909,7 +909,7 @@
           <div class="pull-right hidden-xs">
             <b>Version</b> beta 1.0
           </div>
-          <strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+          <strong>Copyright &copy;<?php echo date("Y") ?> <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-<?php echo date("Y"); ?><a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
           reserved.
     </footer>
 

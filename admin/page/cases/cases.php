@@ -602,34 +602,33 @@ require_once('../dbconfig.php');
         <form class="form-horizontal" action="" method="post">
           <div class="modal-body">
             <div class="form-group">
-              <label for="inputCaseNumber" class="col-sm-2 control-label">Case Number</label>
+              <label for="inputCaseNumber" class="col-sm-4 control-label">Case Number</label>
       
-              <div class="col-sm-10">
+              <div class="col-sm-8">
                 <input type="text" class="form-control" id="inputCaseNumber" placeholder="Case Number" disabled >
               </div>
             </div>
             <div class="form-group">
-              <label for="inputCaseName" class="col-sm-2 control-label">Case Name</label>
+              <label for="inputCaseName" class="col-sm-4 control-label">Case Name</label>
       
-              <div class="col-sm-10">
+              <div class="col-sm-8">
                 <input type="text" class="form-control" id="inputCaseName" placeholder="Case Name">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputType" class="col-sm-2 control-label">Type</label>
-              <div class="col-sm-10">
+              <label for="inputType" class="col-sm-4 control-label">Type</label>
+              <div class="col-sm-8">
                 <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected"></option>Select Type</option>
-                  <option value="question">Question</option>
+                  <option selected="selected">Select Type</option>
                   <option value="incident">Incident</option>
                   <option value="problem">Problem</option>
-                  <option value="suggestion">Suggestion</option>
+                  <option value="emergency">Emergency</option>
                 </select>
               </div>
             </div>
                           <!--<div class="form-group">
-                            <label for="inputStatus" class="col-sm-2 control-label">Status</label>
-                            <div class="col-sm-10">
+                            <label for="inputStatus" class="col-sm-4 control-label">Status</label>
+                            <div class="col-sm-8">
                               <select class="form-control select2" style="width: 100%;">
                                 <option selected="selected"></option>Select Status</option>
                                 <option value="urgent">Urgent</option>
@@ -638,11 +637,10 @@ require_once('../dbconfig.php');
                             </div>
                           </div>-->
             <div class="form-group">
-              <label for="inputStatus" class="col-sm-2 control-label">Priority</label>
-              <div class="col-sm-10">
+              <label for="inputStatus" class="col-sm-4 control-label">Priority</label>
+              <div class="col-sm-8">
                 <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected"></option>Select Priority</option>
-                  <option value="urgent">Urgent</option>
+                  <option selected="selected">Select Priority</option>
                   <option value="high">High</option>
                   <option value="normal">Normal</option>
                   <option value="low">Low</option>
@@ -650,9 +648,9 @@ require_once('../dbconfig.php');
               </div>
             </div>
             <div class="form-group">
-              <label for="inputDescription" class="col-sm-2 control-label">Case Description</label>
+              <label for="inputDescription" class="col-sm-4 control-label">Case Description</label>
       
-              <div class="col-sm-10">
+              <div class="col-sm-8">
                 <textarea class="form-control" id="inputDescription" placeholder="Task Description"></textarea>
               </div>
             </div>
@@ -703,8 +701,8 @@ require_once('../dbconfig.php');
         </div>
           <div class="modal-footer">
             <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
-            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+            <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
+            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
             <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
           </div>
       </div>

@@ -574,7 +574,7 @@
   <!-- /.content-wrapper -->
 
   <div class="modal modal-default fade" id="viewModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="margin-left: 100px;width: 1150px;">
       <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
           <h3 class="modal-title">Feedback Detail</h3>

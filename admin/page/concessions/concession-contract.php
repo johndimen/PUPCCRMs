@@ -430,7 +430,9 @@
               <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
               <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Back to Concession List</a>
               
-              <a data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-block margin-bottom">Add Contract</a>
+              <a data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-block">Add Contract</a>
+              <a data-toggle="modal" data-target="#renewModal" class="btn btn-primary btn-block margin-bottom">Renew Contract</a>
+              
               
               <div class="box box-solid">
                 <div class="box-header with-border">
@@ -555,15 +557,18 @@
   <!-- /.content-wrapper -->
 
   <div class="modal modal-default fade" id="addModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="border-radius:10px">
+    <div class="modal-dialog" style="margin-left: 100px;width: 1150px;">
+      <div class="modal-content" style="width:100%; border-radius:10px">
         <div class="modal-header">
           <h3 class="modal-title">Add New Contract</h3>
         </div>
         <form class="form-horizontal" action="" method="post">
-          <div class="modal-body">
+        <div class="modal-body">
+          
           <h4>Contract Details</h4>
           <hr>
+          <div class="row">
+          <div class="col-md-6">
           <div class="form-group">
             <label for="contractnumber" class ="col-sm-3 control-label">Contract Number</label>
             <div class="col-sm-9">
@@ -585,11 +590,15 @@
           <div class="form-group">
             <label for="function" class ="col-sm-3 control-label">Function</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="function" name="function" placeholder="Function">
+              <select class="form-control" name="function" id="function">
+                <option selected>Select Function</option>
+                <option value="food">Food</option>
+                <option value="nonfood">Non-Food</option>
+              </select>
             </div>
           </div>
           <div class="form-group">
-            <label for="contractname" class ="col-sm-3 control-label">Consignee Name</label>
+            <label for="consigneefirstname" class ="col-sm-3 control-label">Consignee Name</label>
             <div class="col-sm-3">
               <input type="text" class="form-control" id="consigneefirstname" name="consigneefirstname" placeholder="First Name">
             </div>
@@ -599,15 +608,17 @@
             <div class="col-sm-3">
               <input type="text" class="form-control" id="consigneelastname" name="consigneelastname" placeholder="Last Name">
             </div>
-          </div>
+          </div>  
           <div class="form-group">
-            <label for="consigneesign" class ="col-sm-3 control-label">Consignee Signature</label>
+            <label for="description" class ="col-sm-3 control-label">Description</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="consigneesign" name="consigneesign" placeholder="Contract Name">
+              <textarea name="description" id="description" class="form-control" rows="5" placeholder="Description"></textarea>
             </div>
           </div>
+          </div>
+          <div class="col-md-6">
           <div class="form-group">
-            <label for="contractname" class ="col-sm-3 control-label">Consignor Name</label>
+            <label for="contractname" class ="col-sm-3 control-label">OIC Name</label>
             <div class="col-sm-3">
               <input type="text" class="form-control" id="consignorfirstname" name="consignorfirstname" placeholder="First Name">
             </div>
@@ -619,30 +630,35 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="status" class ="col-sm-3 control-label">Status</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="status" name="status" placeholder="Status">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="description" class ="col-sm-3 control-label">Description</label>
-            <div class="col-sm-9">
-              <textarea name="description" id="description" class="form-control" rows="5" placeholder="Description"></textarea>
-            </div>
-          </div>
-          <div class="form-group">
             <label for="datesigned" class ="col-sm-3 control-label">Date Signed</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="datesigned" name="datesigned" placeholder="Date Signed">
+            <div class="col-sm-9 input-group date" style="width: 72.5%;padding-left: 15px;">
+              <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+              </div>
+              <input type="date" class="form-control pull-right" id="duration" name="duration" placeholder="mm/dd/yyyy">
             </div>
           </div>
           <div class="form-group">
             <label for="duration" class ="col-sm-3 control-label">Duration</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="duration" name="duration" placeholder="Duration">
+              <select class="form-control" id="datesigned" name="datesigned">
+                <option selected>Select Duration</option>
+                <option value="2">2 Years</option>
+                <option value="3">3 Years</option>
+                <option value="4">4 Years</option>
+              </select>
             </div>
           </div>
+          <hr>
+                                      <div class="form-group">
+                                        <label for="scancopy" class="col-sm-4 control-label">Scan Copy of Contract</label>
+                                        <div class="col-sm-8">
+                                          <input type="file" name="scancopy" id="scancopy" class="form-control" >
+                                        </div>
+                                      </div>
           </div>
+          </div>
+        </div>
           <div class="modal-footer">
             <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
             <button type="submit" name="inputSubmit" class="btn btn-primary">Submit</button>
@@ -653,7 +669,7 @@
   </div>
 
   <div class="modal modal-default fade" id="viewModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="margin-left: 100px;width: 1150px;">
       <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
           <h3 class="modal-title">View Contract</h3>
@@ -661,6 +677,8 @@
         <div class="modal-body form-horizontal">
           <h4>Contract Details</h4>
           <hr>
+          <div class="row">
+          <div class="col-md-6">
           <div class="form-group">
             <label for="viewcontractnumber" class ="col-sm-3 control-label">Contract Number</label>
             <div class="col-sm-9">
@@ -686,7 +704,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="viewcontractname" class ="col-sm-3 control-label">Consignee Name</label>
+            <label for="viewconsigneefirstname" class ="col-sm-3 control-label">Consignee Name</label>
             <div class="col-sm-3">
               <input type="text" class="form-control" id="viewconsigneefirstname" name="viewconsigneefirstname" placeholder="First Name" disabled>
             </div>
@@ -698,17 +716,19 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="viewconsigneesign" class ="col-sm-3 control-label">Consignee Signature</label>
+            <label for="viewdescription" class ="col-sm-3 control-label">Description</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewconsigneesign" name="viewconsigneesign" placeholder="Contract Name" disabled>
+              <textarea name="viewdescription" id="viewdescription" class="form-control" rows="5" placeholder="Description" disabled></textarea>
             </div>
           </div>
+          </div>
+          <div class="col-md-6">
           <div class="form-group">
-            <label for="viewcontractname" class ="col-sm-3 control-label">Consignor Name</label>
+            <label for="viewconsignorname" class ="col-sm-3 control-label">OIC Name</label>
             <div class="col-sm-3">
               <input type="text" class="form-control" id="viewconsignorfirstname" name="viewconsignorfirstname" placeholder="First Name" disabled>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-3"> 
               <input type="text" class="form-control" id="viewconsignormiddlename" name="viewconsignormiddlename" placeholder="Middle Name" disabled>
             </div>
             <div class="col-sm-3">
@@ -722,26 +742,17 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="viewdescription" class ="col-sm-3 control-label">Description</label>
-            <div class="col-sm-9">
-              <textarea name="viewdescription" id="viewdescription" class="form-control" rows="5" placeholder="Description" disabled></textarea>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="viewdatesigned" class ="col-sm-3 control-label">Date Signed</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewdatesigned" name="viewdatesigned" placeholder="Date Signed" disabled>
-            </div>
-          </div>
-          <div class="form-group">
             <label for="viewduration" class ="col-sm-3 control-label">Duration</label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="viewduration" name="viewduration" placeholder="Duration" disabled>
             </div>
           </div>
         </div>
+        </div>
+        </div>
         <div class="modal-footer">
             <button type="button" name="viewClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="button" name="download" class="btn btn-default">Download</button>
             <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
             <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
             <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
@@ -750,14 +761,142 @@
     </div>
   </div>
 
+  
+  <div class="modal modal-default fade" id="renewModal">
+    <div class="modal-dialog"  style="margin-left: 100px;width: 1150px;">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Renew Contract</h3>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="modal-body">
+          <h3>Contract Details</h3>
+          <hr>
+          <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="oldContractNumber" class ="col-sm-3 control-label">Old Contract Number</label>
+            <div class="col-sm-9">
+              <select class="form-control" name="oldContractNumber" id="oldContractNumber">
+                <option selected>Select Existing Contract</option>
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="newcontractnumber" class ="col-sm-3 control-label">New Contract Number</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="newcontractnumber" name="newcontractnumber" placeholder="Contract Number" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewcontractname" class ="col-sm-3 control-label">Contract Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="renewcontractname" name="renewcontractname" placeholder="Contract Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewstallname" class ="col-sm-3 control-label">Stall Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="renewstallname" name="renewstallname" placeholder="Stall Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewfunction" class ="col-sm-3 control-label">Function</label>
+            <div class="col-sm-9">
+              <input type="text"class="form-control" id="renewfunction" name="renewfunction" placeholder="Function" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewcontractname" class ="col-sm-3 control-label">Consignee Name</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="renewconsigneefirstname" name="renewconsigneefirstname" placeholder="First Name">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="renewconsigneemiddlename" name="renewconsigneemiddlename" placeholder="Middle Name">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="renewconsigneelastname" name="renewconsigneelastname" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewdescription" class ="col-sm-3 control-label">Description</label>
+            <div class="col-sm-9">
+              <textarea name="renewdescription" id="renewdescription" class="form-control" rows="3" placeholder="Description"></textarea>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="renewconsignorfirstname" class ="col-sm-3 control-label">OIC Name</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="renewconsignorfirstname" name="renewconsignorfirstname" placeholder="First Name">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="renewconsignormiddlename" name="renewconsignormiddlename" placeholder="Middle Name">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="renewconsignorlastname" name="renewconsignorlastname" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewstatus" class ="col-sm-3 control-label">Status</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="renewstatus" name="renewstatus" placeholder="Status" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewdatesigned" class ="col-sm-3 control-label">Date Signed</label>
+            <div class="col-sm-9 input-group date" style="width: 72.5%;padding-left: 15px;">
+              <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+              </div>
+              <input type="date" class="form-control pull-right" id="renewdatesigned" name="renewdatesigned" placeholder="mm/dd/yyyy">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewduration" class ="col-sm-3 control-label">Duration</label>
+            <div class="col-sm-9">
+              <select class="form-control" id="renewdatesigned" name="renewdatesigned">
+                <option selected>Select Duration</option>
+                <option value="2">2 Years</option>
+                <option value="3">3 Years</option>
+                <option value="4">4 Years</option>
+              </select>
+            </div>
+          </div>
+          <hr>
+                                      <div class="form-group">
+                                        <label for="scancopy" class="col-sm-4 control-label">Scan Copy of Contract</label>
+                                        <div class="col-sm-8">
+                                          <input type="file" name="scancopy" id="scancopy" class="form-control" >
+                                        </div>
+                                      </div>
+          </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" name="inputSubmit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
   <div class="modal modal-default fade" id="editModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog"  style="margin-left: 100px;width: 1150px;">
       <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
           <h3 class="modal-title">Edit Contract</h3>
         </div>
         <form class="form-horizontal" action="" method="post">
           <div class="modal-body">
+          <h3>Contract Details</h3>
+          <hr>
+          <div class="row">
+          <div class="col-md-6">
           <div class="form-group">
             <label for="contractnumber" class ="col-sm-3 control-label">Contract Number</label>
             <div class="col-sm-9">
@@ -779,7 +918,11 @@
           <div class="form-group">
             <label for="function" class ="col-sm-3 control-label">Function</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="function" name="function" placeholder="Function">
+              <select class="form-control" name="function" id="function">
+                <option selected>Select Function</option>
+                <option value="food">Food</option>
+                <option value="nonfood">Non-Food</option>
+              </select>
             </div>
           </div>
           <div class="form-group">
@@ -795,13 +938,15 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="consigneesign" class ="col-sm-3 control-label">Consignee Signature</label>
+            <label for="description" class ="col-sm-3 control-label">Description</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="consigneesign" name="consigneesign" placeholder="Contract Name">
+              <textarea name="description" id="description" class="form-control" rows="5" placeholder="Description"></textarea>
             </div>
           </div>
+          </div>
+          <div class="col-md-6">
           <div class="form-group">
-            <label for="contractname" class ="col-sm-3 control-label">Consignor Name</label>
+            <label for="consignorfirstname" class ="col-sm-3 control-label">OIC Name</label>
             <div class="col-sm-3">
               <input type="text" class="form-control" id="consignorfirstname" name="consignorfirstname" placeholder="First Name">
             </div>
@@ -815,26 +960,31 @@
           <div class="form-group">
             <label for="status" class ="col-sm-3 control-label">Status</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="status" name="status" placeholder="Status">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="description" class ="col-sm-3 control-label">Description</label>
-            <div class="col-sm-9">
-              <textarea name="description" id="description" class="form-control" rows="5" placeholder="Description"></textarea>
+              <input type="text" class="form-control" id="status" name="status" placeholder="Status" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="datesigned" class ="col-sm-3 control-label">Date Signed</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="datesigned" name="datesigned" placeholder="Date Signed">
+              <input type="date" class="form-control" id="datesigned" name="datesigned" placeholder="Date Signed">
             </div>
           </div>
           <div class="form-group">
             <label for="duration" class ="col-sm-3 control-label">Duration</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="duration" name="duration" placeholder="Duration">
+              <select class="form-control" name="duration" id="duration">
+                <option value="" selected>Select Duration</option>
+              </select>
             </div>
+          </div>
+          <hr>
+                                      <div class="form-group">
+                                        <label for="scancopy" class="col-sm-4 control-label">Scan Copy of Contract</label>
+                                        <div class="col-sm-8">
+                                          <input type="file" name="scancopy" id="scancopy" class="form-control" >
+                                        </div>
+                                      </div>
+          </div>
           </div>
           </div>
           <div class="modal-footer">

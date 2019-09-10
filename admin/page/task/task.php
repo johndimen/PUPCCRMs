@@ -634,25 +634,16 @@ require_once('../dbconfig.php');
                   <label for="casename" class="col-sm-3 control-label">Case Name</label>
 
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="casename" name="casename" placeholder="Case Name">
+                  <select class="form-control select2" style="width:100%" name="inputCaseName" id="inputCaseName">
+                    <option value="" selected>Select Case</option>
+                  </select>
                   </div>
                 </div>
-                  <div class="form-group">
-                    <label for="inputStatus" class="col-sm-3 control-label">Status</label>
-                    <div class="col-sm-9">
-                      <select class="form-control select2" style="width: 100%;" id="status" name="status">
-                        <option selected="selected">Select Status</option>
-                        <option value="urgent">Urgent</option>
-                        <option value="new">New</option>
-                      </select>
-                    </div>
-                  </div>
                   <div class="form-group">
                       <label for="inputPriority" class="col-sm-3 control-label">Priority</label>
                       <div class="col-sm-9">
                         <select class="form-control select2" style="width: 100%;" id="priority" name="priority">
                           <option selected="selected">Select Priority</option>
-                          <option value="Urgent">Urgent</option>
                           <option value="high">High</option>
                           <option value="Normal">Normal</option>
                           <option value="low">Low</option>
@@ -662,16 +653,16 @@ require_once('../dbconfig.php');
                   <!-- /.form-group -->
                     <div class="form-group">
                       <label for="inputDateStart" class="col-sm-3 control-label">Date Start</label>
-                        <div class="col-sm-9 input-group date" style="width: 81.8%;padding-left: 15px;">
+                        <div class="col-sm-9 input-group date" style="width: 72.5%;padding-left: 15px;">
                           <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                           </div>
-                          <input type="text" class="form-control pull-right" id="inputDateStart" name="datestart" placeholder="mm/dd/yyyy">
+                          <input type="date" class="form-control pull-right" id="inputDateStart" name="datestart" placeholder="mm/dd/yyyy">
                         </div>
                     </div>
                       <div class="form-group">
                         <label for="inputDateDue" class="col-sm-3 control-label">Date Due</label>
-                          <div class="col-sm-9 input-group date" style="width: 81.8%;padding-left: 15px;">
+                          <div class="col-sm-9 input-group date" style="width: 72.5%;padding-left: 15px;">
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
@@ -805,8 +796,8 @@ require_once('../dbconfig.php');
           </div>
           <div class="modal-footer">
             <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
-            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+            <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
+            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
             <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
           </div>
         </form>

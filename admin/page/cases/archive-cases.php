@@ -289,7 +289,7 @@
                     <li><a href="../concessions/concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
                   </ul>
               </li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Contracts </a></li>
+              <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -585,7 +585,7 @@
         <div class="modal-footer">
           <button type="button" name="viewClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
           <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Restore</button>
-          <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+          <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
         </div>
       </div>
     </div>

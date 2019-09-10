@@ -464,17 +464,17 @@ $conn -> close();
           </ul>
         </li>
         <li class="treeview">
-            <a href="../reports/report.php">
+            <a href="./page/reports/report.php">
               <i class="fa fa-file-archive-o"></i> <span>Reports</span>
               <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class=""><a href="./reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-              <li><a href="./reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-              <li><a href="./reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-              <li><a href="./reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
+              <li class=""><a href="./page/reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
+              <li><a href="./page/reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
+              <li><a href="./page/reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
+              <li><a href="./page/reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
             </ul>
           </li>
         <li class="treeview">

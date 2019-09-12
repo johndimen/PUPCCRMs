@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -301,7 +303,6 @@
                     <ul class="treeview-menu">
                       <li><a href="./concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
                       <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                      <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
                       <li class="active"><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                       <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                       <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
@@ -311,6 +312,7 @@
                 <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
               </ul>
             </li>
+            <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
             <li class="treeview">
               <a href="../calendar/calendar.php">
                 <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -684,13 +686,17 @@
                                 <label for="inputItemName" class="col-sm-3 control-label">Item Name</label>
         
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputItemName" name="inputItemName" placeholder="Item Name">
+                                  <select  class="form-control select2" style="width:100%" id="inputItemName" name="inputItemName">
+                                    <option value=""selected>Select Item Name</option>
+                                    <option value=""></option>
+                                  </select>
+                                  
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputItemType" class="col-sm-3 control-label">Item Type</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" style="width: 100%;" name="inputItemType" id="inputItemType">
+                                    <select class="form-control" style="width: 100%;" name="inputItemType" id="inputItemType">
                                         <option value = ""selected="">Select Type</option>
                                         <option value="food">Food</option>
                                         <option value="non-food">Non-Food</option>
@@ -702,7 +708,7 @@
                                 <label for="inputItemPrice" class="col-sm-3 control-label">Item Price</label>
         
                                 <div class="col-sm-9">
-                                    <input type="number" min ="0" class="form-control" id="inputItemPrice" name="inputItemPrice" placeholder="Item Price">
+                                    <input type="number" min ="0" class="form-control" id="inputItemPrice" name="inputItemPrice" placeholder="Item Price" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -830,13 +836,15 @@
                                 <label for="inputItemName" class="col-sm-3 control-label">Item Name</label>
         
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputItemName" name="inputItemName" placeholder="Item Name">
+                                  <select class="form-control select2" style="width:100%" id="inputItemName" name="inputItemName">
+                                    <option value="" selected>Select Item Name</option>
+                                  </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputItemType" class="col-sm-3 control-label">Item Type</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" style="width: 100%;" name="inputItemType" id="inputItemType">
+                                    <select class="form-control" style="width: 100%;" name="inputItemType" id="inputItemType">
                                         <option value = ""selected="">Select Type</option>
                                         <option value="food">Food</option>
                                         <option value="non-food">Non-Food</option>
@@ -848,7 +856,7 @@
                                 <label for="inputItemPrice" class="col-sm-3 control-label">Item Price</label>
         
                                 <div class="col-sm-9">
-                                    <input type="number" min="0" class="form-control" id="inputItemPrice" name="inputItemPrice" placeholder="Item Price">
+                                    <input type="number" min="0" class="form-control" id="inputItemPrice" name="inputItemPrice" placeholder="Item Price" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -1118,6 +1126,8 @@
   <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
   <!-- FastClick -->
   <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+  <!-- Select2 -->
+  <script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../../dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
@@ -1127,6 +1137,7 @@
   <script>
     $(document).ready(function () {
       $('.sidebar-menu').tree()
+      $('.select2').select2()
     })
   </script>
 

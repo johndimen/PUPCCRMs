@@ -248,7 +248,7 @@
                                     <br>
                                     <h5>Your message</h5>
                                     <p>Any feedbacks, questions, incidents, suggestions, and violent reactions. <br> Please write down below and let US know</p>
-                                    <textarea id "message" name = "message" class="single-textarea" style="line-height:20px;height: 200px;border-radius: 5px;" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
+                                    <textarea id ="message" name = "message" class="single-textarea" style="line-height:20px;height: 200px;border-radius: 5px;" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
                                 </div>
                                 
 						    

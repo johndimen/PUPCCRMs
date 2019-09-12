@@ -327,6 +327,7 @@
               <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
+          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
           <li class="treeview">
             <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -542,7 +543,7 @@
                       <!-- /.pull-right -->
                     </div>
    
-                    <div class="table-responsive mailbox-massages" style= "height:1000px">
+                    <div class="table-responsive mailbox-massages" style= "height:500px">
                       <table class="table table-hover table-striped">
                         <tbody>
                           <tr>
@@ -586,7 +587,7 @@
 
   <div class="modal modal-default fade" id="addModal">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
@@ -616,18 +617,20 @@
               <label for="inputServiceName" class="col-sm-3 control-label">Service Name</label>
         
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="inputServiceName" name="inputServiceName" placeholder="Service Name">
+                  <select class="form-control select2" style="width:100%" id="inputServiceName" name="inputServiceName">
+                    <option value=""selected>Select Service Name</option>
+                  </select>
                 </div>
             </div>
             <div class="form-group">
               <label for="inputServicePrice" class="col-sm-3 control-label">Price</label>
               <div class="row">
                 <div class="col-sm-3">
-                  <input type="text" class="form-control" id="inputServicePriceLower" name="inputServicePriceLower" placeholder="Price (lower)">
+                  <input type="number" min="0" class="form-control" id="inputServicePriceLower" name="inputServicePriceLower" placeholder="Price (lower)">
                 </div>
                 <div class="col-sm-2"><span><center>~</center> </span></div>
                 <div class="col-sm-3">
-                  <input type="text" class="form-control" id="inputServicePriceHigher" name="inputServicePriceHigher" placeholder="Price (Higher)">
+                  <input type="number" min="0" class="form-control" id="inputServicePriceHigher" name="inputServicePriceHigher" placeholder="Price (Higher)">
                 </div>
               </div>
             </div>
@@ -739,7 +742,9 @@
               <label for="inputServiceName" class="col-sm-3 control-label">Service Name</label>
         
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="inputServiceName" name="inputServiceName" placeholder="Service Name">
+                  <select class="form-control select2" style="width:100%" id="inputServiceName" name="inputServiceName" >
+                    <option value=""selected> Select Service Name</option>
+                  </select>
                 </div>
             </div>
             <div class="form-group">

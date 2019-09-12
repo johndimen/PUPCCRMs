@@ -429,7 +429,6 @@
       <div class="row">
           <div class="col-md-3">
               <a href="../../index.php" class="btn btn-primary btn-block margin-bottom">Back to Dashboard</a>
-              <a href="./task.php" class="btn btn-primary btn-block margin-bottom">Back to Task</a>
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Folders</h3>

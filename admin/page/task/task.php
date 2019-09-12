@@ -615,7 +615,7 @@ require_once('../dbconfig.php');
   <!-- /.content-wrapper -->
 
   <div class="modal modal-default fade" id="addTask">
-    <div class="modal-dialog">
+    <div class="modal-dialog"  style="margin-left: 100px;width: 1150px;">
       <div class="modal-content" style="border-radius: 10px">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -624,19 +624,13 @@ require_once('../dbconfig.php');
         </div>
         <form class="form-horizontal" action="task.php" method="post" id="createTask">
           <div class="modal-body">
+            <div class="row">
+            <div class="col-md-6">
+              <h4>Task Details</h4>
               <div class="form-group">
                   <label for="inputtaskname" class="col-sm-3 control-label">Task Name</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="taskname" name="taskname" placeholder="Task Name">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="casename" class="col-sm-3 control-label">Case Name</label>
-
-                  <div class="col-sm-9">
-                  <select class="form-control select2" style="width:100%" name="inputCaseName" id="inputCaseName">
-                    <option value="" selected>Select Case</option>
-                  </select>
                   </div>
                 </div>
                   <div class="form-group">
@@ -701,6 +695,56 @@ require_once('../dbconfig.php');
                       </select>
                     </div>
                   </div>
+                  </div>
+                  <div class="col-md-6">
+                        <h4>Case Details</h4>
+                  <div class="form-group">
+                    <label for="casename" class="col-sm-3 control-label">Case Number</label>
+
+                    <div class="col-sm-9">
+                      <select class="form-control select2" style="width:100%" name="inputCaseName" id="inputCaseName">
+                      <option value="" selected>Select Case</option>
+                    </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+              <label for="inputCaseName" class="col-sm-3 control-label">Case Name</label>
+      
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputCaseName" placeholder="Case Name" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputType" class="col-sm-3 control-label">Case Type</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="type" name="type" placeholder="Type" disabled>
+              </div>
+            </div>
+                          <!--<div class="form-group">
+                            <label for="inputStatus" class="col-sm-3 control-label">Status</label>
+                            <div class="col-sm-9">
+                              <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected"></option>Select Status</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="new">New</option>
+                              </select>
+                            </div>
+                          </div>-->
+            <div class="form-group">
+              <label for="casepriority" class="col-sm-3 control-label">Case Priority</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="casepriority" name="casepriority" placeholder="Priority" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputDescription" class="col-sm-3 control-label">Case Description</label>
+      
+              <div class="col-sm-9">
+                <textarea class="form-control" id="inputDescription" placeholder="Task Description" disabled></textarea>
+              </div>
+            </div>
+                  </div>
+                  </div>
           </div>
           <div class="modal-footer">
             <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -736,63 +780,110 @@ require_once('../dbconfig.php');
   ?>
 
   <div class="modal modal-default fade" id="viewModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog"  style="margin-left: 100px;width: 1150px;">
       <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
           <h3 class="modal-title">View Task</h3>
         </div>
         <form class="form-horizontal" action="" method="post">
-          <div class="modal-body">
-            <h4>Task Details</h4>
-            <hr>
-            <div class="form-group">
-              <label for="editTaskName" class="col-sm-3 control-label">Task Name</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="editTaskName" name="editTaskname" placeholder="Task Name" disabled>
-                </div>
-            </div>
-            <div class="form-group">
-              <label for="editCaseName" class="col-sm-3 control-label">Case Name</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="editCaseName" name="editCaseName" placeholder="Case Name" disabled>
-                </div>
-            </div>
-            <div class="form-group">
-              <label for="editStatus" class="col-sm-3 control-label">Status</label>
-                <div class="col-sm-9">
-                  <input class="form-control"  id="editStatus" name="editStatus" placeholder="Status" disabled>
-                </div>
-            </div>
-            <div class="form-group">
-              <label for="editPriority" class="col-sm-3 control-label">Priority</label>
-                <div class="col-sm-9">
-                  <input class="form-control"  id="editPriority" name="editPriority" placeholder="Priority" disabled>
-                </div>
-            </div>
-            <div class="form-group">
-              <label for="editDateStart" class="col-sm-3 control-label">Date Start</label>
-                <div class="col-sm-9 input-group date" style="width: 72.8%;padding-left: 15px;">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
+        <div class="modal-body">
+            <div class="row">
+            <div class="col-md-6">
+              <h4>Task Details</h4>
+              <div class="form-group">
+                  <label for="inputtaskname" class="col-sm-3 control-label">Task Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputtaskname" name="inputtaskname" placeholder="Task Name" disabled>
                   </div>
-                  <input type="text" class="form-control pull-right" id="editDateStart" name="editDateStart" placeholder="mm/dd/yyyy" disabled>
                 </div>
-            </div>
-            <div class="form-group">
-              <label for="editDateDue" class="col-sm-3 control-label">Date Due</label>
-              <div class="col-sm-9 input-group date" style="width: 72.8%;padding-left: 15px;">
-                <div class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
+                  <div class="form-group">
+                      <label for="inputPriority" class="col-sm-3 control-label">Priority</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputPriority" name="inputPriority" placeholder="Priority" disabled>
+                      </div>
+                    </div>
+                  <!-- /.form-group -->
+                    <div class="form-group">
+                      <label for="inputDateStart" class="col-sm-3 control-label">Date Start</label>
+                        <div class="col-sm-9 input-group date" style="width: 72.5%;padding-left: 15px;">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="date" class="form-control pull-right" id="inputDateStart" name="inputDateStart" placeholder="mm/dd/yyyy" disabled>
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label for="inputDateDue" class="col-sm-3 control-label">Date Due</label>
+                          <div class="col-sm-9 input-group date" style="width: 72.5%;padding-left: 15px;">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="inputDateDue" name="datedue" placeholder="mm/dd/yyyy" disabled>
+                          </div>
+                      </div>
+                <div class="form-group">
+                  <label for="inputDescription" class="col-sm-3 control-label">Task Description</label>
+
+                  <div class="col-sm-9">
+                    <textarea class="form-control" id="inputDescription" name="description" placeholder="Task Description" disabled></textarea>
+                  </div>
                 </div>
-                <input type="text" class="form-control pull-right" id="editDateDue" name="editDateDue" placeholder="mm/dd/yyyy" disabled>
+                  <div class="form-group">
+                    <label for="inputAdminName" class="col-sm-3 control-label">Assigned Admin</label>
+
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control pull-right" id="inputAdminName" name="inputAdminName" placeholder="Admin" disabled>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="col-md-6">
+                        <h4>Case Details</h4>
+                  <div class="form-group">
+                    <label for="casename" class="col-sm-3 control-label">Case Number</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control pull-right" id="casename" name="casename" placeholder="Case Name" disabled>
+                    </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+              <label for="inputCaseName" class="col-sm-3 control-label">Case Name</label>
+      
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputCaseName" placeholder="Case Name" disabled>
               </div>
             </div>
             <div class="form-group">
-              <label for="editDescription" class="col-sm-3 control-label">Task Description</label>
-                <div class="col-sm-9">
-                  <textarea class="form-control" id="editDescription" name="editDescription" placeholder="Task Description" disabled></textarea>
-                </div>
+              <label for="inputType" class="col-sm-3 control-label">Case Type</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="type" name="type" placeholder="Type" disabled>
+              </div>
             </div>
+                          <!--<div class="form-group">
+                            <label for="inputStatus" class="col-sm-3 control-label">Status</label>
+                            <div class="col-sm-9">
+                              <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected"></option>Select Status</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="new">New</option>
+                              </select>
+                            </div>
+                          </div>-->
+            <div class="form-group">
+              <label for="casepriority" class="col-sm-3 control-label">Case Priority</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="casepriority" name="casepriority" placeholder="Priority" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputDescription" class="col-sm-3 control-label">Case Description</label>
+      
+              <div class="col-sm-9">
+                <textarea class="form-control" id="inputDescription" placeholder="Task Description" disabled></textarea>
+              </div>
+            </div>
+                  </div>
+                  </div>
           </div>
           <div class="modal-footer">
             <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -806,7 +897,7 @@ require_once('../dbconfig.php');
   </div>
 
   <div class="modal modal-default fade" id ="editModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog"  style="margin-left: 100px;width: 1150px;">
       <div class="modal-content" style="border-radius:10px">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -814,55 +905,128 @@ require_once('../dbconfig.php');
           <h3 class="modal-title">Edit Task</h3>
         </div>
         <form class="form-horizontal"action="" method="post">
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="editTaskName" class="col-sm-3 control-label">Task Name</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="editTaskName" name="editTaskname" placeholder="Task Name">
-                </div>
-            </div>
-            <div class="form-group">
-              <label for="editCaseName" class="col-sm-3 control-label">Case Name</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="editCaseName" name="editCaseName" placeholder="Case Name">
-                </div>
-            </div>
-            <div class="form-group">
-              <label for="editPriority" class="col-sm-3 control-label">Priority</label>
-                <div class="col-sm-9">
-                  <select class="form-control select2" style="width: 100%;" id="editPriority" name="editPriority">
-                    <option selected="selected">Select Priority</option>
-                    <option value="Urgent">Urgent</option>
-                    <option value="high">High</option>
-                    <option value="Normal">Normal</option>
-                    <option value="low">Low</option>
-                  </select>
-                </div>
-            </div>
-            <div class="form-group">
-              <label for="editDateStart" class="col-sm-3 control-label">Date Start</label>
-                <div class="col-sm-9 input-group date" style="width: 72.4%;padding-left: 15px;">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
+        <div class="modal-body">
+            <div class="row">
+            <div class="col-md-6">
+              <h4>Task Details</h4>
+              <div class="form-group">
+                  <label for="inputtaskname" class="col-sm-3 control-label">Task Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="taskname" name="taskname" placeholder="Task Name">
                   </div>
-                  <input type="date" class="form-control pull-right" id="editDateStart" name="editDateStart" placeholder="mm/dd/yyyy">
                 </div>
-            </div>
-            <div class="form-group">
-              <label for="editDateDue" class="col-sm-3 control-label">Date Due</label>
-              <div class="col-sm-9 input-group date" style="width: 72.4%;padding-left: 15px;">
-                <div class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
+                  <div class="form-group">
+                      <label for="inputPriority" class="col-sm-3 control-label">Priority</label>
+                      <div class="col-sm-9">
+                        <select class="form-control select2" style="width: 100%;" id="priority" name="priority">
+                          <option selected="selected">Select Priority</option>
+                          <option value="high">High</option>
+                          <option value="Normal">Normal</option>
+                          <option value="low">Low</option>
+                        </select>
+                      </div>
+                    </div>
+                  <!-- /.form-group -->
+                    <div class="form-group">
+                      <label for="inputDateStart" class="col-sm-3 control-label">Date Start</label>
+                        <div class="col-sm-9 input-group date" style="width: 72.5%;padding-left: 15px;">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="date" class="form-control pull-right" id="inputDateStart" name="datestart" placeholder="mm/dd/yyyy">
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label for="inputDateDue" class="col-sm-3 control-label">Date Due</label>
+                          <div class="col-sm-9 input-group date" style="width: 72.5%;padding-left: 15px;">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="inputDateDue" name="datedue" placeholder="mm/dd/yyyy">
+                          </div>
+                      </div>
+                <div class="form-group">
+                  <label for="inputDescription" class="col-sm-3 control-label">Task Description</label>
+
+                  <div class="col-sm-9">
+                    <textarea class="form-control" id="inputDescription" name="description" placeholder="Task Description"></textarea>
+                  </div>
                 </div>
-                <input type="date" class="form-control pull-right" id="editDateDue" name="editDateDue" placeholder="mm/dd/yyyy">
+                  <div class="form-group">
+                    <label for="inputAdminName" class="col-sm-3 control-label">Assigned Admin</label>
+
+                    <div class="col-sm-9">
+                      <select class="form-control select2" style="width: 100%" name="adminname" id="inputAdminName">
+                        <option value="" selected>Select Admin</option>
+                        <?php
+                          $adminsql = "SELECT `crm_admin_user_login`.`CRM_Login_Username`, `crm_admin_user_details`.`CRM_First_Name`, `crm_admin_user_details`.`CRM_Last_Name`
+                          FROM `crm_admin_user_login` 
+                            LEFT JOIN `crm_admin_user_details` ON `crm_admin_user_details`.`CRM_User_Login_SerialNo_FK` = `crm_admin_user_login`.`CRM_User_Login_SerialNo`;";
+                          $s = " = ";
+                          $adminresult = $conn->query($adminsql);
+                          if($adminresult ->num_rows > 0){
+                            while($row = $adminresult->fetch_assoc()){
+                              ?>
+                              <option value="<?php echo $row['CRM_Login_Username']; ?>"><?php echo $row['CRM_Login_Username'].$s.$row['CRM_First_Name'].' '.$row['CRM_Last_Name']; ?></option>
+                            <?php }
+                        }else {
+                          $data = "<option class=\"label label-danger\">No Data Available</option>";
+                          echo $data;
+                        }
+                        ?>
+                      </select>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="col-md-6">
+                        <h4>Case Details</h4>
+                  <div class="form-group">
+                    <label for="casename" class="col-sm-3 control-label">Case Number</label>
+
+                    <div class="col-sm-9">
+                      <select class="form-control select2" style="width:100%" name="inputCaseName" id="inputCaseName">
+                      <option value="" selected>Select Case</option>
+                    </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+              <label for="inputCaseName" class="col-sm-3 control-label">Case Name</label>
+      
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputCaseName" placeholder="Case Name" disabled>
               </div>
             </div>
             <div class="form-group">
-              <label for="editDescription" class="col-sm-3 control-label">Task Description</label>
-                <div class="col-sm-9">
-                  <textarea class="form-control" id="editDescription" name="editDescription" placeholder="Task Description"></textarea>
-                </div>
+              <label for="inputType" class="col-sm-3 control-label">Case Type</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="type" name="type" placeholder="Type" disabled>
+              </div>
             </div>
+                          <!--<div class="form-group">
+                            <label for="inputStatus" class="col-sm-3 control-label">Status</label>
+                            <div class="col-sm-9">
+                              <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected"></option>Select Status</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="new">New</option>
+                              </select>
+                            </div>
+                          </div>-->
+            <div class="form-group">
+              <label for="casepriority" class="col-sm-3 control-label">Case Priority</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="casepriority" name="casepriority" placeholder="Priority" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputDescription" class="col-sm-3 control-label">Case Description</label>
+      
+              <div class="col-sm-9">
+                <textarea class="form-control" id="inputDescription" placeholder="Task Description" disabled></textarea>
+              </div>
+            </div>
+                  </div>
+                  </div>
           </div>
           <div class="modal-footer">
             <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>

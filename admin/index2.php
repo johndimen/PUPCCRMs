@@ -424,6 +424,7 @@ $conn -> close();
             <li><a href="./page/concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
           </ul>
         </li>
+        <li><a href="./page/categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
         <li class="treeview">
           <a href="./page/calendar/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>

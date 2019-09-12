@@ -431,7 +431,6 @@
           <div class="col-md-3">
               <a href="../../index.php" class="btn btn-primary btn-block margin-bottom">Back to Dashboard</a>
               
-              <a href="#" class="btn btn-primary btn-block margin-bottom">Add Task</a>
               
               <div class="box box-solid">
                 <div class="box-header with-border">

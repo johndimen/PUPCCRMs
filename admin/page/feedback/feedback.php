@@ -580,105 +580,118 @@
           <h3 class="modal-title">Feedback Detail</h3>
         </div>
         <div class="modal-body form-horizontal">
+        <div class="row">
+          <div class="col-md-4">
+          <h4>Feedback Details</h4>
           <div class="form-group">
-            <label for="stallno" class="col-sm-3 control-label">Stall No</label>
-            <div class="col-sm-9">
+            <label for="stallno" class="col-sm-4 control-label">Stall No</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="stallno" name="stallno" placeholder="Stall Number">
             </div>
           </div>
           <div class="form-group">
-            <label for="stallarea" class="col-sm-3 control-label">Stall Area</label>
-            <div class="col-sm-9">
+            <label for="stallarea" class="col-sm-4 control-label">Stall Area</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="stallarea" name="stallarea" placeholder="Stall Area">
             </div>
           </div>
           <div class="form-group">
-            <label for="evaluation" class="col-sm-3 control-label">Evaluation</label>
-            <div class="col-sm-9">
+            <label for="evaluation" class="col-sm-4 control-label">Evaluation</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="evaluation" name="evaluation" placeholder="Evaluation">
             </div>
           </div>
           <div class="form-group">
-            <label for="message" class="col-sm-3 control-label">Message</label>
-            <div class="col-sm-9">
+            <label for="type" class="col-sm-4 control-label">Feedback Type</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="type" name="type" placeholder="Feedback Type">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message" class="col-sm-4 control-label">Message</label>
+            <div class="col-sm-8">
               <textarea name="message" id="message" class="form-control" rows="5" Placeholder="Feedback Message"></textarea>
             </div>
           </div>
-          <hr>
-          <h4>Questions</h4>
+          </div>
+          <div class="col-md-4">
+          <h4>Question Details</h4>
           <div class="form-group">
-            <label for="question1" class="col-sm-3 control-label">Question 1</label>
-            <div class="col-sm-9">
+            <label for="question1" class="col-sm-4 control-label">Question 1</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="question1" name="question1" placeholder="Question 1">
             </div>
           </div>
           <div class="form-group">
-            <label for="question2" class="col-sm-3 control-label">Question 2</label>
-            <div class="col-sm-9">
+            <label for="question2" class="col-sm-4 control-label">Question 2</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="question2" name="question2" placeholder="Question 2">
             </div>
           </div>
           <div class="form-group">
-            <label for="question3" class="col-sm-3 control-label">Question 3</label>
-            <div class="col-sm-9">
+            <label for="question3" class="col-sm-4 control-label">Question 3</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="question3" name="question3" placeholder="Question 3">
             </div>
           </div>
           <div class="form-group">
-            <label for="question4" class="col-sm-3 control-label">Question 4</label>
-            <div class="col-sm-9">
+            <label for="question4" class="col-sm-4 control-label">Question 4</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="question4" name="question4" placeholder="Question 4">
             </div>
           </div>
           <div class="form-group">
-            <label for="question5" class="col-sm-3 control-label">Question 5</label>
-            <div class="col-sm-9">
+            <label for="question5" class="col-sm-4 control-label">Question 5</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="question5" name="question5" placeholder="Question 5">
             </div>
           </div>
           <div class="form-group">
-            <label for="question6" class="col-sm-3 control-label">Question 6</label>
-            <div class="col-sm-9">
+            <label for="question6" class="col-sm-4 control-label">Question 6</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="question6" name="question6" placeholder="Question 6">
             </div>
           </div>
           <div class="form-group">
-            <label for="question7" class="col-sm-3 control-label">Question 7</label>
-            <div class="col-sm-9">
+            <label for="question7" class="col-sm-4 control-label">Question 7</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="question7" name="question7" placeholder="Question 7">
             </div>
           </div>
-          <hr>
+          </div>
+          <div class="col-md-4">
           <h4>Sender Detail</h4>
           <div class="form-group">
-            <label for="sendername" class="col-sm-3 control-label">Sender Name</label>
-            <div class="col-sm-9">
+            <label for="sendername" class="col-sm-4 control-label">Sender Name</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="sendername" name="sendername" placeholder="Sender Name">
             </div>
           </div>
           <div class="form-group">
-            <label for="idno" class="col-sm-3 control-label">ID No</label>
-            <div class="col-sm-9">
+            <label for="idno" class="col-sm-4 control-label">ID No</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="idno" name="idno" placeholder="ID Number">
             </div>
           </div>
           <div class="form-group">
-            <label for="email" class="col-sm-3 control-label">E-mail</label>
-            <div class="col-sm-9">
+            <label for="email" class="col-sm-4 control-label">E-mail</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="email" name="email" placeholder="E-mail">
             </div>
           </div>
           <div class="form-group">
-            <label for="contactno" class="col-sm-3 control-label">Contact No</label>
-            <div class="col-sm-9">
+            <label for="contactno" class="col-sm-4 control-label">Contact No</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="contactno" name="contactno" placeholder="Contact No">
             </div>
+          </div>
+          </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
-          <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+          <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
+          <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
         </div>
       </div>
     </div>

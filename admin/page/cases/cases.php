@@ -290,7 +290,6 @@ require_once('../dbconfig.php');
                   <ul class="treeview-menu">
                     <li><a href="../concessions/concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
                     <li><a href="../concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                    <li><a href="../concessions/concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
                     <li><a href="../concessions/concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                     <li><a href="../concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                     <li><a href="../concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
@@ -592,7 +591,7 @@ require_once('../dbconfig.php');
   <!-- /.content-wrapper -->
 
   <div class="modal modal-default fade" id="addCases">
-    <div class="modal-dialog">
+    <div class="modal-dialog" >
       <div class="modal-content" style="border-radius: 10px">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">

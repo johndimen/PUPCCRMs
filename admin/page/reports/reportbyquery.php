@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Documentation</title>
+  <title>PUPCCRMs | Reports</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -17,6 +17,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../plugins/iCheck/all.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,9 +38,9 @@
     <!-- Logo -->
     <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>PUP</b>CCRM</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -331,7 +333,7 @@
             <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="active treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
             <span class="pull-right-container">
@@ -339,8 +341,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
+            <li class=""><a href="./reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
+            <li class="active"><a  href="./reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -365,7 +367,7 @@
             <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
           </ul>
         </li>
-        <li class="active"><a href="./documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li><a href="../documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
         <li class="header">LABELS</li>
             <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
@@ -410,67 +412,443 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          Documentation
-          <small>All system documentation</small>
+          Reports
+          <small>Reports By Queries</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active"><a href="#">Documentation</a></li>
+          <li class="active"><a href="#">Reports</a></li>
         </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
+        <a href="../../index.php" class="btn btn-primary btn-block margin-bottom" style="width:250px">Back to Dashboard</a>
+        
+        <div class="row">
+            <div class="col-md-12">
+              <div class="box  collapsed-box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">For Feedback</h3>
 
-      <div class="row">
-          <div class="col-md-3">
-              <a href="../../index.php" class="btn btn-primary btn-block margin-bottom">Back to Dashboard</a>
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Folders</h3>
-    
-                  <div class="box-tools">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                     </button>
                   </div>
+                  <!-- /.box-tools -->
                 </div>
-                <div class="box-body no-padding">
-                  <ul class="nav nav-pills nav-stacked">
-                    <li><a href=""><i class="fa fa-book"></i> Introduction</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Feedback</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Task</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Case</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Concession</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Calendar</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Mail</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Reports</a></li>
-                    <li><a href=""><i class="fa fa-book"></i> Options</a></li>
-                  </ul>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- /. box -->
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Labels</h3>
-    
-                  <div class="box-tools">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
+                <!-- /.box-header -->
+                <form action="" method="post">
+                <div class="box-body">
+                  <div class="row">
+                    <div class="col-md-2 ">
+                      <h4>Feedback Detail</h4>
+                      <div class="col-sm-12">
+                        <input type="checkbox" class="icheck" name="" id="">All
+                        <br>
+                        <input type="checkbox" class="icheck" name="" id="">Stall Number
+                        <input type="checkbox" class="icheck" name="" id="">Stall Location
+                        <br>
+                        <input type="checkbox" class="icheck" name="" id="">Evaluation
+                        <br>
+                        <input type="checkbox" class="icheck" name="" id="">Type
+                        <br>
+                        <input type="checkbox" name="" id="">Date Sent
+                        <br>  
+                            <input type="checkbox" name="" id="">Status
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <h4>Where</h4>
+                      <div class="col-sm-3">
+                        <h5>Evaluation</h5>
+                        <input type="checkbox" name="" id="">All
+                        <br>
+                        <input type="checkbox" class="icheck" name="" id="">5 stars
+                        <br>
+                        <input type="checkbox" name="" id="">4 stars
+                        <br>
+                        <input type="checkbox" name="" id="">3 stars
+                        <br>
+                        <input type="checkbox" name="" id="">2 stars
+                        <br>
+                        <input type="checkbox" name="" id="">1 stars
+                      </div>
+                      <div class="col-sm-4">
+                        <h5>Feedback Type</h5>
+                        <input type="checkbox" name="" id="">All
+                        <br>
+                        <input type="checkbox" name="" id="">Commendation
+                        <br>
+                        <input type="checkbox" name="" id="">Suggestion
+                        <br>
+                        <input type="checkbox" name="" id="">Complaint
+                      </div>
+                      <div class="col-sm-5">
+                        <h5>Date Sent</h5>
+                        <input type="date" class="form-control" name="" id="">
+                        <br>
+                        <h5>Status</h5>
+                            <input type="checkbox" name="" id="">All
+                            <br>  
+                            <input type="checkbox" name="" id="">Active
+                            <br>  
+                            <input type="checkbox" name="" id="">Archive
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <h4>Sort by</h4>
+                      <select class="form-control" name="" id="">
+                        <option value=""selected>Select Order</option>
+                        <option value="location">Location</option>
+                        <option value="evaluation">Evaluation</option>
+                        <option value="feedbacktype">Feedback Type</option>
+                        <option value="location">Location</option>
+                        <option value="date">Date Sent</option>
+                        <option value="status">Status</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <h4>Order By</h4>
+                      <div class="col-sm-12">
+                        <input type="checkbox" class="icheck" name="" id="">Asc
+                        <br>
+                        <input type="checkbox" class="icheck" name="" id="">Dsc
+                      </div>
+                    </div>
+                    
                   </div>
                 </div>
-                <div class="box-body no-padding">
-                  <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> Notice</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-green"></i> Note</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Information</a></li>
-                  </ul>
-                </div>
                 <!-- /.box-body -->
+                <div class="box-footer">
+                  <button type="submit" name="submitquery" id="submitquery" class="btn btn-primary">Submit</button>
+                </div>
+                </form>
               </div>
               <!-- /.box -->
             </div>
             <!-- /.col -->
+
+            <div class="col-md-12">
+              <div class="box collapsed-box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">For Cases</h3>
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                  </div>
+                </div>
+                <form action="" method="post">
+                  <div class="box-body">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <h4>Case Detail</h4>
+                          <input type="checkbox" name="" id="">All
+                          <br>
+                          <input type="checkbox" name="" id="">Case Name
+                          <br>
+                          <input type="checkbox" name="" id="">Type
+                          <br>
+                          <input type="checkbox" name="" id="">Priority 
+                          <br>
+                          <input type="checkbox" name="" id="">Description
+                          <br>  
+                            <input type="checkbox" name="" id="">Status
+                          <br>
+                          <input type="checkbox" name="" id="">Date
+                        </div>
+                        <div class="col-md-6">
+                          <h4>Where</h4>
+                          <div class="col-sm-3">
+                            <h5>Type</h5>
+                            <input type="checkbox" name="" id="">Incident
+                            <br>
+                            <input type="checkbox" name="" id="">Accident
+                            <br>
+                            <input type="checkbox" name="" id="">Problem
+                            <br>  
+                            <input type="checkbox" name="" id="">Emergency
+                          </div>
+                          <div class="col-sm-3">
+                            <h5>Priority</h5>
+                            <input type="checkbox" name="" id="">High
+                            <br>  
+                            <input type="checkbox" name="" id="">Normal
+                            <br>  
+                            <input type="checkbox" name="" id="">Low
+                          </div>
+                          <div class="col-sm-5">
+                            <h5>Date Created</h5>
+                            <input class="form-control" type="date" name="" id="">
+                            <br>
+                            <h5>Status</h5>
+                            <input type="checkbox" name="" id="">All
+                            <br>  
+                            <input type="checkbox" name="" id="">Active
+                            <br>  
+                            <input type="checkbox" name="" id="">Archive
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <h4>Sort By</h4>
+                          <select class="form-control" name="" id="">
+                            <option value="">Select Sort</option>
+                            <option value="type">Type</option>
+                            <option value="priority">Priority</option>
+                            <option value="datecreated">Date Created</option>
+                            <option value="status">Status</option>
+                          </select>
+                        </div>
+                        <div class="col-md-2">
+                          <h4>Order by</h4>
+                          <input type="checkbox" name="" id="">Asc
+                          <br>  
+                          <input type="checkbox" name="" id="">Dsc
+                        </div>
+                      </div>
+                  </div>
+                  <div class="box-footer clearfix"> 
+                    <button type="submit" name="submitquery" id="submitquery" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- /.col -->
+
+            <div class="col-md-12">
+              <div class="box collapsed-box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">For Task</h3>
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                  </div>
+                </div>
+                <form action="" method="post">
+                  <div class="box-body">
+                    <div class="col-md-2">
+                      <h4>Task Detail</h4>
+                      <input type="checkbox" name="" id="">All
+                      <br>
+                      <input type="checkbox" name="" id="">Task Name
+                      <br>
+                      <input type="checkbox" name="" id="">Priority
+                      <br>
+                      <input type="checkbox" name="" id="">Date Started
+                      <br>
+                      <input type="checkbox" name="" id="">Date Due
+                      <br>
+                      <input type="checkbox" name="" id="">Description
+                      <br>
+                      <input type="checkbox" name="" id="">Assigned Admin
+                      <br>
+                      <input type="checkbox" name="" id="">Date Created
+                      <br>
+                      <input type="checkbox" name="" id="">Case Number
+                    </div>
+                    <div class="col-md-6">
+                      <h4>Where</h4>
+                      <div class="col-sm-3">
+                        <h5>Priority</h5>
+                        <input type="checkbox" name="" id="">High
+                        <br>
+                        <input type="checkbox" name="" id="">Normal
+                        <br>
+                        <input type="checkbox" name="" id="">Low
+                      </div>
+                      <div class="col-sm-5">
+                        <h5>Date Start</h5>
+                        <input type="date" class="form-control" name="" id="">
+                        <br>
+                        <h5>Date Due</h5>
+                        <input type="date" class="form-control" name="" id="">
+                      </div>
+                      <div class="col-sm-4">
+                        <h5>Assigned Admin</h5>
+                        <select class="form-control" name="" id="">
+                          <option value="" selected>Select Admin</option>
+                          <option value=""></option>
+                          
+                        </select>
+                          <br>
+                            <h5>Status</h5>
+                            <input type="checkbox" name="" id="">All
+                            <br>  
+                            <input type="checkbox" name="" id="">Active
+                            <br>  
+                            <input type="checkbox" name="" id="">Archive
+                      </div>
+                    </div>
+                      <div class="col-md-2">
+                        <h4>Sort by</h4>
+                        <select class="form-control" name="" id="">
+                          <option value="">Select Order</option>
+                          <option value="">Priority</option>
+                          <option value="datestarted">Date Started</option>
+                          <option value="datedue">Date Due</option>
+                          <option value="assignedadmin">Assigned Admin</option>
+                          <option value="datecreated">Date Created</option>
+                          <option value="caseno">Case Number</option>
+                          <option value="status">Status</option>
+                        </select>
+                      </div>
+                      <div class="col-md-2">
+                        <h4>Order by</h4>
+                        <input type="checkbox" name="" id="">Asc
+                        <br>
+                        <input type="checkbox" name="" id="">Dsc
+                      </div>
+                  </div>
+                  <div class="box-footer clearfix"> 
+                    <button type="submit" name="submitquery" id="submitquery" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- /.col -->
+
+            
+            <div class="col-md-12">
+              <div class="box  collapsed-box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">For Concession</h3>
+
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                  <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <form action="" method="post">
+                <div class="box-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <h4>Concession Details</h4>
+                      <input type="checkbox" name="" id="">All
+                      <br>
+                      <input type="checkbox" name="" id="">Stall Number
+                      <br>
+                      <input type="checkbox" name="" id="">Business Name
+                      <br>
+                      <input type="checkbox" name="" id="">Stall Location
+                      <br>
+                      <input type="checkbox" name="" id="">Category
+                      <br>
+                      <input type="checkbox" name="" id="">Owners Name
+                      <br>
+                      <input type="checkbox" name="" id="">Owners Address
+                      <br>
+                      <input type="checkbox" name="" id="">Contact No
+                      <br>
+                      <input type="checkbox" name="" id="">Email
+                      <br>
+                      <input type="checkbox" name="" id="">Date Approved
+                      <br>
+                      <input type="checkbox" name="" id="">Stall Measurement
+                      <br>
+                      <input type="checkbox" name="" id="">Monthly Rental
+                    </div>
+                    <div class="col-md-6">
+                      <h4>Where</h4>
+                        <div class="col-sm-3">
+                          <h5>Stall Location</h5>
+                          <input type="checkbox" name="" id="">North
+                          <br>
+                          <input type="checkbox" name="" id="">South
+                          <br>
+                          <input type="checkbox" name="" id="">West
+                          <br>
+                          <input type="checkbox" name="" id="">East
+                          <br>
+                          <input type="checkbox" name="" id="">Sampaguita
+                          <br>
+                          <input type="checkbox" name="" id="">Lagoon
+                          <br>
+                          <input type="checkbox" name="" id="">Other
+                        </div>
+                        <div class="col-sm-3">
+                          <h5>Category</h5>
+                          <input type="checkbox" name="" id="">Food
+                          <br>
+                          <input type="checkbox" name="" id="">Non-Food
+                          <br>
+                          <br>
+                          <h5>Status</h5>
+                            <input type="checkbox" name="" id="">All
+                            <br>  
+                            <input type="checkbox" name="" id="">Active
+                            <br>  
+                            <input type="checkbox" name="" id="">Archive
+                        </div>
+                        <div class="col-sm-5">
+                          <h5>Date Approved</h5>
+                          <input type="date" class="form-control" name="" id="">
+                          <br>
+                          <br>
+                          <h5>Monthly Rental</h5>
+                          <input type="number" class="form-control" min="0" name="" id="" placeholder="0">
+                        </div>
+                        
+                    </div>
+                
+
+                    <div class="col-md-2">
+                      <h4>Sort by</h4>
+                      <select class="form-control" name="" id="">
+                        <option value="">Select Order</option>
+                        <option value="">Priority</option>
+                        <option value="datestarted">Date Started</option>
+                        <option value="datedue">Date Due</option>
+                        <option value="assignedadmin">Assigned Admin</option>
+                        <option value="datecreated">Date Created</option>
+                        <option value="caseno">Case Number</option>
+                        <option value="rental">Monthly Rental</option>
+                        <option value="dateapproved">Date Approved</option>
+                        <option value="status">Status</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <h4>Order by</h4>
+                      <input type="checkbox" name="" id="">Asc
+                      <br>
+                      <input type="checkbox" name="" id="">Dsc
+                    </div>
+                  </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                  <button type="submit" name="submitquery" id="submitquery" class="btn btn-primary">Submit</button>
+                </div>
+                </form>
+              </div>
+              <!-- /.box -->
+            </div>
+            <!-- /.col -->
+
+          <div class="col-md-12">
+            
+
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <h3 class="box-title">Query Result</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+                </div>
+                <!-- /.box-tools -->
+              </div>
+              <!-- /.box-header -->
+              <form action="" method="post">
+              <div class="box-body">
+                The body of the box
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+              <button type="button" class="btn btn-primary" name="generatereport">Generate Report</button>
+              </div>
+              </form>
+            </div>
+            <!-- /.box -->
+          </div>
         </div>
   
     </section>
@@ -482,7 +860,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> beta 1.0
     </div>
-    <strong>Copyright &copy;2019<a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+    <strong>Copyright &copy;<?php echo date("Y")?><a href="#"> GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -693,11 +1071,20 @@
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
+<!-- iCheck-->
+<script src="../../plugins/iCheck/icheck.js"></script>
+<script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
   })
 </script>
 </body>

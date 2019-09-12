@@ -282,7 +282,6 @@
                 <ul class="treeview-menu">
                   <li><a href="../concessions/concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
                   <li><a href="../concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                  <li><a href="../concessions/concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
                   <li><a href="../concessions/concession-item.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                   <li><a href="../concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                   <li><a href="../concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
@@ -292,6 +291,7 @@
               <li><a href="#"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
+          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
           <li class="treeview">
             <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -361,7 +361,6 @@
               </li>
               <li class="treeview active"><a href="./permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                    <li><a href="./permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
                     <li><a href="./permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
@@ -446,7 +445,6 @@
                     <th style="width: 200px">Admin Name</th>
                     <th style="width: 100px">Role</th>
                     <th style="width: 400px">General Permission</th>
-                    <th style="width: 100px">Module Permission</th>
                 </tr>
             </tbody>
         </table>

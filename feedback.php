@@ -30,6 +30,7 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/preloader.css">
         <link rel="stylesheet" href="css/themify-icons.css">
+        <link rel="stylesheet" href="./admin/bower_components/select2/dist/css/select2.min.css">
     </head>
     <body>
         <!-- preloader-->
@@ -93,12 +94,6 @@
                             
                                 
                                     <div class="col-sm-3">
-                                        <h5>Stall No.</h5>
-                                        <select class="default-select" name="stallno" id="stallno" required>
-                                            <option value="">Select Stall No.</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-3">
                                             <h5>Stall Location</h5>
                                                 <select class="default-select" name = "area" required>
                                                     <option value=""selected>Select Stall Location</option>
@@ -110,6 +105,12 @@
                                                     <option value="sampaguita">Sampaguita</option>
                                                     <option value="Others">Others</option>
                                                 </select>
+                                    </div>
+                                    <div class="col-sm-3" style="margin-top:50px">
+                                        <h5>Stall No.</h5>
+                                        <select class="default-select" name="stallno" id="stallno" required>
+                                            <option value="">Select Stall No.</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <hr>
@@ -266,13 +267,14 @@
  
                            <h5>Feedback Details</h5>
                             <p>(It is <b>required</b> to fill up this form.)</p>
+                            <p>all fields mark with <b>*</b> are <b>required</b>.</p>
                         <!-- Nav tabs -->
                         <!-- Tab panes -->
                                     <div class="col-sm-3">
 										<h5>Name*</h5>
 										<input type="text" name="name" placeholder="Name." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" class="single-input" required>
                                     </div>
-									<div class="col-sm-3">
+									<div class="col-sm-3" style="margin-top:10px">
 										<h5>Sender Type*</h5>
 									   <label for="question7" class="form-text-label">
                                                      <select name = "type" class = "default-select" id = "default-select" required>
@@ -282,7 +284,7 @@
 													<option value = "Others">Others</option>
 												</select></label>
 									</div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-3" style="margin-top:10px">
 										<h5>Identification No.*</h5>
 										<input type="text" name="id_info" placeholder="ID No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'ID No.'"  class="single-input" required>
                                     </div>
@@ -292,7 +294,7 @@
 										<h5>E-mail*</h5>
 										<input type="text" name="email" placeholder="E-mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'"  class="single-input" required>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-3" style="margin-top:10px">
 										<h5>Contact No.*</h5>
 										<input type="text" name="contact" placeholder="Contact No." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact No.'" class="single-input" required>
                                     </div>
@@ -393,6 +395,7 @@
         <script src="js/mail-script.js"></script>				
         <script src="js/main.js"></script>	
         <script src="js/preloader.js"></script>
+        <script src="./admin/bower_components/select2/dist/js/select2.full.min.js"></script>
         <script language="javascript" type="text/javascript">
             $(document).ready(function () {
                 $("#rating .stars").click(function () {
@@ -409,6 +412,8 @@
                     $("#feedback").text(label.attr('title'));
                     $(this).attr("checked");
                 });
+
+                $('.select2').select2()
             });
         </script>
     </body>

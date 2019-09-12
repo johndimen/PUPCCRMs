@@ -282,7 +282,6 @@
                   <ul class="treeview-menu">
                     <li><a href="./concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
                     <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                    <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
                     <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                     <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                     <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
@@ -292,6 +291,7 @@
               <li class="active"><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
+          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
           <li class="treeview">
             <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -332,19 +332,17 @@
             </ul>
           </li>
           <li class="treeview">
-              <a href="../reports/report.php">
-                <i class="fa fa-file-archive-o"></i> <span>Reports</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class=""><a href="../reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-                <li><a href="../reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-                <li><a href="../reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-                <li><a href="../reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
-              </ul>
-            </li>
+          <a>
+            <i class="fa fa-file-archive-o"></i> <span>Reports</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
+            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
+          </ul>
+        </li>
           <li class="treeview">
             <a href="#">
               <i class="fa fa-cog"></i> <span>Options</span>
@@ -361,7 +359,6 @@
               </li>
               <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                    <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>

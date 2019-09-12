@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -282,7 +284,6 @@
                   <ul class="treeview-menu">
                     <li><a href="./concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
                     <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                    <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
                     <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                     <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                     <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
@@ -292,6 +293,7 @@
               <li class="active"><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
+          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
           <li class="treeview">
             <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -332,19 +334,17 @@
             </ul>
           </li>
           <li class="treeview">
-              <a href="../reports/report.php">
-                <i class="fa fa-file-archive-o"></i> <span>Reports</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class=""><a href="../reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-                <li><a href="../reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-                <li><a href="../reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-                <li><a href="../reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
-              </ul>
-            </li>
+          <a>
+            <i class="fa fa-file-archive-o"></i> <span>Reports</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
+            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
+          </ul>
+        </li>
           <li class="treeview">
             <a href="#">
               <i class="fa fa-cog"></i> <span>Options</span>
@@ -361,7 +361,6 @@
               </li>
               <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                    <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
@@ -576,6 +575,14 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="profile" class="col-sm-3 control-label">Profile</label>
+            <div class="col-sm-9">
+              <select class="form-control select2" style="width:100%" name="profile" id="profile">
+                <option value="" selected>Select Profile</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
             <label for="contractname" class ="col-sm-3 control-label">Contract Name</label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="contractname" name="contractname" placeholder="Contract Name">
@@ -686,6 +693,12 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="viewprofile" class ="col-sm-3 control-label">Profile</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewprofile" name="viewprofile" placeholder="Profile" disabled>
+            </div>
+          </div>
+          <div class="form-group">
             <label for="viewcontractname" class ="col-sm-3 control-label">Contract Name</label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="viewcontractname" name="viewcontractname" placeholder="Contract Name" disabled>
@@ -777,7 +790,7 @@
           <div class="form-group">
             <label for="oldContractNumber" class ="col-sm-3 control-label">Old Contract Number</label>
             <div class="col-sm-9">
-              <select class="form-control" name="oldContractNumber" id="oldContractNumber">
+              <select class="form-control select2" style="width:100%" name="oldContractNumber" id="oldContractNumber">
                 <option selected>Select Existing Contract</option>
                 <option value=""></option>
               </select>
@@ -787,6 +800,12 @@
             <label for="newcontractnumber" class ="col-sm-3 control-label">New Contract Number</label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="newcontractnumber" name="newcontractnumber" placeholder="Contract Number" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewprofile" class ="col-sm-3 control-label">Profile</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewprofile" name="viewprofile" placeholder="Profile" disabled>
             </div>
           </div>
           <div class="form-group">
@@ -904,6 +923,15 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="editprofile" class ="col-sm-3 control-label">Profile</label>
+            <div class="col-sm-9">
+              <select class="select2 form-control" style="width:100%" id="editprofile" name="editprofile">
+                <option value=""selected> Select Profile</option>
+              </select>
+              
+            </div>
+          </div>
+          <div class="form-group">
             <label for="contractname" class ="col-sm-3 control-label">Contract Name</label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="contractname" name="contractname" placeholder="Contract Name">
@@ -973,7 +1001,10 @@
             <label for="duration" class ="col-sm-3 control-label">Duration</label>
             <div class="col-sm-9">
               <select class="form-control" name="duration" id="duration">
-                <option value="" selected>Select Duration</option>
+                <option selected>Select Duration</option>
+                <option value="2">2 Years</option>
+                <option value="3">3 Years</option>
+                <option value="4">4 Years</option>
               </select>
             </div>
           </div>
@@ -1246,6 +1277,8 @@
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -1255,6 +1288,7 @@
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+    $('.select2').select2()
   })
 </script>
 

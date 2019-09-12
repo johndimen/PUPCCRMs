@@ -332,19 +332,17 @@
           </ul>
         </li>
         <li class="treeview">
-            <a href="../reports/report.php">
-              <i class="fa fa-file-archive-o"></i> <span>Reports</span>
-              <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class=""><a href="../reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-              <li><a href="../reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-              <li><a href="../reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-              <li><a href="../reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
-            </ul>
-          </li>
+          <a>
+            <i class="fa fa-file-archive-o"></i> <span>Reports</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
+            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
+          </ul>
+        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-cog"></i> <span>Options</span>
@@ -361,7 +359,6 @@
             </li>
             <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
-                  <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
                   <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
               </ul>
             </li>
@@ -438,7 +435,7 @@
                       </div>
                       <div class="box-body">
                             <button type="button" class="btn btn-primary margin-bottom" data-target="#additemmodal" data-toggle="modal">Add Item/Products</button>
-
+                      <h4>Items and Products Table</h4>
                         <table class="table table-striped">
                           <tbody>
                             <tr>
@@ -480,7 +477,7 @@
                         </div>
                         <div class="box-body">
                         <button type="button" class="btn btn-primary margin-bottom" data-target="#addservicemodal" data-toggle="modal">Add Services</button>
-
+                        <h4>Services Table</h4>
                           <table class="table table-striped">
                             <tbody>
                               <tr>
@@ -520,7 +517,7 @@
                           </div>
                           <div class="box-body">
                               <button type="button" class="btn btn-primary margin-bottom" data-target="#addcontractmodal" data-toggle="modal">Add Contract</button>
-
+                            <h4>Contract Table</h4>
                             <table class="table table-striped">
                               <tbody>
                                 <tr>
@@ -545,6 +542,67 @@
                               <li><a href="#">1</a></li>
                               <li><a href="#">»</a></li>
                             </ul>
+                          </div>
+                    </div>
+
+                    <div class="box collapsed-box">
+                          <div class="box-header with-border">
+                            <h3 class="box-title"><strong>Equipment</strong></h3>
+                              <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
+                              </div>
+                          </div>
+                          <div class="box-body">
+                            <div class="row">
+                              <button type="button" class="btn btn-primary margin-bottom" style="margin-left:15px;margin-right:10px" data-target="#addEquipmentNameModal" data-toggle="modal">Add Equipment Name</button>
+                              <button type="button" class="btn btn-primary margin-bottom" data-target="#addEquipmentBrandModal" data-toggle="modal">Add Brand Name</button>
+                              
+                            </div>
+                            <div class="row">
+                            <div class="col-md-6">
+                            <h4>Equipment Name Table</h4>
+                            <table class="table table-striped">
+                              <tbody>
+                                <tr>
+                                  <th style="width: 100px">ID Number</th>
+                                  <th>Equipment Name</th>
+                                  <th>Description</th>
+                                  <th style="width: 100px">Action</th>
+                                </tr>
+                                <?php $action='<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewEquipmentNameModal">View</button>'; ?>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><?php echo $action; ?></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            </div>
+                            <div class="col-md-6">
+                            <h4>Brand Name Table</h4>
+                            <table class="table table-striped">
+                              <tbody>
+                                <tr>
+                                  <th style="width: 100px">ID Number</th>
+                                  <th>Brand Name</th>
+                                  <th>Description</th>
+                                  <th style="width: 100px">Action</th>
+                                </tr>
+                                <?php $action='<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewEquipmentBrandModal">View</button>'; ?>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><?php echo $action; ?></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            </div>
+                            </div>
+                          </div>
+                          <div class="box-footer clearfix"> 
                           </div>
                     </div>
             </div>
@@ -672,6 +730,68 @@
             </div>
         </div>
     </div>
+    
+    <div class="modal modal-default fade" id="addEquipmentNameModal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius:10px">
+                <div class="modal-header">
+                    <h3 class="modal-title">Add Equipment Category</h3>
+                </div>
+                <form class="form-horizontal" action="" method="post">
+                    <div class="modal-body">
+                        <h4>Equipment Name Category</h4>
+                        <div class="form-group">
+                          <label for="name" class="col-sm-3 control-label">Equipment Name</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="name" id="name">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="desc" class="col-sm-3 control-label">Equipment Description</label>
+                          <div class="col-sm-9">
+                            <textarea type="text" class="form-control" name="desc" id="desc"></textarea>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-default pull-left">Close</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-default fade" id="addEquipmentBrandModal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius:10px">
+                <div class="modal-header">
+                    <h3 class="modal-title">Add Equipment Category</h3>
+                </div>
+                <form class="form-horizontal" action="" method="post">
+                    <div class="modal-body">
+                        <h4>Equipment Brand Category</h4>
+                        <div class="form-group">
+                          <label for="name" class="col-sm-3 control-label">Equipment Brand</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="name" id="name">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="desc" class="col-sm-3 control-label">Brand Description</label>
+                          <div class="col-sm-9">
+                            <textarea type="text" class="form-control" name="desc" id="desc"></textarea>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-default pull-left">Close</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade modal-default" id="viewitemModal">
         <div class="modal-dialog">
@@ -708,7 +828,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" name="close" data-dismiss="modal" class="btn btn-default pull-left">Close</button>
-                    <button type="button" name="delete" class="btn btn-danger">Delete</button>
+                    <button type="button" name="delete" data-target="#deleteItemModal" data-toggle="modal" class="btn btn-danger">Delete</button>
                     <button type="button" name="edit" class="btn btn-info" data-toggle="modal" data-target="#edititemModal">Edit</button>
                 </div>
             </div>
@@ -744,7 +864,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" name="close" data-dismiss="modal" class="btn btn-default pull-left">Close</button>
-                    <button type="button" name="delete" class="btn btn-danger">Delete</button>
+                    <button type="button" name="delete" data-target="#deleteServiceModal" data-toggle="modal" class="btn btn-danger">Delete</button>
                     <button type="button" name="edit" class="btn btn-info" data-toggle="modal" data-target="#editserviceModal">Edit</button>
                 </div>
             </div>
@@ -780,8 +900,68 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" name="close" data-dismiss="modal" class="btn btn-default pull-left">Close</button>
-                    <button type="button" name="delete" class="btn btn-danger">Delete</button>
+                    <button type="button" name="delete" data-target="#deleteContractModal" data-toggle="modal" class="btn btn-danger">Delete</button>
                     <button type="button" name="edit" class="btn btn-info" data-toggle="modal" data-target="#editcontractModal">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-default" id="viewEquipmentNameModal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius:10px">
+                <div class="modal-header">
+                <h3 class="modal-title">View Equipment Category</h3>
+                </div>
+                <div class="form-horizontal modal-body">
+                  <h4>Equipment Name Category</h4>
+                        <div class="form-group">
+                          <label for="name" class="col-sm-3 control-label">Equipment Name</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="name" id="name">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="desc" class="col-sm-3 control-label">Equipment Description</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="desc" id="desc">
+                          </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" name="close" data-dismiss="modal" class="btn btn-default pull-left">Close</button>
+                    <button type="button" name="delete" data-target="#deleteEquipmentNameModal" data-toggle="modal" class="btn btn-danger">Delete</button>
+                    <button type="button" name="edit" class="btn btn-info" data-toggle="modal" data-target="#editEquipmentNameModal">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-default" id="viewEquipmentBrandModal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius:10px">
+                <div class="modal-header">
+                <h3 class="modal-title">View Equipment Category</h3>
+                </div>
+                <div class="form-horizontal modal-body">
+                  <h4>Equipment Brand Category</h4>
+                        <div class="form-group">
+                          <label for="name" class="col-sm-3 control-label">Equipment Brand</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="name" id="name">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="desc" class="col-sm-3 control-label">Brand Description</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="desc" id="desc">
+                          </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" name="close" data-dismiss="modal" class="btn btn-default pull-left">Close</button>
+                    <button type="button" name="delete" data-target="#deleteEquipmentBrandModal" data-toggle="modal" class="btn btn-danger">Delete</button>
+                    <button type="button" name="edit" class="btn btn-info" data-toggle="modal" data-target="#editEquipmentBrandModal">Edit</button>
                 </div>
             </div>
         </div>
@@ -822,7 +1002,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" name="close" id="close" class="btn btn-default pull-left">Close</button>
+                        <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                         <button type="submit" name="submit" id="submit" class="btn btn-success">Submit</button>
                     </div>
                 </form>
@@ -859,7 +1039,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" name="close" id="close" class="btn btn-default pull-left">Close</button>
+                        <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                         <button type="submit" name="submit" id="submit" class="btn btn-success">Submit</button>
                     </div>
                 </form>
@@ -896,7 +1076,7 @@
                         </div>  
                     </div>
                     <div class="modal-footer">
-                        <button type="button" name="close" id="close" class="btn btn-default pull-left">Close</button>
+                        <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                         <button type="submit" name="submit" id="submit" class="btn btn-success">Submit</button>
                     </div>
                 </form>
@@ -904,7 +1084,147 @@
         </div>
     </div>
 
+    <div class="modal modal-default fade" id="editEquipmentNameModal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius:10px">
+                <div class="modal-header">
+                    <h3 class="modal-title">Edit Equipment Category</h3>
+                </div>
+                <form class="form-horizontal" action="" method="post">
+                    <div class="modal-body">
+                    <h4>Equipment Name Category</h4>
+                        <div class="form-group">
+                          <label for="name" class="col-sm-3 control-label">Equipment Name</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="name" id="name">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="desc" class="col-sm-3 control-label">Equipment Description</label>
+                          <div class="col-sm-9">
+                            <textarea type="text" class="form-control" name="desc" id="desc"></textarea>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" id="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal modal-default fade" id="editEquipmentBrandModal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius:10px">
+                <div class="modal-header">
+                    <h3 class="modal-title">Edit Equipment Category</h3>
+                </div>
+                <form class="form-horizontal" action="" method="post">
+                    <div class="modal-body">
+                    <h4>Equipment Brand Category</h4>
+                        <div class="form-group">
+                          <label for="name" class="col-sm-3 control-label">Equipment Brand</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="name" id="name">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="desc" class="col-sm-3 control-label">Brand Description</label>
+                          <div class="col-sm-9">
+                            <textarea type="text" class="form-control" name="desc" id="desc"></textarea>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" id="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-default fade" id="deleteItemModal">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:10px">
+          <div class="modal-header">
+            <h3 class="modal-title">Delete Selected</h3>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+            <button type="button" name="submit" id="submit" class="btn btn-danger">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal-default fade" id="deleteServiceModal">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:10px">
+          <div class="modal-header">
+            <h3 class="modal-title">Delete Selected</h3>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+            <button type="button" name="submit" id="submit" class="btn btn-danger">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal-default fade" id="deleteContractModal">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:10px">
+          <div class="modal-header">
+            <h3 class="modal-title">Delete Selected</h3>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+            <button type="button" name="submit" id="submit" class="btn btn-danger">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal-default fade" id="deleteEquipmentNameModal">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:10px">
+          <div class="modal-header">
+            <h3 class="modal-title">Delete Selected</h3>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+            <button type="button" name="submit" id="submit" class="btn btn-danger">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal-default fade" id="deleteEquipmentBrandModal">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:10px">
+          <div class="modal-header">
+            <h3 class="modal-title">Delete Selected</h3>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+            <button type="button" name="submit" id="submit" class="btn btn-danger">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">

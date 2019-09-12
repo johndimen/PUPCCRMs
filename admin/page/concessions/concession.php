@@ -302,7 +302,6 @@ $result = mysqli_query($conn,$sql1);
                   <ul class="treeview-menu">
                     <li class="active"><a href="./concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
                     <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                    <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
                     <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                     <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                     <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
@@ -312,6 +311,7 @@ $result = mysqli_query($conn,$sql1);
               <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
+          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
           <li class="treeview">
             <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -352,19 +352,17 @@ $result = mysqli_query($conn,$sql1);
             </ul>
           </li>
           <li class="treeview">
-              <a href="../reports/report.php">
-                <i class="fa fa-file-archive-o"></i> <span>Reports</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class=""><a href="../reports/report-concession.php"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-                <li><a href="../reports/report-feedback.php"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-                <li><a href="../reports/report-cases.php"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-                <li><a href="../reports/report-system-trail.php"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
-              </ul>
-            </li>
+          <a>
+            <i class="fa fa-file-archive-o"></i> <span>Reports</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
+            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
+          </ul>
+        </li>
           <li class="treeview">
             <a href="#">
               <i class="fa fa-cog"></i> <span>Options</span>
@@ -381,7 +379,6 @@ $result = mysqli_query($conn,$sql1);
               </li>
               <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                    <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
@@ -617,10 +614,10 @@ $result = mysqli_query($conn,$sql1);
                                       </div>
                                     </div>
                                       <div class="form-group">
-                                        <label for="inputnumber" class="col-sm-4 control-label">Contact No.</label>
+                                        <label for="inputEmail" class="col-sm-4 control-label">Email</label>
                     
                                         <div class="col-sm-8">
-                                          <input type="email" class="form-control" name="inputnumber" id="inputnumber" placeholder="Number" >
+                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
                                         </div>
                                       </div>
                                   </div>
@@ -632,7 +629,13 @@ $result = mysqli_query($conn,$sql1);
                                           <textarea class="form-control" name="inputRemarks" id="inputRemarks" rows="5" placeholder="Remarks" ></textarea>
                                         </div>
                                       </div> 
-                                    <div class="form-group" style="margin-top:72px">
+                                      <div class="form-group">
+                                        <label for="dateapproved" class="col-sm-4 control-label">Date Approved</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="dateapproved" id="dateapproved" placeholder="Date Approved">
+                                        </div>
+                                      </div>
+                                    <div class="form-group" style="margin-top:24px">
                                       <label for="inputAddress" class="col-sm-4 control-label">Owner's Address</label>
                   
                                       <div class="col-sm-8">
@@ -640,21 +643,20 @@ $result = mysqli_query($conn,$sql1);
                                       </div>
                                     </div>
                                       <div class="form-group" style="margin-top:32px">
-                                        <label for="inputEmail" class="col-sm-4 control-label">Email</label>
+                                        <label for="inputnumber" class="col-sm-4 control-label">Contact No.</label>
                     
                                         <div class="col-sm-8">
-                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
+                                          <input type="text" class="form-control" name="inputnumber" id="inputnumber" placeholder="Number" >
                                         </div>
                                       </div>
-                                      
                                     </div>
                                     <div class="col-md-4">
                                       <h4>Stall Description</h4>
                                       <div class="form-group">
-                                        <label for="inputArea" class="col-sm-4 control-label">Stall Area</label>
+                                        <label for="inputArea" class="col-sm-4 control-label">Stall Location</label>
                                         <div class="col-sm-8">
                                           <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
-                                            <option value="" selected>Select Area</option>
+                                            <option value="" selected>Select Location</option>
                                             <option value="north">North</option>
                                             <option value="west">West</option>
                                             <option value="south">South</option>
@@ -670,7 +672,7 @@ $result = mysqli_query($conn,$sql1);
                                           <label for="inputFunction" class="col-sm-4 control-label">Category</label>
                                         <div class="col-sm-8">
                                           <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction" onchange="showfield(this.options[this.selectedIndex].value)">
-                                            <option value = ""selected="">Select Function</option>
+                                            <option value = ""selected="">Select Category</option>
                                             <option value="food">Food</option>
                                             <option value="nonfood">Non-Food</option>
                                           </select>

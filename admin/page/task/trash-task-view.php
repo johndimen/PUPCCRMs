@@ -328,7 +328,7 @@
                   </span>
                 </a>
               </li>
-              <li><a href="../mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+              <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
               <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
           </li>

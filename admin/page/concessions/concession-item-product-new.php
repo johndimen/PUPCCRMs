@@ -301,7 +301,6 @@ $result = mysqli_query($conn,$sql1);
               <li class="treeview active"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                   <ul class="treeview-menu">
                     <li><a href="./concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
-                    <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
                     <li class="active"><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                     <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                     <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
@@ -348,7 +347,7 @@ $result = mysqli_query($conn,$sql1);
                   </span>
                 </a>
               </li>
-              <li><a href="../mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+              <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
               <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
           </li>

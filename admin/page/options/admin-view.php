@@ -323,14 +323,14 @@
             </a>
             <ul class="treeview-menu">
               <li class="">
-                <a href="../mail/mailbox.php">Inbox
+                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
                   <span class="pull-right-container">
                     <span class="label label-primary pull-right">13</span>
                   </span>
                 </a>
               </li>
-              <li><a href="../mail/compose.php">Compose</a></li>
-              <li><a href="../mail/read-mail.php">Read</a></li>
+              <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
+              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
           </li>
           <li class="treeview">

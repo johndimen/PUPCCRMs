@@ -414,7 +414,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
             <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
                   <li><a href="./page/concessions/concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
-                  <li><a href="./page/concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
                   <li><a href="./page/concessions/concession-item.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                   <li><a href="./page/concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                   <li><a href="./page/concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
@@ -460,7 +459,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
                 </span>
               </a>
             </li>
-            <li><a href="./page/mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+            <li><a href="./page/mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
             <li><a href="./page/mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
           </ul>
         </li>
@@ -495,6 +494,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
                   <li><a href="./page/options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
               </ul>
             </li>
+            <li><a href="./page/options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
             <li><a href="./page/options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
           </ul>
         </li>

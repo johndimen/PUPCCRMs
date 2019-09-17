@@ -277,7 +277,6 @@
             <li class="treeview"><a href="../concessions/concession.php"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
                   <li><a href="../concessions/concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
-                  <li><a href="../concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
                   <li><a href="../concessions/concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                   <li><a href="../concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                   <li><a href="../concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
@@ -323,7 +322,7 @@
               </span>
             </a>
           </li>
-          <li><a href="./compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+          <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
           <li><a href="./read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
         </ul>
       </li>

@@ -362,6 +362,7 @@
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
+              <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
@@ -428,7 +429,7 @@
               <a href="../../index.php" class="btn btn-primary btn-block ">Back to Dashboard</a>
               <a href="./calendar.php" class="btn btn-primary btn-block margin-bottom">Back to Calendar</a>
               
-              <a data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-block margin-bottom">Add Activity</a>
+              <a href="./activity-new.php" class="btn btn-primary btn-block margin-bottom">Add Activity</a>
               
               <div class="box box-solid">
                 <div class="box-header with-border">
@@ -521,7 +522,7 @@
                           <?php
                           $action = 
                           '<div class="btn-group">
-                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                            <a type="button" class="btn btn-info " href="./activity-view.php">View</a>
                           </div>
                           ';
                           ?>

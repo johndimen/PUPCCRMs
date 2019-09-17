@@ -364,6 +364,7 @@
                         <li><a href="./permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                     </ul>
                   </li>
+                  <li><a href="./role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
                   <li><a href="./audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
                 </ul>
               </li>
@@ -436,14 +437,9 @@
             </div>
         </div>
         <div class="box-body">
-          <a>
-            <button type="button" data-toggle="modal" data-target="#addAdmin" class="btn btn-primary">
-              New Admin
-            </button>
-          </a>
-          <a>
-            <button type="button" data-toggle="modal" data-target="#addRole" class="pull-right btn btn-primary">Add Role</button>
-          </a>
+            <a type="button" href="./admin-add.php" class="btn btn-primary">
+              Add New Admin
+            </a>
 
             <table style="margin-top:10px" class="table table-striped">
                 <tbody>
@@ -458,9 +454,9 @@
                     <?php
                     $action ='
                     <div class="btn-group">
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewModal">View</button>
+                      <a type="button" class="btn btn-primary" href="./admin-view.php">View</butaton>
                       <a type="button" class="btn btn-primary" href="./admin-profile.php">Profile</a>
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#resetModal">Change</button>
+                      <a type="button" class="btn btn-primary" href="./admin-pwreset.php">Change</a>
                     </div>
                     ';
                     ?>
@@ -501,40 +497,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <div class="modal modal-default fade" id="addRole">
-    <div class="modal-dialog">
-      <div class="modal-content" style="border-radius: 10px">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title">Add Roles</h4>
-        </div>
-        <form class="form-horizontal" action="" method="post">
-          <div class="modal-body">
-            
-            <div class="form-group">
-              <label for="adminRole" class="col-sm-3 control-label">Role</label>
-              <div class="col-sm-9">
-                <input type="text" id="adminRole" name="adminRole" class="form-control" placeholder="Admin Role">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="adminName" class="col-sm-3 control-label">Description</label>
-              <div class="col-sm-9">
-                <textarea type="text" id="adminRole" name="adminRole" class="form-control" rows="10" placeholder="Role Description"></textarea>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="close" name="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            <button type="submit" id="submitRole" name="submitRole" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 
 
   <div class="modal modal-default fade" id="addAdmin">

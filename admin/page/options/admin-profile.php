@@ -363,6 +363,7 @@
                         <li><a href="./permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                     </ul>
                   </li>
+                  <li ><a href="./role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
                   <li><a href="./audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
                 </ul>
               </li>
@@ -474,12 +475,7 @@
     
                   <p class="text-muted">Manila City, Manila</p>
     
-                  <hr>
-    
-                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-    
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                </div>
+                  </div>
                 <!-- /.box-body -->
               </div>
               <!-- /.box -->

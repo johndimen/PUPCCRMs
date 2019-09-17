@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
   <!-- fullCalendar -->
   <link rel="stylesheet" href="../../bower_components/fullcalendar/dist/fullcalendar.min.css">
   <link rel="stylesheet" href="../../bower_components/fullcalendar/dist/fullcalendar.print.min.css" media="print">
@@ -476,6 +478,7 @@
                   <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
               </ul>
             </li>
+            <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
             <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
           </ul>
         </li>
@@ -586,7 +589,9 @@
               </div>
               <!-- /btn-group -->
               <div class="input-group">
-                <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+                <select name="new-event" id="new-event" class="select2 form-control">
+                  <option value="" Selected> Select Activity</option>
+                </select>
 
                 <div class="input-group-btn">
                   <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
@@ -828,6 +833,8 @@
 <script src="../../bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Slimscroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -839,5 +846,11 @@
 <script src="../../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 <!-- Page specific script -->
 <script src="../../dist/js/pages/calendar.js"></script>
+<script>
+  $(document).ready(function () {
+    $('.sidebar-menu').tree()
+    $('.select2').select2()
+  })
+</script>
 </body>
 </html>

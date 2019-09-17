@@ -362,6 +362,7 @@
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
+              <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
@@ -517,13 +518,7 @@
                             <td>Contract Duration</td>
                             <td>Action</td>
                           </tr>
-                          <?php 
-                                $action = 
-                                '<div class="btn-group">
-                                  <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
-                               </div>
-                                ';
-                                ?>
+                          <?php $action = '<a type="button" class="btn btn-info " href="./concession-contract-archive-view.php">View</a>';?>
 
                                 <tr>
                                   <td></td>
@@ -561,25 +556,25 @@
           <hr>
           <div class="form-group">
             <label for="viewcontractnumber" class ="col-sm-3 control-label">Contract Number</label>
-            <div class="col-sm-9">
+            <div class="col-sm-7">
               <input type="text" class="form-control" id="viewcontractnumber" name="viewcontractnumber" placeholder="Contract Number" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewcontractname" class ="col-sm-3 control-label">Contract Name</label>
-            <div class="col-sm-9">
+            <div class="col-sm-7">
               <input type="text" class="form-control" id="viewcontractname" name="viewcontractname" placeholder="Contract Name" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewstallname" class ="col-sm-3 control-label">Stall Name</label>
-            <div class="col-sm-9">
+            <div class="col-sm-7">
               <input type="text" class="form-control" id="viewstallname" name="viewstallname" placeholder="Stall Name" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewfunction" class ="col-sm-3 control-label">Function</label>
-            <div class="col-sm-9">
+            <div class="col-sm-7">
               <input type="text" class="form-control" id="viewfunction" name="viewfunction" placeholder="Function" disabled>
             </div>
           </div>
@@ -597,7 +592,7 @@
           </div>
           <div class="form-group">
             <label for="viewconsigneesign" class ="col-sm-3 control-label">Consignee Signature</label>
-            <div class="col-sm-9">
+            <div class="col-sm-7">
               <input type="text" class="form-control" id="viewconsigneesign" name="viewconsigneesign" placeholder="Consignee Signature" disabled>
             </div>
           </div>
@@ -615,31 +610,31 @@
           </div>
           <div class="form-group">
             <label for="viewconsignorsign" class ="col-sm-3 control-label">Consignor Signature</label>
-            <div class="col-sm-9">
+            <div class="col-sm-7">
               <input type="text" class="form-control" id="viewconsignorsign" name="viewconsignorsign" placeholder="Consignor Signature" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewstatus" class ="col-sm-3 control-label">Status</label>
-            <div class="col-sm-9">
+            <div class="col-sm-7">
               <input type="text" class="form-control" id="viewstatus" name="viewstatus" placeholder="Status" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewdescription" class ="col-sm-3 control-label">Description</label>
-            <div class="col-sm-9">
+            <div class="col-sm-7">
               <textarea name="viewdescription" id="viewdescription" class="form-control" rows="5" placeholder="Description" disabled></textarea>
             </div>
           </div>
           <div class="form-group">
             <label for="viewdatesigned" class ="col-sm-3 control-label">Date Signed</label>
-            <div class="col-sm-9">
+            <div class="col-sm-7">
               <input type="text" class="form-control" id="viewdatesigned" name="viewdatesigned" placeholder="Date Signed" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewduration" class ="col-sm-3 control-label">Duration</label>
-            <div class="col-sm-9">
+            <div class="col-sm-7">
               <input type="text" class="form-control" id="viewduration" name="viewduration" placeholder="Duration" disabled>
             </div>
           </div>

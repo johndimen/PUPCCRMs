@@ -362,6 +362,7 @@
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
+              <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
@@ -424,10 +425,8 @@
 
       <div class="row">
           <div class="col-md-3">
-              <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
+              <a href="../../index.php" class="btn btn-primary btn-block margin-bottom">Back to Dashboard</a>
               
-              <a href="./concession-add.php" class="btn btn-primary btn-block margin-bottom">Add Concession</a>
-                 
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Folders</h3>
@@ -518,9 +517,8 @@
                                 
                               </tr>
                               <?php
-                              $action ='<div class="btn-group">
-                                          <button type ="button" class ="btn btn-primary" data-toggle="modal" data-target="#viewModal">View</button>
-                                        </div>';
+                              $action ='
+                                          <a type ="button" class ="btn btn-primary" href="./concession-archive-view.php">View</a>';
                               ?>
                               <tr>
                                 <td></td>

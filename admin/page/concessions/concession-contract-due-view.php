@@ -3,19 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Activity </title>
+  <title>PUPCCRMs | Concession Contract Due</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
-  <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-  <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
@@ -40,7 +34,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="../../index2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -230,8 +224,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li ><a href="../../index.html"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+              <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -243,9 +237,9 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../feedback/feedback.html"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.html"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.html"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
+                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
+                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class=" treeview">
@@ -257,9 +251,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="../cases/cases.html"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.html"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.html"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -270,12 +264,12 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="../task/task.html"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.html"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="./task/pending-task.html"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
-          <li class="treeview">
+          <li class="treeview active">
             <a href="#">
               <i class="fa fa-address-card"></i>
               <span>Concessions</span>
@@ -286,25 +280,28 @@
             <ul class="treeview-menu">
               <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                    <li><a href="../concessions/concession-profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                    <li><a href="../concessions/concession-item.html"><i class="fa fa-circle-o"></i> Items</a></li>
-                    <li><a href="../concessions/concession-product.html"><i class="fa fa-circle-o"></i> Products </a></li>
-                    <li><a href="../concessions/concession-equipment.html"><i class="fa fa-circle-o"></i> Equipments</a></li>
-                </ul>
+                    <li><a href="./concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
+                    <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                    <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                    <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
+                    <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
+                    <li><a href="./concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
+                  </ul>
               </li>
-              <li><a href="../concessions/concession-contract.html"><i class="fa fa-circle-o"></i> Contracts </a></li>
+              <li class="active"><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
-          <li class="treeview active">
-            <a href="./calendar.html">
+          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
+          <li class="treeview">
+            <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
               <span class="pull-right-container">
                 <small class="label pull-right label-info">17</small>
               </span>
             </a>
             <ul class="treeview-menu">
-                <li class="active">
-                  <a href="./activity.html"><i class="fa fa-circle-o"></i> Activity 
+                <li>
+                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
                     <span class="pull-right-container">
                       <small class="label pull-right label-warning"> 3</small> 
                       <small class="label pull-right bg-blue"> 14</small> 
@@ -314,7 +311,7 @@
             </ul>
           </li>
           <li class="treeview">
-            <a href="../mail/mailbox.html">
+            <a href="../mail/mailbox.php">
               <i class="fa fa-envelope"></i> <span>Mailbox</span>
               <span class="pull-right-container">
                 <small class="label pull-right bg-yellow">12</small>
@@ -324,30 +321,28 @@
             </a>
             <ul class="treeview-menu">
               <li class="">
-                <a href="../mail/mailbox.html"><i class="fa fa-circle-o"></i>Inbox
+                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
                   <span class="pull-right-container">
                     <span class="label label-primary pull-right">13</span>
                   </span>
                 </a>
               </li>
-              <li><a href="../mail/compose.html"><i class="fa fa-circle-o"></i>Compose</a></li>
-              <li><a href="../mail/read-mail.html"><i class="fa fa-circle-o"></i>Read</a></li>
+              <li><a href="../mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
           </li>
           <li class="treeview">
-              <a href="../reports/report.html">
-                <i class="fa fa-file-archive-o"></i> <span>Reports</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class=""><a href="../reports/report-concession.html"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-                <li><a href="../reports/report-feedback.html"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-                <li><a href="../reports/report-cases.html"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-                <li><a href="../reports/report-system-trail.html"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
-              </ul>
-            </li>
+          <a>
+            <i class="fa fa-file-archive-o"></i> <span>Reports</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
+            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
+          </ul>
+        </li>
           <li class="treeview">
             <a href="#">
               <i class="fa fa-cog"></i> <span>Options</span>
@@ -358,20 +353,20 @@
             <ul class="treeview-menu">
               <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                    <li><a href="../options/admin-profile.html"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
-                    <li><a href="../options/admin-login-detail.html"><i class="fa fa-circle-o"></i> Admin Login </a></li>
+                    <li><a href="../options/admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
+                    <li><a href="../options/admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login </a></li>
                 </ul>
               </li>
-              <li class="treeview"><a href="../options/permission.html"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+              <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                    <li><a href="../options/permission-module.html"><i class="fa fa-circle-o"></i> Module Permission</a></li>
-                    <li><a href="../options/permission-admin.html"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
+                    <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
-              <li><a href="../options/audit-trail.html"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
+              <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
+              <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
-          <li class="treeview"><a href="../documentation/documentation.html "><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+          <li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
           <li class="header">LABELS</li>
           <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
@@ -416,13 +411,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          Activity
-          <small>All activity within this month</small>
+          Contracts
+          <small>All Concession Contracts Due</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li><a href="./calendar.html">Calendar</a></li>
-          <li class="active"><a href="#">Activity</a></li>
+          <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active"><a href="#">Contracts</a></li>
         </ol>
       </section>
 
@@ -431,10 +425,9 @@
 
       <div class="row">
           <div class="col-md-3">
-              <a href="../../index.html" class="btn btn-primary btn-block ">Back to Dashboard</a>
-              <a href="./calendar.html" class="btn btn-primary btn-block margin-bottom">Back to Calendar</a>
+              <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
+              <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Back to Concession List</a>
               
-              <a href="./activity-new.html" class="btn btn-primary btn-block margin-bottom">Add Activity</a>
               
               <div class="box box-solid">
                 <div class="box-header with-border">
@@ -447,10 +440,11 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li><a href="./activity.html"><i class="fa fa-th-large"></i> Activitybox
+                    <li><a href="./concession-contract.php"><i class="fa fa-th-large"></i> Contractbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./pending-activity.html"><i class="fa fa-exclamation-circle"></i> Pending Activity</a></li>
-                    <li><a href="./activity-archive.html"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
+                    <li class="active"><a href="./concession-contract-due.php"><i class="fa fa-exclamation-circle"></i> Contract Due</a></li>
+                    <li><a href="./concession-contract-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
+                    <li><a href="./concession-contract-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -469,7 +463,6 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li><a href="#"><i class="fa fa-circle-o text-red"></i> Urgent</a></li>
                     <li><a href="#"><i class="fa fa-circle-o text-green"></i> New</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Pending</a></li>
                     <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Due</a></li>
                   </ul>
                 </div>
@@ -478,83 +471,142 @@
               <!-- /.box -->
             </div>
             <!-- /.col -->
-
-            <div class="col-md-9">
+              <div class="col-md-9">
                 <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"><strong>New Activity</strong></h3>
-                    </div>
-                    <div class="box-body no-padding">
-                                <form class="form-horizontal" style="padding: 30px">
-                                    <div class="form-group">
-                                      <label for="inputActivityName" class="col-sm-2 control-label">Activity Name</label>
-                                      <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Activity Name" >
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputTaskName" class="col-sm-2 control-label">Task Name</label>
-                                      <div class="col-sm-10">
-                                        <select class="form-control select2" style="width: 100%;" id="intpuTaskName">
-                                          <option selected="selected"></option>Select Task</option>
-                                          <option value=""></option>
-                                        </select>
-                                      </div>
-                                    </div>
-                                      <div class="form-group">
-                                        <label for="inputDateStart" class="col-sm-2 control-label">Date Start</label>
-                                          <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
-                                            <div class="input-group-addon">
-                                              <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <input type="text" class="form-control pull-right" id="inputDateStart">
-                                          </div>
-                                      </div>
-                                        <div class="form-group">
-                                          <label for="inputDateEnd" class="col-sm-2 control-label">Date End</label>
-                                            <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
-                                              <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                              </div>
-                                              <input type="text" class="form-control pull-right" id="inputDateEnd">
-                                            </div>
-                                        </div>
-                                      <div class="form-group">
-                                        <label for="inputAddress" class="col-sm-2 control-label">Description</label>
-                  
-                                        <div class="col-sm-10">
-                                          <textarea class="form-control" id="inputAddress" placeholder="Description"></textarea>
-                                        </div>
-                                      </div>
-                                          <div class="form-group">
-                                            <label for="inputNotifTimePicker" class="col-sm-2 control-label">Time picker:</label>
-                          
-                                            <div class="input-group" style="padding-left: 15px; padding-right: 15px">
-                                              <input type="text" class="form-control notifTimePicker">
-                          
-                                              <div class="input-group-addon">
-                                                <i class="fa fa-clock-o"></i>
-                                              </div>
-                                            </div>
-                                            <!-- /.input group -->
-                                          </div>
-                                          <!-- /.form group -->
-                                    <div class="form-group">
-                                      <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-danger">Submit</button>
-                                      </div>
-                                    </div>
-                            </form>
-                    </div>
-                </div>
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>View Due Contract</strong></h3>
+                    
+                  </div>
+                  <div class="box-body form-horizontal">
+          <center><h4>Contract Details</h4></center>
+          <br>
+          <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="viewcontractnumber" class ="col-sm-3 control-label">Contract Number</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewcontractnumber" name="viewcontractnumber" placeholder="Contract Number" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewprofile" class ="col-sm-3 control-label">Profile</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewprofile" name="viewprofile" placeholder="Profile" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewcontractname" class ="col-sm-3 control-label">Contract Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewcontractname" name="viewcontractname" placeholder="Contract Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewstallname" class ="col-sm-3 control-label">Business Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewstallname" name="viewstallname" placeholder="Stall Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewfunction" class ="col-sm-3 control-label">Function</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewfunction" name="viewfunction" placeholder="Function" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewconsigneefirstname" class ="col-sm-3 control-label">Consignee Name</label>
+            <div class="col-sm-9">
+              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsigneefirstname" name="viewconsigneefirstname" placeholder="First Name" disabled>
+            
+              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsigneemiddlename" name="viewconsigneemiddlename" placeholder="Middle Name" disabled>
+            
+              <input type="text" class="form-control" id="viewconsigneelastname" name="viewconsigneelastname" placeholder="Last Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewdescription" class ="col-sm-3 control-label">Description</label>
+            <div class="col-sm-9">
+              <textarea name="viewdescription" id="viewdescription" class="form-control" rows="5" placeholder="Description" disabled></textarea>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="viewconsignorname" class ="col-sm-3 control-label">OIC Name</label>
+            <div class="col-sm-9">
+              <input type="text"  style="margin-bottom:5px" class="form-control" id="viewconsignorfirstname" name="viewconsignorfirstname" placeholder="First Name" disabled>
+             
+              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsignormiddlename" name="viewconsignormiddlename" placeholder="Middle Name" disabled>
+            
+              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsignorlastname" name="viewconsignorlastname" placeholder="Last Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewstatus" class ="col-sm-3 control-label">Status</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewstatus" name="viewstatus" placeholder="Status" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewduration" class ="col-sm-3 control-label">Duration</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewduration" name="viewduration" placeholder="Duration" disabled>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        <div class="box-footer">
+            <div class="pull-left">
+                <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
+                <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
             </div>
 
+        </div>
+                </div>
+              </div>
       </div>
 
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="archiveModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at Archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -767,12 +819,6 @@
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- Select2 -->
-<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<!-- bootstrap datepicker -->
-<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -780,23 +826,10 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page Script -->
-<script src="../../dist/js/pages/activity-new.js"></script>
+<script src="../../dist/js/pages/concession-contract.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
-    //initialize select2 elements
-    $('.select2').select2()
-    //Date picker
-    $('#inputDateStart').datepicker({
-      autoclose: true
-    })
-    $('#inputDateEnd').datepicker({
-      autoclose: true
-    })
-    //Notif Timepicker
-    $('.notifTimePicker').timepicker({
-      showInputs: false
-    })
   })
 </script>
 

@@ -3,15 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | New Cases</title>
+  <title>PUPCCRMs | Categories</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
@@ -40,7 +38,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <span class="logo-lg"><b>PUP</b>CCRM</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -190,188 +188,186 @@
 
   <!-- =============================================== -->
 
-  <!-- Left side column. contains the logo and sidebar -->
+  <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-          <!-- Sidebar user panel -->
-          <div class="user-panel">
-            <div class="pull-left image">
-              <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-            </div>
-            <div class="pull-left info">
-              <p>Alexander Pierce</p>
-              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-          </div>
-          <!-- search form -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                    </button>
-                  </span>
-            </div>
-          </form>
-          <!-- /.search form -->
-          <!-- sidebar menu: : style can be found in sidebar.less -->
-          <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MAIN NAVIGATION</li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Alexander Pierce</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
+            <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+          </ul>
+        </li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-comments"></i>
+              <span>Feedback</span>
+              <span class="pull-right-container">
+                <small class="label label-primary pull-right">12</small>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
+              <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+          <a href="#">
+            <i class="fa fa-suitcase"></i>
+            <span>Cases</span>
+            <span class="pull-right-container">
+              <small class="label label-primary pull-right">12</small>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
+            <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash <span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-tasks"></i> <span>Task</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">12</small>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
+            <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label label-warning pull-right">4</span></a></li>
+            <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archived <span class="label label-warning pull-right">4</span></a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-address-card"></i>
+            <span>Concessions</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
-                <li ><a href="../../index.html"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+                  <li><a href="../concessions/concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
+                  <li><a href="../concessions/concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                  <li><a href="../concessions/concession-item.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                  <li><a href="../concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
+                  <li><a href="../concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
+                  <li><a href="../concessions/concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
               </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-comments"></i>
-                  <span>Feedback</span>
+            <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
+          </ul>
+        </li>
+        <li class="active"><a href="./categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
+        <li class="treeview">
+          <a href="../calendar/calendar.php">
+            <i class="fa fa-calendar"></i> <span>Calendar</span>
+            <span class="pull-right-container">
+              <small class="label pull-right label-info">17</small>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+                <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
                   <span class="pull-right-container">
-                    <small class="label label-primary pull-right">12</small>
+                    <small class="label pull-right label-warning"> 3</small> 
+                    <small class="label pull-right bg-blue"> 14</small> 
                   </span>
                 </a>
-                <ul class="treeview-menu">
-                  <li><a href="../feedback/feedback.html"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                  <li><a href="../feedback/unread-feedback.html"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                  <li><a href="../feedback/read-feedback.html"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
-                </ul>
               </li>
-            <li class="active treeview">
-              <a href="#">
-                <i class="fa fa-suitcase"></i>
-                <span>Cases</span>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="../mail/mailbox.php">
+            <i class="fa fa-envelope"></i> <span>Mailbox</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-yellow">12</small>
+              <small class="label pull-right bg-green">16</small>
+              <small class="label pull-right bg-red">5</small>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="">
+              <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
                 <span class="pull-right-container">
-                  <small class="label label-primary pull-right">12</small>
+                  <span class="label label-primary pull-right">13</span>
                 </span>
               </a>
+            </li>
+            <li><a href="../mail/compose.php"><i class="fa fa-circle-o"></i>Compose</a></li>
+            <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a>
+            <i class="fa fa-file-archive-o"></i> <span>Reports</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
+            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-cog"></i> <span>Options</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
-                <li ><a href="./cases.html"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-                <li class="active"><a href="./new-cases.html"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="./pending-cases.html"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+                  <li><a href="../options/admin-profile.php"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
+                  <li><a href="../options/admin-login-detail.php"><i class="fa fa-circle-o"></i> Admin Login </a></li>
               </ul>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-tasks"></i> <span>Task</span>
-                <span class="pull-right-container">
-                  <small class="label pull-right bg-green">12</small>
-                </span>
-              </a>
+            <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
-                <li><a href="../task/task.html"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../task/new-task.html"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-                <li><a href="../task/pending-task.html"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+                  <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
               </ul>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-address-card"></i>
-                <span>Concessions</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                  <ul class="treeview-menu">
-                      <li><a href="../concessions/concession-profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                      <li><a href="../concessions/concession-map-images.html"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                      <li><a href="../concessions/concession-contact.html"><i class="fa fa-circle-o"></i> Contact</a></li>
-                      <li><a href="../concessions/concession-item-product.html"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                      <li><a href="../concessions/concession-services.html"><i class="fa fa-circle-o"></i> Services</a></li>
-                      <li><a href="../concessions/concession-equipment.html"><i class="fa fa-circle-o"></i> Equipments</a></li>
-                      <li><a href="../concessions/concession-experience.html"><i class="fa fa-circle-o"></i> Experience</a></li>
-                    </ul>
-                </li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Contracts </a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="../calendar/calendar.html">
-                <i class="fa fa-calendar"></i> <span>Calendar</span>
-                <span class="pull-right-container">
-                  <small class="label pull-right label-info">17</small>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                  <li>
-                    <a href="../calendar/activity.html"><i class="fa fa-circle-o"></i> Activity 
-                      <span class="pull-right-container">
-                        <small class="label pull-right label-warning"> 3</small> 
-                        <small class="label pull-right bg-blue"> 14</small> 
-                      </span>
-                    </a>
-                  </li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="../mail/mailbox.html">
-                <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                <span class="pull-right-container">
-                  <small class="label pull-right bg-yellow">12</small>
-                  <small class="label pull-right bg-green">16</small>
-                  <small class="label pull-right bg-red">5</small>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class="">
-                  <a href="../mail/mailbox.html"><i class="fa fa-circle-o"></i>Inbox
-                    <span class="pull-right-container">
-                      <span class="label label-primary pull-right">13</span>
-                    </span>
-                  </a>
-                </li>
-                <li><a href="../mail/compose.html"><i class="fa fa-circle-o"></i>Compose</a></li>
-                <li><a href="../mail/read-mail.html"><i class="fa fa-circle-o"></i>Read</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-                <a href="../reports/report.html">
-                  <i class="fa fa-file-archive-o"></i> <span>Reports</span>
-                  <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                  </span>
-                </a>
-                <ul class="treeview-menu">
-                  <li class=""><a href="../reports/report-concession.html"><i class="fa fa-circle-o"></i>Concession Reports</a></li>
-                  <li><a href="../reports/report-feedback.html"><i class="fa fa-circle-o"></i>Feedback Reports</a></li>
-                  <li><a href="../reports/report-cases.html"><i class="fa fa-circle-o"></i>Case Reports</a></li>
-                  <li><a href="../reports/report-system-trail.html"><i class="fa fa-circle-o"></i>System Trail Reports</a></li>
-                </ul>
-              </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-cog"></i> <span>Options</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Admins <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                  <ul class="treeview-menu">
-                      <li><a href="../options/admin-profile.html"><i class="fa fa-circle-o"></i> Admin Detail </a></li>
-                      <li><a href="../options/admin-login-detail.html"><i class="fa fa-circle-o"></i> Admin Login </a></li>
-                  </ul>
-                </li>
-                <li class="treeview"><a href="../options/permission.html"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                  <ul class="treeview-menu">
-                      <li><a href="../options/permission-module.html"><i class="fa fa-circle-o"></i> Module Permission</a></li>
-                      <li><a href="../options/permission-admin.html"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
-                  </ul>
-                </li>
-                <li><a href="../options/audit-trail.html"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
-              </ul>
-            </li>
-            <li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-            <li class="header">LABELS</li>
+            <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
+            <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
+          </ul>
+        </li>
+        <li><a href="../documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li class="header">LABELS</li>
             <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
                 <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Danger</span></a></li>
@@ -403,10 +399,10 @@
                 <li><a href="#"><i class="fa fa-circle-o text-orange"></i> <span>Due</span></a></li>
               </ul>   
             </li>
-          </ul>
-        </section>
-        <!-- /.sidebar -->
-    </aside>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
 
   <!-- =============================================== -->
 
@@ -414,159 +410,147 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Cases
-        <small>New Cases</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li ><a href="./cases.html">Cases</a></li>
-        <li class="active" >New Case</li>
-      </ol>
+        <h1>
+          Categories
+          <small>Add System Categories</small>
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active"><a href="#">Categories</a></li>
+        </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-
-        <div class="row">
-            <div class="col-md-3">
-                <a href="../../index.html" class="btn btn-primary btn-block margin-bottom">Back to Dashboard</a>
-                <a href="./cases.html" class="btn btn-primary btn-block margin-bottom">Back to Cases</a>
-                <div class="box box-solid">
-                  <div class="box-header with-border">
-                    <h3 class="box-title">Folders</h3>
-      
-                    <div class="box-tools">
-                      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="box-body no-padding">
-                    <ul class="nav nav-pills nav-stacked">
-                      <li ><a href="./cases.html"><i class="fa fa-th-large"></i> Casebox
-                        <span class="label label-primary pull-right">12</span></a></li>
-                      <li><a href="./pending-cases.html"><i class="fa fa-exclamation-circle"></i> Pending Cases</a></li>
-                      <li><a href="./archive-cases.html"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    </ul>
-                  </div>
-                  <!-- /.box-body -->
-                </div>
-                <!-- /. box -->
-                <div class="box box-solid">
-                  <div class="box-header with-border">
-                    <h3 class="box-title">Labels</h3>
-      
-                    <div class="box-tools">
-                      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="box-body no-padding">
-                    <ul class="nav nav-pills nav-stacked">
-                      <li><a href="#"><i class="fa fa-circle-o text-red"></i> Urgent</a></li>
-                      <li><a href="#"><i class="fa fa-circle-o text-green"></i> New</a></li>
-                      <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Pending</a></li>
-                      <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Due</a></li>
-                    </ul>
-                  </div>
-                  <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-              </div>
-              <!-- /.col -->
-
-            <div class="col-md-9">
-              <div class="box box-primary">
-                <div class="box-header with-border">
-                  <h3 class="box-title"><strong>Add Case</strong></h3>
-                </div>
-                <div class="box-body " style="padding-left: 40px; padding-right: 30px">
-                    <form class="form-horizontal">
+      <div class="btn-group">
+        <a href="../../index.php" class="btn btn-primary btn-block margin-bottom" style="margin-right:10px;width:250px">Back to Dashboard</a>
+        <a href="./categories.php" class="btn btn-primary " style="width:250px">Back to Category List</a>
+      </div>
+      <div class="col-md-12">
+        <div class="box box-bordered box-primary">
+          <div class="box-header">
+            <h3 class="box-title">Add Services Category</h3>
+          </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="box-content">
+          <center><h4>Services Category</h4></center>
                         <div class="form-group">
-                          <label for="inputCaseNumber" class="col-sm-2 control-label">Case Number</label>
-      
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputCaseNumber" placeholder="Case Number">
-                          </div>
+                            <label class="col-md-3 control-label" for="number">ID Number</label>
+                            <div class="col-md-8">
+                                <input type="text" name="number" id="number" class="form-control" disabled>
+                            </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputCaseName" class="col-sm-2 control-label">Case Name</label>
-      
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputCaseName" placeholder="Case Name">
-                          </div>
+                            <label class="col-md-3 control-label" for="servicename">Service Name</label>
+                            <div class="col-md-8">
+                                <input type="text" name="servicename" id="servicename" class="form-control" placeholder="Service Name">
+                            </div>
                         </div>
-                          <div class="form-group">
-                            <label for="inputType" class="col-sm-2 control-label">Type</label>
-                            <div class="col-sm-10">
-                              <select class="form-control select2" style="width: 100%;">
-                                <option selected="selected"></option>Select Type</option>
-                                <option value="question">Question</option>
-                                <option value="incident">Incident</option>
-                                <option value="problem">Problem</option>
-                                <option value="suggestion">Suggestion</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="inputStatus" class="col-sm-2 control-label">Status</label>
-                            <div class="col-sm-10">
-                              <select class="form-control select2" style="width: 100%;">
-                                <option selected="selected"></option>Select Status</option>
-                                <option value="urgent">Urgent</option>
-                                <option value="new">New</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="inputStatus" class="col-sm-2 control-label">Priority</label>
-                            <div class="col-sm-10">
-                              <select class="form-control select2" style="width: 100%;">
-                                <option selected="selected"></option>Select Priority</option>
-                                <option value="urgent">Urgent</option>
-                                <option value="high">High</option>
-                                <option value="normal">Normal</option>
-                                <option value="low">Low</option>
-                              </select>
-                            </div>
-                          </div>
                         <div class="form-group">
-                          <label for="inputDescription" class="col-sm-2 control-label">Case Description</label>
-      
-                          <div class="col-sm-10">
-                            <textarea class="form-control" id="inputDescription" placeholder="Task Description"></textarea>
-                          </div>
-                        </div>
-                          <div class="form-group">
-                            <label for="inputAdminName" class="col-sm-2 control-label">Assigned Admin</label>
-        
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputAdminName" placeholder="Admin Name">
+                            <label class="col-md-3 control-label" for="servicedescription">Description</label>
+                            <div class="col-md-8">
+                                <textarea name="servicedescription" id="servicedescription" rows="5" class="form-control" placeholder="Description"></textarea>
                             </div>
-                          </div>
-                        <div class="form-group">
-                          <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-danger">Submit</button>
-                          </div>
                         </div>
-                      </form>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div class="box-footer">
+            <button type="reset" class="btn btn-default pull-left">Reset Fields</button>
+            <button type="submit" name="submit" class="btn btn-primary pull-right">Submit</button>
+          </div>
+        </form> 
         </div>
-  
-
+      </div>
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> beta 1.0
+    <div class="modal modal-default fade" id="deleteItemModal">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:10px">
+          <div class="modal-header">
+            <h3 class="modal-title">Delete Selected</h3>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+            <button type="button" name="submit" id="submit" class="btn btn-danger">Yes</button>
+          </div>
         </div>
-        <strong>Copyright &copy;2019 <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-        reserved.
+      </div>
+    </div>
+
+    <div class="modal modal-default fade" id="deleteServiceModal">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:10px">
+          <div class="modal-header">
+            <h3 class="modal-title">Delete Selected</h3>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+            <button type="button" name="submit" id="submit" class="btn btn-danger">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal-default fade" id="deleteContractModal">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:10px">
+          <div class="modal-header">
+            <h3 class="modal-title">Delete Selected</h3>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+            <button type="button" name="submit" id="submit" class="btn btn-danger">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal-default fade" id="deleteEquipmentNameModal">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:10px">
+          <div class="modal-header">
+            <h3 class="modal-title">Delete Selected</h3>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+            <button type="button" name="submit" id="submit" class="btn btn-danger">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal-default fade" id="deleteEquipmentBrandModal">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:10px">
+          <div class="modal-header">
+            <h3 class="modal-title">Delete Selected</h3>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="close" id="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+            <button type="button" name="submit" id="submit" class="btn btn-danger">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> beta 1.0
+    </div>
+    <strong>Copyright &copy;<?php echo date("Y")?><a href="#"> GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+    reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -770,8 +754,6 @@
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Select2 -->
-<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- SlimScroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -780,13 +762,9 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- Page Script -->
-<script src="../../dist/js/pages/new-cases.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
-    //initialize select2 elements
-    $('.select2').select2()
   })
 </script>
 </body>

@@ -382,6 +382,7 @@ $result = mysqli_query($conn,$sql1);
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
+              <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
@@ -446,7 +447,7 @@ $result = mysqli_query($conn,$sql1);
           <div class="col-md-3">
               <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
               
-              <a data-toggle="modal" data-target="#addConcession" class="btn btn-primary btn-block margin-bottom">Add Concession</a>
+              <a href="./concession-add.php" class="btn btn-primary btn-block margin-bottom">Add Concession</a>
                  
               <div class="box box-solid">
                 <div class="box-header with-border">
@@ -537,12 +538,10 @@ $result = mysqli_query($conn,$sql1);
                               </tr>
                               <tr>
                               <?php
-                              $action = '<div class="btn-group">
-                                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#viewConcession" id="viewConcessionModalBtn">View</button>
-                                  </div>';
-                              $profile ='<div class="btn-group">
-                                    <a type="button" class="btn btn-primary " href="./concession-profile.php" id="viewProfileBtn">Profile</a>
-                                  </div>';
+                              $action = '
+                                    <a type="button" class="btn btn-primary " href="./concession-view.php">View</button>';
+                              $profile ='
+                                    <a type="button" class="btn btn-primary " href="./concession-profile.php" id="viewProfileBtn">Profile</a>';
 
                               while($r = mysqli_fetch_assoc($result)){
                               ?>

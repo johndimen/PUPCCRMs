@@ -362,6 +362,7 @@
                       <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                   </ul>
                 </li>
+                <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
                 <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
               </ul>
             </li>
@@ -520,7 +521,7 @@
                                 <?php 
                                 $action = 
                                 '<div class="btn-group">
-                                  <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                                  <a type="button" class="btn btn-info " href="./trash-cases-view.php">View</a>
                                </div>
                                 ';
                                 ?>
@@ -547,50 +548,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <div class="modal modal-default fade" id = "viewModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="border-radius:10px">
-        <div class="modal-header">
-          <h3 class="modal-title">View Case</h3>
-        </div>
-        <div class="modal-body form-horizontal" >
-          <h4>Case Details</h4>
-          <hr>
-          <div class="form-group">
-            <label for="viewCasename" class="col-sm-3 control-label">Case Name</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewCasename" name="viewCasename" placeholder="Case Name" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="casetype" class="col-sm-3 control-label">Case Type</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewCasetype" name="viewCasetype" placeholder="Case Type" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="viewPriority" class="col-sm-3 control-label">Priority</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewPriority" name="viewPriority" placeholder="Priority" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="viewDescription" class="col-sm-3 control-label">Case Description</label>
-      
-            <div class="col-sm-9">
-              <textarea class="form-control" id="viewDescription" name="viewDescription" placeholder="Task Description" disabled></textarea>
-            </div>
-          </div>  
-        </div>
-          <div class="modal-footer">
-            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Archive</button>
-            <button type="button" name="delete" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
-          </div>
-      </div>
-    </div>
-  </div>
 
   <div class="modal modal-default fade" id="deleteModal">
     <div class="modal-dialog">

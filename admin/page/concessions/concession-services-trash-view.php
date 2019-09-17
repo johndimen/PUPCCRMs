@@ -1,23 +1,52 @@
-<!DOCTYPE html>
+<?php
+  session_start();
+  include('../dbconfig.php');
+  //We need to use sessions, so you should always start sessions using the below code.
+  //If the user is not logged in redirect to the login page...
+  // Check if the user is already logged in, if yes then redirect him to welcome page
+  if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+    header("location: ../../login.php");
+    exit;
+  }
+  
+  $sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Name` FROM `crm_concession_profile`";
+  $result1 = mysqli_query($conn,$sql1);
+
+
+  $sql = "SELECT `CRM_Service_Concession_Name`, `CRM_Concession_Services_Name`, `CRM_Concession_Services_Price_Range_Lower`, `CRM_Concession_Services_Price_Range_Higher`, `CRM_Concession_Services_Desc` FROM crm_concession_service";
+  $result = mysqli_query($conn,$sql);
+
+ // $conName = $servName = $priceLow = $priceHigh = $servStatus = $servDesc ="";
+
+  $sql2 = "SELECT `CRM_Service_Concession_Name`, `CRM_Concession_Services_Name`, `CRM_Concession_Services_Price_Range_Lower`, `CRM_Concession_Services_Price_Range_Higher`, `CRM_Concession_Service_Status`, `CRM_Concession_Services_Desc` FROM crm_concession_service WHERE ";
+  $s1 = " ~ ";
+  $result2 = mysqli_query($conn,$sql2);
+  /*while($r = mysqli_fetch_row($result2)){
+    $conName = $r['CRM_Service_Concession_Name'];
+    $r['CRM_Concession_Services_Name'];
+    $r['CRM_Concession_Services_Price_Range_Lower'];
+    $r['CRM_Concession_Services_Price_Range_Higher'];
+    $r['CRM_Concession_Service_Status'];
+    $r['CRM_Concession_Services_Desc'];
+  }*/
+
+
+?>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Concession Contract New</title>
+  <title>PUPCCRMs | Concession Contract</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <!-- Select2 -->
-    <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="../../plugins/iCheck/all.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -258,8 +287,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -271,8 +300,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -284,17 +313,17 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+              <li class="treeview active"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                   <ul class="treeview-menu">
                     <li><a href="./concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
                     <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
                     <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
-                    <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
+                    <li class="active"><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                     <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
                     <li><a href="./concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
                   </ul>
               </li>
-              <li class="active"><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
+              <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
           <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
@@ -368,6 +397,7 @@
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
+              <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
@@ -416,12 +446,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          Contracts
-          <small>All Concession Contracts</small>
+          Services
+          <small>All Concession Services</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active"><a href="#">Contracts</a></li>
+          <li class="active"><a href="#">Services</a></li>
         </ol>
       </section>
 
@@ -431,8 +461,9 @@
       <div class="row">
           <div class="col-md-3">
               <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
-              <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Back to Concession List</a>
+              <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
               
+
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Folders</h3>
@@ -444,11 +475,9 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li><a href="./concession-contract.php"><i class="fa fa-th-large"></i> Contractbox
-                      <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./concession-contract-due.php"><i class="fa fa-exclamation-circle"></i> Contract Due</a></li>
-                    <li><a href="./concession-contract-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-contract-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
+                    <li><a href="./concession-services.php"><i class="fa fa-th-large"></i> Servicebox</a></li>
+                    <li><a href="./concession-services-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
+                    <li class="active"><a href="./concession-services-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -478,137 +507,88 @@
               <div class="col-md-9">
                 <div class="box box-primary">
                   <div class="box-header with-border">
-                    <h3 class="box-title"><strong>Add Contract</strong></h3>
+                    <h3 class="box-title"><strong>View Trashed Service</strong></h3>
+                    
                   </div>
-                  <div class="box-body " style="padding-left: 40px; padding-right: 30px">
-                      <form class="form-horizontal">
-                          <div class="form-group">
-                            <label for="inputContractNumber" class="col-sm-2 control-label">Contract Number</label>
-        
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputContractNumber" placeholder="Contract Number">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="inputContractName" class="col-sm-2 control-label">Contract Name</label>
-        
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputContractName" placeholder="Contract Name">
-                            </div>
-                          </div>
-                            <div class="form-group">
-                              <label for="inputStallName" class="col-sm-2 control-label">Stall Name</label>
-          
-                              <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputStallName" placeholder="Stall Name">
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="inputType" class="col-sm-2 control-label">Function</label>
-                              <div class="col-sm-10">
-                                <select class="form-control select2" style="width: 100%;">
-                                  <option value="" selected></option>Select Function</option>
-                                  <option value="food">Food</option>
-                                  <option value="nonfood">Non-Food</option>
-                                </select>
-                              </div>
-                            </div>
-                              <div class="form-group">
-                                <label for="inputConsigneeName" class="col-sm-2 control-label">Consignee Name</label>
-            
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputConsigneeName" placeholder="Consignee Name">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                  <label for="inputConsigneeSignature" class="col-sm-2 control-label">Consignee Signature</label>
-              
-                                  <div class="col-sm-10" style="padding-top:10px">
-                                      <label>
-                                          <input type="radio" name="inputConsigneeSignatureYes" class="minimal">Yes
-                                      </label>
-                                  
-                                      <label>
-                                          <input  type="radio" name="inputConsigneeSignatureNo" class="minimal">No
-                                      </label>
-                                  </div>                                    
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputConsignorName" class="col-sm-2 control-label">Consignor Name</label>
-                
-                                    <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="inputConsignorName" placeholder="Consignor Name">
-                                    </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <label for="inputConsignorSignature" class="col-sm-2 control-label">Consignor Signature</label>
-                  
-                                      <div class="col-sm-10" style="padding-top:10px">
-                                          <label>
-                                              <input type="radio" name="inputConsignorSignatureYes" class="minimal">Yes
-                                          </label>
-                                      
-                                          <label>
-                                              <input  type="radio" name="inputConsignorSignatureNo" class="minimal">No
-                                          </label>
-                                      </div>                                    
-                                    </div>
-                            <div class="form-group">
-                              <label for="inputStatus" class="col-sm-2 control-label">Status</label>
-                              <div class="col-sm-10">
-                                <select class="form-control select2" style="width: 100%;">
-                                  <option selected="selected"></option>Select Status</option>
-                                  <option value="cancelled">Cancelled</option>
-                                  <option value="new">New</option>
-                                  <option value="due">Due</option>
-
-                                </select>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputDescription" class="col-sm-2 control-label"> Description</label>
-            
-                                <div class="col-sm-10">
-                                  <textarea class="form-control" id="inputDescription" placeholder="Task Description"></textarea>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                  <label for="inputDateSigned" class="col-sm-2 control-label">Date Signed</label>
-                                    <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
-                                      <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                      </div>
-                                      <input type="text" class="form-control pull-right" id="inputDateSigned">
-                                    </div>
-                                </div>
-                            <div class="form-group">
-                              <label for="inputDuration" class="col-sm-2 control-label">Duration</label>
-          
-                              <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputDuration" placeholder="Duration">
-                              </div>
-                            </div>
-                          <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                              <button type="submit" class="btn btn-danger">Submit</button>
-                            </div>
-                          </div>
-                        </form>
+                  <div class="box-body form-horizontal ">
+                  <center><h4>Service Detail</h4></center>
+                  <br>
+                  <div class="form-group">
+                    <label for="number" class="col-sm-4 control-label">Service Number</label>
+                        
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control" id="number" name="number" placeholder="" disabled>
+                    </div>
                   </div>
+                  <div class="form-group">
+                    <label for="inputProfileName" class="col-sm-4 control-label">Profile Name</label>
+                        
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control" id="inputProfileName" name="inputProfileName" placeholder="Profile Name" disabled>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputServiceName" class="col-sm-4 control-label">Service Name</label>
+        
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="inputServiceName" name="inputServiceName" placeholder="Service Name" disabled>
+                      </div>
+                  </div>
+                    <div class="form-group">
+                      <label for="inputServicePrice" class="col-sm-4 control-label">Price</label>
+                      <div class="row">
+                        <div class="col-sm-3" style="width:20.9%">
+                          <input type="text" class="form-control" id="inputServicePriceLower" name="inputServicePriceLower" placeholder="Price (lower)" disabled>
+                        </div>
+                        <div class="col-sm-1" style="width:6.4%"><span><center>~</center> </span></div>
+                        <div class="col-sm-3" style="width:20.9%">
+                          <input type="text" class="form-control" id="inputServicePriceHigher" name="inputServicePriceHigher" placeholder="Price (Higher)" disabled>
+                        </div>
+                      </div>
+                    </div>
+                  <div class="form-group">
+                    <label for="inputServiceDesc" class="col-sm-4 control-label">Description</label>
+        
+                      <div class="col-sm-6">
+                          <textarea class="form-control" id="inputServiceDesc" name="inputServiceDesc" rows="5" disabled></textarea>
+                      </div>
+                  </div>
+                </div>
+                <div class="box-footer">
+                  <button type="button" name="success" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Restore</button>
+                  <button type="button" name="delete" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                </div>
                 </div>
               </div>
       </div>
-
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
+  <div class="modal modal-default fade" id="restoreModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at Archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> beta 1.0
         </div>
-        <strong>Copyright &copy;2019 <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+        <strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
         reserved.
   </footer>
 
@@ -815,16 +795,12 @@
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- bootstrap datepicker -->
-<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- Select2 -->
 <script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page Script -->
@@ -832,19 +808,9 @@
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
-    //iCheck for checkbox and radio inputs
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass   : 'iradio_minimal-blue'
-    })
-    
-    })
     //initialize select2 elements
     $('.select2').select2()
-  //Date picker
-  $('#inputDateSigned').datepicker({
-      autoclose: true
-    })
+  })
 </script>
 
 

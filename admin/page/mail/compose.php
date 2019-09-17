@@ -359,6 +359,7 @@
                   <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
               </ul>
             </li>
+            <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
             <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
           </ul>
         </li>
@@ -437,10 +438,6 @@
                   <span class="label label-primary pull-right">12</span></a></li>
                   <li><a href="#"><i class="fa fa-envelope"></i> Unread</a></li> 
                   <li><a href="#"><i class="fa fa-envelope-open"></i> Read</a></li>
-                  <li><a href="#"><i class="fa fa-send"></i> Sent</a></li>
-                  <li><a href="#"><i class="fa fa-file"></i> Drafts</a></li>
-                  <li><a href="#"><i class="fa fa-exclamation-circle"></i> Spam <span class="label label-warning pull-right">65</span></a>
-                  </li>
                   <li><a href="#"><i class="fa fa-trash"></i> Trash</a></li>
               </ul>
             </div>

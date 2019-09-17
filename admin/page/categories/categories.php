@@ -362,6 +362,7 @@
                   <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
               </ul>
             </li>
+            <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
             <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
           </ul>
         </li>
@@ -434,7 +435,7 @@
                           </div>
                       </div>
                       <div class="box-body">
-                            <button type="button" class="btn btn-primary margin-bottom" data-target="#additemmodal" data-toggle="modal">Add Item/Products</button>
+                            <a class="btn btn-primary margin-bottom" href="./categories-add-item.php">Add Item/Products</a>
                       <h4>Items and Products Table</h4>
                         <table class="table table-striped">
                           <tbody>
@@ -446,7 +447,7 @@
                               <th style="width: 100px">Action</th>
                             </tr>
                             
-                            <?php $action='<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewitemModal">View</button>'; ?>
+                            <?php $action='<a type="button" class="btn btn-primary" href="./categories-view-item.php">View</a>'; ?>
                                 <tr>
                                     <td></td>
                                     <td></td>
@@ -476,7 +477,7 @@
                             </div>
                         </div>
                         <div class="box-body">
-                        <button type="button" class="btn btn-primary margin-bottom" data-target="#addservicemodal" data-toggle="modal">Add Services</button>
+                          <a type="button" class="btn btn-primary margin-bottom" href="./categories-add-services.php">Add Services</a>
                         <h4>Services Table</h4>
                           <table class="table table-striped">
                             <tbody>
@@ -486,7 +487,7 @@
                                 <th>Description</th>
                                 <th style="width: 100px">Action</th>
                               </tr>
-                              <?php $action='<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewserviceModal">View</button>'; ?>
+                              <?php $action='<a type="button" class="btn btn-primary" href="./categories-view-services.php">View</a>'; ?>
                                 <tr>
                                     <td></td>
                                     <td></td>
@@ -516,7 +517,7 @@
                               </div>
                           </div>
                           <div class="box-body">
-                              <button type="button" class="btn btn-primary margin-bottom" data-target="#addcontractmodal" data-toggle="modal">Add Contract</button>
+                              <a type="button" class="btn btn-primary margin-bottom" href="./categories-add-contract.php">Add Contract</a>
                             <h4>Contract Table</h4>
                             <table class="table table-striped">
                               <tbody>
@@ -526,7 +527,7 @@
                                   <th>Description</th>
                                   <th style="width: 100px">Action</th>
                                 </tr>
-                                <?php $action='<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewcontractModal">View</button>'; ?>
+                                <?php $action='<a type="button" class="btn btn-primary" href="./categories-view-contract.php">View</a>'; ?>
                                 <tr>
                                     <td></td>
                                     <td></td>
@@ -555,8 +556,8 @@
                           </div>
                           <div class="box-body">
                             <div class="row">
-                              <button type="button" class="btn btn-primary margin-bottom" style="margin-left:15px;margin-right:10px" data-target="#addEquipmentNameModal" data-toggle="modal">Add Equipment Name</button>
-                              <button type="button" class="btn btn-primary margin-bottom" data-target="#addEquipmentBrandModal" data-toggle="modal">Add Brand Name</button>
+                              <a type="button" class="btn btn-primary margin-bottom" style="margin-left:15px;margin-right:10px" href="./categories-add-equipmentname.php">Add Equipment Name</a>
+                              <a type="button" class="btn btn-primary margin-bottom" href="./categories-add-equipmentbrand.php">Add Equipment Brand</a>
                               
                             </div>
                             <div class="row">
@@ -570,7 +571,7 @@
                                   <th>Description</th>
                                   <th style="width: 100px">Action</th>
                                 </tr>
-                                <?php $action='<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewEquipmentNameModal">View</button>'; ?>
+                                <?php $action='<a type="button" class="btn btn-primary" href="./categories-view-equipmentname.php">View</a>'; ?>
                                 <tr>
                                     <td></td>
                                     <td></td>
@@ -590,7 +591,7 @@
                                   <th>Description</th>
                                   <th style="width: 100px">Action</th>
                                 </tr>
-                                <?php $action='<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewEquipmentBrandModal">View</button>'; ?>
+                                <?php $action='<a type="button" class="btn btn-primary" href="./categories-view-equipmentbrand.php">View</a>'; ?>
                                 <tr>
                                     <td></td>
                                     <td></td>

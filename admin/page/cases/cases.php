@@ -370,6 +370,7 @@ require_once('../dbconfig.php');
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
+              <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
@@ -434,7 +435,7 @@ require_once('../dbconfig.php');
           <div class="col-md-3">
               <a href="../../index.php" class="btn btn-primary btn-block margin-bottom">Back to Dashboard</a>
               
-              <button class="btn btn-primary btn-block margin-bottom" data-toggle="modal" data-target="#addCases">Add Cases</button>
+              <a class="btn btn-primary btn-block margin-bottom" href="./cases-add.php">Add Cases</a>
               
               <div class="box box-solid">
                 <div class="box-header with-border">
@@ -527,12 +528,17 @@ require_once('../dbconfig.php');
                                 <td style="width: 100px">Status</td>
                                 <td style="width: 110px">Action</td>
                               </tr>
+                              <?php 
+                              $action2 = '<div class="btn-group">
+                              <a type="button" class="btn btn-info " href="./cases-view.php">View</a>
+                            </div>';
+                               ?>
                               <?php
                                 $tablesql = "SELECT `CRM_Case_Status_Type`, `CRM_Case_Priority_Type`, `CRM_Case_Type`, `CRM_Case_Login_Username`, `CRM_Case_Name`, `CRM_Case_Description` FROM `crm_caselist`"; 
                                 $result = $conn->query($tablesql);
                                 $action = '
                                           <div class="btn-group">
-                                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                                            <a type="button" class="btn btn-info " href="./cases-view.php">View</a>
                                           </div>
                                 ';
                                 if($result->num_rows > 0){
@@ -587,167 +593,6 @@ require_once('../dbconfig.php');
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <div class="modal modal-default fade" id="addCases">
-    <div class="modal-dialog" >
-      <div class="modal-content" style="border-radius: 10px">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><strong>Add Cases</strong></h4>
-        </div>
-        <form class="form-horizontal" action="" method="post">
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="inputCaseNumber" class="col-sm-4 control-label">Case Number</label>
-      
-              <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputCaseNumber" placeholder="Case Number" disabled >
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputCaseName" class="col-sm-4 control-label">Case Name</label>
-      
-              <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputCaseName" placeholder="Case Name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputType" class="col-sm-4 control-label">Type</label>
-              <div class="col-sm-8">
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Select Type</option>
-                  <option value="incident">Incident</option>
-                  <option value="problem">Problem</option>
-                  <option value="emergency">Emergency</option>
-                </select>
-              </div>
-            </div>
-                          <!--<div class="form-group">
-                            <label for="inputStatus" class="col-sm-4 control-label">Status</label>
-                            <div class="col-sm-8">
-                              <select class="form-control select2" style="width: 100%;">
-                                <option selected="selected"></option>Select Status</option>
-                                <option value="urgent">Urgent</option>
-                                <option value="new">New</option>
-                              </select>
-                            </div>
-                          </div>-->
-            <div class="form-group">
-              <label for="inputStatus" class="col-sm-4 control-label">Priority</label>
-              <div class="col-sm-8">
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Select Priority</option>
-                  <option value="high">High</option>
-                  <option value="normal">Normal</option>
-                  <option value="low">Low</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputDescription" class="col-sm-4 control-label">Case Description</label>
-      
-              <div class="col-sm-8">
-                <textarea class="form-control" id="inputDescription" placeholder="Task Description"></textarea>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            <button type="submit" name="inputSubmit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal modal-default fade" id = "viewModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="border-radius:10px">
-        <div class="modal-header">
-          <h3 class="modal-title">View Case</h3>
-        </div>
-        <div class="modal-body form-horizontal" >
-          <h4>Case Details</h4>
-          <hr>
-          <div class="form-group">
-            <label for="viewCasename" class="col-sm-3 control-label">Case Name</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewCasename" name="viewCasename" placeholder="Case Name" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="casetype" class="col-sm-3 control-label">Case Type</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewCasetype" name="viewCasetype" placeholder="Case Type" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="viewPriority" class="col-sm-3 control-label">Priority</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewPriority" name="viewPriority" placeholder="Priority" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="viewDescription" class="col-sm-3 control-label">Case Description</label>
-      
-            <div class="col-sm-9">
-              <textarea class="form-control" id="viewDescription" name="viewDescription" placeholder="Task Description" disabled></textarea>
-            </div>
-          </div>  
-        </div>
-          <div class="modal-footer">
-            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
-            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
-            <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
-          </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="modal modal-default fade" id="editModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="border-radius:10px">
-        <div class="modal-header">
-          <h3 class="modal-title">Edit Cases</h3>
-        </div>
-        <form class="form-horizontal" action="" method="post">
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="editasename" class="col-sm-3 control-label">Case Name</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="editCasename" name="editCasename" placeholder="Case Name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="editCasetype" class="col-sm-3 control-label">Case Type</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="editCasetype" name="editCasetype" placeholder="Case Type">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="editPriority" class="col-sm-3 control-label">Priority</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="editPriority" name="editPriority" placeholder="Priority">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="editDescription" class="col-sm-3 control-label">Case Description</label>
-            <div class="col-sm-9">
-              <textarea class="form-control" id="editDescription" name="editDescription" placeholder="Task Description" ></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button type="submit" name="inputSubmit" class="btn btn-success">Submit</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
 
   <div class="modal modal-default fade" id="trashModal">
     <div class="modal-dialog">

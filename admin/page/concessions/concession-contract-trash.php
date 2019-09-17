@@ -362,6 +362,7 @@
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
+              <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
@@ -517,13 +518,7 @@
                             <td>Contract Duration</td>
                             <td>Action</td>
                           </tr>
-                          <?php 
-                                $action = 
-                                '<div class="btn-group">
-                                  <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
-                               </div>
-                                ';
-                                ?>
+                          <?php  $action ='<a type="button" class="btn btn-info " href="./concession-contract-trash-view.php">View</a>';?>
 
                                 <tr>
                                   <td></td>

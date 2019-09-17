@@ -362,6 +362,7 @@
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
+              <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
@@ -427,7 +428,7 @@
               <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
               <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
               
-              <a data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-block margin-bottom ">Add Experience</a>
+              <a href="./concession-experience-add.php" class="btn btn-primary btn-block margin-bottom ">Add Experience</a>
                   
               <div class="box box-solid">
                 <div class="box-header with-border">
@@ -515,9 +516,7 @@
                             <th style="width: 150px">Action</th>
                           </tr>
                           <?php
-                          $action = '<div class="btn-group">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewModal">View</button>
-                          </div>';
+                          $action = '<a type="button" class="btn btn-primary" href="./concession-experience-view.php">View</a>';
                           ?>
                           <tr>
                             <td></td>

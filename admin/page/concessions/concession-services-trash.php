@@ -397,6 +397,7 @@
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
+              <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
@@ -550,9 +551,7 @@
                           
                             <?php
                             $action = '
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewModal">View</button>
-                          </div>
+                            <a type="button" class="btn btn-primary" href="./concession-services-trash-view.php">View</a>
                           ';
                             $range = " ~ ";
                               while($r = mysqli_fetch_assoc($result)){

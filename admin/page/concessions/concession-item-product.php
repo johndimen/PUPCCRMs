@@ -383,6 +383,7 @@
                       <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                   </ul>
                 </li>
+                <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
                 <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
               </ul>
             </li>
@@ -448,7 +449,7 @@
                 <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
                 <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
                 
-                <a data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-block margin-bottom">Add Item</a>
+                <a href="./concession-item-product-add.php" class="btn btn-primary btn-block margin-bottom">Add Item</a>
                     
                 <div class="box box-solid">
                   <div class="box-header with-border">
@@ -524,9 +525,8 @@
                                                   <th style="width:150px">Action</th>
                                               </tr>
                                               <?php
-                                              $action = '<div class="btn-group">
-                                              <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="viewModalBtn">View</button>
-                                            </div>';
+                                              $action = '
+                                              <a type="button" class="btn btn-primary " href="./concession-item-product-view.php">View</a>';
                                               while($food = mysqli_fetch_assoc($foodresult)){
                                               ?>
                                               <tr>
@@ -569,9 +569,8 @@
                                                   <th style="width:150px">Action</th>
                                               </tr>
                                               <?php
-                                              $action = '<div class="btn-group">
-                                              <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="viewModalBtn">View</button>
-                                            </div>';
+                                              $action = '
+                                              <a type="button" class="btn btn-primary " href="./concession-item-product-view.php">View</a>';
                                                 while($nonfood = mysqli_fetch_assoc($nonfoodresult)){
                                               ?>
                                               <tr>
@@ -614,9 +613,8 @@
                                                   <th style="width:150px">Action</th>
                                               </tr>
                                               <?php
-                                              $action = '<div class="btn-group">
-                                              <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="viewModalBtn">View</button>
-                                            </div>';
+                                              $action = '
+                                              <a type="button" class="btn btn-primary " href="./concession-item-product-view.php">View</a>';
                                                 while($other = mysqli_fetch_assoc($otherresult)){
                                               ?>
                                               <tr>

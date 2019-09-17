@@ -381,6 +381,7 @@
                       <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                   </ul>
                 </li>
+                <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
                 <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
               </ul>
             </li>
@@ -613,9 +614,8 @@
                                                   <th style="width:150px">Action</th>
                                               </tr>
                                               <?php
-                                              $action = '<div class="btn-group">
-                                                    <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="viewModalBtn">View</button>
-                                                  </div>';
+                                              $action = '
+                                                    <a type="button" class="btn btn-primary " href="./concession-item-product-trash-view.php">View</a>';
                                                 while($other = mysqli_fetch_assoc($otherresult)){
                                               ?>
                                               <tr>

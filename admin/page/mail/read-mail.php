@@ -356,6 +356,7 @@
                   <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
               </ul>
             </li>
+            <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
             <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
           </ul>
         </li>
@@ -415,9 +416,7 @@
     <section class="content">
       <div class="row">
         <div class="col-md-3">
-          <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
-          <a href="compose.php" class="btn btn-primary btn-block margin-bottom">Compose</a>
-
+          <a href="../../index.php" class="btn btn-primary btn-block margin-bottom">Back to Dashboard</a>
           <div class="box box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Folders</h3>
@@ -433,10 +432,6 @@
                   <span class="label label-primary pull-right">12</span></a></li>
                   <li><a href="#"><i class="fa fa-envelope"></i> Unread</a></li> 
                   <li><a href="#"><i class="fa fa-envelope-open"></i> Read</a></li>
-                  <li><a href="#"><i class="fa fa-send"></i> Sent</a></li>
-                  <li><a href="#"><i class="fa fa-file"></i> Drafts</a></li>
-                  <li><a href="#"><i class="fa fa-exclamation-circle"></i> Spam <span class="label label-warning pull-right">65</span></a>
-                  </li>
                   <li><a href="#"><i class="fa fa-trash"></i> Trash</a></li>
               </ul>
             </div>
@@ -480,6 +475,7 @@
                 <h3>Message Subject Is Placed Here</h3>
                 <h5>From: help@example.com
                   <span class="mailbox-read-time pull-right">15 Feb. 2016 11:03 PM</span></h5>
+                <h5>Name of Sender:</h5>
               </div>
               <!-- /.mailbox-read-info -->
               <div class="mailbox-controls with-border text-center">
@@ -536,60 +532,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-              <ul class="mailbox-attachments clearfix">
-                <li>
-                  <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
-
-                  <div class="mailbox-attachment-info">
-                    <a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Sep2014-report.pdf</a>
-                        <span class="mailbox-attachment-size">
-                          1,245 KB
-                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-                        </span>
-                  </div>
-                </li>
-                <li>
-                  <span class="mailbox-attachment-icon"><i class="fa fa-file-word-o"></i></span>
-
-                  <div class="mailbox-attachment-info">
-                    <a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> App Description.docx</a>
-                        <span class="mailbox-attachment-size">
-                          1,245 KB
-                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-                        </span>
-                  </div>
-                </li>
-                <li>
-                  <span class="mailbox-attachment-icon has-img"><img src="../../dist/img/photo1.png" alt="Attachment"></span>
-
-                  <div class="mailbox-attachment-info">
-                    <a href="#" class="mailbox-attachment-name"><i class="fa fa-camera"></i> photo1.png</a>
-                        <span class="mailbox-attachment-size">
-                          2.67 MB
-                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-                        </span>
-                  </div>
-                </li>
-                <li>
-                  <span class="mailbox-attachment-icon has-img"><img src="../../dist/img/photo2.png" alt="Attachment"></span>
-
-                  <div class="mailbox-attachment-info">
-                    <a href="#" class="mailbox-attachment-name"><i class="fa fa-camera"></i> photo2.png</a>
-                        <span class="mailbox-attachment-size">
-                          1.9 MB
-                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-                        </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <!-- /.box-footer -->
-            <div class="box-footer">
-              <div class="pull-right">
-                <button type="button" class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
-                <button type="button" class="btn btn-default"><i class="fa fa-share"></i> Forward</button>
-              </div>
-              <button type="button" class="btn btn-default"><i class="fa fa-trash-o"></i> Delete</button>
+              <button type="button" class="btn btn-default"><i class="fa fa-trash-o"></i> Send to Trash</button>
               <button type="button" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
             </div>
             <!-- /.box-footer -->

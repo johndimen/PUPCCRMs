@@ -363,6 +363,7 @@
                         <li><a href="./permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                     </ul>
                   </li>
+                  <li><a href="./role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
                   <li class="active"><a href="./audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
                 </ul>
               </li>

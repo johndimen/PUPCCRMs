@@ -9,60 +9,18 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   exit;
 }
 
+//table
+$sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Date_Applied` FROM `crm_concession_profile`";
+$result = mysqli_query($conn,$sql1);
 
 
-
-if (isset($_POST['inputSubmit'])){
-  $inputConcessionNumber = $rand;
-  $inputNumber = $_POST['inputNumber'];
-  $inputStallArea = $_POST['inputStallArea'];
-  $inputConcessionName = $_POST['inputConcessionName'];
-  $inputOwnerName = $_POST['inputOwnerName'];
-  $inputEmail = $_POST['inputEmail'];
-  $inputFunction = $_POST['inputFunction'];
-  $inputAddress = $_POST['inputAddress'];
-  $inputDateApplied = $_POST['inputDateApplied'];
-  $inputRemarks = $_POST['inputRemarks'];
-
-
-  $sql = "INSERT INTO `crm_concession_profile`(`CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Area`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Address`, `CRM_Concession_Email`, `CRM_Concession_Date_Applied`, `CRM_Concession_Remarks`) 
-                                            VALUES ($inputConcessionNumber,$inputNumber,'$inputStallArea','$inputConcessionName','$inputOwnerName','$inputFunction','$inputAddress','$inputEmail',$inputDateApplied,'$inputRemarks')";
-
-  if(mysqli_query($conn,$sql,$result1)){
-    $sucess = "Record Successfully.";
-    header('location: concession-profile.php');
-  }else{
-    $error = "Error: Could not Execute. " .mysqli_error($conn);
-    header('location: concession-add.php');
-  }
-
-}
-
-$rand = rand(0,99999999);
-$inputError = '';
-    if(empty($_POST['inputNumber'])){
-    $inputNumError = "is required";
-  }else{
-    $inputNumber = trim($_POST['inputNumber']);
-  }
-  if(empty($_POST['inputStallArea'])){
-    $inputStallError = "is required";
-  }else{
-    $inputStallArea = trim($_POST['inputStallArea']);
-  }
-
-
-  $sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Area` FROM `crm_concession_profile`";
-  $result = mysqli_query($conn,$sql1);
 
 ?>
-
-
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Concession Profile</title>
+  <title>PUPCCRMs | Concession Contract</title>
   <link rel="shortcut icon" href="../../../img/icon.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -70,10 +28,6 @@ $inputError = '';
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
-  <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
@@ -81,6 +35,8 @@ $inputError = '';
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="../../plugins/iCheck/all.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -98,7 +54,7 @@ $inputError = '';
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.php" class="logo">
+    <a href="../../index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -316,8 +272,8 @@ $inputError = '';
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i>Trash <span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -329,8 +285,8 @@ $inputError = '';
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -344,9 +300,8 @@ $inputError = '';
             <ul class="treeview-menu">
               <li class="treeview active"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                   <ul class="treeview-menu">
-                    <li class="active"><a href="./concession-profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>
+                    <li class="active"><a href="./concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
                     <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
-                    <li><a href="./concession-contact.php"><i class="fa fa-circle-o"></i> Contact</a></li>
                     <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                     <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                     <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
@@ -356,6 +311,7 @@ $inputError = '';
               <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
+          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
           <li class="treeview">
             <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -423,14 +379,14 @@ $inputError = '';
               </li>
               <li class="treeview"><a href="../options/permission.php"><i class="fa fa-circle-o"></i> Permissions <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                    <li><a href="../options/permission-module.php"><i class="fa fa-circle-o"></i> Module Permission</a></li>
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
+              <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
-          <li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+          <li><a href="../documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
           <li class="header">LABELS</li>
           <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
@@ -475,13 +431,12 @@ $inputError = '';
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          Concession Profile
-          <small><Address></Address> Concession </small>
+          Concession
+          <small>All Concession List</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li><a href="./concession.php">Concession</a></li>
-          <li class="active"><a href="#">Add Concession</a></li>
+          <li class="active"><a href="#">Concession</a></li>
         </ol>
       </section>
 
@@ -489,63 +444,401 @@ $inputError = '';
     <section class="content">
 
       <div class="row">
-            <div class="col-md-3">
-              <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
-              <a href="./concession.php" class="btn btn-primary btn-block ">Go to Concession List</a>
+          <div class="col-md-3">
+              <a href="../../index.php" class="btn btn-primary btn-block margin-bottom">Back to Dashboard</a>
               
-              <a href="./concession-profile.php" class="btn btn-primary btn-block margin-bottom">Go to Concession Profile</a>
-
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"><strong>Concession Area</strong></h3>
-                    </div>
-                    <div class="box-body no-padding">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Profile No.</th>
-                                    <th style="width: 90px">Stall No.</th>
-                                    <th style="width: 100px">Area</th>
-                                </tr>
-                                <?php 
-                                while($r = mysqli_fetch_assoc($result)){
-                                ?>
-                                <tr>
-                                  <th><?php echo $r['CRM_Concession_Profile_SerialNo'] ?></th>
-                                  <th><?php echo $r['CRM_Concession_Stall_Number'] ?></th>
-                                  <th><?php echo $r['CRM_Concession_Area'] ?></th>
-                                </tr>
-                                <?php } ?>
-                            </thead>
-                        </table>
-                    </div>
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Folders</h3>
+    
+                  <div class="box-tools">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                  </div>
                 </div>
+                <div class="box-body no-padding">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="./concession.php"><i class="fa fa-th-large"></i> Concessionbox</a></li>
+                    <li><a href="./concession-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
+                    <li><a href="./concession-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
+                  </ul>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /. box -->
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Labels</h3>
+    
+                  <div class="box-tools">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="box-body no-padding">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#"><i class="fa fa-circle-o text-green"></i> Active</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> New</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Due</a></li>
+                  </ul>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
             </div>
             <!-- /.col -->
 
             <div class="col-md-9">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"><strong>Add Concession</strong></h3>
-                    </div>
-                    <div class="box-body no-padding">
-                                <form class="form-horizontal" style="padding: 30px" method="post" >
+                    <div class="box box-primary">
+                      <div class="box-header with-border">
+                        <h3 class="box-title"><strong>Add New Concession</strong></h3>
+                        
+                      </div>
+                      <form class ="form-horizontal" action="" method="post">
+          <div class="box-body">
+             <center><h4>Concession Details</h4></center>
+            <div class="row">
+              <div class="col-md-4">
+              <h4 style="margin-left:250px">Profile</h4>
                                     <div class="form-group">
-                                      <label for="inputConcessionNumber" class="col-sm-2 control-label">Concession Number</label>
-                                      <div class="col-sm-10">
-                                      <input type="text" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber" value="<?php echo $rand;?>" disabled>
+                                      <label for="inputConcessionNumber" class="col-sm-4 control-label">Concession Number</label>
+                                      <div class="col-sm-8">
+                                      <input type="text" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber">
                                       </div>
                                     </div>
                                     <div class="form-group">
-                                      <label for="inputNumber" class="col-sm-2 control-label">Stall Number</label>
-                                      <div class="col-sm-10">
+                                      <label for="inputNumber" class="col-sm-4 control-label">Stall Number</label>
+                                      <div class="col-sm-8">
                                         <input type="text" class="form-control" placeholder="Stall Number" name="inputNumber" id="inputNumber">
-                                        <span class ="help-block text-red"><?php echo $inputNumError; ?></span>
+                                        
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputConcessionName" class="col-sm-4 control-label">Business Name</label>
+                  
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Business Name" >
+                                      </div>
+                                    </div>
+                                    <h4>Owner's Info</h4>
+                                    <div class="form-group">
+                                      <label for="inputOwnerFName" class="col-sm-4 control-label">Owner's Name</label>
+                  
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="inputOwnerFName" id="inputOwnerFName" placeholder="First Name">
+                                        <input type="text" style="margin-top:5px;margin-bottom:5px" class="form-control" name="inputOwnerMName" id="inputOwnerMName" placeholder="Middle Name">
+                                        <input type="text" style="" class="form-control" name="inputOwnerLName" id="inputOwnerLName" placeholder=" Last Name">
                                       </div>
                                     </div>
                                       <div class="form-group">
-                                        <label for="inputArea" class="col-sm-2 control-label">Stall Area</label>
-                                        <div class="col-sm-10">
+                                        <label for="inputEmail" class="col-sm-4 control-label">Email</label>
+                    
+                                        <div class="col-sm-8">
+                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
+                                        </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4" style="margin-top:40px">
+                                      <div class="form-group">
+                                        <label for="inputRemarks" class="col-sm-4 control-label">Remarks</label>
+                    
+                                        <div class="col-sm-8">
+                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" rows="5" placeholder="Remarks" ></textarea>
+                                        </div>
+                                      </div> 
+                                      <div class="form-group">
+                                        <label for="dateapproved" class="col-sm-4 control-label">Date Approved</label>
+                                        <div class="col-sm-8">
+                                          <input type="date" class="form-control" name="dateapproved" id="dateapproved" placeholder="Date Approved">
+                                        </div>
+                                      </div>
+                                    <div class="form-group" style="margin-top:24px">
+                                      <label for="inputAddress" class="col-sm-4 control-label">Owner's Address</label>
+                  
+                                      <div class="col-sm-8">
+                                        <textarea class="form-control" name="inputAddress" id="inputAddress" rows="5" placeholder="Address" ></textarea>
+                                      </div>
+                                    </div>
+                                      <div class="form-group" style="margin-top:26px">
+                                        <label for="inputnumber" class="col-sm-4 control-label">Contact No.</label>
+                    
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="inputnumber" id="inputnumber" placeholder="Number" >
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <br><br>
+                                      <center><h4>Stall Description</h4></center>
+                                      <div class="form-group">
+                                        <label for="inputArea" class="col-sm-4 control-label">Stall Location</label>
+                                        <div class="col-sm-8">
+                                          <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
+                                            <option value="" selected>Select Location</option>
+                                            <option value="north">North</option>
+                                            <option value="west">West</option>
+                                            <option value="south">South</option>
+                                            <option value="east">East</option>
+                                            <option value="sampaguita">sampaguita</option>
+                                            <option value="lagoon">Lagoon</option>
+                                            <option value="other">Other</option>
+                                          </select>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="inputFunction" class="col-sm-4 control-label">Category</label>
+                                        <div class="col-sm-8">
+                                          <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction" onchange="showfield(this.options[this.selectedIndex].value)">
+                                            <option value = ""selected>Select Category</option>
+                                            <option value="food">Food</option>
+                                            <option value="nonfood">Non-Food</option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                      <div id = "div1"></div>
+                                      <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="measurement">Stall Measurement</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="measurement" id="measurement" placeholder="Stall Measurement">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="rental">Monthly Rental</label>
+                                        <div class="col-sm-8">
+                                          <input type="number" min="0" class="form-control" name="rental" id="rental" placeholder="Monthly Rental">
+                                        </div>
+                                      </div>
+                                    </div>
+              </div>
+          </div>
+          <div class="box-footer">
+            <button type="reset" name="reset" class="btn btn-default pull-left">Reset Fields</button>
+            <button type="submit" name="submit" class="btn btn-success pull-right">Submit</button>
+          </div>
+        </form>
+                    </div>
+                  </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <div class="modal modal-default fade" id="addConcession">
+    <div class="modal-dialog" style="margin-left: 100px;width: 1150px;">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Add Concession</h3>
+        </div>
+        <form class ="form-horizontal" action="" method="post">
+          <div class="modal-body">
+            <h4>Concession Details</h4>
+            <hr>
+            <div class="row">
+              <div class="col-md-4">
+              <h4>Profile</h4>
+                                    <div class="form-group">
+                                      <label for="inputConcessionNumber" class="col-sm-4 control-label">Concession Number</label>
+                                      <div class="col-sm-8">
+                                      <input type="text" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputNumber" class="col-sm-4 control-label">Stall Number</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="Stall Number" name="inputNumber" id="inputNumber">
+                                        
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputConcessionName" class="col-sm-4 control-label">Business Name</label>
+                  
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" >
+                                      </div>
+                                    </div>
+                                    <h4>Owner's Info</h4>
+                                    <div class="form-group">
+                                      <label for="inputOwnerFName" class="col-sm-4 control-label">Owner's Name</label>
+                  
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="inputOwnerFName" id="inputOwnerFName" placeholder="Owner's First Name">
+                                        <input type="text" style="margin-top:5px;margin-bottom:5px" class="form-control" name="inputOwnerMName" id="inputOwnerMName" placeholder="Owner's Middle Name">
+                                        <input type="text" style="" class="form-control" name="inputOwnerLName" id="inputOwnerLName" placeholder="Owner's Last Name">
+                                      </div>
+                                    </div>
+                                      <div class="form-group">
+                                        <label for="inputEmail" class="col-sm-4 control-label">Email</label>
+                    
+                                        <div class="col-sm-8">
+                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
+                                        </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4" style="margin-top:40px">
+                                      <div class="form-group">
+                                        <label for="inputRemarks" class="col-sm-4 control-label">Remarks</label>
+                    
+                                        <div class="col-sm-8">
+                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" rows="5" placeholder="Remarks" ></textarea>
+                                        </div>
+                                      </div> 
+                                      <div class="form-group">
+                                        <label for="dateapproved" class="col-sm-4 control-label">Date Approved</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="dateapproved" id="dateapproved" placeholder="Date Approved">
+                                        </div>
+                                      </div>
+                                    <div class="form-group" style="margin-top:24px">
+                                      <label for="inputAddress" class="col-sm-4 control-label">Owner's Address</label>
+                  
+                                      <div class="col-sm-8">
+                                        <textarea class="form-control" name="inputAddress" id="inputAddress" rows="4" placeholder="Address" ></textarea>
+                                      </div>
+                                    </div>
+                                      <div class="form-group" style="margin-top:32px">
+                                        <label for="inputnumber" class="col-sm-4 control-label">Contact No.</label>
+                    
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="inputnumber" id="inputnumber" placeholder="Number" >
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <h4>Stall Description</h4>
+                                      <div class="form-group">
+                                        <label for="inputArea" class="col-sm-4 control-label">Stall Location</label>
+                                        <div class="col-sm-8">
+                                          <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
+                                            <option value="" selected>Select Location</option>
+                                            <option value="north">North</option>
+                                            <option value="west">West</option>
+                                            <option value="south">South</option>
+                                            <option value="east">East</option>
+                                            <option value="sampaguita">sampaguita</option>
+                                            <option value="lagoon">Lagoon</option>
+                                            <option value="other">Other</option>
+                                          </select>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="inputFunction" class="col-sm-4 control-label">Category</label>
+                                        <div class="col-sm-8">
+                                          <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction" onchange="showfield(this.options[this.selectedIndex].value)">
+                                            <option value = ""selected="">Select Category</option>
+                                            <option value="food">Food</option>
+                                            <option value="nonfood">Non-Food</option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                      <div id = "div1"></div>
+                                      <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="measurement">Stall Measurement</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="measurement" id="measurement" placeholder="Stall Measurement">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="rental">Monthly Rental</label>
+                                        <div class="col-sm-8">
+                                          <input type="number" min="0" class="form-control" name="rental" id="rental" placeholder="Monthly Rental">
+                                        </div>
+                                      </div>
+                                    </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="editModal">
+    <div class="modal-dialog" style="margin-left: 100px;width: 1150px;">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Edit Cases</h3>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+        <div class="modal-body">
+        <h4>Concession Details</h4>
+            <hr>
+            <div class="row">
+              <div class="col-md-4">
+              <h4>Profile</h4>
+                                    <div class="form-group">
+                                      <label for="inputConcessionNumber" class="col-sm-4 control-label">Concession Number</label>
+                                      <div class="col-sm-8">
+                                      <input type="text" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputNumber" class="col-sm-4 control-label">Stall Number</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="Stall Number" name="inputNumber" id="inputNumber">
+                                        
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputConcessionName" class="col-sm-4 control-label">Business Name</label>
+                  
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" >
+                                      </div>
+                                    </div>
+                                    <h4>Owner's Info</h4>
+                                    <div class="form-group">
+                                      <label for="inputOwnerFName" class="col-sm-4 control-label">Owner's Name</label>
+                  
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="inputOwnerFName" id="inputOwnerFName" placeholder="Owner's First Name">
+                                        <input type="text" style="margin-top:5px;margin-bottom:5px" class="form-control" name="inputOwnerMName" id="inputOwnerMName" placeholder="Owner's Middle Name">
+                                        <input type="text" style="" class="form-control" name="inputOwnerLName" id="inputOwnerLName" placeholder="Owner's Last Name">
+                                      </div>
+                                    </div>
+                                      <div class="form-group">
+                                        <label for="inputnumber" class="col-sm-4 control-label">Contact No.</label>
+                    
+                                        <div class="col-sm-8">
+                                          <input type="email" class="form-control" name="inputnumber" id="inputnumber" placeholder="Number" >
+                                        </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4" style="margin-top:40px">
+                                      
+                                      <div class="form-group">
+                                        <label for="inputRemarks" class="col-sm-4 control-label">Remarks</label>
+                    
+                                        <div class="col-sm-8">
+                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" rows="5" placeholder="Remarks" ></textarea>
+                                        </div>
+                                      </div> 
+                                    <div class="form-group" style="margin-top:72px">
+                                      <label for="inputAddress" class="col-sm-4 control-label">Owner's Address</label>
+                  
+                                      <div class="col-sm-8">
+                                        <textarea class="form-control" name="inputAddress" id="inputAddress" rows="4" placeholder="Address" ></textarea>
+                                      </div>
+                                    </div>
+                                      <div class="form-group" style="margin-top:32px">
+                                        <label for="inputEmail" class="col-sm-4 control-label">Email</label>
+                    
+                                        <div class="col-sm-8">
+                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                    <div class="col-md-4">
+                                      <h4>Stall Description</h4>
+                                      <div class="form-group">
+                                        <label for="inputArea" class="col-sm-4 control-label">Stall Area</label>
+                                        <div class="col-sm-8">
                                           <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
                                             <option value="" selected>Select Area</option>
                                             <option value="north">North</option>
@@ -556,78 +849,80 @@ $inputError = '';
                                             <option value="lagoon">Lagoon</option>
                                             <option value="other">Other</option>
                                           </select>
-                                          <span class = "help-block text-red"> <?php echo $inputStallError; ?> </span>
-                                        </div>
-                                      </div>
-                                      <!-- /.form-group -->
-                                    <div class="form-group">
-                                      <label for="inputConcessionName" class="col-sm-2 control-label">Concession Name</label>
-                  
-                                      <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" >
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="inputOwnerName" class="col-sm-2 control-label">Owner's Name</label>
-                  
-                                      <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="inputOwnerName" id="inputOwnerName" placeholder="Owner's Name">
-                                      </div>
-                                    </div>
-                                      <div class="form-group">
-                                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-                    
-                                        <div class="col-sm-10">
-                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
+                                          
                                         </div>
                                       </div>
                                       <div class="form-group">
-                                          <label for="inputFunction" class="col-sm-2 control-label">Function</label>
-                                        <div class="col-sm-10">
-                                          <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction">
+                                          <label for="inputFunction" class="col-sm-4 control-label">Category</label>
+                                        <div class="col-sm-8">
+                                          <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction" onchange="showfield(this.options[this.selectedIndex].value)">
                                             <option value = ""selected="">Select Function</option>
                                             <option value="food">Food</option>
                                             <option value="nonfood">Non-Food</option>
                                           </select>
                                         </div>
                                       </div>
-                                    <div class="form-group">
-                                      <label for="inputAddress" class="col-sm-2 control-label">Address</label>
-                  
-                                      <div class="col-sm-10">
-                                        <textarea class="form-control" name="inputAddress" id="inputAddress" placeholder="Address" ></textarea>
-                                      </div>
-                                    </div>
+                                      <div id = "div1"></div>
                                       <div class="form-group">
-                                        <label for="inputDateApplied" class="col-sm-2 control-label">Date Applied</label>
-                                          <div class="col-sm-10 input-group date" style="width: 81.8%;padding-left: 15px;">
-                                            <div class="input-group-addon">
-                                              <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <input type="text" class="form-control pull-right" name="inputDateApplied" id="inputDateApplied" placeholder="mm/dd/yyyy">
-                                          </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="inputRemarks" class="col-sm-2 control-label">Remarks</label>
-                    
-                                        <div class="col-sm-10">
-                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" placeholder="Remarks" ></textarea>
+                                        <label class="col-sm-4 control-label" for="measurement">Stall Measurement</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="measurement" id="measurement" placeholder="Stall Measurement">
                                         </div>
-                                      </div> 
-                                    <div class="form-group">
-                                      <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-danger" name = "inputSubmit">Submit</button>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="rental">Monthly Rental</label>
+                                        <div class="col-sm-8">
+                                          <input type="number" min="0" class="form-control" name="rental" id="rental" placeholder="Monthly Rental">
+                                        </div>
                                       </div>
                                     </div>
-                                  </form>
-                    </div>
-                </div>
-            </div>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" name="inputSubmit" class="btn btn-success">Submit</button>
+        </div>
+        </form>
       </div>
-    </section>
-    <!-- /.content -->
+    </div>
   </div>
-  <!-- /.content-wrapper -->
+
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="archiveModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -840,39 +1135,71 @@ $inputError = '';
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- bootstrap datepicker -->
-<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!-- Select2 -->
-<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<!-- iCheck -->
+<script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- Page Script -->
-<script src="../../dist/js/pages/concession-add.js"></script>
+<script src="../../dist/js/pages/concession-contract.js"></script>
+
 <script>
   $(document).ready(function () {
-    $("inputSubmit").on('click',function()){
-    $(".form-group").removeClass('has-error').removeClass('has-success');
-    }
     $('.sidebar-menu').tree()
-    //initialize select2 elements
-    $('.select2').select2()
-    //Date picker
-    $('#inputDateApplied').datepicker({
-      autoclose: true
-    })
 
-    $('.inputSubmit').alert($sucess);
-    $('.inputSubmit').alert($error);
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+    
+
+    function viewConcession(CRM_Concession_Profile_SerialNo = null){
+      if(CRM_Concession_Profile_SerialNo){
+        $(".form-group").removeClass('has-error').removeClass('has-success');
+        $("text-danger").remove();
+        $("view-messages").html("");
+        //$("inputConcessionNumber").remove();
+        $.ajax({
+          url: 'getselected.php',
+          type: 'post',
+          data: {inputConcessionNumber : CRM_Concession_Profile_SerialNo}
+          dataType: 'json';
+          success:function(response){
+            $("#viewConcessionNumber").val(response.CRM_Concession_Profile_SerialNo);
+            $("#viewNumber").val(response.CRM_Concession_Stall_Number);
+            $("#viewStallArea").val(response.CRM_Concession_Area);
+            $("#viewConcessionName").val(response.CRM_Concession_Name);
+            $("#viewOwnerName").val(response.CRM_Concession_Owner_Name);
+            $("#viewEmail").val(response.CRM_Concession_Email);
+            $("#viewFunction").val(response.CRM_Concession_Function);
+            $("#viewStatus").val(response.CRM_Concession_Status)
+            $("#viewAddress").val(response.CRM_Concession_Address);
+            $("#viewDateApplied").val(response.CRM_Concession_Date_Applied);
+            $("viewRemarks").val(response.CRM_Concession_Remarks);
+          }
+        })
+      }else{
+        alert("Error: Please refresh the page again.");
+      }
+
+    }
 
     
   })
+  function showfield(name){
+      if(name=='other'){
+        document.getElementById('div1').innerHTML='<div class="form-group"><label for="specify" class="col-sm-4 control-label">Please Specify</label><div class="col-sm-8"><input type="text" name="specify" id="specify" class="form-control"></div></div>';
+      }else{ 
+        document.getElementById('div1').innerHTML='';
+      };
+  }
+
 </script>
 
-<?php $conn ->close(); ?>
+<?php $conn->close(); ?>
 </body>
 </html>
-

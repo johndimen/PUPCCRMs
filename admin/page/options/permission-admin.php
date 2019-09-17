@@ -366,6 +366,7 @@
                         <li class="active"><a href="./permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                     </ul>
                   </li>
+                  <li><a href="./role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
                   <li><a href="./audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
                 </ul>
               </li>
@@ -427,7 +428,10 @@
 
     <!-- Main content -->
     <section class="content">
-
+        <div class="row">
+            <a href="../../index.php" style="margin-left:20px" class="btn btn-primary margin-bottom">Back to Dashboard</a>
+            <a href="./permission-admin.php" class="btn btn-primary margin-bottom">Back to Permission List</a>
+        </div>
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
@@ -451,7 +455,7 @@
                 <tbody>
                     <tr>
                         <th style="width: 50px">Referrence Number</th>
-                        <th style="width: 200px">Admin Name</th>
+                        <th style="width: 280px">Admin Name</th>
                         <th style="width: 100px">Role</th>
                         <th style="width: 50px">Task</th>
                         <th style="width: 50px">User</th>
@@ -460,6 +464,24 @@
                         <th style="width: 50px">Reports</th>
                         <th style="width: 50px">Concession</th>
                         <th style="width: 100px">Status</th>
+                        <th>Action</th>
+                    </tr>
+                    
+                        <?php 
+                        $action = '<div class="row"><a href="./permission-view.php" class="btn btn-primary">View</a><a href="#" class="btn btn-danger">Delete</a></div>';
+                        ?>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td><?php echo $action; ?></td>
                     </tr>
                 </tbody>
             </table>

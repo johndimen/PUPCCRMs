@@ -521,7 +521,7 @@
                               <?php 
                               $action = 
                               '<div class="btn-group">
-                                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                                <a type="button" class="btn btn-info " href="./trash-task-view.php">View</a>
                               </div>
                               ';
                               ?>

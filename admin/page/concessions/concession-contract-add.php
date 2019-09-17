@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -252,8 +254,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/new-cases.php"><i class="fa fa-circle-o"></i> New Cases <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../cases/pending-cases.php"><i class="fa fa-circle-o"></i> Pending Cases <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash <span class= "label bg-green pull-right">4</span></a></li>
+              <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -265,8 +267,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/new-task.php"><i class="fa fa-circle-o"></i>New Task <span class="label bg-green pull-right">4</span></a></li>
-              <li><a href="../task/pending-task.php"><i class="fa fa-circle-o"></i>Pending Task <span class="label label-warning pull-right">4</span></a></li>
+              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
+              <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview active">
@@ -278,17 +280,17 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="treeview active"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+              <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                   <ul class="treeview-menu">
                     <li><a href="./concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
-                    <li class="active"><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
+                    <li><a href="./concession-map-images.php"><i class="fa fa-circle-o"></i> Map/Images</a></li>
                     <li><a href="./concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                     <li><a href="./concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                     <li><a href="./concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
                     <li><a href="./concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
                   </ul>
               </li>
-              <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
+              <li class="active"><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
           <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
@@ -362,10 +364,11 @@
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
+              <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
-          <li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+          <li class=""><a href="../documentation/documentation.php"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
           <li class="header">LABELS</li>
           <li class="treeview"><a class=""><i class="fa fa-circle-o text-white"></i><span>Notification</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
             <ul class="treeview-menu">
@@ -410,12 +413,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          Map and Images
-          <small>All Concession New Location Map and Images</small>
+          Contracts
+          <small>All Concession Contracts</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active"><a href="#">Map/Images</a></li>
+          <li class="active"><a href="#">Contracts</a></li>
         </ol>
       </section>
 
@@ -425,9 +428,7 @@
       <div class="row">
           <div class="col-md-3">
               <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
-              <a href="./concession.php" class="btn btn-primary btn-block">Go to Concession List</a>
-              <a href="./concession-map-images.php" class="btn btn-primary btn-block margin-bottom">Go to Map and Images</a>
-
+              <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Back to Concession List</a>
               
               <div class="box box-solid">
                 <div class="box-header with-border">
@@ -440,9 +441,11 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li><a href="./concession-map-images.php"><i class="fa fa-th-large"></i> Imagebox</a></li>
-                    <li><a href="./concession-map-image-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-map-image-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
+                    <li><a href="./concession-contract.php"><i class="fa fa-th-large"></i> Contractbox
+                      <span class="label label-primary pull-right">12</span></a></li>
+                    <li><a href="./concession-contract-due.php"><i class="fa fa-exclamation-circle"></i> Contract Due</a></li>
+                    <li><a href="./concession-contract-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
+                    <li><a href="./concession-contract-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -471,69 +474,520 @@
             <!-- /.col -->
 
             <div class="col-md-9">
-                    <div class="nav-tabs-custom" id="image_tab">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#map" data-toggle="tab">Map</a></li>
-                            <li><a href="#image" data-toggle="tab">Image</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="active tab-pane" id="map"> 
-                                <div class="box box-solid">
-                                    <div class="box-header with-striped">
-                                        <h3 class="box-title"><strong>Map</strong></h3>
-                                    </div>
-    
-                                    
-                                    <div class="box-body form-group" >
-                                        <div  style="padding-left: 10px">
-                                            <label for="mapInputFile">Map Input</label>
-                                            <input type="file" id="mapInputFile">
-                                            <p class="help-block">Input Concession Map Here</p>
-                                            <button class="btn btn-primary" id="mapUploadFile">Upload</button>
-                                        </div>
-                                        <hr>
-                                        <div class="box-body">
-                                        Map here.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <div class="tab-pane" id="image">
-                                <div class="box box-solid">
-                                    <div class="box-header with-striped">
-                                        <h3 class="box-title"><strong>Image</strong></h3>
-                                    </div>
-                                    
-                                    <div class="box-body form-group" >
-                                        <div  style="padding-left: 10px">
-                                            <label for="mapInputFile">Image Input</label>
-                                            <input type="file" id="mapInputFile">
-                                            <p class="help-block">Input Concession Images Here</p>
-                                            <button class="btn btn-primary" id="mapUploadFile">Upload</button>
-                                        </div>
-                                        <hr>
-                                        <div class="box-body">
-                                            Map here.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title"><strong>Add Contract</strong></h3>
+                  
                 </div>
-
+                <form class="form-horizontal" action="" method="post">
+        <div class="box-body">
+          <center><h4>Contract Details</h4></center>
+          <br>
+          <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="contractnumber" class ="col-sm-3 control-label">Contract Number</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="contractnumber" name="contractnumber" placeholder="Contract Number" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="profile" class="col-sm-3 control-label">Profile</label>
+            <div class="col-sm-9">
+              <select class="form-control select2" style="width:100%" name="profile" id="profile">
+                <option value="" selected>Select Profile</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contractname" class ="col-sm-3 control-label">Contract Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="contractname" name="contractname" placeholder="Contract Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="stallname" class ="col-sm-3 control-label">Business Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="stallname" name="stallname" placeholder="Stall Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="function" class ="col-sm-3 control-label">Function</label>
+            <div class="col-sm-9">
+              <select class="form-control" name="function" id="function">
+                <option selected>Select Function</option>
+                <option value="food">Food</option>
+                <option value="nonfood">Non-Food</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="consigneefirstname" class ="col-sm-3 control-label">Consignee Name</label>
+            <div class="col-md-9">
+              <input type="text" style="margin-bottom:5px" class="form-control" id="consigneefirstname" name="consigneefirstname" placeholder="First Name">
+            
+              <input type="text" style="margin-bottom:5px" class="form-control" id="consigneemiddlename" name="consigneemiddlename" placeholder="Middle Name">
+            
+              <input type="text" class="form-control" id="consigneelastname" name="consigneelastname" placeholder="Last Name">
+            
+            </div>
+          </div>  
+          <div class="form-group">
+            <label for="description" class ="col-sm-3 control-label">Description</label>
+            <div class="col-sm-9">
+              <textarea name="description" id="description" class="form-control" rows="5" placeholder="Description"></textarea>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="contractname" class ="col-sm-3 control-label">OIC Name</label>
+            <div class="col-sm-9">
+              <input type="text" style="margin-bottom:5px" class="form-control" id="consignorfirstname" name="consignorfirstname" placeholder="First Name">
+            
+              <input type="text" style="margin-bottom:5px" class="form-control" id="consignormiddlename" name="consignormiddlename" placeholder="Middle Name">
+            
+              <input type="text" class="form-control" id="consignorlastname" name="consignorlastname" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="datesigned" class ="col-sm-3 control-label">Date Signed</label>
+            <div class="col-sm-9 input-group date" style="width: 71.3%;padding-left: 15px;">
+              <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+              </div>
+              <input type="date" class="form-control pull-right" id="duration" name="duration" placeholder="mm/dd/yyyy">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="duration" class ="col-sm-3 control-label">Duration</label>
+            <div class="col-sm-9">
+              <select class="form-control" id="datesigned" name="datesigned">
+                <option selected>Select Duration</option>
+                <option value="2">2 Years</option>
+                <option value="3">3 Years</option>
+                <option value="4">4 Years</option>
+              </select>
+            </div>
+          </div>
+          <hr>
+            <div class="form-group">
+                <label for="scancopy" class="col-sm-4 control-label">Scan Copy of Contract</label>
+                <div class="col-sm-8">
+                    <input type="file" name="scancopy" id="scancopy" class="form-control" >
+                </div>
+            </div>
+          </div>
+          </div>
+        </div>
+          <div class="box-footer">
+            <button type="reset" name="reset"class="btn btn-default pull-left">Reset Fields</button>
+            <button type="submit" name="inputSubmit" class="btn btn-success pull-right">Submit</button>
+          </div>
+        </form>
+              </div>
+            </div>
       </div>
+
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
+  <div class="modal modal-default fade" id="viewModal">
+    <div class="modal-dialog" style="margin-left: 100px;width: 1150px;">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">View Contract</h3>
+        </div>
+        <div class="modal-body form-horizontal">
+          <h4>Contract Details</h4>
+          <hr>
+          <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="viewcontractnumber" class ="col-sm-3 control-label">Contract Number</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewcontractnumber" name="viewcontractnumber" placeholder="Contract Number" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewprofile" class ="col-sm-3 control-label">Profile</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewprofile" name="viewprofile" placeholder="Profile" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewcontractname" class ="col-sm-3 control-label">Contract Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewcontractname" name="viewcontractname" placeholder="Contract Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewstallname" class ="col-sm-3 control-label">Stall Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewstallname" name="viewstallname" placeholder="Stall Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewfunction" class ="col-sm-3 control-label">Function</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewfunction" name="viewfunction" placeholder="Function" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewconsigneefirstname" class ="col-sm-3 control-label">Consignee Name</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="viewconsigneefirstname" name="viewconsigneefirstname" placeholder="First Name" disabled>
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="viewconsigneemiddlename" name="viewconsigneemiddlename" placeholder="Middle Name" disabled>
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="viewconsigneelastname" name="viewconsigneelastname" placeholder="Last Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewdescription" class ="col-sm-3 control-label">Description</label>
+            <div class="col-sm-9">
+              <textarea name="viewdescription" id="viewdescription" class="form-control" rows="5" placeholder="Description" disabled></textarea>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="viewconsignorname" class ="col-sm-3 control-label">OIC Name</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="viewconsignorfirstname" name="viewconsignorfirstname" placeholder="First Name" disabled>
+            </div>
+            <div class="col-sm-3"> 
+              <input type="text" class="form-control" id="viewconsignormiddlename" name="viewconsignormiddlename" placeholder="Middle Name" disabled>
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="viewconsignorlastname" name="viewconsignorlastname" placeholder="Last Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewstatus" class ="col-sm-3 control-label">Status</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewstatus" name="viewstatus" placeholder="Status" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewduration" class ="col-sm-3 control-label">Duration</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewduration" name="viewduration" placeholder="Duration" disabled>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" name="viewClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="button" name="download" class="btn btn-default">Download</button>
+            <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Archive</button>
+            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+            <button type="button" name="edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="modal modal-default fade" id="renewModal">
+    <div class="modal-dialog"  style="margin-left: 100px;width: 1150px;">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Renew Contract</h3>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="modal-body">
+          <h3>Contract Details</h3>
+          <hr>
+          <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="oldContractNumber" class ="col-sm-3 control-label">Old Contract Number</label>
+            <div class="col-sm-9">
+              <select class="form-control select2" style="width:100%" name="oldContractNumber" id="oldContractNumber">
+                <option selected>Select Existing Contract</option>
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="newcontractnumber" class ="col-sm-3 control-label">New Contract Number</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="newcontractnumber" name="newcontractnumber" placeholder="Contract Number" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewprofile" class ="col-sm-3 control-label">Profile</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="viewprofile" name="viewprofile" placeholder="Profile" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewcontractname" class ="col-sm-3 control-label">Contract Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="renewcontractname" name="renewcontractname" placeholder="Contract Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewstallname" class ="col-sm-3 control-label">Stall Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="renewstallname" name="renewstallname" placeholder="Stall Name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewfunction" class ="col-sm-3 control-label">Function</label>
+            <div class="col-sm-9">
+              <input type="text"class="form-control" id="renewfunction" name="renewfunction" placeholder="Function" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewcontractname" class ="col-sm-3 control-label">Consignee Name</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="renewconsigneefirstname" name="renewconsigneefirstname" placeholder="First Name">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="renewconsigneemiddlename" name="renewconsigneemiddlename" placeholder="Middle Name">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="renewconsigneelastname" name="renewconsigneelastname" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewdescription" class ="col-sm-3 control-label">Description</label>
+            <div class="col-sm-9">
+              <textarea name="renewdescription" id="renewdescription" class="form-control" rows="3" placeholder="Description"></textarea>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="renewconsignorfirstname" class ="col-sm-3 control-label">OIC Name</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="renewconsignorfirstname" name="renewconsignorfirstname" placeholder="First Name">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="renewconsignormiddlename" name="renewconsignormiddlename" placeholder="Middle Name">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="renewconsignorlastname" name="renewconsignorlastname" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewstatus" class ="col-sm-3 control-label">Status</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="renewstatus" name="renewstatus" placeholder="Status" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewdatesigned" class ="col-sm-3 control-label">Date Signed</label>
+            <div class="col-sm-9 input-group date" style="width: 72.5%;padding-left: 15px;">
+              <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+              </div>
+              <input type="date" class="form-control pull-right" id="renewdatesigned" name="renewdatesigned" placeholder="mm/dd/yyyy">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="renewduration" class ="col-sm-3 control-label">Duration</label>
+            <div class="col-sm-9">
+              <select class="form-control" id="renewdatesigned" name="renewdatesigned">
+                <option selected>Select Duration</option>
+                <option value="2">2 Years</option>
+                <option value="3">3 Years</option>
+                <option value="4">4 Years</option>
+              </select>
+            </div>
+          </div>
+          <hr>
+                                      <div class="form-group">
+                                        <label for="scancopy" class="col-sm-4 control-label">Scan Copy of Contract</label>
+                                        <div class="col-sm-8">
+                                          <input type="file" name="scancopy" id="scancopy" class="form-control" >
+                                        </div>
+                                      </div>
+          </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" name="inputSubmit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal modal-default fade" id="editModal">
+    <div class="modal-dialog"  style="margin-left: 100px;width: 1150px;">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Edit Contract</h3>
+        </div>
+        <form class="form-horizontal" action="" method="post">
+          <div class="modal-body">
+          <h3>Contract Details</h3>
+          <hr>
+          <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="contractnumber" class ="col-sm-3 control-label">Contract Number</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="contractnumber" name="contractnumber" placeholder="Contract Number" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="editprofile" class ="col-sm-3 control-label">Profile</label>
+            <div class="col-sm-9">
+              <select class="select2 form-control" style="width:100%" id="editprofile" name="editprofile">
+                <option value=""selected> Select Profile</option>
+              </select>
+              
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contractname" class ="col-sm-3 control-label">Contract Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="contractname" name="contractname" placeholder="Contract Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="stallname" class ="col-sm-3 control-label">Stall Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="stallname" name="stallname" placeholder="Stall Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="function" class ="col-sm-3 control-label">Function</label>
+            <div class="col-sm-9">
+              <select class="form-control" name="function" id="function">
+                <option selected>Select Function</option>
+                <option value="food">Food</option>
+                <option value="nonfood">Non-Food</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contractname" class ="col-sm-3 control-label">Consignee Name</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="consigneefirstname" name="consigneefirstname" placeholder="First Name">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="consigneemiddlename" name="consigneemiddlename" placeholder="Middle Name">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="consigneelastname" name="consigneelastname" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="description" class ="col-sm-3 control-label">Description</label>
+            <div class="col-sm-9">
+              <textarea name="description" id="description" class="form-control" rows="5" placeholder="Description"></textarea>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="consignorfirstname" class ="col-sm-3 control-label">OIC Name</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="consignorfirstname" name="consignorfirstname" placeholder="First Name">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="consignormiddlename" name="consignormiddlename" placeholder="Middle Name">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="consignorlastname" name="consignorlastname" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="status" class ="col-sm-3 control-label">Status</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="status" name="status" placeholder="Status" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="datesigned" class ="col-sm-3 control-label">Date Signed</label>
+            <div class="col-sm-9">
+              <input type="date" class="form-control" id="datesigned" name="datesigned" placeholder="Date Signed">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="duration" class ="col-sm-3 control-label">Duration</label>
+            <div class="col-sm-9">
+              <select class="form-control" name="duration" id="duration">
+                <option selected>Select Duration</option>
+                <option value="2">2 Years</option>
+                <option value="3">3 Years</option>
+                <option value="4">4 Years</option>
+              </select>
+            </div>
+          </div>
+          <hr>
+                                      <div class="form-group">
+                                        <label for="scancopy" class="col-sm-4 control-label">Scan Copy of Contract</label>
+                                        <div class="col-sm-8">
+                                          <input type="file" name="scancopy" id="scancopy" class="form-control" >
+                                        </div>
+                                      </div>
+          </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" name="inputSubmit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="trashModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Trash</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can restore this at trash folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="archiveModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Archive</h3>
+        </div>
+        <div class="modal-body">
+          <P>Are you sure?</P>
+          <p>you can see this at archive folder.  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> beta 1.0
         </div>
-        <strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+        <strong>Copyright &copy;2019 <a href="#">GotConcept MultiTech Firm</a> & Copyright &copy;2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
         reserved.
   </footer>
 
@@ -742,6 +1196,8 @@
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -751,6 +1207,7 @@
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+    $('.select2').select2()
   })
 </script>
 

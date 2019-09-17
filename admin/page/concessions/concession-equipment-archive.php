@@ -362,6 +362,7 @@
                     <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
                 </ul>
               </li>
+              <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
               <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
             </ul>
           </li>
@@ -426,9 +427,7 @@
           <div class="col-md-3">
               <a href="../../index.php" class="btn btn-primary btn-block">Back to Dashboard</a>
               <a href="./concession.php" class="btn btn-primary btn-block margin-bottom">Go to Concession List</a>
-              
-              <a href="#" class="btn btn-primary btn-block margin-bottom ">Add Equipment</a>
-                  
+                
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Folders</h3>
@@ -517,9 +516,7 @@
                           </tr>
                           <?php 
                           $action = '
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewModal">View</button>
-                          </div>
+                            <a type="button" class="btn btn-primary" href="./concession-equipment-archive-view.php">View</a>
                           ';
                           ?>
                           <tr>
@@ -542,50 +539,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-        
-  <div class="modal modal-default fade" id = "viewModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="border-radius:10px">
-        <div class="modal-header">
-          <h3 class="modal-title">Archive</h3>
-        </div>
-        <div class="modal-body form-horizontal" >
-        <h4>Concession Equipment Details</h4>
-            <hr>
-            <div class="form-group">
-              <label for="name" class="col-sm-3 control-label">Name</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" name="name" id="name" placeholder="Name" disabled>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="brand" class="col-sm-3 control-label">Brand</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" name="brand" id="brand" placeholder="Brand" disabled>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="wattage" class="col-sm-3 control-label">Wattage</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" name="wattage" id="wattage" placeholder="Wattage" disabled>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="description" class="col-sm-3 control-label">Description</label>
-              <div class="col-sm-9">
-                <textarea type="text" rows="5" class="form-control" name="description" id="description" placeholder="Description" disabled></textarea>
-              </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" name="viewClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Restore</button>
-          <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="modal modal-default fade" id="trashModal">
     <div class="modal-dialog">

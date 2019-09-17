@@ -358,6 +358,7 @@
                 <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
             </ul>
           </li>
+          <li><a href="../options/role.php"><i class="fa fa-circle-o"></i>Admin Roles</a></li>
           <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
         </ul>
       </li>
@@ -513,7 +514,7 @@
                     <?php 
                       $action = 
                         '<div class="btn-group">
-                          <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
+                          <a type="button" class="btn btn-info " href="./feedback-archive-view.php">View</a>
                         </div>
                         ';
                     ?>
@@ -566,130 +567,6 @@
   </div>
   <!-- /.content-wrapper -->
 
- 
-  <div class="modal modal-default fade" id = "viewModal">
-    <div class="modal-dialog"  style="margin-left: 100px;width: 1150px;">
-      <div class="modal-content" style="border-radius:10px">
-        <div class="modal-header">
-          <h3 class="modal-title">View Feedback</h3>
-        </div>
-        <div class="modal-body form-horizontal">
-        <div class="row">
-          <div class="col-md-4">
-          <h4>Feedback Details</h4>
-          <div class="form-group">
-            <label for="stallno" class="col-sm-4 control-label">Stall No</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="stallno" name="stallno" placeholder="Stall Number">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="stallarea" class="col-sm-4 control-label">Stall Area</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="stallarea" name="stallarea" placeholder="Stall Area">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="evaluation" class="col-sm-4 control-label">Evaluation</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="evaluation" name="evaluation" placeholder="Evaluation">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="type" class="col-sm-4 control-label">Feedback Type</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="type" name="type" placeholder="Feedback Type">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="message" class="col-sm-4 control-label">Message</label>
-            <div class="col-sm-8">
-              <textarea name="message" id="message" class="form-control" rows="5" Placeholder="Feedback Message"></textarea>
-            </div>
-          </div>
-          </div>
-          <div class="col-md-4">
-          <h4>Question Details</h4>
-          <div class="form-group">
-            <label for="question1" class="col-sm-4 control-label">Question 1</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="question1" name="question1" placeholder="Question 1">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="question2" class="col-sm-4 control-label">Question 2</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="question2" name="question2" placeholder="Question 2">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="question3" class="col-sm-4 control-label">Question 3</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="question3" name="question3" placeholder="Question 3">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="question4" class="col-sm-4 control-label">Question 4</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="question4" name="question4" placeholder="Question 4">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="question5" class="col-sm-4 control-label">Question 5</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="question5" name="question5" placeholder="Question 5">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="question6" class="col-sm-4 control-label">Question 6</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="question6" name="question6" placeholder="Question 6">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="question7" class="col-sm-4 control-label">Question 7</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="question7" name="question7" placeholder="Question 7">
-            </div>
-          </div>
-          </div>
-          <div class="col-md-4">
-          <h4>Sender Detail</h4>
-          <div class="form-group">
-            <label for="sendername" class="col-sm-4 control-label">Sender Name</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="sendername" name="sendername" placeholder="Sender Name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="idno" class="col-sm-4 control-label">ID No</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="idno" name="idno" placeholder="ID Number">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email" class="col-sm-4 control-label">E-mail</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="email" name="email" placeholder="E-mail">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="contactno" class="col-sm-4 control-label">Contact No</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="contactno" name="contactno" placeholder="Contact No">
-            </div>
-          </div>
-          </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" name="viewClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Archive</button>
-          <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="modal modal-default fade" id="trashModal">
     <div class="modal-dialog">

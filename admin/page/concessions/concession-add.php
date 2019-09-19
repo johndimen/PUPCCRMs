@@ -572,8 +572,8 @@ $result = mysqli_query($conn,$sql1);
                                       <div class="form-group">
                                         <label for="inputArea" class="col-sm-4 control-label">Stall Location</label>
                                         <div class="col-sm-8">
-                                          <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
-                                            <option value="" selected>Select Location</option>
+                                          <select class="form-control select2" style="width: 100%;" name="inputArea" id="dropdown">
+                                            <option selected>Select Location</option>
                                             <option value="north">North</option>
                                             <option value="west">West</option>
                                             <option value="south">South</option>
@@ -584,6 +584,12 @@ $result = mysqli_query($conn,$sql1);
                                           </select>
                                           
                                         </div>
+                                      </div>
+                                      <div class="form-group" id="specify" style="display:none">
+                                        <label for="specify" class="col-sm-4 control-label">Specify</label>
+                                          <div class="col-sm-8">
+                                            <input type="text" name="specify" id="" class="form-control">
+                                          </div>
                                       </div>
                                       <div class="form-group">
                                           <label for="inputFunction" class="col-sm-4 control-label">Category</label>
@@ -623,268 +629,6 @@ $result = mysqli_query($conn,$sql1);
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <div class="modal modal-default fade" id="addConcession">
-    <div class="modal-dialog" style="margin-left: 100px;width: 1150px;">
-      <div class="modal-content" style="border-radius:10px">
-        <div class="modal-header">
-          <h3 class="modal-title">Add Concession</h3>
-        </div>
-        <form class ="form-horizontal" action="" method="post">
-          <div class="modal-body">
-            <h4>Concession Details</h4>
-            <hr>
-            <div class="row">
-              <div class="col-md-4">
-              <h4>Profile</h4>
-                                    <div class="form-group">
-                                      <label for="inputConcessionNumber" class="col-sm-4 control-label">Concession Number</label>
-                                      <div class="col-sm-8">
-                                      <input type="text" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber">
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="inputNumber" class="col-sm-4 control-label">Stall Number</label>
-                                      <div class="col-sm-8">
-                                        <input type="text" class="form-control" placeholder="Stall Number" name="inputNumber" id="inputNumber">
-                                        
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="inputConcessionName" class="col-sm-4 control-label">Business Name</label>
-                  
-                                      <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" >
-                                      </div>
-                                    </div>
-                                    <h4>Owner's Info</h4>
-                                    <div class="form-group">
-                                      <label for="inputOwnerFName" class="col-sm-4 control-label">Owner's Name</label>
-                  
-                                      <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="inputOwnerFName" id="inputOwnerFName" placeholder="Owner's First Name">
-                                        <input type="text" style="margin-top:5px;margin-bottom:5px" class="form-control" name="inputOwnerMName" id="inputOwnerMName" placeholder="Owner's Middle Name">
-                                        <input type="text" style="" class="form-control" name="inputOwnerLName" id="inputOwnerLName" placeholder="Owner's Last Name">
-                                      </div>
-                                    </div>
-                                      <div class="form-group">
-                                        <label for="inputEmail" class="col-sm-4 control-label">Email</label>
-                    
-                                        <div class="col-sm-8">
-                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
-                                        </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-md-4" style="margin-top:40px">
-                                      <div class="form-group">
-                                        <label for="inputRemarks" class="col-sm-4 control-label">Remarks</label>
-                    
-                                        <div class="col-sm-8">
-                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" rows="5" placeholder="Remarks" ></textarea>
-                                        </div>
-                                      </div> 
-                                      <div class="form-group">
-                                        <label for="dateapproved" class="col-sm-4 control-label">Date Approved</label>
-                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="dateapproved" id="dateapproved" placeholder="Date Approved">
-                                        </div>
-                                      </div>
-                                    <div class="form-group" style="margin-top:24px">
-                                      <label for="inputAddress" class="col-sm-4 control-label">Owner's Address</label>
-                  
-                                      <div class="col-sm-8">
-                                        <textarea class="form-control" name="inputAddress" id="inputAddress" rows="4" placeholder="Address" ></textarea>
-                                      </div>
-                                    </div>
-                                      <div class="form-group" style="margin-top:32px">
-                                        <label for="inputnumber" class="col-sm-4 control-label">Contact No.</label>
-                    
-                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="inputnumber" id="inputnumber" placeholder="Number" >
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <h4>Stall Description</h4>
-                                      <div class="form-group">
-                                        <label for="inputArea" class="col-sm-4 control-label">Stall Location</label>
-                                        <div class="col-sm-8">
-                                          <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
-                                            <option value="" selected>Select Location</option>
-                                            <option value="north">North</option>
-                                            <option value="west">West</option>
-                                            <option value="south">South</option>
-                                            <option value="east">East</option>
-                                            <option value="sampaguita">sampaguita</option>
-                                            <option value="lagoon">Lagoon</option>
-                                            <option value="other">Other</option>
-                                          </select>
-                                          
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                          <label for="inputFunction" class="col-sm-4 control-label">Category</label>
-                                        <div class="col-sm-8">
-                                          <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction" onchange="showfield(this.options[this.selectedIndex].value)">
-                                            <option value = ""selected="">Select Category</option>
-                                            <option value="food">Food</option>
-                                            <option value="nonfood">Non-Food</option>
-                                          </select>
-                                        </div>
-                                      </div>
-                                      <div id = "div1"></div>
-                                      <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="measurement">Stall Measurement</label>
-                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="measurement" id="measurement" placeholder="Stall Measurement">
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="rental">Monthly Rental</label>
-                                        <div class="col-sm-8">
-                                          <input type="number" min="0" class="form-control" name="rental" id="rental" placeholder="Monthly Rental">
-                                        </div>
-                                      </div>
-                                    </div>
-              </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal modal-default fade" id="editModal">
-    <div class="modal-dialog" style="margin-left: 100px;width: 1150px;">
-      <div class="modal-content" style="border-radius:10px">
-        <div class="modal-header">
-          <h3 class="modal-title">Edit Cases</h3>
-        </div>
-        <form class="form-horizontal" action="" method="post">
-        <div class="modal-body">
-        <h4>Concession Details</h4>
-            <hr>
-            <div class="row">
-              <div class="col-md-4">
-              <h4>Profile</h4>
-                                    <div class="form-group">
-                                      <label for="inputConcessionNumber" class="col-sm-4 control-label">Concession Number</label>
-                                      <div class="col-sm-8">
-                                      <input type="text" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber">
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="inputNumber" class="col-sm-4 control-label">Stall Number</label>
-                                      <div class="col-sm-8">
-                                        <input type="text" class="form-control" placeholder="Stall Number" name="inputNumber" id="inputNumber">
-                                        
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="inputConcessionName" class="col-sm-4 control-label">Business Name</label>
-                  
-                                      <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" >
-                                      </div>
-                                    </div>
-                                    <h4>Owner's Info</h4>
-                                    <div class="form-group">
-                                      <label for="inputOwnerFName" class="col-sm-4 control-label">Owner's Name</label>
-                  
-                                      <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="inputOwnerFName" id="inputOwnerFName" placeholder="Owner's First Name">
-                                        <input type="text" style="margin-top:5px;margin-bottom:5px" class="form-control" name="inputOwnerMName" id="inputOwnerMName" placeholder="Owner's Middle Name">
-                                        <input type="text" style="" class="form-control" name="inputOwnerLName" id="inputOwnerLName" placeholder="Owner's Last Name">
-                                      </div>
-                                    </div>
-                                      <div class="form-group">
-                                        <label for="inputnumber" class="col-sm-4 control-label">Contact No.</label>
-                    
-                                        <div class="col-sm-8">
-                                          <input type="email" class="form-control" name="inputnumber" id="inputnumber" placeholder="Number" >
-                                        </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-md-4" style="margin-top:40px">
-                                      
-                                      <div class="form-group">
-                                        <label for="inputRemarks" class="col-sm-4 control-label">Remarks</label>
-                    
-                                        <div class="col-sm-8">
-                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" rows="5" placeholder="Remarks" ></textarea>
-                                        </div>
-                                      </div> 
-                                    <div class="form-group" style="margin-top:72px">
-                                      <label for="inputAddress" class="col-sm-4 control-label">Owner's Address</label>
-                  
-                                      <div class="col-sm-8">
-                                        <textarea class="form-control" name="inputAddress" id="inputAddress" rows="4" placeholder="Address" ></textarea>
-                                      </div>
-                                    </div>
-                                      <div class="form-group" style="margin-top:32px">
-                                        <label for="inputEmail" class="col-sm-4 control-label">Email</label>
-                    
-                                        <div class="col-sm-8">
-                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
-                                        </div>
-                                      </div>
-                                      
-                                    </div>
-                                    <div class="col-md-4">
-                                      <h4>Stall Description</h4>
-                                      <div class="form-group">
-                                        <label for="inputArea" class="col-sm-4 control-label">Stall Area</label>
-                                        <div class="col-sm-8">
-                                          <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
-                                            <option value="" selected>Select Area</option>
-                                            <option value="north">North</option>
-                                            <option value="west">West</option>
-                                            <option value="south">South</option>
-                                            <option value="east">East</option>
-                                            <option value="sampaguita">sampaguita</option>
-                                            <option value="lagoon">Lagoon</option>
-                                            <option value="other">Other</option>
-                                          </select>
-                                          
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                          <label for="inputFunction" class="col-sm-4 control-label">Category</label>
-                                        <div class="col-sm-8">
-                                          <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction" onchange="showfield(this.options[this.selectedIndex].value)">
-                                            <option value = ""selected="">Select Function</option>
-                                            <option value="food">Food</option>
-                                            <option value="nonfood">Non-Food</option>
-                                          </select>
-                                        </div>
-                                      </div>
-                                      <div id = "div1"></div>
-                                      <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="measurement">Stall Measurement</label>
-                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="measurement" id="measurement" placeholder="Stall Measurement">
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="rental">Monthly Rental</label>
-                                        <div class="col-sm-8">
-                                          <input type="number" min="0" class="form-control" name="rental" id="rental" placeholder="Monthly Rental">
-                                        </div>
-                                      </div>
-                                    </div>
-              </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" name="inputClose"class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button type="submit" name="inputSubmit" class="btn btn-success">Submit</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
 
   <div class="modal modal-default fade" id="trashModal">
     <div class="modal-dialog">
@@ -1189,13 +933,14 @@ $result = mysqli_query($conn,$sql1);
 
     
   })
-  function showfield(name){
-      if(name=='other'){
-        document.getElementById('div1').innerHTML='<div class="form-group"><label for="specify" class="col-sm-4 control-label">Please Specify</label><div class="col-sm-8"><input type="text" name="specify" id="specify" class="form-control"></div></div>';
-      }else{ 
-        document.getElementById('div1').innerHTML='';
-      };
-  }
+
+    
+  $("#dropdown").change(function(){
+  if($(this).val() == "other")
+    $("#specify").show();
+  else
+    $("#specify").hide();
+  });
 
 </script>
 

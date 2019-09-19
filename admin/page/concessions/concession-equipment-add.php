@@ -480,27 +480,31 @@
             <center><h4>Concession Equipment Details</h4></center>
             <br>
             <div class="form-group">
-              <label for="editnumber" class="col-sm-3 control-label">Equipment Number</label>
+              <label for="number" class="col-sm-3 control-label">Equipment Number</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" name="editnumber" id="editnumber" placeholder="Equipment Number" disabled>
+                <input type="text" class="form-control" name="number" id="number" placeholder="Equipment Number" disabled>
               </div>
             </div>
             <div class="form-group">
-              <label for="editname" class="col-sm-3 control-label">Name</label>
+              <label for="name" class="col-sm-3 control-label">Name</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" name="editname" id="editname" placeholder="Name">
+                <SELECT class="select2 form-control" name="name" id="name">
+                  <option value="" selected>Select Equipment Name</option>
+                </SELECT>
               </div>
             </div>
             <div class="form-group">
-              <label for="editbrand" class="col-sm-3 control-label">Brand</label>
+              <label for="brand" class="col-sm-3 control-label">Brand</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" name="editbrand" id="editbrand" placeholder="Brand">
+                <SELECT class="select2 form-control" name="brand" id="brand">
+                  <option value="" selected>Select Equipment Name</option>
+                </SELECT>
               </div>
             </div>
             <div class="form-group">
-              <label for="edittype" class="col-sm-3 control-label">Equipment Type</label>
+              <label for="type" class="col-sm-3 control-label">Equipment Type</label>
               <div class="col-sm-7">
-                <select class="form-control" name="edittype" id="edittype" onchange="showfield(this.options[this.selectedIndex].value)">
+                <select class="form-control" name="type" id="type">
                   <option value="" selected>Select Type</option>
                   <option value="electric">With Electricity</option>
                   <option value="nonelectric">Without Electricity</option>
@@ -508,10 +512,16 @@
               </div>
             </div>
             <div id="div2"></div>
-            <div class="form-group">
-              <label for="editdescription" class="col-sm-3 control-label">Description</label>
+            <div class="form-group" id ="electric">
+              <label for="wattage" class="col-sm-3 control-label">Wattage</label>
               <div class="col-sm-7">
-                <textarea type="text" rows="5" class="form-control" name="editdescription" id="editdescription" placeholder="Description"></textarea>
+                <input type="number" min="0" class="form-control" name="wattage" id="wattage" placeholder="0">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description" class="col-sm-3 control-label">Description</label>
+              <div class="col-sm-7">
+                <textarea type="text" rows="5" class="form-control" name="description" id="description" placeholder="Description"></textarea>
               </div>
             </div>
           </div>
@@ -792,10 +802,20 @@
     $('.select2').select2()
 
   })
+
+  $('#electric').hide()
+
+$('#type').change(function () {
+    $(this).find("option").each(function () {
+    $('#' + this.value).hide();
+    });
+$('#' + this.value).show();
+});
+
   function showfield(name){
   if(name=='electric'){
     document.getElementById('div1').innerHTML='<div class="form-group"><label for="wattage" class="col-sm-3 control-label">Wattage</label><div class="col-sm-7"><input type="number" min="0" class="form-control" name="wattage" id="wattage" placeholder="0"></div></div>';
-    document.getElementById('div2').innerHTML='<div class="form-group"><label for="editwattage" class="col-sm-3 control-label">Wattage</label><div class="col-sm-7"><input type="number" min="0"  class="form-control" name="editwattage" id="editwattage" placeholder="Wattage"></div></div>';
+    document.getElementById('div2').innerHTML='<div class="form-group"><label for="wattage" class="col-sm-3 control-label">Wattage</label><div class="col-sm-7"><input type="number" min="0"  class="form-control" name="wattage" id="wattage" placeholder="Wattage"></div></div>';
     document.getElementById('div3').innerHTML='<div class="form-group"><label for="viewwattage" class="col-sm-3 control-label">Wattage</label><div class="col-sm-7"><input type="number" min="0" class="form-control" name="viewwattage" id="viewwattage" placeholder="Wattage" disabled></div></div>';
   }else{ 
     document.getElementById('div1').innerHTML='';

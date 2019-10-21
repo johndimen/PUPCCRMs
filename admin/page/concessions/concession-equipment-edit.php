@@ -502,14 +502,19 @@
             <div class="form-group">
               <label for="edittype" class="col-sm-3 control-label">Equipment Type</label>
               <div class="col-sm-7">
-                <select class="form-control" name="edittype" id="edittype" onchange="showfield(this.options[this.selectedIndex].value)">
+                <select class="form-control" name="edittype" id="dropdown">
                   <option value="" selected>Select Type</option>
                   <option value="electric">With Electricity</option>
                   <option value="nonelectric">Without Electricity</option>
                 </select>
               </div>
             </div>
-            <div id="div2"></div>
+            <div class="form-group">
+              <label for="editwattage" class="col-sm-3 control-label">Wattage</label>
+              <div class="col-sm-7">
+                <input type="number" min="0" class="form-control" name="editwattage" id="wattage" placeholder="0" disabled>
+              </div>
+            </div>
             <div class="form-group">
               <label for="editdescription" class="col-sm-3 control-label">Description</label>
               <div class="col-sm-7">
@@ -794,6 +799,15 @@
     $('.select2').select2()
 
   })
+
+  $('#dropdown').change(function() {
+  	if( $(this).val() == 'electric') {
+      $('#wattage').prop( "disabled", false );
+    } else {       
+      $('#wattage').prop( "disabled", true );
+    }
+  });
+
   function showfield(name){
   if(name=='electric'){
     document.getElementById('div1').innerHTML='<div class="form-group"><label for="wattage" class="col-sm-3 control-label">Wattage</label><div class="col-sm-7"><input type="number" min="0" class="form-control" name="wattage" id="wattage" placeholder="0"></div></div>';

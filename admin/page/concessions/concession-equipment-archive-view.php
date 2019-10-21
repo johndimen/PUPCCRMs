@@ -495,6 +495,12 @@
               </div>
             </div>
             <div class="form-group">
+              <label for="type" class="col-sm-3 control-label">Equipment Type</label>
+              <div class="col-sm-7">
+                <input type="number" min="0" class="form-control" name="type" id="type" placeholder="0" disabled>
+              </div>
+            </div>
+            <div class="form-group">
               <label for="wattage" class="col-sm-3 control-label">Wattage</label>
               <div class="col-sm-7">
                 <input type="text" class="form-control" name="wattage" id="wattage" placeholder="Wattage" disabled>
@@ -509,7 +515,7 @@
         </div>
         <div class="box-footer">
           <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Restore</button>
-          <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Trash</button>
+          <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
         </div>
                 </div>
               </div>

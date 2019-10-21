@@ -504,7 +504,12 @@
                 <input type="text" class="form-control" name="viewtype" id="viewtype" placeholder="Type" disabled onchange="showfield(this.value)">
               </div>
             </div>
-            <div id="div3"></div>
+            <div class="form-group">
+              <label for="viewwattage" class="col-sm-3 control-label">Wattage</label>
+              <div class="col-sm-7">
+                <input type="number" min="0" class="form-control" name="viewwattage" id="wattage" placeholder="0" disabled>
+              </div>
+            </div>
             <div class="form-group">
               <label for="viewdescription" class="col-sm-3 control-label">Description</label>
               <div class="col-sm-7">
@@ -789,6 +794,9 @@
     $('.select2').select2()
 
   })
+
+  
+
   function showfield(name){
   if(name=='electric'){
     document.getElementById('div1').innerHTML='<div class="form-group"><label for="wattage" class="col-sm-3 control-label">Wattage</label><div class="col-sm-7"><input type="number" min="0" class="form-control" name="wattage" id="wattage" placeholder="0"></div></div>';

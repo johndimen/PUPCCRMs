@@ -1,34 +1,19 @@
+
 <?php
-  session_start();
-  include('../dbconfig.php');
-  //We need to use sessions, so you should always start sessions using the below code.
-  //If the user is not logged in redirect to the login page...
-  // Check if the user is already logged in, if yes then redirect him to welcome page
-  if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-    header("location: ../../login.php");
-    exit;
-  }
-  
-  $sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Name` FROM `crm_concession_profile`";
-  $result1 = mysqli_query($conn,$sql1);
+session_start();
 
 
-  $sql = "SELECT `CRM_Service_Concession_Name`, `CRM_Concession_Services_Name`, `CRM_Concession_Services_Price_Range_Lower`, `CRM_Concession_Services_Price_Range_Higher`, `CRM_Concession_Services_Desc` FROM crm_concession_service";
-  $result = mysqli_query($conn,$sql);
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
 
- // $conName = $servName = $priceLow = $priceHigh = $servStatus = $servDesc ="";
+$userid = $_SESSION["id"];
 
-  $sql2 = "SELECT `CRM_Service_Concession_Name`, `CRM_Concession_Services_Name`, `CRM_Concession_Services_Price_Range_Lower`, `CRM_Concession_Services_Price_Range_Higher`, `CRM_Concession_Service_Status`, `CRM_Concession_Services_Desc` FROM crm_concession_service WHERE ";
-  $s1 = " ~ ";
-  $result2 = mysqli_query($conn,$sql2);
-  /*while($r = mysqli_fetch_row($result2)){
-    $conName = $r['CRM_Service_Concession_Name'];
-    $r['CRM_Concession_Services_Name'];
-    $r['CRM_Concession_Services_Price_Range_Lower'];
-    $r['CRM_Concession_Services_Price_Range_Higher'];
-    $r['CRM_Concession_Service_Status'];
-    $r['CRM_Concession_Services_Desc'];
-  }*/
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession.php");
 
 
 ?>
@@ -73,7 +58,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+     <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -174,7 +159,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -233,7 +218,7 @@
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -551,19 +536,17 @@
                           </tr>
                           
                             <?php
-                            $action = '
-                            <a type="button" class="btn btn-primary" href="./concession-services-view.php">View</a>
-                          ';
+                            
                             $range = " ~ ";
-                              while($r = mysqli_fetch_assoc($result)){
+                              while($row39 = mysqli_fetch_array($query39)){
                             ?>
                           <tr>
                            
-                            <td><?php echo $r['CRM_Service_Concession_Name']; ?></td>
-                            <td><?php echo $r['CRM_Concession_Services_Name']; ?></td>
-                            <td><?php echo $r['CRM_Concession_Services_Price_Range_Lower'].$range.$r['CRM_Concession_Services_Price_Range_Higher']; ?></td>
-                            <td><?php echo $r['CRM_Concession_Services_Desc']; ?></td>
-                            <td> <?php echo $action ?></td>
+                            <td><?php echo $row39[0]; ?></td>
+                            <td><?php echo $row39[1]; ?></td>
+                            <td><?php echo $row39[2].$range.$row39[3]; ?></td>
+                            <td><?php echo $row39[4]; ?></td>
+                            <td> <a type="button" class="btn btn-primary" href="./concession-services-view.php?id=<?php echo $row39[5]?>">View</a></td>
                           </tr>
                           <?php } ?>
 

@@ -1,5 +1,21 @@
 <?php
-require_once('../dbconfig.php');
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/insert/case.php");
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +62,7 @@ require_once('../dbconfig.php');
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -147,7 +163,7 @@ require_once('../dbconfig.php');
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -206,7 +222,7 @@ require_once('../dbconfig.php');
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -484,7 +500,7 @@ require_once('../dbconfig.php');
                   <div class="box-header with-border">
                     <h3 class="box-title"><strong>Add New Case</strong></h3>
                   </div>
-                  <form class="form-horizontal" action="" method="post">
+                  <form class="form-horizontal" method="post">
           <div class="box-body">
             <center><h4>New Case Details</h4></center>
             <br>
@@ -492,20 +508,29 @@ require_once('../dbconfig.php');
               <label for="inputCaseNumber" class="col-sm-3 control-label">Case Number</label>
       
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputCaseNumber" placeholder="Case Number" disabled >
+
+              <?php 
+		$rand = mt_rand(0, 999999);
+		$year = date('Y');
+		$month = date('m');
+		$day = date('d');
+		$serial = "CA-MN-$rand-$day$month-$year";?>
+
+                <input type="text" value = "<?php echo $serial?>" class="form-control" id="inputCaseNumber" placeholder="Case Number" name = "number">
               </div>
             </div>
             <div class="form-group">
               <label for="inputCaseName" class="col-sm-3 control-label">Case Name</label>
       
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputCaseName" placeholder="Case Name">
+              
+                <input type="text"  class="form-control" id="inputCaseName" placeholder="Case Name" name = "name">
               </div>
             </div>
             <div class="form-group">
               <label for="inputType" class="col-sm-3 control-label">Type</label>
               <div class="col-sm-8">
-                <select class="form-control select2" style="width: 100%;">
+                <select class="form-control select2" style="width: 100%;" name = "type">
                   <option selected="selected">Select Type</option>
                   <option value="incident">Incident</option>
                   <option value="problem">Problem</option>
@@ -516,7 +541,7 @@ require_once('../dbconfig.php');
             <div class="form-group">
               <label for="inputStatus" class="col-sm-3 control-label">Priority</label>
               <div class="col-sm-8">
-                <select class="form-control select2" style="width: 100%;">
+                <select class="form-control select2" style="width: 100%;" name = "priority">
                   <option selected="selected">Select Priority</option>
                   <option value="high">High</option>
                   <option value="normal">Normal</option>
@@ -528,7 +553,7 @@ require_once('../dbconfig.php');
               <label for="inputDescription" class="col-sm-3 control-label">Case Description</label>
       
               <div class="col-sm-8">
-                <textarea class="form-control" id="inputDescription" rows="5" placeholder="Case Description"></textarea>
+                <textarea class="form-control" id="inputDescription" rows="5" placeholder="Case Description" name = "description"></textarea>
               </div>
             </div>
           </div>

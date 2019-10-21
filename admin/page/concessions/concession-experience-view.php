@@ -1,3 +1,23 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession2.php");
+
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +58,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -139,7 +159,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -198,7 +218,7 @@
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -480,38 +500,38 @@
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpnumber">Experience Number</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" names="xpnumber" id="xpnumber" placeholder="Experience Number" disabled>
+                <input type="text" class="form-control" value = "<?php echo $row40[4]?>" names="xpnumber" id="xpnumber" placeholder="Experience Number" disabled>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpcons">Concession Profile</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" names="xpcons" id="xpcons" placeholder="Concession Profile" disabled>
+                <input type="text" class="form-control" names="xpcons" id="xpcons" value = "<?php echo $row40[5]?> - <?php echo $row40[0]?>" placeholder="Concession Profile" disabled>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpplace">Place</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" names="xpplace" id="xpplace" placeholder="Place" disabled>
+                <input type="text" class="form-control" value = "<?php echo $row40[1]?>" names="xpplace" id="xpplace" placeholder="Place" disabled>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpdatestart">Date Start</label>
               <div class="col-sm-7">
-                <input type="date" class="form-control" names="xpdatestart" id="xpdatestart" placeholder="Date Started" disabled>
+                <input type="date" class="form-control" valjue = "<?php echo $row40[2]?>" names="xpdatestart" id="xpdatestart" placeholder="Date Started" disabled>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpdateend">Date Ended</label>
               <div class="col-sm-7">
-                <input type="date" class="form-control" names="xpdateend" id="xpdateend" placeholder="Date Ended" disabled>
+                <input type="date" class="form-control" value = "<?php echo $row40[3]?>" names="xpdateend" id="xpdateend" placeholder="Date Ended" disabled>
               </div>
             </div>
           </div>
           <div class="box-footer">
             <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
             <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
-            <a type="button" name="edit" class="btn btn-primary pull-right" href="./concession-experience-edit.php">Edit</a>
+            <a type="button" name="edit" class="btn btn-primary pull-right" href="./concession-experience-edit.php?id=<?php echo $row40[4]?>">Edit</a>
           </div>
         </form>
                 </div>

@@ -1,18 +1,20 @@
 <?php
 session_start();
-include('../dbconfig.php');
-//We need to use sessions, so you should always start sessions using the below code.
-//If the user is not logged in redirect to the login page...
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+
+
+if(empty($_SESSION["id"])){
   header("location: ../../login.php");
   exit;
 }
 
-//table
-$sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Date_Applied` FROM `crm_concession_profile`";
-$result = mysqli_query($conn,$sql1);
+$userid = $_SESSION["id"];
 
+
+include("../../../php_action/db_connect.php");
+
+include("../../../php_action/edit/concession.php");
+include("../../../php_action/retrieve/concession2.php");
+include("../../../php_action/userdata.php");
 
 
 ?>
@@ -58,7 +60,7 @@ $result = mysqli_query($conn,$sql1);
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle;?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -159,7 +161,7 @@ $result = mysqli_query($conn,$sql1);
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo''.$row['lname'].'';?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -218,7 +220,7 @@ $result = mysqli_query($conn,$sql1);
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo''.$row['lname'].'';?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -493,22 +495,26 @@ $result = mysqli_query($conn,$sql1);
                         <h3 class="box-title"><strong>ConcessionBox</strong></h3>
                         
                       </div>
-                      <form class="form-horizontal" action="" method="post">
+                      <form class="form-horizontal" method="post">
         <div class="box-body">
         <center><h4>Concession Details</h4></center>
             <div class="row">
               <div class="col-md-4">
               <h4 style="margin-left:230px">Profile</h4>
+              <?php
+
+                              while($row = mysqli_fetch_array($query1)){
+                              ?>
                                     <div class="form-group">
                                       <label for="inputConcessionNumber" class="col-sm-4 control-label">Concession Number</label>
                                       <div class="col-sm-8">
-                                      <input type="text" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber">
+                                      <input type="text" class="form-control" placeholder="Concession Number" value = "<?php echo $row[0] ?>" name="serial" id="inputConcessionNumber">
                                       </div>
                                     </div>
                                     <div class="form-group">
                                       <label for="inputNumber" class="col-sm-4 control-label">Stall Number</label>
                                       <div class="col-sm-8">
-                                        <input type="text" class="form-control" placeholder="Stall Number" name="inputNumber" id="inputNumber">
+                                        <input type="text" class="form-control" placeholder="Stall Number" value = "<?php echo $row[3] ?>" name="stall" id="inputNumber">
                                         
                                       </div>
                                     </div>
@@ -516,7 +522,7 @@ $result = mysqli_query($conn,$sql1);
                                       <label for="inputConcessionName" class="col-sm-4 control-label">Business Name</label>
                   
                                       <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Business Name" >
+                                        <input type="text" class="form-control" value = "<?php echo $row[4] ?>" name="name" id="inputConcessionName" placeholder="Business Name" >
                                       </div>
                                     </div>
                                     <h4>Owner's Info</h4>
@@ -524,16 +530,16 @@ $result = mysqli_query($conn,$sql1);
                                       <label for="inputOwnerFName" class="col-sm-4 control-label">Owner's Name</label>
                   
                                       <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="inputOwnerFName" id="inputOwnerFName" placeholder="First Name">
-                                        <input type="text" style="margin-top:5px;margin-bottom:5px" class="form-control" name="inputOwnerMName" id="inputOwnerMName" placeholder="Middle Name">
-                                        <input type="text" style="" class="form-control" name="inputOwnerLName" id="inputOwnerLName" placeholder="Last Name">
+                                        <input type="text" class="form-control" name="fname" value = "<?php echo $row[9] ?>" id="inputOwnerFName" placeholder="First Name">
+                                        <input type="text" style="margin-top:5px;margin-bottom:5px" class="form-control" name="mname" value = "<?php echo $row[10] ?>" id="inputOwnerMName" placeholder="Middle Name">
+                                        <input type="text" style="" class="form-control" name="lname" value = "<?php echo $row[11] ?>" id="inputOwnerLName" placeholder="Last Name">
                                       </div>
                                     </div>
                                       <div class="form-group">
                                         <label for="inputnumber" class="col-sm-4 control-label">Contact No.</label>
                     
                                         <div class="col-sm-8">
-                                          <input type="email" class="form-control" name="inputnumber" id="inputnumber" placeholder="Number" >
+                                          <input type="text" class="form-control" name="contact" value = "<?php echo $row[12] ?>" id="inputnumber" placeholder="Number" >
                                         </div>
                                       </div>
                                   </div>
@@ -543,27 +549,27 @@ $result = mysqli_query($conn,$sql1);
                                         <label for="inputRemarks" class="col-sm-4 control-label">Remarks</label>
                     
                                         <div class="col-sm-8">
-                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" rows="5" placeholder="Remarks" ></textarea>
+                                          <textarea class="form-control" name="remarks" value = "<?php echo $row[5] ?>" id="inputRemarks" rows="5" placeholder="Remarks" ></textarea>
                                         </div>
                                       </div> 
                                       <div class="form-group">
                                         <label for="dateapproved" class="col-sm-4 control-label">Date Approved</label>
                                         <div class="col-sm-8">
-                                          <input type="date" class="form-control" name="dateapproved" id="dateapproved" placeholder="Date Approved">
+                                          <input type="date" class="form-control" name="dateapproved" value = "<?php echo $row[2] ?>" id="dateapproved" placeholder="Date Approved">
                                         </div>
                                       </div>
                                     <div class="form-group" style="margin-top:38px">
                                       <label for="inputAddress" class="col-sm-4 control-label">Owner's Address</label>
                   
                                       <div class="col-sm-8">
-                                        <textarea class="form-control" name="inputAddress" id="inputAddress" rows="5" placeholder="Address" ></textarea>
+                                        <textarea class="form-control" name="address" id="inputAddress" rows="5" placeholder="Address" ><?php echo $row[14] ?></textarea>
                                       </div>
                                     </div>
                                       <div class="form-group">
                                         <label for="inputEmail" class="col-sm-4 control-label">Email</label>
                     
                                         <div class="col-sm-8">
-                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" >
+                                          <input type="email" class="form-control" name="email" value = "<?php echo $row[13] ?>" id="inputEmail" placeholder="Email" >
                                         </div>
                                       </div>
                                       
@@ -574,8 +580,8 @@ $result = mysqli_query($conn,$sql1);
                                       <div class="form-group">
                                         <label for="inputArea" class="col-sm-4 control-label">Stall Location</label>
                                         <div class="col-sm-8">
-                                          <select class="form-control select2" style="width: 100%;" name="inputStallArea" >
-                                            <option value="" selected>Select Location</option>
+                                          <select class="form-control select2" style="width: 100%;" name="area" >
+                                            <option value = "<?php echo $row[5] ?>" selected><?php echo $row[5] ?></option>
                                             <option value="north">North</option>
                                             <option value="west">West</option>
                                             <option value="south">South</option>
@@ -590,8 +596,8 @@ $result = mysqli_query($conn,$sql1);
                                       <div class="form-group">
                                           <label for="inputFunction" class="col-sm-4 control-label">Category</label>
                                         <div class="col-sm-8">
-                                          <select class="form-control select2" style="width: 100%;" name="inputFunction" id="inputFunction" onchange="showfield(this.options[this.selectedIndex].value)">
-                                            <option value = ""selected="">Select Category</option>
+                                          <select class="form-control select2" style="width: 100%;"  name="function" id="inputFunction" onchange="showfield(this.options[this.selectedIndex].value)">
+                                            <option value = "<?php echo $row[6] ?>"selected=""><?php echo $row[6] ?></option>
                                             <option value="food">Food</option>
                                             <option value="nonfood">Non-Food</option>
                                           </select>
@@ -601,21 +607,22 @@ $result = mysqli_query($conn,$sql1);
                                       <div class="form-group">
                                         <label class="col-sm-4 control-label" for="measurement">Stall Measurement</label>
                                         <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="measurement" id="measurement" placeholder="Stall Measurement">
+                                          <input type="text" class="form-control" name="measurement" value = "<?php echo $row[7] ?>" id="measurement" placeholder="Stall Measurement">
                                         </div>
                                       </div>
                                       <div class="form-group">
                                         <label class="col-sm-4 control-label" for="rental">Monthly Rental</label>
                                         <div class="col-sm-8">
-                                          <input type="number" min="0" class="form-control" name="rental" id="rental" placeholder="Monthly Rental">
+                                          <input type="number" min="0" class="form-control" value = "<?php echo $row[8] ?>"name="rental" id="rental" placeholder="Monthly Rental">
                                         </div>
                                       </div>
                                     </div>
+                              <?php }?>
               </div>
         </div>
         <div class="box-footer">
           <button type="reset" name="reset"class="btn btn-default pull-left">Reset Fields</button>
-          <button type="submit" name="inputSubmit" class="btn btn-success pull-right">Submit</button>
+          <button type="submit" name="submit" class="btn btn-success pull-right" name = >Submit</button>
         </div>
         </form>
                     </div>
@@ -690,7 +697,7 @@ $result = mysqli_query($conn,$sql1);
                                       <label for="inputAddress" class="col-sm-4 control-label">Owner's Address</label>
                   
                                       <div class="col-sm-8">
-                                        <textarea class="form-control" name="inputAddress" id="inputAddress" rows="4" placeholder="Address" ></textarea>
+                                        <textarea class="form-control"  name="address" id="inputAddress" rows="4" placeholder="Address"><?php echo $row[14] ?></textarea>
                                       </div>
                                     </div>
                                       <div class="form-group" style="margin-top:32px">

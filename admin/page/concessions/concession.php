@@ -1,17 +1,18 @@
 <?php
 session_start();
-include('../dbconfig.php');
-//We need to use sessions, so you should always start sessions using the below code.
-//If the user is not logged in redirect to the login page...
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+
+
+if(empty($_SESSION["id"])){
   header("location: ../../login.php");
   exit;
 }
 
-//table
-$sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Date_Applied` FROM `crm_concession_profile`";
-$result = mysqli_query($conn,$sql1);
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession2.php");
 
 
 
@@ -58,7 +59,7 @@ $result = mysqli_query($conn,$sql1);
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle;?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -159,7 +160,7 @@ $result = mysqli_query($conn,$sql1);
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo''.$row['lname'].'';?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -218,7 +219,7 @@ $result = mysqli_query($conn,$sql1);
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo''.$row['lname'].'';?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -537,22 +538,18 @@ $result = mysqli_query($conn,$sql1);
                               </tr>
                               <tr>
                               <?php
-                              $action = '
-                                    <a type="button" class="btn btn-primary " href="./concession-view.php">View</button>';
-                              $profile ='
-                                    <a type="button" class="btn btn-primary " href="./concession-profile.php" id="viewProfileBtn">Profile</a>';
 
-                              while($r = mysqli_fetch_assoc($result)){
+                              while($row = mysqli_fetch_array($query1)){
                               ?>
                                 
-                                <td><?php echo $r['CRM_Concession_Profile_SerialNo'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Stall_Number'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Name'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Owner_Name'] ?></td>
-                                <td><?php echo $r['CRM_Concession_Function'] ?></td>
+                                <td><?php echo $row[0] ?></td>
+                                <td><?php echo $row[1] ?></td>
+                                <td><?php echo $row[2] ?></td>
+                                <td><?php echo $row[3] ?> <?php echo $row[4] ?></td>
+                                <td><?php echo $row[5] ?></td>
                                 <td>
-                                  <?php echo $profile ?>
-                                  <?php echo $action; ?>
+                                <a type="button" class="btn btn-primary" href="./concession-view.php?id=<?php echo $row[6]?>">View</button></a>
+                                <a type="button" class="btn btn-primary" href="./concession-profile.php?id=<?php echo $row[6]?>" id="viewProfileBtn">Profile</a>
                                 </td>
                               </tr>
                               <?php } ?>

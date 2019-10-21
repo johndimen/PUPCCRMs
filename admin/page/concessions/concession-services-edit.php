@@ -1,34 +1,20 @@
+
 <?php
-  session_start();
-  include('../dbconfig.php');
-  //We need to use sessions, so you should always start sessions using the below code.
-  //If the user is not logged in redirect to the login page...
-  // Check if the user is already logged in, if yes then redirect him to welcome page
-  if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-    header("location: ../../login.php");
-    exit;
-  }
-  
-  $sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Name` FROM `crm_concession_profile`";
-  $result1 = mysqli_query($conn,$sql1);
+session_start();
 
 
-  $sql = "SELECT `CRM_Service_Concession_Name`, `CRM_Concession_Services_Name`, `CRM_Concession_Services_Price_Range_Lower`, `CRM_Concession_Services_Price_Range_Higher`, `CRM_Concession_Services_Desc` FROM crm_concession_service";
-  $result = mysqli_query($conn,$sql);
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
 
- // $conName = $servName = $priceLow = $priceHigh = $servStatus = $servDesc ="";
+$userid = $_SESSION["id"];
 
-  $sql2 = "SELECT `CRM_Service_Concession_Name`, `CRM_Concession_Services_Name`, `CRM_Concession_Services_Price_Range_Lower`, `CRM_Concession_Services_Price_Range_Higher`, `CRM_Concession_Service_Status`, `CRM_Concession_Services_Desc` FROM crm_concession_service WHERE ";
-  $s1 = " ~ ";
-  $result2 = mysqli_query($conn,$sql2);
-  /*while($r = mysqli_fetch_row($result2)){
-    $conName = $r['CRM_Service_Concession_Name'];
-    $r['CRM_Concession_Services_Name'];
-    $r['CRM_Concession_Services_Price_Range_Lower'];
-    $r['CRM_Concession_Services_Price_Range_Higher'];
-    $r['CRM_Concession_Service_Status'];
-    $r['CRM_Concession_Services_Desc'];
-  }*/
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession2.php");
+include("../../../php_action/edit/concession_service.php");
 
 
 ?>
@@ -73,7 +59,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -174,7 +160,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -233,7 +219,7 @@
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -518,43 +504,34 @@
             <div class="form-group">
               <label for="number" class="control-label col-sm-3">Service Number</label>
               <div class="col-sm-7">
-                <input type="text" name="number" id="number" class="form-control" disabled>
+                <input type="text" name="id" id="number" class="form-control" value = "<?php echo $row39[5]?>">
               </div>
             </div>
             <div class="form-group">
               <label for="inputProfile" class="col-sm-3 control-label">Profile Name</label>
         
               <div class="col-sm-7">
-              <select class="form-control select2" style="width: 100%;" name="inputProfile" id="inputProfile">
-                  <option value="" selected>Select Profile</option>
-                  <option value= "" disabled>'Serial No' = 'Concession Name'</option>
-                    <?php
-                      $s = " = ";
-                      while($r = mysqli_fetch_assoc($result1)){
-                    ?>
-                  <option value="<?php echo $r['CRM_Concession_Name']; ?>" > <?php echo $r['CRM_Concession_Profile_SerialNo'].$s.$r['CRM_Concession_Name']; ?></option>
-                <?php } ?>
-              </select>
+              <input type = "text" class="form-control" value = "<?php echo $row39[6]?> ~ <?php echo $row39[1]?>" style="width: 100%;" name="profile" id="inputProfile" disable>
+                  
               </div>
             </div>
             <div class="form-group">
               <label for="inputServiceName" class="col-sm-3 control-label">Service Name</label>
         
                 <div class="col-sm-7">
-                  <select class="form-control select2" style="width:100%" id="inputServiceName" name="inputServiceName" >
-                    <option value=""selected> Select Service Name</option>
-                  </select>
+                  <input type = "text" class="form-control" value = "<?php echo $row39[1]?>" style="width:100%" id="inputServiceName" name="name" >
+                   
                 </div>
             </div>
             <div class="form-group">
               <label for="inputServicePrice" class="col-sm-3 control-label">Price</label>
               <div class="row">
                 <div class="col-sm-3">
-                  <input type="number" min="0" class="form-control" id="inputServicePriceLower" name="inputServicePriceLower" placeholder="Price (lower)">
+                  <input type="number" min="0" value = "<?php echo $row39[2]?>" class="form-control" id="inputServicePriceLower" name="lower" placeholder="Price (lower)">
                 </div>
                 <div class="col-sm-1" style="width:6.2%"><span><center>~</center> </span></div>
                 <div class="col-sm-3">
-                  <input type="number" min="0" class="form-control" id="inputServicePriceHigher" name="inputServicePriceHigher" placeholder="Price (Higher)">
+                  <input type="number" min="0" class="form-control" value = "<?php echo $row39[3]?>" id="inputServicePriceHigher" name="higher" placeholder="Price (Higher)">
                 </div>
               </div>
             </div>
@@ -562,13 +539,13 @@
               <label for="inputServiceDesc" class="col-sm-3 control-label">Description</label>
         
                 <div class="col-sm-7">
-                  <textarea class="form-control" id="inputServiceDesc" name="inputServiceDesc" rows="5"></textarea>
+                  <textarea class="form-control" id="inputServiceDesc" name="description" rows="5"> <?php echo $row39[4]?></textarea>
                 </div>
             </div>
           </div>
         <div class="modal-footer">
           <button type="reset" name="reset" class="btn btn-default pull-left">Reset Fields</button>
-          <button type="submit" name="inputSubmit" class="btn btn-success pull-right">Submit</button>
+          <button type="submit" name="submit" class="btn btn-success pull-right">Submit</button>
         </div>
         </form>
                 </div>

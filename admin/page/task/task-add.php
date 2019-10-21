@@ -1,12 +1,20 @@
-
 <?php
-require_once('../dbconfig.php');
+session_start();
 
 
-  $countsql = "SELECT COUNT(*) FROM `crm_tasklist` where `CRM_isArchived` = 0";
-  $countresult = $conn->query($countsql);
-                  
-                
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/task.php");
+include("../../../php_action/insert/task.php");
+
 
 
 ?>
@@ -57,7 +65,7 @@ require_once('../dbconfig.php');
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -158,7 +166,7 @@ require_once('../dbconfig.php');
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -217,7 +225,7 @@ require_once('../dbconfig.php');
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -498,7 +506,7 @@ require_once('../dbconfig.php');
                 <div class="box box-primary">
                   <div class="box-header with-border">
                     <h3 class="box-title"><strong>Add New Task</strong></h3>
-                    <form class="form-horizontal" action="task.php" method="post" id="createTask">
+                    <form class="form-horizontal" method="post" id="createTask">
           <div class="modal-body">
             <div class="row">
             <div class="col-md-6">
@@ -507,7 +515,7 @@ require_once('../dbconfig.php');
               <div class="form-group">
                   <label for="inputtaskname" class="col-sm-3 control-label">Task Name</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="taskname" name="taskname" placeholder="Task Name">
+                    <input type="text" class="form-control" id="taskname" name="name" placeholder="Task Name">
                   </div>
                 </div>
                   <div class="form-group">
@@ -551,24 +559,11 @@ require_once('../dbconfig.php');
                     <label for="inputAdminName" class="col-sm-3 control-label">Assigned Admin</label>
 
                     <div class="col-sm-8">
-                      <select class="form-control select2" style="width: 100%" name="adminname" id="inputAdminName">
-                        <option value="" selected>Select Admin</option>
-                        <?php
-                          $adminsql = "SELECT `crm_admin_user_login`.`CRM_Login_Username`, `crm_admin_user_details`.`CRM_First_Name`, `crm_admin_user_details`.`CRM_Last_Name`
-                          FROM `crm_admin_user_login` 
-                            LEFT JOIN `crm_admin_user_details` ON `crm_admin_user_details`.`CRM_User_Login_SerialNo_FK` = `crm_admin_user_login`.`CRM_User_Login_SerialNo`;";
-                          $s = " = ";
-                          $adminresult = $conn->query($adminsql);
-                          if($adminresult ->num_rows > 0){
-                            while($row = $adminresult->fetch_assoc()){
-                              ?>
-                              <option value="<?php echo $row['CRM_Login_Username']; ?>"><?php echo $row['CRM_Login_Username'].$s.$row['CRM_First_Name'].' '.$row['CRM_Last_Name']; ?></option>
-                            <?php }
-                        }else {
-                          $data = "<option class=\"label label-danger\">No Data Available</option>";
-                          echo $data;
-                        }
-                        ?>
+                      <select class="form-control select2" style="width: 100%" name="admin" id="inputAdminName">
+                        
+                        <?php while($row28 = mysqli_fetch_array($query28)){?>
+                      <option value = "<?php echo $row28['id']?>"><?php echo $row28['fname']?> <?php echo $row28['lname']?></option>
+                      <?php }?>
                       </select>
                     </div>
                   </div>
@@ -581,8 +576,11 @@ require_once('../dbconfig.php');
                     <label for="idcase" class="col-sm-3 control-label">Case Number</label>
 
                     <div class="col-sm-8">
-                      <select class="form-control select2" style="width:100%" name="idcase" id="idcase">
+                      <select class="form-control select2" style="width:100%" name="case" id="idcase">
                       <option value="" selected>Select Case</option>
+                      <?php while($row27 = mysqli_fetch_array($query27)){?>
+                      <option value = "<?php echo $row27['id']?>"><?php echo $row27['case_number']?></option>
+                      <?php }?>
                     </select>
                     </div>
                   </div>

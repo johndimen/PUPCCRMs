@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+
+
+$rand = mt_rand(0, 999999);
+$year = date('Y');
+$month = date('m');
+$day = date('d');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +62,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -141,7 +163,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -200,7 +222,7 @@
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -475,47 +497,42 @@
                     <h3 class="box-title"><strong>Add New Equipment</strong></h3>
                     
                   </div>
-                  <form class="form-horizontal" action="" method="post">
+                  <form class="form-horizontal" method="post">
           <div class="box-body">
             <center><h4>Concession Equipment Details</h4></center>
             <br>
             <div class="form-group">
-              <label for="number" class="col-sm-3 control-label">Equipment Number</label>
+              <label for="number" class="col-sm-3 control-label">Profile</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" name="number" id="number" placeholder="Equipment Number" disabled>
+                <input type="text" class="form-control" value = "CE-MN-<?php echo $rand?>-<?php echo $day?><?php echo $month?>-<?php echo $year?>" name="serial" id="number" placeholder="Equipment Number">
               </div>
             </div>
             <div class="form-group">
               <label for="name" class="col-sm-3 control-label">Name</label>
               <div class="col-sm-7">
-                <SELECT class="select2 form-control" name="name" id="name">
-                  <option value="" selected>Select Equipment Name</option>
-                </SELECT>
+                <input type = "text" class="form-control" name="name" id="name">
               </div>
             </div>
             <div class="form-group">
               <label for="brand" class="col-sm-3 control-label">Brand</label>
               <div class="col-sm-7">
-                <SELECT class="select2 form-control" name="brand" id="brand">
-                  <option value="" selected>Select Equipment Name</option>
-                </SELECT>
+                <input type = "text" class="form-control" name="brand" id="brand">
               </div>
             </div>
             <div class="form-group">
               <label for="type" class="col-sm-3 control-label">Equipment Type</label>
               <div class="col-sm-7">
-                <select class="form-control" name="type" id="type">
+                <select class="form-control" name="type" id="dropdown">
                   <option value="" selected>Select Type</option>
                   <option value="electric">With Electricity</option>
                   <option value="nonelectric">Without Electricity</option>
                 </select>
               </div>
             </div>
-            <div id="div2"></div>
-            <div class="form-group" id ="electric">
+            <div class="form-group">
               <label for="wattage" class="col-sm-3 control-label">Wattage</label>
               <div class="col-sm-7">
-                <input type="number" min="0" class="form-control" name="wattage" id="wattage" placeholder="0">
+                <input type="number" min="0" class="form-control" name="wattage" id="wattage" placeholder="0" disabled>
               </div>
             </div>
             <div class="form-group">
@@ -803,14 +820,13 @@
 
   })
 
-  $('#electric').hide()
-
-$('#type').change(function () {
-    $(this).find("option").each(function () {
-    $('#' + this.value).hide();
-    });
-$('#' + this.value).show();
-});
+  $('#dropdown').change(function() {
+  	if( $(this).val() == 'electric') {
+      $('#wattage').prop( "disabled", false );
+    } else {       
+      $('#wattage').prop( "disabled", true );
+    }
+  });
 
   function showfield(name){
   if(name=='electric'){

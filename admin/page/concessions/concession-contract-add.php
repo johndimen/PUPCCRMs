@@ -501,7 +501,9 @@
           <div class="form-group">
             <label for="contractname" class ="col-sm-3 control-label">Contract Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="contractname" name="contractname" placeholder="Contract Name">
+              <select class="select2 form-control" id="contractname" name="contractname">
+                <option value="" selected>Select Contract Name</option>
+              </select>
             </div>
           </div>
           <div class="form-group">

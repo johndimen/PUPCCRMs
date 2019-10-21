@@ -1,5 +1,21 @@
 <?php
-require_once('../dbconfig.php');
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/case.php");
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +62,7 @@ require_once('../dbconfig.php');
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle ?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -147,7 +163,7 @@ require_once('../dbconfig.php');
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -206,7 +222,7 @@ require_once('../dbconfig.php');
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -298,7 +314,7 @@ require_once('../dbconfig.php');
               <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
+          <!--<li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
           <li class="treeview">
             <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -337,7 +353,7 @@ require_once('../dbconfig.php');
               <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
               <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
-          </li>
+          </li>-->
           <li class="treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -519,7 +535,6 @@ require_once('../dbconfig.php');
                       <table class="table table-hover table-striped">
                         <tbody>
                               <tr>
-                                <td style="width: 10px">Select</td>
                                 <td style="width: 150px">Name</td>
                                 <td style="width: 200px">Description</td>
                                 <td style="width: 100px">Type</td>
@@ -527,58 +542,21 @@ require_once('../dbconfig.php');
                                 <td style="width: 100px">Status</td>
                                 <td style="width: 110px">Action</td>
                               </tr>
-                              <?php 
-                              $action2 = '<div class="btn-group">
-                              <a type="button" class="btn btn-info " href="./cases-view.php">View</a>
-                            </div>';
-                               ?>
-                              <?php
-                                $tablesql = "SELECT `CRM_Case_Status_Type`, `CRM_Case_Priority_Type`, `CRM_Case_Type`, `CRM_Case_Login_Username`, `CRM_Case_Name`, `CRM_Case_Description` FROM `crm_caselist`"; 
-                                $result = $conn->query($tablesql);
-                                $action = '
-                                          <div class="btn-group">
-                                            <a type="button" class="btn btn-info " href="./cases-view.php">View</a>
-                                          </div>
-                                ';
-                                if($result->num_rows > 0){
-                                  while($row = $result->fetch_assoc()){
-                                    $priority = '';
-                                    if($row['CRM_Case_Priority_Type'] == 'urgent'){
-                                      $priority = '<label class="label label-danger">Urgent</label>';
-                                    }else if($row['CRM_Case_Priority_Type'] == 'high'){
-                                      $priority = '<label class="label label-warning">High</label>';
-                                    }else if ($row['CRM_Case_Priority_Type'] == 'normal'){
-                                      $priority = '<label class="label label-primary">Normal/label>';
-                                    }else{
-                                      $priority = '<label class="label label-default">low</label>';
-                                    }
-
-                                    $status = '';
-                                    if($row['CRM_Case_Status_Type'] == 'urgent'){
-                                      $status = '<label class="label label-danger">Urgent</label>';
-                                    }else if($row['CRM_Case_Status_Type'] == 'pending'){
-                                      $status = '<label class="label label-primary">Pending/label>';
-                                    }else if($row['CRM_Case_Status_Type'] == 'due'){
-                                      $status = '<label class="label label-warning">Due</label>';
-                                    }else {
-                                      $status = '<label class="label label-success">New</label>';
-                                    }
-                                    ?>
+                              
+                              <?php while($row10 = mysqli_fetch_array($query10)){ ?>
+                                    
                                     <tr>
-                                      <td><input type="checkbox" class="flat-red form-control" ></td>
-                                      <td><?php echo $row['CRM_Case_Name']; ?></td>
-                                      <td><?php echo $row['CRM_Case_Description'];?></td>
-                                      <td><?php echo $row['CRM_Case_Type'];?></td>
-                                      <td><?php echo $priority;?></td>
-                                      <td><?php echo $status;?></td>
-                                      <td><?php echo $action ?></td>
+                                      <td><?php echo $row10['case_name']; ?></td>
+                                      <td><?php echo $row10['case_desc'];?></td>
+                                      <td><?php echo $row10['type'];?></td>
+                                      <td><?php echo $row10['priority']?></td>
+                                      <td><?php echo $row10['status']?></td>
+                                      <td><a type="button" class="btn btn-primary" href="./cases-view.php?id=<?php echo $row10['id']?>">View</button></a></td>
                                     </tr>
-                              <?php }
-                              }else {
-                                $data = "<tr><td colspan='8'><center><label class=\"label label-danger\">No Data Available</label></center></td></tr>";
-                                echo $data;
-                              }
-                                ?>
+                              <?php }?>
+
+                              
+                                
                               
                         </tbody>
                       </table>

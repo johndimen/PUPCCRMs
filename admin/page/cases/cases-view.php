@@ -1,5 +1,21 @@
 <?php
-require_once('../dbconfig.php');
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/case2.php");
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -233,7 +249,6 @@ require_once('../dbconfig.php');
             </a>
             <ul class="treeview-menu">
               <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -298,46 +313,7 @@ require_once('../dbconfig.php');
               <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
-          <li class="treeview">
-            <a href="../calendar/calendar.php">
-              <i class="fa fa-calendar"></i> <span>Calendar</span>
-              <span class="pull-right-container">
-                <small class="label pull-right label-info">17</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                    <span class="pull-right-container">
-                      <small class="label pull-right label-warning"> 3</small> 
-                      <small class="label pull-right bg-blue"> 14</small> 
-                    </span>
-                  </a>
-                </li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="../mail/mailbox.php">
-              <i class="fa fa-envelope"></i> <span>Mailbox</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-yellow">12</small>
-                <small class="label pull-right bg-green">16</small>
-                <small class="label pull-right bg-red">5</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="">
-                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
-                  <span class="pull-right-container">
-                    <span class="label label-primary pull-right">13</span>
-                  </span>
-                </a>
-              </li>
-              <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
-              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
-            </ul>
-          </li>
+          
           <li class="treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -492,33 +468,35 @@ require_once('../dbconfig.php');
           <div class="form-group">
             <label for="viewCasename" class="col-sm-3 control-label">Case Name</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="viewCasename" name="viewCasename" placeholder="Case Name" disabled>
+              <input type="text" class="form-control" value = "<?php echo $row11['case_name']?>" id="viewCasename" name="viewCasename" placeholder="Case Name" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="casetype" class="col-sm-3 control-label">Case Type</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="viewCasetype" name="viewCasetype" placeholder="Case Type" disabled>
+              <input type="text" class="form-control" id="viewCasetype" value = "<?php echo $row11['type']?>" name="viewCasetype" placeholder="Case Type" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewPriority" class="col-sm-3 control-label">Priority</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="viewPriority" name="viewPriority" placeholder="Priority" disabled>
+              <input type="text" class="form-control" id="viewPriority" value = "<?php echo $row11['priority']?>"name="viewPriority" placeholder="Priority" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewDescription" class="col-sm-3 control-label">Case Description</label>
       
             <div class="col-sm-8">
-              <textarea class="form-control" id="viewDescription" name="viewDescription" placeholder="Task Description" disabled></textarea>
+              <textarea class="form-control" id="viewDescription" name="viewDescription" placeholder="Task Description" disabled>
+              <?php echo $row11['case_desc']?>
+              </textarea>
             </div>
           </div>  
         </div>
           <div class="modal-footer">
             <button type="button" name="archive" class="btn btn-warning pull-right" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
             <button type="button" name="trash" class="btn btn-danger pull-right" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
-            <a type="button" name="edit" id="edit" class="btn btn-primary pull-right" href="./cases-edit.php">Edit</a>
+            <a type="button" name="edit" id="edit" class="btn btn-primary pull-right" href="./cases-edit.php?id=<?php echo $row11['id']?>">Edit</a>
           </div>
                 </div>
               </div>

@@ -1,23 +1,24 @@
+
 <?php
-  session_start();
-  include('../dbconfig.php');
-  //We need to use sessions, so you should always start sessions using the below code.
-  //If the user is not logged in redirect to the login page...
-  // Check if the user is already logged in, if yes then redirect him to welcome page
-  if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-    header("location: ../../login.php");
-    exit;
-  }
+session_start();
 
-  $sqlfood = "SELECT `CRM_Concession_Item_SerialNo`, `CRM_Concession_Item_Profile_Name`, `CRM_Concession_Item_Name`, `CRM_Concession_Item_Price`, `CRM_Concession_Item_Description`FROM crm_concession_items WHERE `CRM_Concession_Item_Type` = 'food'";
-  $sqlnonfood = "SELECT `CRM_Concession_Item_SerialNo`, `CRM_Concession_Item_Profile_Name`, `CRM_Concession_Item_Name`, `CRM_Concession_Item_Price`, `CRM_Concession_Item_Description`FROM crm_concession_items WHERE `CRM_Concession_Item_Type` = 'non-food'";
-  $sqlother = "SELECT `CRM_Concession_Item_SerialNo`, `CRM_Concession_Item_Profile_Name`, `CRM_Concession_Item_Name`, `CRM_Concession_Item_Price`, `CRM_Concession_Item_Description`FROM crm_concession_items WHERE `CRM_Concession_Item_Type` = 'other'";
 
-  $foodresult = mysqli_query($conn,$sqlfood);
-  $nonfoodresult = mysqli_query($conn,$sqlnonfood);
-  $otherresult = mysqli_query($conn,$sqlother);
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
 
-  ?>
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+
+include("../../../php_action/retrieve/concession_items2.php");
+
+
+?>
+
   <html>
   <head>
     <meta charset="utf-8">
@@ -59,7 +60,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>C</b>RM</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>PUP</b>CCRMs</span>
+        <?php echo $webtitle?>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top">
@@ -160,7 +161,7 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                <span class="hidden-xs">Alexander Pierce</span>
+                <span class="hidden-xs"><?php echo $row['lname']?></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
@@ -219,7 +220,7 @@
               <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>Alexander Pierce</p>
+              <p><?php echo $row['lname']?></p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
@@ -246,7 +247,6 @@
               </a>
               <ul class="treeview-menu">
                 <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-                <li><a href="../../index.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -309,46 +309,6 @@
                     </ul>
                 </li>
                 <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
-              </ul>
-            </li>
-            <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
-            <li class="treeview">
-              <a href="../calendar/calendar.php">
-                <i class="fa fa-calendar"></i> <span>Calendar</span>
-                <span class="pull-right-container">
-                  <small class="label pull-right label-info">17</small>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                  <li>
-                    <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                      <span class="pull-right-container">
-                        <small class="label pull-right label-warning"> 3</small> 
-                        <small class="label pull-right bg-blue"> 14</small> 
-                      </span>
-                    </a>
-                  </li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="../mail/mailbox.php">
-                <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                <span class="pull-right-container">
-                  <small class="label pull-right bg-yellow">12</small>
-                  <small class="label pull-right bg-green">16</small>
-                  <small class="label pull-right bg-red">5</small>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class="">
-                  <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
-                    <span class="pull-right-container">
-                      <span class="label label-primary pull-right">13</span>
-                    </span>
-                  </a>
-                </li>
-                <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
-                <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -496,54 +456,61 @@
                         <div class="modal-body form-horizontal ">
                 <center><h4>Items/Product Details</h4></center>
                     <br>
+                    <?php while($row = mysqli_fetch_assoc($query5)){?>
                     <div class="form-group">
+                    
+                    
                                 <label for="viewItemNumber" class="col-sm-3 control-label">Item Number</label>
         
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="viewItemNumber" name="viewItemNumber" placeholder="Item Number" disabled>
+                                    <input type="text" value = "<?php echo $row['id'] ?>" class="form-control" id="viewItemNumber" name="viewItemNumber" placeholder="Item Number" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="viewProfile" class="col-sm-3 control-label">Profile Name</label>
         
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" name="viewProfile" id="viewProfile" placeholder="Profile" disabled>
+                                    <input type="text" value = "<?php echo $row['serial'] ?>" class="form-control" name="viewProfile" id="viewProfile" placeholder="Profile" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="viewItemName" class="col-sm-3 control-label">Item Name</label>
         
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="viewItemName" name="viewItemName" placeholder="Item Name" disabled>
+                                    <input type="text" class="form-control" value = "<?php echo $row['item'] ?>" id="viewItemName" name="viewItemName" placeholder="Item Name" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="viewItemType" class="col-sm-3 control-label">Item Type</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="viewItemName" name="viewItemName" placeholder="Item Type" disabled>
+                                    <input type="text" class="form-control" value = "<?php echo $row['type'] ?>" id="viewItemName" name="viewItemName" placeholder="Item Type" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="viewItemPrice" class="col-sm-3 control-label">Item Price</label>
         
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="viewItemPrice" name="viewItemPrice" placeholder="Item Price" disabled>
+                                    <input type="text" class="form-control" value = "<?php echo $row['price'] ?>" id="viewItemPrice" name="viewItemPrice" placeholder="Item Price" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="viewItemDesc" class="col-sm-3 control-label">Item Description</label>
         
                                 <div class="col-sm-7">
-                                    <textarea type="text" class="form-control" id="viewItemDesc" name="viewItemDesc" rows="5" placeholder="Item Description" disabled></textarea>
+                                    <textarea type="text" class="form-control" value = "<?php echo $row['description'] ?>" id="viewItemDesc" name="viewItemDesc" rows="5" placeholder="Item Description" disabled></textarea>
                                 </div>
+
+                                
                             </div>
-            
+                            
+                  
                 </div>
                 <div class="box-footer">
                   <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
                   <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Sed to Trash</button>
-                  <a type="button" name="edit" class="btn btn-info pull-right" href="./concession-item-product-edit.php">Edit</a>
+                  <a type="button" name="edit" class="btn btn-info pull-right" href="./concession-item-product-edit.php?id=<?php echo $row['id']?>">Edit</a>
                 </div>
+                <?php }?>
                     </div>
               </div>
         </div>

@@ -1,12 +1,20 @@
-
 <?php
-require_once('../dbconfig.php');
+session_start();
 
 
-  $countsql = "SELECT COUNT(*) FROM `crm_tasklist` where `CRM_isArchived` = 0";
-  $countresult = $conn->query($countsql);
-                  
-                
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/task2.php");
+include("../../../php_action/edit/task.php");
+
 
 
 ?>
@@ -57,7 +65,7 @@ require_once('../dbconfig.php');
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+    <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -158,7 +166,7 @@ require_once('../dbconfig.php');
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -217,7 +225,7 @@ require_once('../dbconfig.php');
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -244,7 +252,6 @@ require_once('../dbconfig.php');
             </a>
             <ul class="treeview-menu">
               <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -312,7 +319,7 @@ require_once('../dbconfig.php');
               <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
+          <!--<li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
           <li class="treeview">
             <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -351,7 +358,7 @@ require_once('../dbconfig.php');
               <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
               <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
-          </li>
+          </li>-->
           <li class="treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -507,14 +514,17 @@ require_once('../dbconfig.php');
               <div class="form-group">
                   <label for="inputtaskname" class="col-sm-3 control-label">Task Name</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="taskname" name="taskname" placeholder="Task Name">
+                  
+                  <input type="text" class="form-control" value = '<?php echo $row30[12]?>'id="id" name="id" placeholder="Task Name">
+                  
+                    <input type="text" class="form-control" value = '<?php echo $row30[0]?>'id="taskname" name="name" placeholder="Task Name">
                   </div>
                 </div>
                   <div class="form-group">
                       <label for="inputPriority" class="col-sm-3 control-label">Priority</label>
                       <div class="col-sm-8">
                         <select class="form-control select2" style="width: 100%;" id="priority" name="priority">
-                          <option selected="selected">Select Priority</option>
+                          <option value = '<?php echo $row30[1]?>'><?php echo $row30[1]?></option>
                           <option value="high">High</option>
                           <option value="Normal">Normal</option>
                           <option value="low">Low</option>
@@ -528,7 +538,7 @@ require_once('../dbconfig.php');
                           <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                           </div>
-                          <input type="date" class="form-control pull-right" id="inputDateStart" name="datestart" placeholder="mm/dd/yyyy">
+                          <input type="text" value = '<?php echo $row30[2]?>' class="form-control pull-right" id="inputDateStart" name="start" placeholder="mm/dd/yyyy">
                         </div>
                     </div>
                       <div class="form-group">
@@ -537,14 +547,14 @@ require_once('../dbconfig.php');
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control pull-right" id="inputDateDue" name="datedue" placeholder="mm/dd/yyyy">
+                            <input type="text" value = '<?php echo $row30[3]?>' class="form-control pull-right" id="inputDateDue" name="due" placeholder="mm/dd/yyyy">
                           </div>
                       </div>
                 <div class="form-group">
                   <label for="inputDescription" class="col-sm-3 control-label">Task Description</label>
 
                   <div class="col-sm-8">
-                    <textarea class="form-control" id="inputDescription" name="description" rows="5" placeholder="Task Description"></textarea>
+                    <textarea class="form-control" id="inputDescription" name="description" rows="5" placeholder="Task Description"><?php echo $row30[4]?></textarea>
                   </div>
                 </div>
                   <div class="form-group">
@@ -552,23 +562,8 @@ require_once('../dbconfig.php');
 
                     <div class="col-sm-8">
                       <select class="form-control select2" style="width: 100%" name="adminname" id="inputAdminName">
-                        <option value="" selected>Select Admin</option>
-                        <?php
-                          $adminsql = "SELECT `crm_admin_user_login`.`CRM_Login_Username`, `crm_admin_user_details`.`CRM_First_Name`, `crm_admin_user_details`.`CRM_Last_Name`
-                          FROM `crm_admin_user_login` 
-                            LEFT JOIN `crm_admin_user_details` ON `crm_admin_user_details`.`CRM_User_Login_SerialNo_FK` = `crm_admin_user_login`.`CRM_User_Login_SerialNo`;";
-                          $s = " = ";
-                          $adminresult = $conn->query($adminsql);
-                          if($adminresult ->num_rows > 0){
-                            while($row = $adminresult->fetch_assoc()){
-                              ?>
-                              <option value="<?php echo $row['CRM_Login_Username']; ?>"><?php echo $row['CRM_Login_Username'].$s.$row['CRM_First_Name'].' '.$row['CRM_Last_Name']; ?></option>
-                            <?php }
-                        }else {
-                          $data = "<option class=\"label label-danger\">No Data Available</option>";
-                          echo $data;
-                        }
-                        ?>
+                        <option value = '<?php echo $row30[5]?>'><?php echo $row30[5]?> <?php echo $row30[6]?></option>
+         
                       </select>
                     </div>
                   </div>
@@ -581,8 +576,8 @@ require_once('../dbconfig.php');
                     <label for="casename" class="col-sm-3 control-label">Case Number</label>
 
                     <div class="col-sm-8">
-                      <select class="form-control select2" style="width:100%" name="inputCaseName" id="inputCaseName">
-                      <option value="" selected>Select Case</option>
+                      <select class="form-control select2" style="width:100%" value = '<?php echo $row30[7]?>' name="case" id="inputCaseName">
+                      <option value = '<?php echo $row30[7]?>' selected><?php echo $row30[7]?></option>
                     </select>
                     </div>
                   </div>
@@ -590,26 +585,26 @@ require_once('../dbconfig.php');
               <label for="inputCaseName" class="col-sm-3 control-label">Case Name</label>
       
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputCaseName" placeholder="Case Name" disabled>
+                <input type="text" class="form-control" id="inputCaseName" value = '<?php echo $row30[8]?>' placeholder="Case Name" disabled>
               </div>
             </div>
             <div class="form-group">
               <label for="inputType" class="col-sm-3 control-label">Case Type</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="type" name="type" placeholder="Type" disabled>
+                <input type="text" class="form-control" id="type" name="type" value = '<?php echo $row30[9]?>'placeholder="Type" disabled>
               </div>
             </div>
             <div class="form-group">
               <label for="casepriority" class="col-sm-3 control-label">Case Priority</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="casepriority" name="casepriority" placeholder="Priority" disabled>
+                <input type="text" class="form-control" id="casepriority" value = '<?php echo $row30[10]?>' name="casepriority" placeholder="Priority" disabled>
               </div>
             </div>
             <div class="form-group">
               <label for="inputDescription" class="col-sm-3 control-label">Case Description</label>
       
               <div class="col-sm-8">
-                <textarea class="form-control" id="inputDescription" placeholder="Task Description" disabled></textarea>
+                <textarea class="form-control" id="inputDescription" value = '<?php echo $row30[11]?>' placeholder="Task Description" disabled><?php echo $row30[11]?> </textarea>
               </div>
             </div>
                   </div>

@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession2.php");
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -227,7 +246,6 @@
             </a>
             <ul class="treeview-menu">
               <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -290,46 +308,6 @@
                   </ul>
               </li>
               <li class="active"><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
-            </ul>
-          </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
-          <li class="treeview">
-            <a href="../calendar/calendar.php">
-              <i class="fa fa-calendar"></i> <span>Calendar</span>
-              <span class="pull-right-container">
-                <small class="label pull-right label-info">17</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                    <span class="pull-right-container">
-                      <small class="label pull-right label-warning"> 3</small> 
-                      <small class="label pull-right bg-blue"> 14</small> 
-                    </span>
-                  </a>
-                </li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="../mail/mailbox.php">
-              <i class="fa fa-envelope"></i> <span>Mailbox</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-yellow">12</small>
-                <small class="label pull-right bg-green">16</small>
-                <small class="label pull-right bg-red">5</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="">
-                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
-                  <span class="pull-right-container">
-                    <span class="label label-primary pull-right">13</span>
-                  </span>
-                </a>
-              </li>
-              <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
-              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -486,7 +464,7 @@
           <div class="form-group">
             <label for="viewcontractnumber" class ="col-sm-3 control-label">Contract Number</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewcontractnumber" name="viewcontractnumber" placeholder="Contract Number" disabled>
+              <input type="text" class="form-control" value = "<?php echo $row67['serial']?>" id="viewcontractnumber" name="viewcontractnumber" placeholder="Contract Number" disabled>
             </div>
           </div>
           <div class="form-group">
@@ -498,35 +476,35 @@
           <div class="form-group">
             <label for="viewcontractname" class ="col-sm-3 control-label">Contract Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewcontractname" name="viewcontractname" placeholder="Contract Name" disabled>
+              <input type="text" class="form-control" value = "<?php echo $row67['name']?>" id="viewcontractname" name="viewcontractname" placeholder="Contract Name" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewstallname" class ="col-sm-3 control-label">Business Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewstallname" name="viewstallname" placeholder="Stall Name" disabled>
+              <input type="text" class="form-control" value = "<?php echo $row67['store']?>" id="viewstallname" name="viewstallname" placeholder="Stall Name" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewfunction" class ="col-sm-3 control-label">Function</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewfunction" name="viewfunction" placeholder="Function" disabled>
+              <input type="text" class="form-control" value = "<?php echo $row67['function']?>" id="viewfunction" name="viewfunction" placeholder="Function" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewconsigneefirstname" class ="col-sm-3 control-label">Consignee Name</label>
             <div class="col-sm-9">
-              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsigneefirstname" name="viewconsigneefirstname" placeholder="First Name" disabled>
+              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsigneefirstname" value = "<?php echo $row67['fname']?>"name="viewconsigneefirstname" placeholder="First Name" disabled>
             
-              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsigneemiddlename" name="viewconsigneemiddlename" placeholder="Middle Name" disabled>
+              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsigneemiddlename" value = "<?php echo $row67['mname']?>" name="viewconsigneemiddlename" placeholder="Middle Name" disabled>
             
-              <input type="text" class="form-control" id="viewconsigneelastname" name="viewconsigneelastname" placeholder="Last Name" disabled>
+              <input type="text" class="form-control" id="viewconsigneelastname" name="viewconsigneelastname" value = "<?php echo $row67['lname']?>" placeholder="Last Name" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewdescription" class ="col-sm-3 control-label">Description</label>
             <div class="col-sm-9">
-              <textarea name="viewdescription" id="viewdescription" class="form-control" rows="5" placeholder="Description" disabled></textarea>
+              <textarea name="viewdescription" id="viewdescription"  value = "<?php echo $row67['description']?>" class="form-control" rows="5" placeholder="Description" disabled></textarea>
             </div>
           </div>
           </div>
@@ -534,11 +512,11 @@
           <div class="form-group">
             <label for="viewconsignorname" class ="col-sm-3 control-label">OIC Name</label>
             <div class="col-sm-9">
-              <input type="text"  style="margin-bottom:5px" class="form-control" id="viewconsignorfirstname" name="viewconsignorfirstname" placeholder="First Name" disabled>
+              <input type="text"  style="margin-bottom:5px" class="form-control" value = "<?php echo $row67['oic_f']?>" id="viewconsignorfirstname" name="viewconsignorfirstname" placeholder="First Name" disabled>
              
-              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsignormiddlename" name="viewconsignormiddlename" placeholder="Middle Name" disabled>
+              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsignormiddlename" value = "<?php echo $row67['oic_m']?>" name="viewconsignormiddlename" placeholder="Middle Name" disabled>
             
-              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsignorlastname" name="viewconsignorlastname" placeholder="Last Name" disabled>
+              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsignorlastname" name="viewconsignorlastname" value = "<?php echo $row67['oic_l']?>" placeholder="Last Name" disabled>
             </div>
           </div>
           <div class="form-group">
@@ -550,7 +528,7 @@
           <div class="form-group">
             <label for="viewduration" class ="col-sm-3 control-label">Duration</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewduration" name="viewduration" placeholder="Duration" disabled>
+              <input type="text" class="form-control" value = "<?php echo $row67['duration']?>" id="viewduration" name="viewduration" placeholder="Duration" disabled>
             </div>
           </div>
         </div>
@@ -563,7 +541,7 @@
             </div>
             <div class="pull-right">
             <button type="button" name="download" class="btn btn-default">Download</button>
-            <a type="button" name="edit" class="btn btn-primary" href="./concession-contract-edit.php">Edit</a>
+            <a type="button" name="edit" class="btn btn-primary" href="./concession-contract-edit.php?id=<?php echo $row67['id']?>">Edit</a>
             </div>
         </div>
               </div>

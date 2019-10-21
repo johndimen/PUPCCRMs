@@ -36,7 +36,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="../../index2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -227,7 +227,6 @@
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-            <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -292,7 +291,7 @@
             <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
           </ul>
         </li>
-        <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
+        <!--<li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
         <li class="treeview">
           <a href="../calendar/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -331,7 +330,7 @@
             <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
             <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
           </ul>
-        </li>
+        </li>-->
         <li class="active treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -363,6 +362,7 @@
                   <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
               </ul>
             </li>
+            <li><a href="../options/role.php"><i class="fa fa-circle-o"></i> Admin Roles</a></li>
             <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
           </ul>
         </li>

@@ -1,17 +1,18 @@
 <?php
 session_start();
-include('../dbconfig.php');
-//We need to use sessions, so you should always start sessions using the below code.
-//If the user is not logged in redirect to the login page...
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+
+
+if(empty($_SESSION["id"])){
   header("location: ../../login.php");
   exit;
 }
 
-//table
-$sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Stall_Number`, `CRM_Concession_Name`, `CRM_Concession_Owner_Name`, `CRM_Concession_Function`, `CRM_Concession_Date_Applied` FROM `crm_concession_profile`";
-$result = mysqli_query($conn,$sql1);
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession2.php");
 
 
 
@@ -58,7 +59,7 @@ $result = mysqli_query($conn,$sql1);
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle;?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -159,7 +160,7 @@ $result = mysqli_query($conn,$sql1);
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo''.$row['lname'].'';?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -218,7 +219,7 @@ $result = mysqli_query($conn,$sql1);
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo''.$row['lname'].'';?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -245,7 +246,6 @@ $result = mysqli_query($conn,$sql1);
             </a>
             <ul class="treeview-menu">
               <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -310,7 +310,7 @@ $result = mysqli_query($conn,$sql1);
               <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
+          <!--<li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
           <li class="treeview">
             <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -349,7 +349,7 @@ $result = mysqli_query($conn,$sql1);
               <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
               <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
-          </li>
+          </li>-->
           <li class="treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -498,16 +498,20 @@ $result = mysqli_query($conn,$sql1);
             <div class="row">  
               <div class="col-md-4">
               <h4 style="margin-left:235px">Profile</h4>
+              <?php
+
+                              while($row = mysqli_fetch_array($query1)){
+                              ?>
                                     <div class="form-group">
                                       <label for="inputConcessionNumber" class="col-sm-4 control-label">Concession Number</label>
                                       <div class="col-sm-8">
-                                      <input type="text" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber" disabled>
+                                      <input type="text" value = "<?php echo $row[0] ?>" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber" disabled>
                                       </div>
                                     </div>
                                     <div class="form-group">
                                       <label for="inputNumber" class="col-sm-4 control-label">Stall Number</label>
                                       <div class="col-sm-8">
-                                        <input type="text" class="form-control" placeholder="Stall Number" name="inputNumber" id="inputNumber" disabled>
+                                        <input type="text" class="form-control" value = "<?php echo $row[3] ?>" placeholder="Stall Number" name="inputNumber" id="inputNumber" disabled>
                                         
                                       </div>
                                     </div>
@@ -515,7 +519,7 @@ $result = mysqli_query($conn,$sql1);
                                       <label for="inputConcessionName" class="col-sm-4 control-label">Business Name</label>
                   
                                       <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" disabled>
+                                        <input type="text" class="form-control" value = "<?php echo $row[4] ?>" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" disabled>
                                       </div>
                                     </div>
                                     <h4>Owner's Info</h4>
@@ -523,16 +527,16 @@ $result = mysqli_query($conn,$sql1);
                                       <label for="inputOwnerFName" class="col-sm-4 control-label">Owner's Name</label>
                   
                                       <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="inputOwnerFName" id="inputOwnerFName" placeholder="First Name" disabled>
-                                        <input type="text" style="margin-top:5px;margin-bottom:5px" class="form-control" name="inputOwnerMName" id="inputOwnerMName" placeholder="Middle Name" disabled>
-                                        <input type="text" style="" class="form-control" name="inputOwnerLName" id="inputOwnerLName" placeholder="Last Name" disabled>
+                                        <input type="text" class="form-control" value = "<?php echo $row[9] ?>" name="inputOwnerFName" id="inputOwnerFName" placeholder="First Name" disabled>
+                                        <input type="text" style="margin-top:5px;margin-bottom:5px" value = "<?php echo $row[10] ?>" class="form-control" name="inputOwnerMName" id="inputOwnerMName" placeholder="Middle Name" disabled>
+                                        <input type="text" style="" class="form-control" name="inputOwnerLName" value = "<?php echo $row[11] ?>" id="inputOwnerLName" placeholder="Last Name" disabled>
                                       </div>
                                     </div>
                                       <div class="form-group">
                                         <label for="inputnumber" class="col-sm-4 control-label">Contact No.</label>
                     
                                         <div class="col-sm-8">
-                                          <input type="email" class="form-control" name="inputnumber" id="inputnumber" placeholder="Number"  disabled>
+                                          <input type="email" class="form-control" value = "<?php echo $row[12] ?>" name="inputnumber" id="inputnumber" placeholder="Number"  disabled>
                                         </div>
                                       </div>
                                   </div>
@@ -542,27 +546,27 @@ $result = mysqli_query($conn,$sql1);
                                         <label for="inputRemarks" class="col-sm-4 control-label">Remarks</label>
                     
                                         <div class="col-sm-8">
-                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" rows="5" placeholder="Remarks"  disabled></textarea>
+                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" rows="5" placeholder="Remarks"  disabled><?php echo $row[1] ?></textarea>
                                         </div>
                                       </div> 
                                       <div class="form-group">
                                         <label for="dateapproved" class="col-sm-4 control-label">Date Approved</label>
                                         <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="dateapproved" id="dateapproved" placeholder="Date Approved" disabled>
+                                          <input type="text" class="form-control" value = "<?php echo $row[2] ?>" name="dateapproved" id="dateapproved" placeholder="Date Approved" disabled>
                                         </div>
                                       </div>
                                     <div class="form-group" style="margin-top:38px">
                                       <label for="inputAddress" class="col-sm-4 control-label">Owner's Address</label>
                   
                                       <div class="col-sm-8">
-                                        <textarea class="form-control" name="inputAddress" id="inputAddress" rows="5" placeholder="Address" disabled></textarea>
+                                        <textarea class="form-control"  name="inputAddress" id="inputAddress" rows="5" placeholder="Address" disabled><?php echo $row[0] ?></textarea>
                                       </div>
                                     </div>
                                       <div class="form-group">
                                         <label for="inputEmail" class="col-sm-4 control-label">Email</label>
                     
                                         <div class="col-sm-8">
-                                          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email"  disabled>
+                                          <input type="email" class="form-control" value = "<?php echo $row[13] ?>" name="inputEmail" id="inputEmail" placeholder="Email"  disabled>
                                         </div>
                                       </div>
                                       
@@ -573,14 +577,14 @@ $result = mysqli_query($conn,$sql1);
                                       <div class="form-group">
                                         <label for="inputArea" class="col-sm-4 control-label">Stall Location</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control select2" name="inputStallArea"  id="inputStallArea" placeholder="Stall Location" disabled>
+                                            <input type="text" class="form-control select2" value = "<?php echo $row[5] ?>" name="inputStallArea"  id="inputStallArea" placeholder="Stall Location" disabled>
                                           
                                         </div>
                                       </div>
                                       <div class="form-group">
                                           <label for="inputFunction" class="col-sm-4 control-label">Category</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" name="inputFunction" id="inputFunction" placeholder="Stall Category" disabled>
+                                            <input type="text" class="form-control" value = "<?php echo $row[6] ?>" name="inputFunction" id="inputFunction" placeholder="Stall Category" disabled>
                                           
                                         </div>
                                       </div>
@@ -588,22 +592,24 @@ $result = mysqli_query($conn,$sql1);
                                       <div class="form-group">
                                         <label class="col-sm-4 control-label" for="measurement">Stall Measurement</label>
                                         <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="measurement" id="measurement" placeholder="Stall Measurement" disabled>
+                                          <input type="text" class="form-control" value = "<?php echo $row[7] ?>" name="measurement" id="measurement" placeholder="Stall Measurement" disabled>
                                         </div>
                                       </div>
                                       <div class="form-group">
                                         <label class="col-sm-4 control-label" for="rental">Monthly Rental</label>
                                         <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="rental" id="rental" placeholder="Monthly Rental" disabled>
+                                          <input type="text" class="form-control" value = "<?php echo $row[8] ?>" name="rental" id="rental" placeholder="Monthly Rental" disabled>
                                         </div>
                                       </div>
                                     </div>
+
+                              <?php }?>
               </div>
             </div>
           <div class="box-footer">
             <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
             <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
-            <a type="button" name="edit" class="btn btn-info pull-right" href="./concession-edit.php">Edit</a>
+            <a type="button" name="edit" class="btn btn-info pull-right" href="concession-edit.php?id=<?php echo $id?>">Edit</a>
           </div>
                     </div>
                   </div>

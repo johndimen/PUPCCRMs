@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession.php");
+include("../../../php_action/insert/concession_experience.php");
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +62,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -141,7 +163,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -200,7 +222,7 @@
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -227,7 +249,6 @@
             </a>
             <ul class="treeview-menu">
               <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -290,46 +311,6 @@
                   </ul>
               </li>
               <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
-            </ul>
-          </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
-          <li class="treeview">
-            <a href="../calendar/calendar.php">
-              <i class="fa fa-calendar"></i> <span>Calendar</span>
-              <span class="pull-right-container">
-                <small class="label pull-right label-info">17</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                    <span class="pull-right-container">
-                      <small class="label pull-right label-warning"> 3</small> 
-                      <small class="label pull-right bg-blue"> 14</small> 
-                    </span>
-                  </a>
-                </li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="../mail/mailbox.php">
-              <i class="fa fa-envelope"></i> <span>Mailbox</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-yellow">12</small>
-                <small class="label pull-right bg-green">16</small>
-                <small class="label pull-right bg-red">5</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="">
-                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
-                  <span class="pull-right-container">
-                    <span class="label label-primary pull-right">13</span>
-                  </span>
-                </a>
-              </li>
-              <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
-              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -474,40 +455,42 @@
                   <div class="box-header with-border">
                     <h3 class="box-title"><strong>Add New Experience</strong></h3>
                   </div>
-                  <form class="form-horizontal" action="" method="post">
+                  <form class="form-horizontal" method="post">
           <div class="modal-body">
             <center><h4>Concession Experience Details</h4></center>
             <br>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpcons">Profile</label>
               <div class="col-sm-7">
-                  <select  class="form-control select2" names="xpcons" id="xpcons">
-                      <option value="" selected>Select Profile</option>
+                  <select  class="form-control select2" name="profile" id="xpcons">
+                  <?php while($row5 = mysqli_fetch_array($query5)){ ?>
+                      <option value = "<?php echo $row5[0]?>" selected><?php echo $row5[0]?> = <?php echo $row5[1]?></option>
+                  <?php }?>
                   </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpplace">Place</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" names="xpplace" id="xpplace" placeholder="Place">
+                <input type="text" class="form-control" name="place" id="xpplace" placeholder="Place">
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpdatestart">Date Start</label>
               <div class="col-sm-7">
-                <input type="date" class="form-control" names="xpdatestart" id="xpdatestart" placeholder="Date Started">
+                <input type="date" class="form-control" name="date_start" id="xpdatestart" placeholder="Date Started">
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpdateend">Date Ended</label>
               <div class="col-sm-7">
-                <input type="date" class="form-control" names="xpdateend" id="xpdateend" placeholder="Date Ended">
+                <input type="date" class="form-control" name="date_end" id="xpdateend" placeholder="Date Ended">
               </div>
             </div>
           </div>
         <div class="modal-footer">
           <button type="reset" name="inputClose"class="btn btn-default pull-left">Reset Fields</button>
-          <button type="submit" name="inputSubmit" class="btn btn-success pull-right">Submit</button>
+          <button type="submit" name="submit" class="btn btn-success pull-right">Submit</button>
         </div>
         </form>
                 </div>

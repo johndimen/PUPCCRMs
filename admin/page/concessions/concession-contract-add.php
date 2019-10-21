@@ -1,3 +1,23 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession.php");
+include("../../../php_action/insert/contract.php");
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +60,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -141,7 +161,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -200,7 +220,7 @@
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -478,7 +498,7 @@
                   <h3 class="box-title"><strong>Add Contract</strong></h3>
                   
                 </div>
-                <form class="form-horizontal" action="" method="post">
+                <form class="form-horizontal" action="" method="post" enctype="multipart/form-data>
         <div class="box-body">
           <center><h4>Contract Details</h4></center>
           <br>
@@ -487,27 +507,30 @@
           <div class="form-group">
             <label for="contractnumber" class ="col-sm-3 control-label">Contract Number</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="contractnumber" name="contractnumber" placeholder="Contract Number" disabled>
+              <input type="text" class="form-control" id="contractnumber" name="contractnumber" placeholder="Contract Number">
             </div>
           </div>
           <div class="form-group">
             <label for="profile" class="col-sm-3 control-label">Profile</label>
             <div class="col-sm-9">
-              <select class="form-control select2" style="width:100%" name="profile" id="profile">
-                <option value="" selected>Select Profile</option>
+              <select class="form-control select2" style="width:100%" name="id" id="profile">
+              <?php while($row5 = mysqli_fetch_array($query5)){?>
+                <option value="<?php echo $row5[0]?>" selected><?php echo $row5[0]?> ~ <?php echo $row5[1]?></option>
+              <?php }?>
               </select>
             </div>
           </div>
           <div class="form-group">
             <label for="contractname" class ="col-sm-3 control-label">Contract Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="contractname" name="contractname" placeholder="Contract Name">
+              <input type= "text" class="form-control" id="contractname" name="name">
+                
             </div>
           </div>
           <div class="form-group">
             <label for="stallname" class ="col-sm-3 control-label">Business Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="stallname" name="stallname" placeholder="Stall Name">
+              <input type="text" class="form-control" id="stallname" name="store" placeholder="Stall Name">
             </div>
           </div>
           <div class="form-group">
@@ -523,11 +546,11 @@
           <div class="form-group">
             <label for="consigneefirstname" class ="col-sm-3 control-label">Consignee Name</label>
             <div class="col-md-9">
-              <input type="text" style="margin-bottom:5px" class="form-control" id="consigneefirstname" name="consigneefirstname" placeholder="First Name">
+              <input type="text" style="margin-bottom:5px" class="form-control" id="consigneefirstname" name="fname" placeholder="First Name">
             
-              <input type="text" style="margin-bottom:5px" class="form-control" id="consigneemiddlename" name="consigneemiddlename" placeholder="Middle Name">
+              <input type="text" style="margin-bottom:5px" class="form-control" id="consigneemiddlename" name="mname" placeholder="Middle Name">
             
-              <input type="text" class="form-control" id="consigneelastname" name="consigneelastname" placeholder="Last Name">
+              <input type="text" class="form-control" id="consigneelastname" name="lname" placeholder="lname">
             
             </div>
           </div>  
@@ -542,11 +565,11 @@
           <div class="form-group">
             <label for="contractname" class ="col-sm-3 control-label">OIC Name</label>
             <div class="col-sm-9">
-              <input type="text" style="margin-bottom:5px" class="form-control" id="consignorfirstname" name="consignorfirstname" placeholder="First Name">
+              <input type="text" style="margin-bottom:5px" class="form-control" id="consignorfirstname" name="oic_f" placeholder="First Name">
             
-              <input type="text" style="margin-bottom:5px" class="form-control" id="consignormiddlename" name="consignormiddlename" placeholder="Middle Name">
+              <input type="text" style="margin-bottom:5px" class="form-control" id="consignormiddlename" name="oic_m" placeholder="Middle Name">
             
-              <input type="text" class="form-control" id="consignorlastname" name="consignorlastname" placeholder="Last Name">
+              <input type="text" class="form-control" id="consignorlastname" name="oic_l" placeholder="Last name">
             </div>
           </div>
           <div class="form-group">
@@ -555,13 +578,13 @@
               <div class="input-group-addon">
               <i class="fa fa-calendar"></i>
               </div>
-              <input type="date" class="form-control pull-right" id="duration" name="duration" placeholder="mm/dd/yyyy">
+              <input type="date" class="form-control pull-right" id="duration" name="date" placeholder="mm/dd/yyyy">
             </div>
           </div>
           <div class="form-group">
             <label for="duration" class ="col-sm-3 control-label">Duration</label>
             <div class="col-sm-9">
-              <select class="form-control" id="datesigned" name="datesigned">
+              <select class="form-control" id="datesigned" name="duration">
                 <option selected>Select Duration</option>
                 <option value="2">2 Years</option>
                 <option value="3">3 Years</option>
@@ -573,7 +596,7 @@
             <div class="form-group">
                 <label for="scancopy" class="col-sm-4 control-label">Scan Copy of Contract</label>
                 <div class="col-sm-8">
-                    <input type="file" name="scancopy" id="scancopy" class="form-control" >
+                    <input type="file" name="file" id="scancopy" class="form-control" >
                 </div>
             </div>
           </div>
@@ -581,7 +604,7 @@
         </div>
           <div class="box-footer">
             <button type="reset" name="reset"class="btn btn-default pull-left">Reset Fields</button>
-            <button type="submit" name="inputSubmit" class="btn btn-success pull-right">Submit</button>
+            <button type="submit" name="submit" class="btn btn-success pull-right">Submit</button>
           </div>
         </form>
               </div>

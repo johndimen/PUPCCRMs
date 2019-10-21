@@ -1,3 +1,23 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession.php");
+include("../../../php_action/edit/renew.php");
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -227,7 +247,6 @@
             </a>
             <ul class="treeview-menu">
               <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -290,46 +309,6 @@
                   </ul>
               </li>
               <li class="active"><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
-            </ul>
-          </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
-          <li class="treeview">
-            <a href="../calendar/calendar.php">
-              <i class="fa fa-calendar"></i> <span>Calendar</span>
-              <span class="pull-right-container">
-                <small class="label pull-right label-info">17</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                    <span class="pull-right-container">
-                      <small class="label pull-right label-warning"> 3</small> 
-                      <small class="label pull-right bg-blue"> 14</small> 
-                    </span>
-                  </a>
-                </li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="../mail/mailbox.php">
-              <i class="fa fa-envelope"></i> <span>Mailbox</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-yellow">12</small>
-                <small class="label pull-right bg-green">16</small>
-                <small class="label pull-right bg-red">5</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="">
-                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
-                  <span class="pull-right-container">
-                    <span class="label label-primary pull-right">13</span>
-                  </span>
-                </a>
-              </li>
-              <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
-              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -487,9 +466,10 @@
           <div class="form-group">
             <label for="oldContractNumber" class ="col-sm-3 control-label">Existing Contract Number</label>
             <div class="col-sm-9">
-              <select class="form-control select2" style="width:100%" name="oldContractNumber" id="oldContractNumber">
-                <option selected>Select Existing Contract</option>
-                <option value=""></option>
+              <select class="form-control select2" style="width:100%" name="serial" id="oldContractNumber">
+              <?php while($row67 = mysqli_fetch_array($query67)){?>  
+              <option value = "<?php echo $row67['serial']?>"><?php echo $row67['serial']?></option>
+              <?php }?>
               </select>
             </div>
           </div>
@@ -508,35 +488,37 @@
           <div class="form-group">
             <label for="renewcontractname" class ="col-sm-3 control-label">Contract Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="renewcontractname" name="renewcontractname" placeholder="Contract Name">
+              <select class="select2 form-control" id="renewcontractname" name="name">
+                <option value=""selected>Select Contract Name</option>
+              </select>
             </div>
           </div>
           <div class="form-group">
             <label for="renewstallname" class ="col-sm-3 control-label">Stall Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="renewstallname" name="renewstallname" placeholder="Stall Name" disabled>
+              <input type="text" class="form-control" id="renewstallname" name="store" placeholder="Stall Name" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="renewfunction" class ="col-sm-3 control-label">Function</label>
             <div class="col-sm-9">
-              <input type="text"class="form-control" id="renewfunction" name="renewfunction" placeholder="Function" disabled>
+              <input type="text"class="form-control" id="renewfunction" name="function" placeholder="Function" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="renewcontractname" class ="col-sm-3 control-label">Consignee Name</label>
             <div class="col-sm-9">
-              <input type="text" style="margin-bottom:5px" class="form-control" id="renewconsigneefirstname" name="renewconsigneefirstname" placeholder="First Name">
+              <input type="text" style="margin-bottom:5px" class="form-control" id="renewconsigneefirstname" name="fname" placeholder="First Name">
             
-              <input type="text" style="margin-bottom:5px" class="form-control" id="renewconsigneemiddlename" name="renewconsigneemiddlename" placeholder="Middle Name">
+              <input type="text" style="margin-bottom:5px" class="form-control" id="renewconsigneemiddlename" name="mname" placeholder="Middle Name">
             
-              <input type="text" class="form-control" id="renewconsigneelastname" name="renewconsigneelastname" placeholder="Last Name">
+              <input type="text" class="form-control" id="renewconsigneelastname" name="lname" placeholder="Last Name">
             </div>
           </div>
           <div class="form-group">
             <label for="renewdescription" class ="col-sm-3 control-label">Description</label>
             <div class="col-sm-9">
-              <textarea name="renewdescription" id="renewdescription" class="form-control" rows="3" placeholder="Description"></textarea>
+              <textarea name="description" id="renewdescription" class="form-control" rows="3" placeholder="Description"></textarea>
             </div>
           </div>
           </div>
@@ -544,11 +526,11 @@
           <div class="form-group">
             <label for="renewconsignorfirstname" class ="col-sm-3 control-label">OIC Name</label>
             <div class="col-sm-9">
-              <input type="text" style="margin-bottom:5px" class="form-control" id="renewconsignorfirstname" name="renewconsignorfirstname" placeholder="First Name">
+              <input type="text" style="margin-bottom:5px" class="form-control" id="oic_f" name="oic_f" placeholder="First Name">
             
-              <input type="text" style="margin-bottom:5px" class="form-control" id="renewconsignormiddlename" name="renewconsignormiddlename" placeholder="Middle Name">
+              <input type="text" style="margin-bottom:5px" class="form-control" id="oic_m" name="oic_m" placeholder="Middle Name">
             
-              <input type="text" class="form-control" id="renewconsignorlastname" name="renewconsignorlastname" placeholder="Last Name">
+              <input type="text" class="form-control" id="renewconsignorlastname" name="oic_l" placeholder="Last Name">
             </div>
           </div>
           <div class="form-group">
@@ -563,13 +545,13 @@
               <div class="input-group-addon">
               <i class="fa fa-calendar"></i>
               </div>
-              <input type="date" class="form-control pull-right" id="renewdatesigned" name="renewdatesigned" placeholder="mm/dd/yyyy">
+              <input type="date" class="form-control pull-right" id="renewdatesigned" name="date" placeholder="mm/dd/yyyy">
             </div>
           </div>
           <div class="form-group">
             <label for="renewduration" class ="col-sm-3 control-label">Duration</label>
             <div class="col-sm-9">
-              <select class="form-control" id="renewdatesigned" name="renewdatesigned">
+              <select class="form-control" id="renewdatesigned" name="duration">
                 <option selected>Select Duration</option>
                 <option value="2">2 Years</option>
                 <option value="3">3 Years</option>
@@ -581,7 +563,7 @@
             <div class="form-group">
                 <label for="scancopy" class="col-sm-4 control-label">Scan Copy of Contract</label>
                 <div class="col-sm-8">
-                    <input type="file" name="scancopy" id="scancopy" class="form-control" >
+                    <input type="file" name="scan" id="scancopy" class="form-control" >
                 </div>
             </div>
           </div>
@@ -589,7 +571,7 @@
           </div>
           <div class="box-footer">
             <button type="reset" name="reset"class="btn btn-default pull-left">Reset Fields</button>
-            <button type="submit" name="inputSubmit" class="btn btn-success pull-right">Submit</button>
+            <button type="submit" name="submit" class="btn btn-success pull-right">Submit</button>
           </div>
         </form>
               </div>

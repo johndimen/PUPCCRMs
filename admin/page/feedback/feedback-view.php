@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+
+include("../../../php_action/db_connect.php");
+
+include("../../../php_action/retrieve/feedback3.php");
+include("../../../php_action/userdata.php");
+
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +60,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -138,7 +160,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -194,7 +216,7 @@
           <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p><?php echo $row['lname']?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -221,7 +243,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-            <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
           </ul>
         </li>
         <li class="treeview active">
@@ -286,7 +307,7 @@
             <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
           </ul>
         </li>
-        <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
+        <!--<li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
         <li class="treeview">
           <a href="../calendar/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -325,7 +346,7 @@
           <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
           <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
         </ul>
-      </li>
+      </li>-->
       <li class="treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -461,6 +482,8 @@
           <!-- /.box -->
         </div>
         <!-- /.col -->
+        
+      
         <div class="col-md-9">
           <div class="box box-primary">
             <div class="box-header with-border">
@@ -473,31 +496,32 @@
           <div class="form-group">
             <label for="feedbackno" class="col-sm-4 control-label">Feedback No</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="feedbackno" name="feedbackno" placeholder="Feedback Number" disabled>
+              <label class="form-control" id="feedbackno" name="feedbackno"><?php echo $row29[0]?></label>
+              <!--<label type="text" value = ""  placeholder="Feedback Number" disabled>-->
             </div>
           </div>
           <div class="form-group">
             <label for="stallno" class="col-sm-4 control-label">Stall No</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="stallno" name="stallno" placeholder="Stall Number" disabled>
+              <input type="text" value = "<?php echo $row29[1]?>" class="form-control" id="stallno" name="stallno" placeholder="Stall Number" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="stallarea" class="col-sm-4 control-label">Stall Area</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="stallarea" name="stallarea" placeholder="Stall Area" disabled>
+              <input type="text" class="form-control" value = "<?php echo $row29[2]?>" id="stallarea" name="stallarea" placeholder="Stall Area" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="evaluation" class="col-sm-4 control-label">Evaluation</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="evaluation" name="evaluation" placeholder="Evaluation" disabled>
+              <input type="text" value = "<?php echo $row29[3]?>" class="form-control" id="evaluation" name="evaluation" placeholder="Evaluation" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="type" class="col-sm-4 control-label">Feedback Type</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="type" name="type" placeholder="Feedback Type" disabled>
+              <input type="text" value = "<?php echo $row29[4]?>" class="form-control" id="type" name="type" placeholder="Feedback Type" disabled>
             </div>
           </div>
           </div>
@@ -506,7 +530,7 @@
           <div class="form-group">
             <label for="message" class="col-sm-4 control-label">Feedback Message</label>
             <div class="col-sm-12">
-              <textarea name="message" id="message" class="form-control" rows="11" Placeholder="Feedback Message" disabled></textarea>
+              <textarea name="message" id="message" class="form-control" rows="11" Placeholder="Feedback Message" disabled><?php echo $row29[5]?></textarea>
             </div>
           </div>
         </div>
@@ -583,13 +607,13 @@
           <div class="form-group">
             <label for="sendername" class="col-sm-4 control-label">Sender Name</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="sendername" name="sendername" placeholder="Sender Name" disabled>
+              <input type="text" value = "<?php echo $row29[6]?>" class="form-control" id="sendername" name="sendername" placeholder="Sender Name" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="idno" class="col-sm-4 control-label">ID No</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="idno" name="idno" placeholder="ID Number" disabled>
+              <input type="text" class="form-control" id="idno" value = "<?php echo $row29[7]?>" name="idno" placeholder="ID Number" disabled>
             </div>
           </div>
         </div>
@@ -597,17 +621,20 @@
           <div class="form-group">
             <label for="email" class="col-sm-4 control-label">E-mail</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="email" name="email" placeholder="E-mail" disabled>
+              <input type="text" class="form-control" value = "<?php echo $row29[8]?>" id="email" name="email" placeholder="E-mail" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="contactno" class="col-sm-4 control-label">Contact No</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="contactno" name="contactno" placeholder="Contact No" disabled>
+              <input type="text" class="form-control" id="contactno" value = "<?php echo $row29[9]?>" name="contactno" placeholder="Contact No" disabled>
             </div>
           </div>
         </div>
+        
           </div>
+
+        
           <br>
         </div>
         </div>

@@ -1,16 +1,23 @@
 <?php
 session_start();
-require_once('page/dbconfig.php');
-//We need to use sessions, so you should always start sessions using the below code.
-//If the user is not logged in redirect to the login page...
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+
+
+if(empty($_SESSION["id"])){
   header("location: login.php");
   exit;
 }
 
+$userid = $_SESSION["id"];
+
+
+include("../php_action/db_connect.php");
+include("../php_action/userdata.php");
+include("../php_action/retrieve/dashboard.php");
+
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -18,7 +25,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" href="../img/icon.png">
-  <title>PUPCCRMs | Dashboard</title>
+  <title>PUPCCRMs | Dashboard </title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -62,7 +69,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle;?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -274,7 +281,13 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+             
+
+    
+
+
+             
+              <span class="hidden-xs"><?php echo''.$row['lname'].'';?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -307,7 +320,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
                   <a href="./page/options/admin-profile.php" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../php_action/logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -331,7 +344,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p><?php echo $name;?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -358,7 +371,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="./index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-            <li><a href="./index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
+            <!--<li><a href="./index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>-->
           </ul>
         </li>
           <li class="treeview">
@@ -423,7 +436,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
             <li><a href="./page/concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
           </ul>
         </li>
-        <li><a href="./page/categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
+        <!--<li><a href="./page/categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
         <li class="treeview">
           <a href="./page/calendar/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -462,7 +475,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
             <li><a href="./page/mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
             <li><a href="./page/mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
           </ul>
-        </li>
+        </li>-->
         <li class="treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -565,9 +578,9 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3><?php echo $case[0]?></h3>
 
-              <p>New Cases</p>
+              <p>Cases</p>
             </div>
             <div class="icon">
               <i class="ion ion-briefcase"></i>
@@ -580,7 +593,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53</h3>
+              <h3><?php echo $task[0]?></h3>
 
               <p>Task</p>
             </div>
@@ -595,7 +608,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3><?php echo $feedback[0]?></h3>
 
               <p>Feedbacks</p>
             </div>
@@ -612,7 +625,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
       <!-- Main row -->
       <div class="row">
         <!-- Left col -->
-        <section class="col-lg-7 connectedSortable">
+        <section class="col-lg-12 connectedSortable">
 
           <!-- Custom tabs (Charts with tabs)-->
           <div class="box box-info">
@@ -639,69 +652,18 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
                   </tr>
                   </thead>
                   <tbody>
+                  <?php while($feedback_details = mysqli_fetch_array($query34)){?>
                   <tr>
-                    <td><a href=" ">FI9842</a></td>
-                    <td>Feedback Sample</td>
-                    <td>1</td>
-                    <td><span class="">16/08/2019 00:00:00</span></td>
+                    <td><a href=" "><?php echo $feedback_details[0]?></a></td>
+                    <td><?php echo $feedback_details[1]?></td>
+                    <td><?php echo $feedback_details[2]?></td>
+                    <td><span class=""><?php echo $feedback_details[3]?></span></td>
                     <td>
-                      <p>4 <span class="fa fa-star"></span></p>
+                      <p><?php echo $feedback_details[4]?><span class="fa fa-star"></span></p>
                     </td>
                   </tr>
-                  <tr>
-                    <td><a href=" ">FI1848</a></td>
-                    <td>Feedback Sample</td>
-                    <td>1</td>
-                    <td><span class="">16/08/2019 00:00:00</span></td>
-                    <td>
-                      <p>4 <span class="fa fa-star"></span></p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href=" ">FI7429</a></td>
-                    <td>Feedback Sample</td>
-                    <td>1</td>
-                    <td><span class="">16/08/2019 00:00:00</span></td>
-                    <td>
-                      <p>4 <span class="fa fa-star"></span></p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href=" ">FI7429</a></td>
-                    <td>Feedback Sample</td>
-                    <td>1</td>
-                    <td><span class="">16/08/2019 00:00:00</span></td>
-                    <td>
-                      <p>4 <span class="fa fa-star"></span></p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href=" ">FI1848</a></td>
-                    <td>Feedback Sample</td>
-                    <td>1</td>
-                    <td><span class="">16/08/2019 00:00:00</span></td>
-                    <td>
-                      <p>4 <span class="fa fa-star"></span></p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href=" ">FI7429</a></td>
-                    <td>Feedback Sample</td>
-                    <td>1</td>
-                    <td><span class="">16/08/2019 00:00:00</span></td>
-                    <td>
-                      <p>4 <span class="fa fa-star"></span></p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="">FI9842</a></td>
-                    <td>Feedback Sample</td>
-                    <td>1</td>
-                    <td><span class="">16/08/2019 00:00:00</span></td>
-                    <td>
-                      <p>4 <span class="fa fa-star"></span></p>
-                    </td>
-                  </tr>
+                  <?php }?>
+                  
                   </tbody>
                 </table>
               </div>
@@ -716,7 +678,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           </div>
           <!-- /.nav-tabs-custom -->
 
-          <!-- TO DO List -->
+          <!-- TO DO List 
           <div class="box box-primary">
             <div class="box-header">
               <i class="ion ion-clipboard"></i>
@@ -733,23 +695,23 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
                 </ul>
               </div>
             </div>
-            <!-- /.box-header -->
+            <!-- /.box-header 
             <div class="box-body">
-              <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+              <!-- See dist/js/pages/dashboard.js to activate the todoList plugin 
               <ul class="todo-list">
                 <li>
-                  <!-- drag handle -->
+                  <!-- drag handle 
                   <span class="handle">
                         <i class="fa fa-ellipsis-v"></i>
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
-                  <!-- checkbox -->
+                  <!-- checkbox
                   <input type="checkbox" value="">
-                  <!-- todo text -->
+                  <!-- todo text 
                   <span class="text">Design a nice theme</span>
-                  <!-- Emphasis label -->
+                  <!-- Emphasis label 
                   <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                  <!-- General tools such as edit or delete-->
+                  <!-- General tools such as edit or delete
                   <div class="tools">
                     <i class="fa fa-edit"></i>
                     <i class="fa fa-trash-o"></i>
@@ -822,7 +784,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
                 </li>
               </ul>
             </div>
-            <!-- /.box-body -->
+            <!-- /.box-body 
             <div class="box-footer clearfix no-border">
               <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
             </div>
@@ -835,10 +797,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
         <section class="col-lg-5 connectedSortable">
 
-          <!-- Map box -->
+          <!-- Map box 
           <div class="box box-solid bg-light-blue-gradient">
             <div class="box-header">
-              <!-- tools box -->
+               tools box 
               <div class="pull-right box-tools">
                 <button type="button" class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip"
                         title="Date range">
@@ -847,7 +809,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
                         data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
                   <i class="fa fa-minus"></i></button>
               </div>
-              <!-- /. tools -->
+              /. tools 
 
               <i class="fa fa-map-marker"></i>
 
@@ -916,48 +878,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
               <div id="calendar" style="width: 100%"></div>
             </div>
             <!-- /.box-body -->
-            <div class="box-footer text-black">
-              <div class="row">
-                <div class="col-sm-6">
-                  <!-- Progress bars -->
-                  <div class="clearfix">
-                    <span class="pull-left">Task #1</span>
-                    <small class="pull-right">90%</small>
-                  </div>
-                  <div class="progress xs">
-                    <div class="progress-bar progress-bar-green" style="width: 90%;"></div>
-                  </div>
-
-                  <div class="clearfix">
-                    <span class="pull-left">Task #2</span>
-                    <small class="pull-right">70%</small>
-                  </div>
-                  <div class="progress xs">
-                    <div class="progress-bar progress-bar-green" style="width: 70%;"></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-6">
-                  <div class="clearfix">
-                    <span class="pull-left">Task #3</span>
-                    <small class="pull-right">60%</small>
-                  </div>
-                  <div class="progress xs">
-                    <div class="progress-bar progress-bar-green" style="width: 60%;"></div>
-                  </div>
-
-                  <div class="clearfix">
-                    <span class="pull-left">Task #4</span>
-                    <small class="pull-right">40%</small>
-                  </div>
-                  <div class="progress xs">
-                    <div class="progress-bar progress-bar-green" style="width: 40%;"></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
+            
           </div>
           <!-- /.box -->
 
@@ -1174,6 +1095,9 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 </div>
 <!-- ./wrapper -->
 
+
+  
+
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -1213,3 +1137,5 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 <script src="dist/js/demo.js"></script>
 </body>
 </html>
+
+  

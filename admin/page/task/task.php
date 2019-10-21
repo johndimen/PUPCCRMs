@@ -1,12 +1,19 @@
-
 <?php
-require_once('../dbconfig.php');
+session_start();
 
 
-  $countsql = "SELECT COUNT(*) FROM `crm_tasklist` where `CRM_isArchived` = 0";
-  $countresult = $conn->query($countsql);
-                  
-                
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/task.php");
+
 
 
 ?>
@@ -57,7 +64,7 @@ require_once('../dbconfig.php');
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -158,7 +165,7 @@ require_once('../dbconfig.php');
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -217,7 +224,7 @@ require_once('../dbconfig.php');
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -244,7 +251,6 @@ require_once('../dbconfig.php');
             </a>
             <ul class="treeview-menu">
               <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -312,7 +318,7 @@ require_once('../dbconfig.php');
               <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
+          <!--<li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
           <li class="treeview">
             <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -351,7 +357,7 @@ require_once('../dbconfig.php');
               <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
               <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
-          </li>
+          </li>-->
           <li class="treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -534,69 +540,31 @@ require_once('../dbconfig.php');
                       <table class="table table-hover table-striped">
                         <tbody>
                               <tr>
-                                <td style="width: 20px">Select</td>
                                 <td style="width: 150px">Name</td>
                                 <td style="width: 70px">Priority</td>
-                                <td style="width: 70px">Status</td>
                                 <td style="width: 160px">Duration</td>
                                 <td style="width: 100px">Case</td>
                                 <td style="width: 100px">Admin Name</td>
                                 <td style="width: 100px">Action</td>
-                              </tr>
-                              <?php
-                              $tablesql = "SELECT `CRM_Task_SerialNo`, `CRM_Task_Status_Type`, `CRM_Task_Assigned_UserName`, `CRM_Task_Priority_Type`, `CRM_Task_Name`, `CRM_Task_Case_Name`, `CRM_Start_Date`, `CRM_Due_Date`, `CRM_Task_Description` FROM `crm_tasklist`";
-                              $tableresult = $conn->query($tablesql);
-                              $action = '
-                                          <div class="btn-group">
-                                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewModal" id="#viewModalBtn">View</button>
-                                            
-                                          </div>
-                                ';
-                              if($tableresult->num_rows > 0){
-                                while($row = $tableresult->fetch_assoc()){
-                                  $priority = '';
-                                  if($row['CRM_Task_Priority_Type'] == 'Urgent'){
-                                    $priority = '<label class="label label-danger">Urgent</label>';
-                                  }else if($row['CRM_Task_Priority_Type'] == 'high'){
-                                    $priority = '<label class="label label-warning">High</label>';
-                                  }else if($row['CRM_Task_Priority_Type'] == 'normal'){
-                                    $priority = '<label class="label label-primary">Normal</label>';
-                                  }else{
-                                    $priority = '<label class="label label-default">Low</label>';
-                                  }
 
-                                  $status = '';
-                                  if($row['CRM_Task_Status_Type'] == 'new'){
-                                    $status = '<label class="label label-success">New Task</label>';
-                                  }else if($row['CRM_Task_Status_Type'] == 'urgent'){
-                                    $status = '<label class="label label-danger">Urgent Task</label>';
-                                  }else if($row['CRM_Task_Status_Type'] == 'pending') {
-                                    $status = '<label class="label label-primary">Pending</label>';
-                                  }else if($row['CRM_Task_Status_Type'] == 'due'){
-                                    $status ='<label class="label label-primary">Due</label>';
-                                  } else{
-                                    $status = '<label class="label label-default">Old Task</label>';
-                                  }
-                                  ?>
-                              <tr>
-                                <td>
-                                  <input type="checkbox" class="flat-red form-control" >
-                                </td>
-                                
-                                <td><?php echo $row['CRM_Task_Name']; ?></td>
-                                <td><?php echo $priority; ?></td>
-                                <td><?php echo $status; ?></td>
-                                <td><?php echo $row['CRM_Start_Date'].' ~ '.$row['CRM_Due_Date']; ?></td>
-                                <td><?php echo $row['CRM_Task_Case_Name']; ?></td>
-                                <td><?php echo $row['CRM_Task_Assigned_UserName']; ?></td>
-                                <td><?php echo $action ?></td>
+
                               </tr>
-                                <?php }
-                              }else {
-                              $data = "<tr><td colspan='7'><center><label class=\"label label-danger\">No Data Available</label></center></td></tr>";
-                              echo $data;
-                              }
-                              ?>
+                              <?php while($row30 = mysqli_fetch_array($query30)){?>
+                                                            <tr>
+                                
+                                
+                                <td><?php echo $row30[0]; ?></td>
+                                <td><?php echo $row30[1]; ?></td>
+                                <td><?php echo $row30[2].' - '.$row30[3]; ?></td>
+                                <td><?php echo $row30[4]; ?></td>
+                                <td><?php echo $row30[5]; ?> <?php echo $row30[6]; ?></td>
+                                <td>
+                                <a type="button" class="btn btn-primary" href="./task-view.php?id=<?php echo $row30[7]?>">View</button></a>
+                                
+                                </td>
+                              </tr>
+                              <?php }?>
+                             
                         </tbody>
                       </table>
                     </div>

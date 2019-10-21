@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession.php");
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +59,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -141,7 +160,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -200,7 +219,7 @@
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -227,7 +246,6 @@
             </a>
             <ul class="treeview-menu">
               <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -292,7 +310,7 @@
               <li class="active"><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
+          <!--<li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
           <li class="treeview">
             <a href="../calendar/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -331,7 +349,7 @@
               <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
               <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
-          </li>
+          </li>-->
           <li class="treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -513,7 +531,6 @@
                     <table class="table table-hover table-striped">
                       <tbody>
                         <tr>
-                          <td style="width: 20px">Select</td>
                           <td style="width: 150px">Name</td>
                           <td style="width: 150px">Business Name</td>
                           <td style="width: 100px">Function</td>
@@ -524,19 +541,19 @@
                           <td>Action</td>
                         </tr>
                         <?php 
-                        $action = '<a type="button" class="btn btn-info " href="./concession-contract-view.php">View</a>';
+                        while($row67 = mysqli_fetch_array($query67)){
                         ?>
                         <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td><?php echo $action ?></td>
+                          <td><?php echo $row67['name']?></td>
+                          <td><?php echo $row67['store']?></td>
+                          <td><?php echo $row67['function']?></td>
+                          <td><?php echo $row67['oic_f']?> <?php echo $row67['oic_l']?></td>
+                          <td><?php echo $row67['fname']?> <?php echo $row67['lname']?></td>
+                          <td><?php echo $row67['date']?></td>
+                          <td><?php echo $row67['duration']?></td>
+                          <td><a type="button" class="btn btn-info " href="./concession-contract-view.php?id=<?php echo $row['id']?>">View</a></td>
                         </tr>
+                        <?php }?>
                         
                       </tbody>
                     </table>

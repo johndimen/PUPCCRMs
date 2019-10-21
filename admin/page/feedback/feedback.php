@@ -1,3 +1,23 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/feedback.php");
+
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +58,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -138,7 +158,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -194,7 +214,7 @@
           <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p><?php echo $row['lname']?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -221,7 +241,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-            <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
           </ul>
         </li>
         <li class="treeview active">
@@ -286,7 +305,7 @@
             <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
           </ul>
         </li>
-        <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
+        <!--<li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
         <li class="treeview">
           <a href="../calendar/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -325,7 +344,7 @@
           <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
           <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
         </ul>
-      </li>
+      </li>-->
       <li class="treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -502,33 +521,44 @@
                 <table class="table table-hover table-striped">
                   <tbody>
                     <tr>
-                      <td style="width: 20px">Select</td>
-                      <td></td>
-                      <td>Sender Name</td>
-                      <td>Message</td>
-                      <td>Area</td>
-                      <td></td>
-                      <td>Date</td>
-                      <td>Action</td>
+                      
+                      <th>Sender Name</td>
+                      <th>Message</td>
+                      <th>Area</td>
+                      <th>Date</td>
+                      <th>Action</td>
                     </tr>
-                  <?php
-                  $action = '
-                  <div class="btn-group">
-                    <a type="button" class="btn btn-info " href="./feedback-view.php">View</a>
-                  </div>
-                  ';
+                  
+                    <?php
+                  while($row = mysqli_fetch_array($query9))
+                  {
+
+                    if($row[5] == 1)
+                    {
+                      $strong = "<strong>";
+                    }
+                    else 
+                    {
+                      $strong = "";
+                    }
+
                   ?>
+
                   <tr>
-                    <td><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="feedback-read.php">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
+                  
+                    <td class="mailbox-name"><?php echo $strong?> <?php echo $row[0]?></td>
+                    <td class="mailbox-subject"><?php echo $strong?><?php echo $row[1] ?>
                     </td>
-                    <td>Lagoon</td>
-                    <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date"></td>
-                    <td><?php echo $action ?></td>
+                    <td><?php echo $strong?> <?php echo $row[2] ?></td>
+                    <td class="mailbox-attachment"><?php echo $strong?><?php echo $row[3] ?></td>
+                    <td>
+                    <div class="btn-group">
+                    <a type="button" class="btn btn-info " href="./feedback-view.php?id=<?php echo $row[4]?>">View</a>
+                  </div>
+                  </td>
+                 
                   </tr>
+                  <?php }?>
                   </tbody>
                 </table>
                 <!-- /.table -->

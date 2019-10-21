@@ -1,7 +1,23 @@
 <?php
-require_once('../dbconfig.php');
-?>
+session_start();
 
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/case2.php");
+include("../../../php_action/edit/case.php");
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +62,7 @@ require_once('../dbconfig.php');
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -147,7 +163,7 @@ require_once('../dbconfig.php');
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -206,7 +222,7 @@ require_once('../dbconfig.php');
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -233,7 +249,6 @@ require_once('../dbconfig.php');
             </a>
             <ul class="treeview-menu">
               <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -298,46 +313,7 @@ require_once('../dbconfig.php');
               <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
-          <li class="treeview">
-            <a href="../calendar/calendar.php">
-              <i class="fa fa-calendar"></i> <span>Calendar</span>
-              <span class="pull-right-container">
-                <small class="label pull-right label-info">17</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                    <span class="pull-right-container">
-                      <small class="label pull-right label-warning"> 3</small> 
-                      <small class="label pull-right bg-blue"> 14</small> 
-                    </span>
-                  </a>
-                </li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="../mail/mailbox.php">
-              <i class="fa fa-envelope"></i> <span>Mailbox</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-yellow">12</small>
-                <small class="label pull-right bg-green">16</small>
-                <small class="label pull-right bg-red">5</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="">
-                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
-                  <span class="pull-right-container">
-                    <span class="label label-primary pull-right">13</span>
-                  </span>
-                </a>
-              </li>
-              <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
-              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
-            </ul>
-          </li>
+          
           <li class="treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -493,31 +469,31 @@ require_once('../dbconfig.php');
             <div class="form-group">
                 <label for="id" class="control-label col-sm-3">Case Number</label>
                 <div class="col-sm-8">
-                    <input type="text" name="id" id="id" class="form-control" disabled>
+                    <input type="text" value = "<?php echo $row11['case_number']?>" name="number" id="id" class="form-control">
                 </div>
             </div>
           <div class="form-group">
             <label for="editasename" class="col-sm-3 control-label">Case Name</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="editCasename" name="editCasename" placeholder="Case Name">
+              <input type="text" class="form-control" value = "<?php echo $row11['case_name']?>" id="editCasename" name="name" placeholder="Case Name">
             </div>
           </div>
           <div class="form-group">
             <label for="editCasetype" class="col-sm-3 control-label">Case Type</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="editCasetype" name="editCasetype" placeholder="Case Type">
+              <input type="text" class="form-control" value = "<?php echo $row11['type']?>" id="editCasetype" name="type" placeholder="Case Type">
             </div>
           </div>
           <div class="form-group">
             <label for="editPriority" class="col-sm-3 control-label">Priority</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="editPriority" name="editPriority" placeholder="Priority">
+              <input type="text" class="form-control" id="editPriority" value = "<?php echo $row11['priority']?>" name="priority" placeholder="Priority">
             </div>
           </div>
           <div class="form-group">
             <label for="editDescription" class="col-sm-3 control-label">Case Description</label>
             <div class="col-sm-8">
-              <textarea class="form-control" id="editDescription" name="editDescription" placeholder="Task Description" ></textarea>
+              <textarea class="form-control" id="editDescription" name="description" placeholder="Task Description" ><?php echo $row11['case_desc']?></textarea>
             </div>
           </div>
         </div>

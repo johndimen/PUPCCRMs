@@ -1,3 +1,23 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+
+include("../../../php_action/retrieve/concession2.php");
+include("../../../php_action/edit/concession_equipment.php");
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +60,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -141,7 +161,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -200,7 +220,7 @@
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -227,7 +247,6 @@
             </a>
             <ul class="treeview-menu">
               <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -290,46 +309,6 @@
                   </ul>
               </li>
               <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
-            </ul>
-          </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
-          <li class="treeview">
-            <a href="../calendar/calendar.php">
-              <i class="fa fa-calendar"></i> <span>Calendar</span>
-              <span class="pull-right-container">
-                <small class="label pull-right label-info">17</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                    <span class="pull-right-container">
-                      <small class="label pull-right label-warning"> 3</small> 
-                      <small class="label pull-right bg-blue"> 14</small> 
-                    </span>
-                  </a>
-                </li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="../mail/mailbox.php">
-              <i class="fa fa-envelope"></i> <span>Mailbox</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-yellow">12</small>
-                <small class="label pull-right bg-green">16</small>
-                <small class="label pull-right bg-red">5</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="">
-                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
-                  <span class="pull-right-container">
-                    <span class="label label-primary pull-right">13</span>
-                  </span>
-                </a>
-              </li>
-              <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
-              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -484,42 +463,47 @@
             <div class="form-group">
               <label for="editnumber" class="col-sm-3 control-label">Equipment Number</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" name="editnumber" id="editnumber" placeholder="Equipment Number" disabled>
+                <input type="text" class="form-control" value = "<?php echo $row98[5]?>" name="id" id="id" placeholder="Equipment Number">
               </div>
             </div>
             <div class="form-group">
               <label for="editname" class="col-sm-3 control-label">Name</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" name="editname" id="editname" placeholder="Name">
+                <input type="text" value = "<?php echo $row98[1]?>"class="form-control" name="name" id="name" placeholder="Name">
               </div>
             </div>
             <div class="form-group">
               <label for="editbrand" class="col-sm-3 control-label">Brand</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" name="editbrand" id="editbrand" placeholder="Brand">
+                <input type="text" value = "<?php echo $row98[2]?>" class="form-control" name="brand" id="brand" placeholder="Brand">
               </div>
             </div>
             <div class="form-group">
               <label for="edittype" class="col-sm-3 control-label">Equipment Type</label>
               <div class="col-sm-7">
-                <select class="form-control" name="edittype" id="edittype" onchange="showfield(this.options[this.selectedIndex].value)">
-                  <option value="" selected>Select Type</option>
+                <select class="form-control" name="type" id="dropdown">
+                  <option value = "<?php echo $row98[3]?>" selected>"<?php echo $row98[3]?></option>
                   <option value="electric">With Electricity</option>
                   <option value="nonelectric">Without Electricity</option>
                 </select>
               </div>
             </div>
-            <div id="div2"></div>
+            <div class="form-group">
+              <label for="editwattage" class="col-sm-3 control-label">Wattage</label>
+              <div class="col-sm-7">
+                <input type="number" min="0" class="form-control" name="editwattage" id="wattage" placeholder="0" disabled>
+              </div>
+            </div>
             <div class="form-group">
               <label for="editdescription" class="col-sm-3 control-label">Description</label>
               <div class="col-sm-7">
-                <textarea type="text" rows="5" class="form-control" name="editdescription" id="editdescription" placeholder="Description"></textarea>
+                <textarea type="text" rows="5" class="form-control" name="description" id="editdescription" placeholder="Description"><?php echo $row98[4]?></textarea>
               </div>
             </div>
           </div>
         <div class="box-footer">
           <button type="reset" name="reset"class="btn btn-default pull-left" >Reset Fields</button>
-          <button type="submit" name="inputSubmit" class="btn btn-success pull-right">Submit</button>
+          <button type="submit" name="submit" class="btn btn-success pull-right">Submit</button>
         </div>
         </form>
                 </div>
@@ -794,6 +778,15 @@
     $('.select2').select2()
 
   })
+
+  $('#dropdown').change(function() {
+  	if( $(this).val() == 'electric') {
+      $('#wattage').prop( "disabled", false );
+    } else {       
+      $('#wattage').prop( "disabled", true );
+    }
+  });
+
   function showfield(name){
   if(name=='electric'){
     document.getElementById('div1').innerHTML='<div class="form-group"><label for="wattage" class="col-sm-3 control-label">Wattage</label><div class="col-sm-7"><input type="number" min="0" class="form-control" name="wattage" id="wattage" placeholder="0"></div></div>';

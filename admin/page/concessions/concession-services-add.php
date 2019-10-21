@@ -1,34 +1,21 @@
+
 <?php
-  session_start();
-  include('../dbconfig.php');
-  //We need to use sessions, so you should always start sessions using the below code.
-  //If the user is not logged in redirect to the login page...
-  // Check if the user is already logged in, if yes then redirect him to welcome page
-  if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-    header("location: ../../login.php");
-    exit;
-  }
-  
-  $sql1 = "SELECT `CRM_Concession_Profile_SerialNo`, `CRM_Concession_Name` FROM `crm_concession_profile`";
-  $result1 = mysqli_query($conn,$sql1);
+session_start();
 
 
-  $sql = "SELECT `CRM_Service_Concession_Name`, `CRM_Concession_Services_Name`, `CRM_Concession_Services_Price_Range_Lower`, `CRM_Concession_Services_Price_Range_Higher`, `CRM_Concession_Services_Desc` FROM crm_concession_service";
-  $result = mysqli_query($conn,$sql);
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
 
- // $conName = $servName = $priceLow = $priceHigh = $servStatus = $servDesc ="";
+$userid = $_SESSION["id"];
 
-  $sql2 = "SELECT `CRM_Service_Concession_Name`, `CRM_Concession_Services_Name`, `CRM_Concession_Services_Price_Range_Lower`, `CRM_Concession_Services_Price_Range_Higher`, `CRM_Concession_Service_Status`, `CRM_Concession_Services_Desc` FROM crm_concession_service WHERE ";
-  $s1 = " ~ ";
-  $result2 = mysqli_query($conn,$sql2);
-  /*while($r = mysqli_fetch_row($result2)){
-    $conName = $r['CRM_Service_Concession_Name'];
-    $r['CRM_Concession_Services_Name'];
-    $r['CRM_Concession_Services_Price_Range_Lower'];
-    $r['CRM_Concession_Services_Price_Range_Higher'];
-    $r['CRM_Concession_Service_Status'];
-    $r['CRM_Concession_Services_Desc'];
-  }*/
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession.php");
+include("../../../php_action/insert/concession_service.php");
+
 
 
 ?>
@@ -73,7 +60,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -174,7 +161,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -233,7 +220,7 @@
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -260,7 +247,6 @@
             </a>
             <ul class="treeview-menu">
               <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -323,46 +309,6 @@
                   </ul>
               </li>
               <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
-            </ul>
-          </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
-          <li class="treeview">
-            <a href="../calendar/calendar.php">
-              <i class="fa fa-calendar"></i> <span>Calendar</span>
-              <span class="pull-right-container">
-                <small class="label pull-right label-info">17</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                    <span class="pull-right-container">
-                      <small class="label pull-right label-warning"> 3</small> 
-                      <small class="label pull-right bg-blue"> 14</small> 
-                    </span>
-                  </a>
-                </li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="../mail/mailbox.php">
-              <i class="fa fa-envelope"></i> <span>Mailbox</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-yellow">12</small>
-                <small class="label pull-right bg-green">16</small>
-                <small class="label pull-right bg-red">5</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="">
-                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
-                  <span class="pull-right-container">
-                    <span class="label label-primary pull-right">13</span>
-                  </span>
-                </a>
-              </li>
-              <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
-              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -511,7 +457,7 @@
                     <h3 class="box-title"><strong>Add New Services</strong></h3>
                     
                   </div>
-                  <form class="form-horizontal" action="" method="post">
+                  <form class="form-horizontal" method="post">
         <div class="box-body ">
             <center><h4>Services Details</h4></center>
             <br>
@@ -519,14 +465,13 @@
               <label for="inputProfile" class="col-sm-3 control-label">Profile Name</label>
         
               <div class="col-sm-7">
-              <select class="form-control select2" style="width: 100%;" name="inputProfile" id="inputProfile">
+              <select class="form-control select2" style="width: 100%;" name="id" id="inputProfile">
                   <option value="" selected>Select Profile</option>
-                  <option value= "" disabled>'Serial No' = 'Concession Name'</option>
                     <?php
-                      $s = " = ";
-                      while($r = mysqli_fetch_assoc($result1)){
+                      $s = " - ";
+                      while($row5 = mysqli_fetch_array($query5)){
                     ?>
-                  <option value="<?php echo $r['CRM_Concession_Name']; ?>" > <?php echo $r['CRM_Concession_Profile_SerialNo'].$s.$r['CRM_Concession_Name']; ?></option>
+                  <option value="<?php echo $row5[0]; ?>" > <?php echo $row5[0].$s.$row5[1]; ?></option>
                 <?php } ?>
               </select>
               </div>
@@ -535,20 +480,19 @@
               <label for="inputServiceName" class="col-sm-3 control-label">Service Name</label>
         
                 <div class="col-sm-7">
-                  <select class="form-control select2" style="width:100%" id="inputServiceName" name="inputServiceName">
-                    <option value=""selected>Select Service Name</option>
-                  </select>
+                  <input type = "text" class="form-control" placeholder = "Service Name" style="width:100%" id="inputServiceName" name="name">
+                    
                 </div>
             </div>
             <div class="form-group">
               <label for="inputServicePrice" class="col-sm-3 control-label">Price</label>
               <div class="row">
                 <div class="col-sm-3">
-                  <input type="number" min="0" class="form-control" id="inputServicePriceLower" name="inputServicePriceLower" placeholder="Price (lower)">
+                  <input type="number" min="0" class="form-control" id="inputServicePriceLower" name="lower" placeholder="Price (lower)">
                 </div>
                 <div class="col-sm-1" style="width:52px"><span><center>~</center> </span></div>
                 <div class="col-sm-3">
-                  <input type="number" min="0" class="form-control" id="inputServicePriceHigher" name="inputServicePriceHigher" placeholder="Price (Higher)">
+                  <input type="number" min="0" class="form-control" id="inputServicePriceHigher" name = "higher" placeholder="Price (Higher)">
                 </div>
               </div>
             </div>
@@ -556,13 +500,13 @@
               <label for="inputServiceDesc" class="col-sm-3 control-label">Description</label>
         
                 <div class="col-sm-7">
-                    <textarea class="form-control" id="inputServiceDesc" name="inputServiceDesc" rows="5"></textarea>
+                    <textarea class="form-control" id="inputServiceDesc" name="description" rows="5"></textarea>
                 </div>
             </div> 
         </div>
         <div class="box-footer">
           <button type="reset" name="reset"class="btn btn-default pull-left">Reset Fields</button>
-          <button type="button" name="inputSubmit" class="btn btn-success pull-right">Submit</button>
+          <button type="submit" name="submit" class="btn btn-success pull-right">Submit</button>
         </div>
       </form>
                 </div>

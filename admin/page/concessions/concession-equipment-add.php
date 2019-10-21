@@ -1,3 +1,28 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession.php");
+
+include("../../../php_action/insert/concession_equipment.php");
+
+
+$rand = mt_rand(0, 999999);
+$year = date('Y');
+$month = date('m');
+$day = date('d');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +65,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRMs</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -141,7 +166,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -200,7 +225,7 @@
             <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $row['lname']?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -227,7 +252,6 @@
             </a>
             <ul class="treeview-menu">
               <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -290,46 +314,6 @@
                   </ul>
               </li>
               <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
-            </ul>
-          </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
-          <li class="treeview">
-            <a href="../calendar/calendar.php">
-              <i class="fa fa-calendar"></i> <span>Calendar</span>
-              <span class="pull-right-container">
-                <small class="label pull-right label-info">17</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                    <span class="pull-right-container">
-                      <small class="label pull-right label-warning"> 3</small> 
-                      <small class="label pull-right bg-blue"> 14</small> 
-                    </span>
-                  </a>
-                </li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="../mail/mailbox.php">
-              <i class="fa fa-envelope"></i> <span>Mailbox</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-yellow">12</small>
-                <small class="label pull-right bg-green">16</small>
-                <small class="label pull-right bg-red">5</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="">
-                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
-                  <span class="pull-right-container">
-                    <span class="label label-primary pull-right">13</span>
-                  </span>
-                </a>
-              </li>
-              <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
-              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -475,47 +459,47 @@
                     <h3 class="box-title"><strong>Add New Equipment</strong></h3>
                     
                   </div>
-                  <form class="form-horizontal" action="" method="post">
+                  <form class="form-horizontal" method="post">
           <div class="box-body">
             <center><h4>Concession Equipment Details</h4></center>
             <br>
             <div class="form-group">
-              <label for="number" class="col-sm-3 control-label">Equipment Number</label>
+              <label for="number" class="col-sm-3 control-label">Profile</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" name="number" id="number" placeholder="Equipment Number" disabled>
+                <select class="form-control" name = "profile">
+
+                <?php while($row5 = mysqli_fetch_array($query5)){?>
+              <option value = "<?php echo $row5[0]?>"><?php echo $row5[0]?> ~ <?php echo $row5[1]?></option>
+                <?php }?>
+              </select>
               </div>
             </div>
             <div class="form-group">
               <label for="name" class="col-sm-3 control-label">Name</label>
               <div class="col-sm-7">
-                <SELECT class="select2 form-control" name="name" id="name">
-                  <option value="" selected>Select Equipment Name</option>
-                </SELECT>
+                <input type = "text" class="form-control" name="name" id="name">
               </div>
             </div>
             <div class="form-group">
               <label for="brand" class="col-sm-3 control-label">Brand</label>
               <div class="col-sm-7">
-                <SELECT class="select2 form-control" name="brand" id="brand">
-                  <option value="" selected>Select Equipment Name</option>
-                </SELECT>
+                <input type = "text" class="form-control" name="brand" id="brand">
               </div>
             </div>
             <div class="form-group">
               <label for="type" class="col-sm-3 control-label">Equipment Type</label>
               <div class="col-sm-7">
-                <select class="form-control" name="type" id="type">
+                <select class="form-control" name="type" id="dropdown">
                   <option value="" selected>Select Type</option>
                   <option value="electric">With Electricity</option>
                   <option value="nonelectric">Without Electricity</option>
                 </select>
               </div>
             </div>
-            <div id="div2"></div>
-            <div class="form-group" id ="electric">
+            <div class="form-group">
               <label for="wattage" class="col-sm-3 control-label">Wattage</label>
               <div class="col-sm-7">
-                <input type="number" min="0" class="form-control" name="wattage" id="wattage" placeholder="0">
+                <input type="number" min="0" class="form-control" name="wattage" id="wattage" placeholder="0" disabled>
               </div>
             </div>
             <div class="form-group">
@@ -527,7 +511,7 @@
           </div>
         <div class="box-footer">
           <button type="reset" name="reset"class="btn btn-default pull-left" >Reset Fields</button>
-          <button type="submit" name="inputSubmit" class="btn btn-success pull-right">Submit</button>
+          <button type="submit" name="submit" class="btn btn-success pull-right">Submit</button>
         </div>
         </form>
                 </div>
@@ -803,14 +787,13 @@
 
   })
 
-  $('#electric').hide()
-
-$('#type').change(function () {
-    $(this).find("option").each(function () {
-    $('#' + this.value).hide();
-    });
-$('#' + this.value).show();
-});
+  $('#dropdown').change(function() {
+  	if( $(this).val() == 'electric') {
+      $('#wattage').prop( "disabled", false );
+    } else {       
+      $('#wattage').prop( "disabled", true );
+    }
+  });
 
   function showfield(name){
   if(name=='electric'){

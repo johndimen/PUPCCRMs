@@ -1,23 +1,22 @@
 <?php
-  session_start();
-  include('../dbconfig.php');
-  //We need to use sessions, so you should always start sessions using the below code.
-  //If the user is not logged in redirect to the login page...
-  // Check if the user is already logged in, if yes then redirect him to welcome page
-  if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-    header("location: ../../login.php");
-    exit;
-  }
+session_start();
 
-  $sqlfood = "SELECT `CRM_Concession_Item_SerialNo`, `CRM_Concession_Item_Profile_Name`, `CRM_Concession_Item_Name`, `CRM_Concession_Item_Price`, `CRM_Concession_Item_Description`FROM crm_concession_items WHERE `CRM_Concession_Item_Type` = 'food'";
-  $sqlnonfood = "SELECT `CRM_Concession_Item_SerialNo`, `CRM_Concession_Item_Profile_Name`, `CRM_Concession_Item_Name`, `CRM_Concession_Item_Price`, `CRM_Concession_Item_Description`FROM crm_concession_items WHERE `CRM_Concession_Item_Type` = 'non-food'";
-  $sqlother = "SELECT `CRM_Concession_Item_SerialNo`, `CRM_Concession_Item_Profile_Name`, `CRM_Concession_Item_Name`, `CRM_Concession_Item_Price`, `CRM_Concession_Item_Description`FROM crm_concession_items WHERE `CRM_Concession_Item_Type` = 'other'";
 
-  $foodresult = mysqli_query($conn,$sqlfood);
-  $nonfoodresult = mysqli_query($conn,$sqlnonfood);
-  $otherresult = mysqli_query($conn,$sqlother);
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
 
-  ?>
+$userid = $_SESSION["id"];
+
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession_items.php");
+include("../../../php_action/insert/concession_items.php");
+
+?>
   <html>
   <head>
     <meta charset="utf-8">
@@ -59,7 +58,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>C</b>RM</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>PUP</b>CCRMs</span>
+        <?php echo $webtitle;?>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top">
@@ -160,7 +159,7 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                <span class="hidden-xs">Alexander Pierce</span>
+                <span class="hidden-xs"><?php echo''.$row['lname'].'';?></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
@@ -219,7 +218,7 @@
               <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>Alexander Pierce</p>
+              <p><?php echo''.$row['lname'].'';?></p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
@@ -246,7 +245,6 @@
               </a>
               <ul class="treeview-menu">
                 <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-                <li><a href="../../index.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -309,46 +307,6 @@
                     </ul>
                 </li>
                 <li><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
-              </ul>
-            </li>
-            <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
-            <li class="treeview">
-              <a href="../calendar/calendar.php">
-                <i class="fa fa-calendar"></i> <span>Calendar</span>
-                <span class="pull-right-container">
-                  <small class="label pull-right label-info">17</small>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                  <li>
-                    <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                      <span class="pull-right-container">
-                        <small class="label pull-right label-warning"> 3</small> 
-                        <small class="label pull-right bg-blue"> 14</small> 
-                      </span>
-                    </a>
-                  </li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="../mail/mailbox.php">
-                <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                <span class="pull-right-container">
-                  <small class="label pull-right bg-yellow">12</small>
-                  <small class="label pull-right bg-green">16</small>
-                  <small class="label pull-right bg-red">5</small>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class="">
-                  <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
-                    <span class="pull-right-container">
-                      <span class="label label-primary pull-right">13</span>
-                    </span>
-                  </a>
-                </li>
-                <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
-                <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -493,7 +451,7 @@
                         <div class="box-header with-border">
                             <h3 class="box-title"><strong>Add New Item/Product</strong></h3>
                         </div>
-                        <form class="form-horizontal" action="" method="post">
+                        <form class ="form-horizontal" method="post">
         <div class="box-body ">
             <center><h4>Items/Product Details</h4></center>
             <br>
@@ -501,14 +459,15 @@
                                 <label for="inputProfile" class="col-sm-3 control-label">Profile Name</label>
         
                                 <div class="col-sm-7">
-                                    <select class="form-control select2" style="width: 100%;" name="inputProfile" id="inputProfile">
+                                    <select class="form-control select" style="width: 100%;" name="profile" id="inputProfile">
                                         <option value="" selected>Select Profile</option>
                                         <option value= "" disabled>'Serial No' = 'Concession Name'</option>
+
                                         <?php
-                                            $s = " = ";
-                                            while($r = mysqli_fetch_assoc($result)){
+                                            
+                                            while($row = mysqli_fetch_array($query)){
                                         ?>
-                                        <option value="<?php echo $r['CRM_Concession_Name']; ?>" > <?php echo $r['CRM_Concession_Profile_SerialNo'].$s.$r['CRM_Concession_Name']; ?></option>
+                                        <option value="<?php echo $row[2]; ?>" > <?php echo $row[2] ?> - <?php echo $row[1]; ?></option>
                                         <?php } ?>
                                 </select>
                                 </div>
@@ -517,17 +476,14 @@
                                 <label for="inputItemName" class="col-sm-3 control-label">Item Name</label>
         
                                 <div class="col-sm-7">
-                                  <select  class="form-control select2" style="width:100%" id="inputItemName" name="inputItemName">
-                                    <option value=""selected>Select Item Name</option>
-                                    <option value=""></option>
-                                  </select>
+                                  <input class="form-control" style="width:100%" id="inputItemName" name="item"/>
                                   
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputItemType" class="col-sm-3 control-label">Item Type</label>
                                 <div class="col-sm-7">
-                                    <select class="form-control" style="width: 100%;" name="inputItemType" id="inputItemType">
+                                    <select class="form-control" style="width: 100%;" name="type" id="inputItemType">
                                         <option value = ""selected="">Select Type</option>
                                         <option value="food">Food</option>
                                         <option value="non-food">Non-Food</option>
@@ -539,21 +495,21 @@
                                 <label for="inputItemPrice" class="col-sm-3 control-label">Item Price</label>
         
                                 <div class="col-sm-7">
-                                    <input type="number" min ="0" class="form-control" id="inputItemPrice" name="inputItemPrice" placeholder="Item Price" disabled>
+                                    <input type="number" min ="0" class="form-control" id="inputItemPrice" name="price" placeholder="Item Price">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputItemDesc" class="col-sm-3 control-label">Item Description</label>
         
                                 <div class="col-sm-7">
-                                    <textarea type="text" class="form-control" id="inputItemDesc" name="inputItemDesc" rows="5" placeholder="Item Description"></textarea>
+                                    <textarea type="text" class="form-control" id="inputItemDesc" name="description" rows="5" placeholder="Item Description"></textarea>
                                 </div>
                             </div>
             
         </div>
         <div class="box-footer">
           <button type="reset" name="reset"class="btn btn-default pull-left">Reset Fields</button>
-          <button type="button" name="inputSubmit" class="btn btn-success pull-right">Submit</button>
+          <button type="submit" id = "send" name="send" class="btn btn-success pull-right">Submit</button>
         </div>
       </form>
                     </div>

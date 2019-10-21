@@ -1,3 +1,23 @@
+
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/report.php");
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +60,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PUP</b>CCRM</span>
+      <?php echo $webtitle?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -141,7 +161,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $row['lname']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -200,7 +220,7 @@
           <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p><?php echo $row['lname']?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -227,7 +247,6 @@
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-            <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -292,7 +311,7 @@
             <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
           </ul>
         </li>
-        <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
+        <!--<li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
         <li class="treeview">
           <a href="../calendar/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -331,7 +350,7 @@
             <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
             <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
           </ul>
-        </li>
+        </li>-->
         <li class="active treeview">
             <a>
               <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -363,6 +382,7 @@
                   <li><a href="../options/permission-admin.php"><i class="fa fa-circle-o"></i> Admin Permission</a></li>
               </ul>
             </li>
+            <li><a href="../options/role.php"><i class="fa fa-circle-o"></i> Admin Roles</a></li>
             <li><a href="../options/audit-trail.php"><i class="fa fa-circle-o"></i> Audit Trail</a></li>
           </ul>
         </li>
@@ -457,13 +477,15 @@
 
                                                 </tbody>
                                                 <tfoot>
+                                                <?php while ($row89 = mysqli_fetch_array($query89)){?>
                                                     <tr>
-                                                        <th>ID Number</th>
-                                                        <th>Stall No</th>
-                                                        <th>Evaluation</th>
-                                                        <th>Feedback Type</th>
-                                                        <th>Sender Type</th>
+                                                        <td><?php echo $row89[0]?></td>
+                                                        <td><?php echo $row89[1]?></td>
+                                                        <td><?php echo $row89[2]?></td>
+                                                        <td><?php echo $row89[3]?></td>
+                                                        <td><?php echo $row89[4]?></td>
                                                     </tr>
+                                                <?php }?>
                                                 </tfoot>
                                             </table>
                                         </div>
@@ -478,7 +500,7 @@
                             </div>
                         </div>
                       <div class="box-footer clearfix">
-                            <button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button>
+                            <a target = "_blank" href = "../../../paper-css-master/examples/feedback.php"><button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button></a>
                       </div>
                     </div>
 
@@ -513,12 +535,14 @@
 
                                                 </tbody>
                                                 <tfoot>
+                                                <?php while($row90 = mysqli_fetch_array($query90)){?>
                                                     <tr>
-                                                        <th>ID Number</th>
-                                                        <th>Name</th>
-                                                        <th>Type</th>
-                                                        <th>Priority</th>
+                                                        <td><?php echo $row90['id']?></td>
+                                                        <td><?php echo $row90['case_name']?></td>
+                                                        <td><?php echo $row90['type']?></td>
+                                                        <td><?php echo $row90['priority']?></td>
                                                     </tr>
+                                                <?php } ?>
                                                 </tfoot>
                                             </table>
                                         </div>
@@ -530,8 +554,8 @@
                             </div>
                           </div>
                           <div class="box-footer clearfix">
-                                <button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button>
-                          </div>
+                            <a target = "_blank" href = "../../../paper-css-master/examples/case.php"><button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button></a>
+                      </div>
                     </div>
 
                     <div class="box collapsed-box">
@@ -565,28 +589,30 @@
 
                                                 </tbody>
                                                 <tfoot>
+                                                <?php while ($row91 = mysqli_fetch_array($query91)){?>
                                                     <tr>
-                                                        <th>ID Number</th>
-                                                        <th>Task Name</th>
-                                                        <th>Case Number</th>
-                                                        <th>Date Duration</th>
-                                                        <th>Assigned Admin</th>
+                                                        <td><?php echo $row91[0]?></td>
+                                                        <td><?php echo $row91[1]?></td>
+                                                        <td><?php echo $row91[2]?></td>
+                                                        <td><?php echo $row91[3]?>~<?php echo $row91[4]?></td>
+                                                        
+                                                        <td><?php echo $row91[5]?> <?php echo $row91[6]?></td>
+                                                        
+                                                        
                                                     </tr>
-                                                </tfoot>
+                                                <?php }?>
                                             </table>
                                         </div>
                                         <!-- /.box-body -->
-                                        <div class="box-footer">
-                                            <button type="button" class="btn btn-primary" name="" id="">Generate Report</button>
-                                        </div>
+                                        <div class="box-footer clearfix">
+                            <a target = "_blank" href = "../../../paper-css-master/examples/task.php"><button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button></a>
+                      </div>
                                     </div>
                                     <!-- /.box -->
                                 </div>
                             </div>
                         </div>
-                        <div class="box-footer clearfix">
-                            <button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button>
-                        </div>
+                       
                       </div>
                       <!-- ./Non-Food-->
             
@@ -745,20 +771,25 @@
 
                                                 </tbody>
                                                 <tfoot>
+                                                <?php while($row92 = mysqli_fetch_array($query92)){?>
                                                     <tr>
-                                                        <th>ID Number</th>
-                                                        <th>Business Name</th>
-                                                        <th>Stall Category</th>
-                                                        <th>Stall Measurement</th>
-                                                        <th>Monthly Rental</th>
+                                                        <td><?php echo $row92['id']?></td>
+                                                        <td><?php echo $row92['name']?></td>
+                                                        <td><?php echo $row92['function']?></td>
+                                                        <td><?php echo $row92['measurement']?></td>
+                                                        
+                                                        <td><?php echo $row92['rental']?></td>
+                                                        
+                                                        
                                                     </tr>
+                                                <?php }?>
                                                 </tfoot>
                                             </table>
                                         </div>
                                         <!-- /.box-body -->
-                                        <div class="box-footer">
-                                            <button type="button" class="btn btn-primary" name="" id="">Generate Report</button>
-                                        </div>
+                                        <div class="box-footer clearfix">
+                            <a target = "_blank" href = "../../../paper-css-master/examples/stall.php"><button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button></a>
+                      </div>
                                     </div>
                                     <!-- /.box -->
                                 </div>
@@ -768,9 +799,7 @@
                                 <!-- /.box -->
                             </div>
                           </div>
-                          <div class="box-footer clearfix"> 
-                          <button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button>
-                          </div>
+                         
                     </div>
                     
                     <div class="box collapsed-box">
@@ -804,20 +833,23 @@
 
                                                 </tbody>
                                                 <tfoot>
+                                                <?php while($row93 = mysqli_fetch_array($query93)){?>
                                                     <tr>
-                                                        <th>ID Number</th>
-                                                        <th>Business Name</th>
-                                                        <th>Category</th>
-                                                        <th>Overall Evaluation</th>
-                                                        <th>Remark</th>
+                                                        <td><?php echo $row93[0]?></td>
+                                                        <td><?php echo $row93[1]?></td>
+                                                        <td><?php echo $row93[2]?></td>
+                                                        <td><?php echo $row93[3]?></td>
+                                                        <td></td>
+                                                        
                                                     </tr>
+                                                <?php }?>
                                                 </tfoot>
                                             </table>
                                         </div>
                                         <!-- /.box-body -->
-                                        <div class="box-footer">
-                                            <button type="button" class="btn btn-primary" name="" id="">Generate Report</button>
-                                        </div>
+                                        <div class="box-footer clearfix">
+                            <a target = "_blank" href = "../../../paper-css-master/examples/most.php"><button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button></a>
+                      </div>
                                     </div>
                                     <!-- /.box -->
                                 </div>
@@ -826,9 +858,6 @@
                                 </div>
                                 <!-- /.box -->
                             </div>
-                          </div>
-                          <div class="box-footer clearfix"> 
-                          <button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button>
                           </div>
                     </div>
                     
@@ -863,20 +892,23 @@
 
                                                 </tbody>
                                                 <tfoot>
+                                                <?php while($row94 = mysqli_fetch_array($query94)){?>
                                                     <tr>
-                                                        <th>ID Number</th>
-                                                        <th>Business Name</th>
-                                                        <th>Category</th>
-                                                        <th>Overall Evaluation</th>
-                                                        <th>Remark</th>
+                                                        <td><?php echo $row94[0]?></td>
+                                                        <td><?php echo $row94[1]?></td>
+                                                        <td><?php echo $row94[2]?></td>
+                                                        <td><?php echo $row94[3]?></td>
+                                                        <td></td>
+                                                        
                                                     </tr>
+                                                <?php }?>
                                                 </tfoot>
                                             </table>
                                         </div>
                                         <!-- /.box-body -->
-                                        <div class="box-footer">
-                                            <button type="button" class="btn btn-primary" name="" id="">Generate Report</button>
-                                        </div>
+                                        <div class="box-footer clearfix">
+                            <a target = "_blank" href = "../../../paper-css-master/examples/less.php"><button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button></a>
+                      </div>
                                     </div>
                                     <!-- /.box -->
                                 </div>
@@ -886,134 +918,14 @@
                                 <!-- /.box -->
                             </div>
                           </div>
-                          <div class="box-footer clearfix"> 
-                          <button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button>
-                          </div>
+                         
                     </div>
 
                     
             </div>
             <!-- /.col -->
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <!-- DONUT CHART -->
-                <div class="box  box-danger">
-                    <div class="box-header with-border">
-                    <h3 class="box-title">Feedback Report Chart</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="feedbackChart" style="height:250px"></canvas>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-                <div class="box  box-danger">
-                    <div class="box-header with-border">
-                    <h3 class="box-title">Cases Report Chart</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="caseChart" style="height:250px"></canvas>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-                <div class="box  box-danger">
-                    <div class="box-header with-border">
-                    <h3 class="box-title">Tasks Report Chart</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="taskChart" style="height:250px"></canvas>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-                <div class="box  box-danger">
-                    <div class="box-header with-border">
-                    <h3 class="box-title">Contract Report Chart</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="contractChart" style="height:250px"></canvas>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-            </div>
-            <div class="col-md-6">
-                <div class="box box-danger">
-                    <div class="box-header with-border">
-                    <h3 class="box-title">Concession Report Chart</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="concessionChart" style="height:250px"></canvas>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-                <div class="box box-danger">
-                    <div class="box-header with-border">
-                    <h3 class="box-title">Stall Category Report Chart</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="categoryChart" style="height:250px"></canvas>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-                <div class="box box-danger">
-                    <div class="box-header with-border">
-                    <h3 class="box-title">Most Outstanding Concession Report Chart</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="outstandingChart" style="height:250px"></canvas>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-                <div class="box box-danger">
-                    <div class="box-header with-border">
-                    <h3 class="box-title">Most Complained Concession Report Chart</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="complainChart" style="height:250px"></canvas>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-            </div>
-        </div>
+        
     </section>
     <!-- /.content -->
   </div>

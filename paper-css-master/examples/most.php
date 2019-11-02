@@ -45,6 +45,10 @@ $count = 0;
     
   <p>
       <h3>Most Outstanding Concessionaire Reports</h3>
+      INSTRUCTIONS:  This Outstanding Concessionaire Report Form is used to collect and report outstanding concessionaires that have higher evaluation in regards to the feedback of their customers. Completely print this report and Do 
+      NOT make copies of this report. Fax the completed report to
+      <br><br>
+      <center><h2>Summary</h2></center>
 <table border = "3" width= "100%">
 <thead>
                                                     <tr>
@@ -66,7 +70,7 @@ $count = 0;
                                                         <td><?php echo $row93[0]?></td>
                                                         <td><?php echo $row93[1]?></td>
                                                         <td><?php echo $row93[2]?></td>
-                                                        <td><?php echo $row93[3]?></td>
+                                                        <td><?php echo round($row93[3]);?> Star</td>
                                                         <td></td>
                                                         
                                                     </tr>
@@ -77,6 +81,9 @@ $count = 0;
   <h3 align = "right"><br>Total of : <?php echo $count?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
 
   </p>
+  <center>
+  <p>*********************** End of Document ***********************</p>
+  </center>
   </section>
 
 </body>

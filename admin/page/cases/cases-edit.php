@@ -261,8 +261,7 @@ include("../../../php_action/edit/case.php");
               </a>
               <ul class="treeview-menu">
                 <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class="active treeview">
@@ -275,7 +274,6 @@ include("../../../php_action/edit/case.php");
             </a>
             <ul class="treeview-menu">
               <li class="active"><a href="./cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="./trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class="label label-warning pull-right">4</span></a></li>
               <li><a href="./archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class= "label bg-green pull-right">4</span></a></li>
             </ul>
           </li>
@@ -288,7 +286,6 @@ include("../../../php_action/edit/case.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -425,7 +422,6 @@ include("../../../php_action/edit/case.php");
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="./cases.php"><i class="fa fa-th-large"></i> Casebox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./trash-cases.php"><i class="fa fa-trash"></i> trash</a></li>
                     <li><a href="./archive-cases.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>

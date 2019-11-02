@@ -237,8 +237,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class=" treeview">
@@ -251,7 +250,6 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
               <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -264,7 +262,6 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="./task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="./trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li class="active"><a href="./archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -299,7 +296,6 @@
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -398,7 +394,6 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li ><a href="./task.php"><i class="fa fa-th-large"></i> Taskbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./trash-task.php"><i class="fa fa-trash"></i> Trash</a></li>
                     <li class="active"><a href="./archive-task.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
@@ -525,8 +520,6 @@
                   </div>
           </div>
           <div class="box-footer">
-            <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Restore</button>
-            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
           </div>
                 </div>
               </div>

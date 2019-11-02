@@ -30,10 +30,11 @@ $userid = $_SESSION['id'];
 		$data1 = getPosts1();
 		            
 	
+		
 
 
 		$insert_Query = "INSERT INTO `task`(task_name, priority, date_start, date_due, task_desc, assigned_admin, case_id)
-				VALUES ('$data1[0]','$data1[1]','$data1[2]','$data1[3]','$data1[4]', '$data1[5]', $data1[6])";	
+				VALUES ('$data1[0]','$data1[1]','$data1[2]','$data1[3]','$data1[4]', '$data1[5]', '$data1[6]')";	
 
 		
 
@@ -46,6 +47,9 @@ $userid = $_SESSION['id'];
 					
 			if(mysqli_affected_rows($conn) > 0)
 			{
+				$insert_Query = "Update cases set status = 'tasked' where id = '$data1[6]'";	
+				$insert_Result = mysqli_query($conn, $insert_Query);
+				mysqli_affected_rows($conn);
 
 					echo "<script>alert('Successfully Saved!')</script>";
 					//echo "<script>location.href='concession.php'</script>";

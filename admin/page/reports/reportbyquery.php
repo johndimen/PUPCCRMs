@@ -239,8 +239,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+              <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -253,7 +252,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash <span class="label label-warning pull-right">4</span></a></li>
             <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
@@ -266,7 +264,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label label-warning pull-right">4</span></a></li>
             <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archived <span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
@@ -838,11 +835,49 @@
               <!-- /.box-header -->
               <form action="" method="post">
               <div class="box-body">
-                The body of the box
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-              <button type="button" class="btn btn-primary" name="generatereport">Generate Report</button>
+              <div class="box ">
+                      <div class="box-header with-border">
+                        <h3 class="box-title"><strong>Queried Reports</strong> </h3>
+                         
+                      </div>
+                        <div class="box-body">
+                            <div class="">
+                                <div class="">
+                                    <div class="box">
+                                        <div class="box-header">
+                                            <h3 class="box-title">Query Data Table</h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+                                            <table  class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /.box -->
+                                </div>
+                                
+                            </div>
+                            <div class="">
+                                
+                            </div>
+                        </div>
+                      <div class="box-footer clearfix">
+                            <a target = "_blank" href = "../../../paper-css-master/examples/feedback.php"><button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button></a>
+                      </div>
+                    </div>
+
               </div>
               </form>
             </div>

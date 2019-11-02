@@ -318,7 +318,6 @@ include("../../../php_action/retrieve/concession2.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -419,7 +418,6 @@ include("../../../php_action/retrieve/concession2.php");
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="./concession-experience.php"><i class="fa fa-th-large"></i> Experiencebox</a></li>
                     <li><a href="./concession-experience-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-experience-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -459,37 +457,41 @@ include("../../../php_action/retrieve/concession2.php");
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpnumber">Experience Number</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" value = "<?php echo $row40[4]?>" names="xpnumber" id="xpnumber" placeholder="Experience Number" disabled>
+                <label for=""class="form-control" names="xpnumber" id="xpnumber"><?php echo $row40[4]?></label>
+                <input type="hidden" class="form-control" value = "" names="xpnumber" id="xpnumber" placeholder="Experience Number" disabled>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpcons">Concession Profile</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" names="xpcons" id="xpcons" value = "<?php echo $row40[5]?> - <?php echo $row40[0]?>" placeholder="Concession Profile" disabled>
+                <label for="" class="form-control" names="xpcons" id="xpcons"><?php echo $row40[5]?> - <?php echo $row40[0]?></label>
+                <input type="hidden" class="form-control" names="xpcons" id="xpcons" value = "" placeholder="Concession Profile" disabled>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpplace">Place</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" value = "<?php echo $row40[1]?>" names="xpplace" id="xpplace" placeholder="Place" disabled>
+                <label for="" class="form-control" names="xpplace" id="xpplace"><?php echo $row40[1]?></label>
+                <input type="hidden" class="form-control" value = "" names="xpplace" id="xpplace" placeholder="Place" disabled>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpdatestart">Date Start</label>
               <div class="col-sm-7">
-                <input type="date" class="form-control" value = "<?php echo $row40[2]?>" name="xpdatestart" id="xpdatestart" placeholder="Date Started" disabled>
+                <label for="" class="form-control" name="xpdatestart" id="xpdatestart"><?php echo $row40[2]?></label>
+                <input type="hidden" class="form-control" name="xpdatestart" id="xpdatestart" placeholder="Date Started" disabled>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="xpdateend">Date Ended</label>
               <div class="col-sm-7">
-                <input type="date" class="form-control" value = "<?php echo $row40[3]?>" name="xpdateend" id="xpdateend" placeholder="Date Ended" disabled>
+                <label for="" class="form-control" name="xpdateend" id="xpdateend"><?php echo $row40[3]?></label>
+                <input type="hidden" class="form-control" value = "" name="xpdateend" id="xpdateend" placeholder="Date Ended" disabled>
               </div>
             </div>
           </div>
           <div class="box-footer">
             <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
-            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
             <a type="button" name="edit" class="btn btn-primary pull-right" href="./concession-experience-edit.php?id=<?php echo $row40[4]?>">Edit</a>
           </div>
         </form>

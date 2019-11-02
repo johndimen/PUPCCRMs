@@ -1,5 +1,7 @@
 <?php 
-$sql89 = "SELECT f.id, c.stall, fd.evaluation, fd.feedback_type, s.type from ((feedback f JOIN feedback_details fd ON f.feedback_info_id = fd.id) JOIN sender s on f.sender_id = s.id) join concession c on f.store_id = c.id WHERE f.deletion = '1'";
+$sql89 = "SELECT f.id, c.stall, fd.evaluation, fd.feedback_type, s.type from ((feedback f JOIN feedback_details fd ON f.feedback_info_id = fd.id) JOIN sender s on f.sender_id = s.id) join concession c on f.store_id = c.id WHERE f.deletion = '1'
+
+";
 $query89 = mysqli_query($conn, $sql89);
 
 $sql90 = "SELECT * FROM cases wHERE deletion = '1'";
@@ -15,7 +17,7 @@ $query92 = mysqli_query($conn, $sql92);
 $sql93 = "SELECT f.id, c.name, c.function, sum(fd.evaluation)/count(f.id) from ((feedback f JOIN feedback_details fd ON f.feedback_info_id = fd.id) JOIN sender s on f.sender_id = s.id) join concession c on f.store_id = c.id WHERE f.deletion = '1' group by f.serial order by 4 desc";
 $query93 = mysqli_query($conn, $sql93);
 
-$sql94 = "SELECT f.id, c.name, c.function, sum(fd.evaluation)/count(f.id) from ((feedback f JOIN feedback_details fd ON f.feedback_info_id = fd.id) JOIN sender s on f.sender_id = s.id) join concession c on f.store_id = c.id WHERE f.deletion = '1' group by f.serial order by 4 desc";
+$sql94 = "SELECT f.id, c.name, c.function, sum(fd.evaluation)/count(f.id) from ((feedback f JOIN feedback_details fd ON f.feedback_info_id = fd.id) JOIN sender s on f.sender_id = s.id) join concession c on f.store_id = c.id WHERE f.deletion = '1' group by f.serial order by 4 asc";
 $query94 = mysqli_query($conn, $sql94);
 
 

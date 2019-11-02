@@ -44,8 +44,13 @@ $count = 0;
 
     
   <p>
-      <h3>Case Reports</h3>
+      <h3>Case Report Form</h3>
+      INSTRUCTIONS:  This Case Report Form is used to collect and report adverse cases that occurs to PUP Concessionaires in regards to the feedback of their customers. Completely print this report and Do 
+      NOT make copies of this report. Fax the completed report to
+      <br><br>
+      <center><h2>Summary</h2></center>
 <table border = "3" width= "100%">
+  <p></p>
                                                 <thead>
                                                     <tr>
                                                         <th>ID Number</th>
@@ -74,6 +79,9 @@ $count = 0;
   <h3 align = "right"><br>Total of : <?php echo $count?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
 
   </p>
+  <center>
+  <p>*********************** End of Document ***********************</p>
+  </center>
   </section>
 
 </body>

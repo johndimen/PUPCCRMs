@@ -251,7 +251,6 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="./cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="./trash-cases.php"><i class="fa fa-circle-o"></i> Trash  <span class= "label bg-green pull-right">4</span></a></li>
               <li class="active"><a href="./archive-cases.php"><i class="fa fa-circle-o"></i> Archive  <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -264,7 +263,6 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -399,7 +397,6 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li ><a href="./cases.php"><i class="fa fa-th-large"></i> Casebox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./trash-cases.php"><i class="fa fa-trash"></i>Trash</a></li>
                     <li class="active"><a href="./archive-cases.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
@@ -436,34 +433,38 @@
           <center><h4>Case Details</h4></center>
           <br>
           <div class="form-group">
+            <label for="viewCasenumber" class="col-sm-3 control-label">Case Number</label>
+            <div class="col-sm-8">
+              <label for="viewCasenumber" id="viewCasenumber" name="viewCasenumber"></label>
+            </div>
+          </div>
+          <div class="form-group">
             <label for="viewCasename" class="col-sm-3 control-label">Case Name</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="viewCasename" name="viewCasename" placeholder="Case Name" disabled>
+              <label for="viewCasename" id="viewCasename" name="viewCasename"></label>
             </div>
           </div>
           <div class="form-group">
             <label for="casetype" class="col-sm-3 control-label">Case Type</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="viewCasetype" name="viewCasetype" placeholder="Case Type" disabled>
+              <label for="casetype" id="viewCasetype" name="viewCasetype"></label>
             </div>
           </div>
           <div class="form-group">
             <label for="viewPriority" class="col-sm-3 control-label">Priority</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="viewPriority" name="viewPriority" placeholder="Priority" disabled>
+              <label for="viewPriority" id="viewPriority" name="viewPriority"></label>
             </div>
           </div>
           <div class="form-group">
             <label for="viewDescription" class="col-sm-3 control-label">Case Description</label>
       
             <div class="col-sm-8">
-              <textarea class="form-control" id="viewDescription" name="viewDescription" rows="5" placeholder="Case Description" disabled></textarea>
+              <label for="" id="viewDescription" name="viewDescription"></label>
             </div>
           </div>  
         </div>
         <div class="modal-footer">
-          <button type="button" name="restore" class="btn btn-success" data-toggle="modal" data-target="#restoreModal">Restore</button>
-          <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
         </div>
                 </div>
               </div>

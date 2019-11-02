@@ -298,7 +298,6 @@
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">

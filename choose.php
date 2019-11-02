@@ -73,7 +73,7 @@
                         <div class="row height align-items-center justify-content-center">
                             <div class="col-lg-10">
                                 <div class="generic-banner-content">
-                                    <h2 class="text-white">Feedback</h2>
+                                    <h2 class="text-white">Customer Feedback Form   </h2>
                                     <p class="text-white">Give Us your Feedback!<br>you dont have to worry about your feedback data <br> it is secured here inside our system.</p>
                                 </div>
                             </div>
@@ -92,10 +92,38 @@
             <div class="container">
                 <div class="section-top-border" id="choose">
 <!--start here the form ***********************************************************************-->
-                    
+                    <div class="col-md-12 mt-sm-30">
+                                <h4 class="mb-20">COMPLAINTS, COMMENDATIONS AND SUGGESTIONS</h4>
+                                <h5>We value your <b>opinion</b> </h5>
+                                <p>Your opinion is <b>important</b>. We welcome any feedback you may have, positive or negative, about our people, concessions, services, or websites.</p>
+                                <h5>How we define <b>complaints</b> , <b>Commendation</b> and <b>Suggestions</b> </h5>
+                                <p>We define a <b>commendations</b> as a positive expression of your experience with our concessionaire and their services.</p>
+                                <p>We define a <b>complaints</b> as an expression of your dissatisfaction with the items, products, or services our concessionaire has provided.</p>
+                                <p>We define an <b>suggestions</b> as a suggesting action for something that you feel incorrect, unfair, the need of change or/and would like to reconsider.</p>
+                                <h5>How to make a <b>complaint</b>, <b>commendation</b> and/or <b>suggestion</b></h5>
+                                <p>Please contact the RGO office to express your views, explain your situation or ask for assistance. To enable us to respond, please provide your full name, Identification Number, e-mail address and a contact telephone number at the end of feedback form.</p>
+                                <p>Alternatively you can contact Us:</p>
+                                <div class="">
+									<ul class="unordered-list">
+										<li>By e-mail: - feedback.RGO@pup.edu.ph</li>
+										<li>By telephone: (Monday to Friday, 0730 to 1800 GMT)
+                                            <ul>
+                                                <li>+632 310-9219</li>
+                                                <li>+632 335-1777 or +632 335-1787 local 350</li>
+                                            </ul> 
+                                        </li>
+										<li>By post:
+											<ul>
+												<li>2/F East Wing, Main Building, PUP A. Mabini Campus, Anonas St., Sta. Mesa, Manila 1016</li>
+											</ul>
+										</li>
+										<li>By continuing to use this online feedback form by choosing</li>
+									</ul>
+								</div>
+							</div>
 
-                    <div class="col-md-12">
-                            <center><strong>Please Choose</strong>  </center>
+                    <div class="col-md-12 mt-30">
+                            <center><strong> <h3>Please Choose</h3> </strong>  </center>
                             <center><p>if you have <b>Complaints</b>, Choose <b>Complaint Button</b>, if you want to take our <b>Survey</b> and make <b>Suggestions</b> or <b>Commendations</b>, choose <b>Suggestions/Commendation Survey</b> Button</p></center>
                         <div class="row">
                             <div class="col-md-6">

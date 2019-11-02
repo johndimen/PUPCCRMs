@@ -141,7 +141,6 @@ include("php_action/retrieve/feedback.php");
                                 </div>
                                 <br>
                                 <div class="col-md-12">
-                                    <br>
                                     <div class="col-md-12">
                                         <h5>Simple Survey</h5>
                                         <p>Please, <b>Truthfully</b> answer all the survey questions.</p>
@@ -152,73 +151,319 @@ include("php_action/retrieve/feedback.php");
                                             <br>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <div class="form-check">
-                                                        <P>How would you rate the hygiene of each stall employee?</P>
+                                                    <div class="form-check mt-20">
+                                                        <h6 class="mb-10">How would you rate the hygiene of each stall employee?</h6>
                                                         <label for="hygiene" class="form-text-label" >
-                                                        <select name = "hygiene" class = "default-select" id = "default-select" required>
+                                                        <!--<select name = "hygiene" class = "default-select" id = "default-select" required>
 			    					    					<option value = "5">Outstanding</option>
 		    					    						<option value = "4">Very Good</option>
                                                             <option value = "3" selected>Neutral</option>
 	    					    							<option value = "2">Bad</option>
     					    								<option value = "1">Unsatisfactory</option>
-				    								    </select></label>
+                                                        </select>-->
+                                                        <div class="switch-wrap d-flex justify-content-between">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="hygiene" id="hygiene5" value="5" >
+                                                                            <label for="hygiene5"></label>
+                                                                        </div>
+                                                                        <label for="hygiene5">Strongly Agree</label>
+                                                                    </div>
+                                                                    <div class="col-md-2 " >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="hygiene" id="hygiene4" value="4" >
+                                                                            <label for="hygiene4"></label>
+                                                                        </div>
+                                                                        <label for="hygiene4">Agree</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2 " >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="hygiene" id="hygiene3" value="3" >
+                                                                            <label for="hygiene3"></label>
+                                                                        </div>
+                                                                        <label for="hygiene3">Undecided</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="hygiene" id="hygiene2" value="2" >
+                                                                            <label for="hygiene2"></label>
+                                                                        </div>
+                                                                        <label for="hygiene2">Disagree</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="hygiene" id="hygiene1" value="1" >
+                                                                            <label for="hygiene1"></label>
+                                                                        </div>
+                                                                        <label for="hygiene1">Strongly Disgree</label> 
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </label>
                                                     </div>
-                                                    <div class="form-check">
-                                                        <P>How would you rate the hospitality of the stall employee(s)?</P>
+                                                    <div class="form-check mt-20">
+                                                        <h6 class="mb-10">How would you rate the hospitality of the stall employee(s)?</h6>
                                                         <label for="hospitable" class="form-text-label" >
-                                                        <select name = "hospitable" class = "default-select" id = "default-select" required>
+                                                        <!--<select name = "hospitable" class = "default-select" id = "default-select" required>
 					    					    			<option value = "5">Outstanding</option>
 				    					    				<option value = "4">Very Good</option>
                                                             <option value = "3" selected>Neutral</option>
 			    					    					<option value = "2">Bad</option>
 		    					    						<option value = "1">Unsatisfactory</option>
-	    					    						</select></label>
+                                                        </select>-->
+                                                        <div class="switch-wrap d-flex justify-content-between">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="hospitable" id="hospitable5" value="5" >
+                                                                            <label for="hospitable5"></label>
+                                                                        </div>
+                                                                        <label for="hospitable5">Strongly Agree</label>
+                                                                    </div>
+                                                                    <div class="col-md-2 " >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="hospitable" id="hospitable4" value="4" >
+                                                                            <label for="hospitable4"></label>
+                                                                        </div>
+                                                                        <label for="hospitable4">Agree</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2 " >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="hospitable" id="hospitable3" value="3" >
+                                                                            <label for="hospitable3"></label>
+                                                                        </div>
+                                                                        <label for="hospitable3">Undecided</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="hospitable" id="hospitable2" value="2" >
+                                                                            <label for="hospitable2"></label>
+                                                                        </div>
+                                                                        <label for="hospitable2">Disagree</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="hospitable" id="hospitable1" value="1" >
+                                                                            <label for="hospitable1"></label>
+                                                                        </div>
+                                                                        <label for="hospitable1">Strongly Disgree</label> 
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </label>
                                                     </div>
-                                                    <div class="form-check">
-                                                        <P>How would you rate the stall items/products/services pricing?</P>
+                                                    <div class="form-check mt-20">
+                                                        <h6 class="mb-10">How would you rate the stall items/products/services pricing?</h6>
                                                         <label for="price" class="form-text-label" >
-                                                            <select name = "price" class = "default-select" id = "default-select" required>
+                                                            <!--<select name = "price" class = "default-select" id = "default-select" required>
 			    									    	    <option value = "5">Outstanding</option>
 				    				    			    		<option value = "4">Very Good</option>
                                                                 <option value = "3" selected>Neutral</option>
 					    				    	    			<option value = "2">Bad</option>
 						    			        				<option value = "1">Unsatisfactory</option>
-							    	    				</select></label>
+                                                            </select>-->
+                                                            <div class="switch-wrap d-flex justify-content-between">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="price" id="price5" value="5" >
+                                                                            <label for="price5"></label>
+                                                                        </div>
+                                                                        <label for="price5">Strongly Agree</label>
+                                                                    </div>
+                                                                    <div class="col-md-2 " >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="price" id="price4" value="4" >
+                                                                            <label for="price4"></label>
+                                                                        </div>
+                                                                        <label for="price4">Agree</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2 " >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="price" id="price3" value="3" >
+                                                                            <label for="price3"></label>
+                                                                        </div>
+                                                                        <label for="price3">Undecided</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="price" id="price2" value="2" >
+                                                                            <label for="price2"></label>
+                                                                        </div>
+                                                                        <label for="price2">Disagree</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="price" id="price1" value="1" >
+                                                                            <label for="price1"></label>
+                                                                        </div>
+                                                                        <label for="price1">Strongly Disgree</label> 
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-check">
-                                                        <P>How would you rate the items'/products' condition?</P>
+                                                    <div class="form-check mt-20">
+                                                        <h6 class="mb-10">How would you rate the items'/products' condition?</h6>
                                                         <label for="condition" class="form-text-label" >
-                                                            <select name = "condition" class = "default-select" id = "default-select" required>
+                                                            <!--<select name = "condition" class = "default-select" id = "default-select" required>
 												            	<option value = "5">Outstanding</option>
 							            						<option value = "4">Very Good</option>
                                                                 <option value = "3" selected>Neutral</option>
 										            			<option value = "2">Bad</option>
 													            <option value = "1">Unsatisfactory</option>
-												            </select></label>
+                                                            </select>-->
+                                                            <div class="switch-wrap d-flex justify-content-between">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="condition" id="condition5" value="5" >
+                                                                            <label for="condition5"></label>
+                                                                        </div>
+                                                                        <label for="condition5">Strongly Agree</label>
+                                                                    </div>
+                                                                    <div class="col-md-2 " >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="condition" id="condition4" value="4" >
+                                                                            <label for="condition4"></label>
+                                                                        </div>
+                                                                        <label for="condition4">Agree</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2 " >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="condition" id="condition3" value="3" >
+                                                                            <label for="condition3"></label>
+                                                                        </div>
+                                                                        <label for="condition3">Undecided</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="condition" id="condition2" value="2" >
+                                                                            <label for="condition2"></label>
+                                                                        </div>
+                                                                        <label for="environment2">Disagree</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="condition" id="condition1" value="1" >
+                                                                            <label for="condition1"></label>
+                                                                        </div>
+                                                                        <label for="condition1">Strongly Disgree</label> 
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </label>
                                                     </div>
-                                                    <div class="form-check">
-                                                        <P>How would you rate the area around the stall?</P>
+                                                    <div class="form-check mt-20">
+                                                        <h6 class="mb-10">How would you rate the area around the stall?</h6>
                                                         <label for="environment" class="form-text-label" >
-                                                            <select name = "environment" class = "default-select" id = "default-select" required>
+                                                            <!--<select name = "environment" class = "default-select" id = "default-select" required>
 				            									<option value = "5">Outstanding</option>
 							            						<option value = "4">Very Good</option>
                                                                 <option value = "3" selected >Neutral</option>
 										        			    <option value = "2">Bad</option>
 													            <option value = "1">Unsatisfactory</option>
-												            </select></label>
+                                                            </select>
+                                                            -->
+                                                            <div class="switch-wrap d-flex justify-content-between">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="environment" id="environment5" value="5" >
+                                                                            <label for="environment5"></label>
+                                                                        </div>
+                                                                        <label for="environment5">Strongly Agree</label>
+                                                                    </div>
+                                                                    <div class="col-md-2 " >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="environment" id="environment4" value="4" >
+                                                                            <label for="environment4"></label>
+                                                                        </div>
+                                                                        <label for="environment4">Agree</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2 " >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="environment" id="environment3" value="3" >
+                                                                            <label for="environment3"></label>
+                                                                        </div>
+                                                                        <label for="environment3">Undecided</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="environment" id="environment2" value="2" >
+                                                                            <label for="environment2"></label>
+                                                                        </div>
+                                                                        <label for="environment2">Disagree</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="environment" id="environment1" value="1" >
+                                                                            <label for="environment1"></label>
+                                                                        </div>
+                                                                        <label for="environment1">Strongly Disgree</label> 
+                                                                    </div>
+                                                                
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </label>
                                                     </div>
-                                                    <div class="form-check">
-                                                        <P>How would you rate the services of the stall?</P>
+                                                    <div class="form-check mt-20">
+                                                        <h6 class="mb-10">How would you rate the services of the stall?</h6>
                                                         <label for="services" class="form-text-label" >
-                                                            <select name = "services" class = "default-select" id = "default-select" required>
+                                                            <!--<select name = "services" class = "default-select" id = "default-select" required>
 				            									<option value = "5">Outstanding</option>
 							            						<option value = "4">Very Good</option>
                                                                 <option value = "3" selected selected>Neutral</option>
 										        			    <option value = "2">Bad</option>
 													            <option value = "1">Unsatisfactory</option>
-												            </select></label>
+                                                            </select>
+                                                            -->
+                                                            <div class="switch-wrap d-flex justify-content-between">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="services" id="services5" value="5" >
+                                                                            <label for="services5"></label>
+                                                                        </div>
+                                                                        <label for="services5">Strongly Agree</label>
+                                                                    </div>
+                                                                    <div class="col-md-2 " >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="services" id="services4" value="4" >
+                                                                            <label for="services4"></label>
+                                                                        </div>
+                                                                        <label for="services4">Agree</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2 " >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="services" id="services3" value="3" >
+                                                                            <label for="services3"></label>
+                                                                        </div>
+                                                                        <label for="services3">Undecided</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="services" id="services2" value="2" >
+                                                                            <label for="services2"></label>
+                                                                        </div>
+                                                                        <label for="services2">Disagree</label> 
+                                                                    </div>
+                                                                    <div class="col-md-2" >
+                                                                        <div class="primary-radio">
+                                                                            <input type="radio" name="services" id="services1" value="1" >
+                                                                            <label for="services1"></label>
+                                                                        </div>
+                                                                        <label for="services1">Strongly Disgree</label> 
+                                                                    </div>
+                                                                
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -266,8 +511,8 @@ include("php_action/retrieve/feedback.php");
                                                         <P>How's the service(s)?</P>
                                                         <label for="question2" class="form-text-label" >
                                                         <select name = "service" class = "default-select" id = "default-select" required>
-				    	    								<option value = "1">Outstanding</option>
-					    	    							<option value = "2">Very Good</option>
+				    	    								<option value = "1"></option>
+					    	    							<option value = "2">Very Good</option>Outstanding
 						    	    						<option value = "3" selected>Good</option>
 							    	    					<option value = "4">Bad</option>
 								    	    			</select> </label>
@@ -280,34 +525,34 @@ include("php_action/retrieve/feedback.php");
                                     <div class="row">
                                         <div class="col-md-6">
                                             <h5>Your Stall Evaluation</h5>
-                                            <fieldset id='rating' class="rating" style="padding-left: 10px; padding-right:15px">
+                                            <fieldset id='rating' class="rating  mt-10" style="padding-left: 10px; padding-right:15px">
                                                 
                                                 <input class="stars" type="radio" id="star53" name="rating" value="5" />
-                                                <label class = "full" for="star53" title="Awesome - 5 stars"></label>
+                                                <label class = "full" for="star53" title="Strongly Agree - 5 stars"></label>
                                                 <input class="stars" type="radio" id="star4half3" name="rating" value="4.5" />
-                                                <label class="half" for="star4half3" title="Pretty good - 4.5 stars"></label>
+                                                <label class="half" for="star4half3" title="Very Agree - 4.5 stars"></label>
                                                 <input class="stars" type="radio" id="star43" name="rating" value="4" />
-                                                <label class = "full" for="star43" title="Pretty good - 4 stars"></label>
+                                                <label class = "full" for="star43" title="Agree - 4 stars"></label>
                                                 <input class="stars" type="radio" id="star3half3" name="rating" value="3.5" />
-                                                <label class="half" for="star3half3" title="Meh - 3.5 stars"></label>
+                                                <label class="half" for="star3half3" title="Slightly Agree - 3.5 stars"></label>
                                                 <input class="stars" type="radio" id="star33" name="rating" value="3" />
-                                                <label class = "full" for="star33" title="Meh - 3 stars"></label>
+                                                <label class = "full" for="star33" title="Undecided - 3 stars"></label>
                                                 <input class="stars" type="radio" id="star2half3" name="rating" value="2.5" />
-                                                <label class="half" for="star2half3" title="Kinda bad - 2.5 stars"></label>
+                                                <label class="half" for="star2half3" title="Slightly Disagree - 2.5 stars"></label>
                                                 <input class="stars" type="radio" id="star23" name="rating" value="2" />
-                                                <label class = "full" for="star23" title="Kinda bad - 2 stars"></label>
+                                                <label class = "full" for="star23" title="Disagree - 2 stars"></label>
                                                 <input class="stars" type="radio" id="star1half3" name="rating" value="1.5" />
-                                                <label class="half" for="star1half3" title="Meh - 1.5 stars"></label>
+                                                <label class="half" for="star1half3" title="Very Disagree - 1.5 stars"></label>
                                                 <input class="stars" type="radio" id="star13" name="rating" value="1" />
-                                                <label class = "full" for="star13" title="Sucks big time - 1 star"></label>
+                                                <label class = "full" for="star13" title="Strongly Disagree - 1 star"></label>
                                                 <input class="stars" type="radio" id="starhalf3" name="rating" value="0.5" />
-                                                <label class="half" for="starhalf3" title="Sucks big time - 0.5 stars"></label>
+                                                <label class="half" for="starhalf3" title="Completely Disagree - 0.5 stars"></label>
                                             </fieldset>
-                                            <br><br><p><b>Note:</b><br><b>5 stars</b> is the highest evaluation,<br><b> 1 star</b> is the lowest evaluation</p>
+                                            <br><br><p><b>Note:</b><br><b>5 stars</b> is the highest evaluation,<br><b> 0.5 star</b> is the lowest evaluation</p>
                                         </div> 
                                             <br>
                                             <br>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 ">
                                                 <h5>Feedback Type</h5>
                                                 <label for="feedbacktype">Suggestion and Commendation</label>
                                                 <input type="hidden" name="feedbacktype" value="suggestion/commendation">
@@ -315,7 +560,7 @@ include("php_action/retrieve/feedback.php");
                                     </div>
                                     <br>
                                     <h5>Your message</h5>
-                                    <p> Please write down below any of your suggestions and commendations and let US know</p>
+                                    <p> Please write down below any of your suggestions and commendations and let Us know</p>
                                     <textarea id ="message" name = "message" class="single-textarea" rows="5" style="line-height:20px;border-radius: 5px;" placeholder="Suggestions and Commendations here.." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Suggestions and Commendations here..'" required></textarea>
                                 </div>
                                 
@@ -334,7 +579,7 @@ include("php_action/retrieve/feedback.php");
 							<hr>
                         <br>
                            <h5>Feedback Details</h5>
-                            <p>(It is <b>required</b> to fill up this form.)  All fields mark with <b>*</b> are <b>required</b>.</p>
+                            <p>All fields mark with <b>*</b> are <b>required</b>.</p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="col-sm-8">
@@ -371,7 +616,8 @@ include("php_action/retrieve/feedback.php");
                         
                         
                         <hr>
-						<input type = "text" hidden = "true" value = "true" name = "sample">
+                        <input type = "text" hidden = "true" value = "true" name = "sample">
+                        <a href="./survey.php" class="genric-btn primary circle mt-10"><span><i class="fa fa-arrow-left"></i> </span>Prev</a>
                         <button type = "submit" id = "feedback" name = "submit" class="genric-btn primary circle arrow pull-right mt-10"><strong> Send</strong><span class="lnr lnr-rocket"></span></button>
                     </form>
 					</div>

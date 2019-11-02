@@ -247,7 +247,6 @@ include("../../../php_action/insert/contract.php");
             </a>
             <ul class="treeview-menu">
               <li ><a href="../../index.php"><i class="fa fa-circle-o"></i>General Dashboard</a></li>
-              <li><a href="../../index2.php"><i class="fa fa-circle-o"></i>Report Dashboard</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -260,8 +259,7 @@ include("../../../php_action/insert/contract.php");
               </a>
               <ul class="treeview-menu">
                 <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class=" treeview">
@@ -274,7 +272,6 @@ include("../../../php_action/insert/contract.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash <span class= "label bg-green pull-right">4</span></a></li>
               <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -287,7 +284,6 @@ include("../../../php_action/insert/contract.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -312,46 +308,6 @@ include("../../../php_action/insert/contract.php");
               <li class="active"><a href="./concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
             </ul>
           </li>
-          <li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
-          <li class="treeview">
-            <a href="../calendar/calendar.php">
-              <i class="fa fa-calendar"></i> <span>Calendar</span>
-              <span class="pull-right-container">
-                <small class="label pull-right label-info">17</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-                  <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                    <span class="pull-right-container">
-                      <small class="label pull-right label-warning"> 3</small> 
-                      <small class="label pull-right bg-blue"> 14</small> 
-                    </span>
-                  </a>
-                </li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="../mail/mailbox.php">
-              <i class="fa fa-envelope"></i> <span>Mailbox</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-yellow">12</small>
-                <small class="label pull-right bg-green">16</small>
-                <small class="label pull-right bg-red">5</small>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="">
-                <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
-                  <span class="pull-right-container">
-                    <span class="label label-primary pull-right">13</span>
-                  </span>
-                </a>
-              </li>
-              <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
-              <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
-            </ul>
-          </li>
           <li class="treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -361,7 +317,6 @@ include("../../../php_action/insert/contract.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -462,9 +417,7 @@ include("../../../php_action/insert/contract.php");
                   <ul class="nav nav-pills nav-stacked">
                     <li><a href="./concession-contract.php"><i class="fa fa-th-large"></i> Contractbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./concession-contract-due.php"><i class="fa fa-exclamation-circle"></i> Contract Due</a></li>
                     <li><a href="./concession-contract-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-contract-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -561,9 +514,9 @@ include("../../../php_action/insert/contract.php");
             </div>
           </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6" style="padding-right:25px">
           <div class="form-group">
-            <label for="contractname" class ="col-sm-3 control-label">OIC Name</label>
+            <label for="contractname" class ="col-sm-3 control-label">Representative Name</label>
             <div class="col-sm-9">
               <input type="text" style="margin-bottom:5px" class="form-control" id="consignorfirstname" name="oic_f" placeholder="First Name">
             
@@ -582,6 +535,15 @@ include("../../../php_action/insert/contract.php");
             </div>
           </div>
           <div class="form-group">
+            <label for="datedue" class ="col-sm-3 control-label">Date Due</label>
+            <div class="col-sm-9 input-group date" style="width: 71.3%;padding-left: 15px;">
+              <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+              </div>
+              <input type="date" class="form-control pull-right" id="due" name="due" placeholder="mm/dd/yyyy">
+            </div>
+          </div>
+          <div class="form-group">
             <label for="duration" class ="col-sm-3 control-label">Duration</label>
             <div class="col-sm-9">
               <select class="form-control" id="datesigned" name="duration">
@@ -594,12 +556,11 @@ include("../../../php_action/insert/contract.php");
           </div>
           <hr>
             <div class="form-group">
-                <label for="scancopy" class="col-sm-4 control-label">Scan Copy of Contract</label>
+                <label for="scancopy" class="col-sm-3 control-label">Scan Copy of Contract</label>
                 <div class="col-sm-8">
                     <input type="file" name="file" id="scancopy" class="form-control" >
                 </div>
             </div>
-          </div>
           </div>
         </div>
           <div class="box-footer">
@@ -827,7 +788,7 @@ include("../../../php_action/insert/contract.php");
           </div>
           <hr>
                                       <div class="form-group">
-                                        <label for="scancopy" class="col-sm-4 control-label">Scan Copy of Contract</label>
+                                        <label for="scancopy" class="col-sm-3 control-label">Scan Copy of Contract</label>
                                         <div class="col-sm-8">
                                           <input type="file" name="scancopy" id="scancopy" class="form-control" >
                                         </div>
@@ -951,7 +912,7 @@ include("../../../php_action/insert/contract.php");
           </div>
           <hr>
                                       <div class="form-group">
-                                        <label for="scancopy" class="col-sm-4 control-label">Scan Copy of Contract</label>
+                                        <label for="scancopy" class="col-sm-3 control-label">Scan Copy of Contract</label>
                                         <div class="col-sm-8">
                                           <input type="file" name="scancopy" id="scancopy" class="form-control" >
                                         </div>

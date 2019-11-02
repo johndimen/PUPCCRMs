@@ -256,8 +256,7 @@ include("../../../php_action/retrieve/concession2.php");
               </a>
               <ul class="treeview-menu">
                 <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class=" treeview">
@@ -270,7 +269,6 @@ include("../../../php_action/retrieve/concession2.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i>Trash<span class= "label bg-green pull-right">4</span></a></li>
               <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -283,7 +281,6 @@ include("../../../php_action/retrieve/concession2.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -317,7 +314,6 @@ include("../../../php_action/retrieve/concession2.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -420,7 +416,6 @@ include("../../../php_action/retrieve/concession2.php");
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="./concession-equipment.php"><i class="fa fa-th-large"></i> Equipmentbox</a></li>
                     <li><a href="./concession-equipment-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-equipment-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -459,37 +454,41 @@ include("../../../php_action/retrieve/concession2.php");
             <div class="form-group">
               <label for="viewnumbere" class="col-sm-3 control-label">Equipment Number</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" value = "<?php echo $row98[5]?>" name="viewnumber" id="viewnumber" placeholder="Equipment Number" disabled>
+                <label for="" class="form-control" name="viewnumber" id="viewnumber"><?php echo $row98[5]?></label>
+                <input type="hidden" class="form-control" value = "" name="viewnumber" id="viewnumber" placeholder="Equipment Number" disabled>
               </div>
             </div>
             <div class="form-group">
               <label for="viewname" class="col-sm-3 control-label">Equipment Name</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" name="viewname" value = "<?php echo $row98[1]?>" id="viewname" placeholder="Name" disabled>
+                <label for="" class="form-control" name="viewname" id="viewname"><?php echo $row98[1]?></label>
+                <input type="hidden" class="form-control" name="viewname" value = "" id="viewname" placeholder="Name" disabled>
               </div>
             </div>
             <div class="form-group">
               <label for="viewbrand" class="col-sm-3 control-label">Equipment Brand</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" name="viewbrand" id="viewbrand" value = "<?php echo $row98[2]?>" placeholder="Brand" disabled>
+                <label for=""  class="form-control" name="viewbrand" id="viewbrand" ><?php echo $row98[2]?></label>
+                <input type="hidden" class="form-control" name="viewbrand" id="viewbrand" value = "<?php echo $row98[2]?>" placeholder="Brand" disabled>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="viewtype">Equipment Type</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" name="viewtype" value = "<?php echo $row98[3]?>" id="viewtype" placeholder="Type" disabled onchange="showfield(this.value)">
+                <label for="" class="form-control" name="viewtype" id="viewtype"><?php echo $row98[3]?></label>
+                <input type="hidden" class="form-control" name="viewtype" value = "<?php echo $row98[3]?>" id="viewtype" placeholder="Type" disabled onchange="showfield(this.value)">
               </div>
             </div>
             <div class="form-group">
               <label for="viewwattage" class="col-sm-3 control-label">Wattage</label>
               <div class="col-sm-7">
-                <input type="number" min="0" class="form-control"  name="viewwattage" id="wattage" placeholder="0" disabled>
+                <label for="" class="form-control"  name="viewwattage" id="wattage"></label>
               </div>
             </div>
             <div class="form-group">
               <label for="viewdescription" class="col-sm-3 control-label">Description</label>
               <div class="col-sm-7">
-                <textarea type="text" rows="5" class="form-control" name="viewdescription" id="viewdescription" placeholder="Description" disabled><?php echo $row98[4]?></textarea>
+                <label for=""  class="form-control" name="viewdescription" id="viewdescription"></label>
               </div>
             </div>
           </div>

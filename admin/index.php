@@ -384,8 +384,7 @@ include("../php_action/retrieve/dashboard.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="./page/feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="./page/feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="./page/feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+              <li><a href="./page/feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class= "label bg-green pull-right">4</span></a></li>
             </ul>
           </li>
         <li class="treeview">
@@ -398,7 +397,6 @@ include("../php_action/retrieve/dashboard.php");
           </a>
           <ul class="treeview-menu">
             <li><a href="./page/cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="./page/cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash <span class="label label-warning pull-right">4</span></a></li>
             <li><a href="./page/cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
@@ -411,7 +409,6 @@ include("../php_action/retrieve/dashboard.php");
           </a>
           <ul class="treeview-menu">
             <li><a href="./page/task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="./page/task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label label-warning pull-right">4</span></a></li>
             <li><a href="./page/task/archive-task.php"><i class="fa fa-circle-o"></i>Archived <span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
@@ -427,7 +424,7 @@ include("../php_action/retrieve/dashboard.php");
             <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i> Detail <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
               <ul class="treeview-menu">
                   <li><a href="./page/concessions/concession.php"><i class="fa fa-circle-o"></i> Concession List</a></li>
-                  <li><a href="./page/concessions/concession-item.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
+                  <li><a href="./page/concessions/concession-item-product.php"><i class="fa fa-circle-o"></i> Items/Products</a></li>
                   <li><a href="./page/concessions/concession-services.php"><i class="fa fa-circle-o"></i> Services</a></li>
                   <li><a href="./page/concessions/concession-equipment.php"><i class="fa fa-circle-o"></i> Equipments</a></li>
                   <li><a href="./page/concessions/concession-experience.php"><i class="fa fa-circle-o"></i> Experience</a></li>
@@ -484,8 +481,8 @@ include("../php_action/retrieve/dashboard.php");
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
+            <li class=""><a href="./page/reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
+            <li class=""><a  href="./page/reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
         <li class="treeview">

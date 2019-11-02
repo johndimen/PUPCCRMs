@@ -258,8 +258,7 @@ include("../../../php_action/retrieve/concession2.php");
               </a>
               <ul class="treeview-menu">
                 <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class=" treeview">
@@ -272,7 +271,6 @@ include("../../../php_action/retrieve/concession2.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i>Trash <span class= "label bg-green pull-right">4</span></a></li>
               <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -285,7 +283,6 @@ include("../../../php_action/retrieve/concession2.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -359,7 +356,6 @@ include("../../../php_action/retrieve/concession2.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -431,11 +427,11 @@ include("../../../php_action/retrieve/concession2.php");
     <section class="content-header">
         <h1>
           Concession
-          <small>All Concession List</small>
+          <small>All Concessionaire List</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active"><a href="#">Concession</a></li>
+          <li class="active"><a href="#">Concessionaire</a></li>
         </ol>
       </section>
 
@@ -459,7 +455,6 @@ include("../../../php_action/retrieve/concession2.php");
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="./concession.php"><i class="fa fa-th-large"></i> Concessionbox</a></li>
                     <li><a href="./concession-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -494,7 +489,7 @@ include("../../../php_action/retrieve/concession2.php");
                         
                       </div>
                       <div class="box-body form-horizontal ">
-            <center><h4>Concession Details</h4></center>
+            <center><h4>Concessionaire Details</h4></center>
             <div class="row">  
               <div class="col-md-4">
               <h4 style="margin-left:235px">Profile</h4>
@@ -505,21 +500,23 @@ include("../../../php_action/retrieve/concession2.php");
                                     <div class="form-group">
                                       <label for="inputConcessionNumber" class="col-sm-4 control-label">Concession Number</label>
                                       <div class="col-sm-8">
-                                      <input type="text" value = "<?php echo $row[0] ?>" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber" disabled>
+                                        <label for="" style="height:55px" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber"><?php echo $row[0] ?></label>
+                                      <input type="hidden" value = "<?php echo $row[0] ?>" class="form-control" placeholder="Concession Number" name="inputConcessionNumber" id="inputConcessionNumber" disabled>
                                       </div>
                                     </div>
                                     <div class="form-group">
                                       <label for="inputNumber" class="col-sm-4 control-label">Stall Number</label>
                                       <div class="col-sm-8">
-                                        <input type="text" class="form-control" value = "<?php echo $row[3] ?>" placeholder="Stall Number" name="inputNumber" id="inputNumber" disabled>
-                                        
+                                        <input type="hidden" class="form-control" value = "" placeholder="Stall Number" name="inputNumber" id="inputNumber" disabled>
+                                        <label for="" class="form-control"><?php echo $row[3] ?></label>
                                       </div>
                                     </div>
                                     <div class="form-group">
                                       <label for="inputConcessionName" class="col-sm-4 control-label">Business Name</label>
                   
                                       <div class="col-sm-8">
-                                        <input type="text" class="form-control" value = "<?php echo $row[4] ?>" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" disabled>
+                                        <label for="" class="form-control"><?php echo $row[4] ?></label>
+                                        <input type="hidden" class="form-control" value = "" name="inputConcessionName" id="inputConcessionName" placeholder="Concession Name" disabled>
                                       </div>
                                     </div>
                                     <h4>Owner's Info</h4>
@@ -527,16 +524,17 @@ include("../../../php_action/retrieve/concession2.php");
                                       <label for="inputOwnerFName" class="col-sm-4 control-label">Owner's Name</label>
                   
                                       <div class="col-sm-8">
-                                        <input type="text" class="form-control" value = "<?php echo $row[9] ?>" name="inputOwnerFName" id="inputOwnerFName" placeholder="First Name" disabled>
-                                        <input type="text" style="margin-top:5px;margin-bottom:5px" value = "<?php echo $row[10] ?>" class="form-control" name="inputOwnerMName" id="inputOwnerMName" placeholder="Middle Name" disabled>
-                                        <input type="text" style="" class="form-control" name="inputOwnerLName" value = "<?php echo $row[11] ?>" id="inputOwnerLName" placeholder="Last Name" disabled>
+                                        <label for="" class="form-control"><?php echo $row[9] ?></label>
+                                        <label for="" class="form-control"><?php echo $row[10] ?></label>
+                                        <label for="" class="form-control"><?php echo $row[11] ?></label>
                                       </div>
                                     </div>
                                       <div class="form-group">
                                         <label for="inputnumber" class="col-sm-4 control-label">Contact No.</label>
                     
                                         <div class="col-sm-8">
-                                          <input type="email" class="form-control" value = "<?php echo $row[12] ?>" name="inputnumber" id="inputnumber" placeholder="Number"  disabled>
+                                        <label for="" class="form-control"><?php echo $row[12] ?></label>
+                                          <input type="hidden" class="form-control" value = "" name="inputnumber" id="inputnumber" placeholder="Number"  disabled>
                                         </div>
                                       </div>
                                   </div>
@@ -546,27 +544,29 @@ include("../../../php_action/retrieve/concession2.php");
                                         <label for="inputRemarks" class="col-sm-4 control-label">Remarks</label>
                     
                                         <div class="col-sm-8">
-                                          <textarea class="form-control" name="inputRemarks" id="inputRemarks" rows="5" placeholder="Remarks"  disabled><?php echo $row[1] ?></textarea>
+                                          <label for="" style="height:100px" class="form-control"><?php echo $row[1] ?></label>
                                         </div>
                                       </div> 
                                       <div class="form-group">
                                         <label for="dateapproved" class="col-sm-4 control-label">Date Approved</label>
                                         <div class="col-sm-8">
-                                          <input type="text" class="form-control" value = "<?php echo $row[2] ?>" name="dateapproved" id="dateapproved" placeholder="Date Approved" disabled>
+                                        <label for="" class="form-control"><?php echo $row[2] ?></label>
+                                          <input type="hidden" class="form-control" value = "" name="dateapproved" id="dateapproved" placeholder="Date Approved" disabled>
                                         </div>
                                       </div>
-                                    <div class="form-group" style="margin-top:38px">
+                                    <div class="form-group" style="margin-top:130px">
                                       <label for="inputAddress" class="col-sm-4 control-label">Owner's Address</label>
                   
                                       <div class="col-sm-8">
-                                        <textarea class="form-control"  name="inputAddress" id="inputAddress" rows="5" placeholder="Address" disabled><?php echo $row[0] ?></textarea>
+                                        <label for="" style="height:100px" class="form-control"><?php echo $row[14] ?></label>
                                       </div>
                                     </div>
                                       <div class="form-group">
                                         <label for="inputEmail" class="col-sm-4 control-label">Email</label>
                     
                                         <div class="col-sm-8">
-                                          <input type="email" class="form-control" value = "<?php echo $row[13] ?>" name="inputEmail" id="inputEmail" placeholder="Email"  disabled>
+                                        <label for="" class="form-control"><?php echo $row[13] ?></label>
+                                          <input type="hidden" class="form-control" value = "" name="inputEmail" id="inputEmail" placeholder="Email"  disabled>
                                         </div>
                                       </div>
                                       
@@ -577,14 +577,16 @@ include("../../../php_action/retrieve/concession2.php");
                                       <div class="form-group">
                                         <label for="inputArea" class="col-sm-4 control-label">Stall Location</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control select2" value = "<?php echo $row[5] ?>" name="inputStallArea"  id="inputStallArea" placeholder="Stall Location" disabled>
+                                          <label  class="form-control" class="form-control"><?php echo $row[5] ?></label>
+                                            <input type="hidden" class="form-control select2" value = "" name="inputStallArea"  id="inputStallArea" placeholder="Stall Location" disabled>
                                           
                                         </div>
                                       </div>
                                       <div class="form-group">
                                           <label for="inputFunction" class="col-sm-4 control-label">Category</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" value = "<?php echo $row[6] ?>" name="inputFunction" id="inputFunction" placeholder="Stall Category" disabled>
+                                          <label  class="form-control"><?php echo $row[6] ?></label>
+                                            <input type="hidden" class="form-control" value = "" name="inputFunction" id="inputFunction" placeholder="Stall Category" disabled>
                                           
                                         </div>
                                       </div>
@@ -592,13 +594,15 @@ include("../../../php_action/retrieve/concession2.php");
                                       <div class="form-group">
                                         <label class="col-sm-4 control-label" for="measurement">Stall Measurement</label>
                                         <div class="col-sm-8">
-                                          <input type="text" class="form-control" value = "<?php echo $row[7] ?>" name="measurement" id="measurement" placeholder="Stall Measurement" disabled>
+                                          <label for="" class="form-control"><?php echo $row[7] ?></label>
+                                          <input type="hidden" class="form-control" value = "" name="measurement" id="measurement" placeholder="Stall Measurement" disabled>
                                         </div>
                                       </div>
                                       <div class="form-group">
                                         <label class="col-sm-4 control-label" for="rental">Monthly Rental</label>
                                         <div class="col-sm-8">
-                                          <input type="text" class="form-control" value = "<?php echo $row[8] ?>" name="rental" id="rental" placeholder="Monthly Rental" disabled>
+                                          <label for="" class="form-control"><?php echo $row[8] ?></label>
+                                          <input type="hidden" class="form-control" value = "" name="rental" id="rental" placeholder="Monthly Rental" disabled>
                                         </div>
                                       </div>
                                     </div>
@@ -608,7 +612,6 @@ include("../../../php_action/retrieve/concession2.php");
             </div>
           <div class="box-footer">
             <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
-            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
             <a type="button" name="edit" class="btn btn-info pull-right" href="concession-edit.php?id=<?php echo $id?>">Edit</a>
           </div>
                     </div>
@@ -631,7 +634,7 @@ include("../../../php_action/retrieve/concession2.php");
         </div>
         <div class="modal-footer">
           <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
-          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+          <a type="button" name="submit" class="btn btn-primary" href = "../../../php_action/delete/concession.php">Yes</a>
         </div>
       </div>
     </div>
@@ -649,7 +652,8 @@ include("../../../php_action/retrieve/concession2.php");
         </div>
         <div class="modal-footer">
           <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
-          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+          <a type="button" name="submit" class="btn btn-primary" href = "../../../php_action/delete/concession.php?id=<?php echo $id?>">Yes</a>
+         
         </div>
       </div>
     </div>

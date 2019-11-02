@@ -49,8 +49,8 @@
 		$data1 = getPosts1();
 		
 		
-		$insert_Query = "INSERT INTO `feedback_details`(evaluation, hygiene, hospitable, conditions, environment, price, services, message, feedback_type, serial) 
-						VALUES ('$data1[5]','$data1[0]','$data1[1]','$data1[3]','$data1[4]','$data1[2]', '$data1[9]','$data1[7]','$data1[6]', '$serial')";	
+		$insert_Query = "INSERT INTO `feedback_details`(evaluation, hygiene, hospitable, conditions, environment, price, service, message, serial) 
+						VALUES ('$data1[5]','$data1[0]','$data1[1]','$data1[3]','$data1[4]','$data1[2]', '$data1[9]','$data1[7]', '$serial')";	
 		
 
 	

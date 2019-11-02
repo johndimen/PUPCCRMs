@@ -23,7 +23,7 @@ include("../../../php_action/retrieve/feedback.php");
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Mailbox</title>
+  <title>PUPCCRMs | Feedback</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -32,6 +32,8 @@ include("../../../php_action/retrieve/feedback.php");
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -253,8 +255,7 @@ include("../../../php_action/retrieve/feedback.php");
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="./feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="./unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-            <li><a href="./read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+            <li><a href="./archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -267,7 +268,6 @@ include("../../../php_action/retrieve/feedback.php");
           </a>
           <ul class="treeview-menu">
             <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash <span class= "label bg-green pull-right">4</span></a></li>
             <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
@@ -280,7 +280,6 @@ include("../../../php_action/retrieve/feedback.php");
           </a>
           <ul class="treeview-menu">
             <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
             <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
@@ -354,7 +353,6 @@ include("../../../php_action/retrieve/feedback.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
       <li class="treeview">
@@ -450,10 +448,7 @@ include("../../../php_action/retrieve/feedback.php");
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="./feedback.php"><i class="fa fa-inbox"></i> Feedbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./unread-feedback.php"><i class="fa fa-envelope"></i> Unread</a></li>
-                    <li><a href="./read-feedback.php"><i class="fa fa-envelope-open"></i> Read</a></li>
                     <li><a href="./archive-feedback.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./trash-feedback.php"><i class="fa fa-trash""></i> Trash</a></li>
                   </ul>
             </div>
             <!-- /.box-body -->
@@ -483,7 +478,7 @@ include("../../../php_action/retrieve/feedback.php");
         <div class="col-md-9">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title"><strong>Feedbox</strong></h3>
+              <h3 class="box-title"><strong>Survey</strong></h3>
 
               <div class="box-tools pull-right">
                 <div class="has-feedback">
@@ -523,6 +518,7 @@ include("../../../php_action/retrieve/feedback.php");
                     <tr>
                       
                       <th>Sender Name</td>
+                      <!-- note gawin feedback type  nlng ung message-->
                       <th>Message</td>
                       <th>Area</td>
                       <th>Date</td>
@@ -553,7 +549,7 @@ include("../../../php_action/retrieve/feedback.php");
                     <td class="mailbox-attachment"><?php echo $strong?><?php echo $row[3] ?></td>
                     <td>
                     <div class="btn-group">
-                    <a type="button" class="btn btn-info " href="./feedback-view.php?id=<?php echo $row[4]?>">View</a>
+                    <a type="button" class="btn btn-info " href="./survey-view.php?id=<?php echo $row[4]?>">View</a>
                   </div>
                   </td>
                  
@@ -590,7 +586,45 @@ include("../../../php_action/retrieve/feedback.php");
               </div>
             </div>
           </div>
-          <!-- /. box -->
+          <!-- /. box --> 
+        </div>
+          <div class="col-md-9 pull-right">
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title"><strong>Complaints</strong> </h3>
+              </div> 
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>ID</th> 
+                    <th>Message</th>
+                    <th>Date</th>
+                    <th style="width:100px;">Action</th>
+                  </tr>
+
+                </thead>
+                <tbody>
+                <?php while($row78 = mysqli_fetch_array($query78)){?>
+                  
+                  <tr>
+                  <td><?php echo $row78[0] ?></td>
+                    <td><?php echo $row78[1] ?></td>
+                    <td><?php echo $row78[2] ?></td>
+                    <td>
+                      <a href="./feedback-view.php?id=<?php echo $row78[0]?>" class="btn btn-primary">View</a>
+                    </td>
+                  </tr>
+                  <?php } ?>
+                </tbody>
+                <tfoot>
+                 
+                 
+                </tfoot>
+              </table>
+            </div>
+          </div>
+
         </div>
         <!-- /.col -->
       </div>
@@ -599,6 +633,7 @@ include("../../../php_action/retrieve/feedback.php");
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
 
   <div class="modal modal-default fade" id="viewModal">
     <div class="modal-dialog" style="margin-left: 100px;width: 1150px;">
@@ -976,6 +1011,9 @@ include("../../../php_action/retrieve/feedback.php");
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Slimscroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->

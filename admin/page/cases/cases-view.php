@@ -261,8 +261,7 @@ include("../../../php_action/retrieve/case2.php");
               </a>
               <ul class="treeview-menu">
                 <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class="active treeview">
@@ -275,7 +274,6 @@ include("../../../php_action/retrieve/case2.php");
             </a>
             <ul class="treeview-menu">
               <li class="active"><a href="./cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="./trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class="label label-warning pull-right">4</span></a></li>
               <li><a href="./archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class= "label bg-green pull-right">4</span></a></li>
             </ul>
           </li>
@@ -288,7 +286,6 @@ include("../../../php_action/retrieve/case2.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -323,7 +320,6 @@ include("../../../php_action/retrieve/case2.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -410,8 +406,6 @@ include("../../../php_action/retrieve/case2.php");
           <div class="col-md-3">
               <a href="../../index.php" class="btn btn-primary btn-block margin-bottom">Back to Dashboard</a>
               
-              <a class="btn btn-primary btn-block margin-bottom" href="./cases-add.php">Add Cases</a>
-              
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Folders</h3>
@@ -425,7 +419,6 @@ include("../../../php_action/retrieve/case2.php");
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="./cases.php"><i class="fa fa-th-large"></i> Casebox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./trash-cases.php"><i class="fa fa-trash"></i> trash</a></li>
                     <li><a href="./archive-cases.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
@@ -466,38 +459,65 @@ include("../../../php_action/retrieve/case2.php");
           <center><h4>Case Details</h4></center>
           <br>
           <div class="form-group">
+            <label for="viewCasenumber" class="col-sm-3 control-label">Case Number</label>
+            <div class="col-sm-8">
+              <label for="" class="form-control" id="viewCasenumber" name="viewCasenumber"><?php echo $row11['case_number']?></label>
+            </div>
+          </div>
+          <div class="form-group">
             <label for="viewCasename" class="col-sm-3 control-label">Case Name</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" value = "<?php echo $row11['case_name']?>" id="viewCasename" name="viewCasename" placeholder="Case Name" disabled>
+              <label for="" class="form-control" id="viewCasename" name="viewCasename"><?php echo $row11['case_name']?></label>
             </div>
           </div>
           <div class="form-group">
             <label for="casetype" class="col-sm-3 control-label">Case Type</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="viewCasetype" value = "<?php echo $row11['type']?>" name="viewCasetype" placeholder="Case Type" disabled>
+              <label for="" class="form-control" id="viewCasetype" name="viewCasetype"><?php echo $row11['type']?></label>
             </div>
           </div>
           <div class="form-group">
             <label for="viewPriority" class="col-sm-3 control-label">Priority</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="viewPriority" value = "<?php echo $row11['priority']?>"name="viewPriority" placeholder="Priority" disabled>
+              <label for="" class="form-control" id="viewPriority" name="viewPriority"><?php echo $row11['priority']?></label>
+              
             </div>
           </div>
           <div class="form-group">
             <label for="viewDescription" class="col-sm-3 control-label">Case Description</label>
       
             <div class="col-sm-8">
-              <textarea class="form-control" id="viewDescription" name="viewDescription" placeholder="Task Description" disabled>
-              <?php echo $row11['case_desc']?>
-              </textarea>
+              <label for="" class="form-control" id="viewDescription" name="viewDescription"><?php echo $row11['case_desc']?></label>
+              
             </div>
           </div>  
         </div>
           <div class="modal-footer">
             <button type="button" name="archive" class="btn btn-warning pull-right" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
-            <button type="button" name="trash" class="btn btn-danger pull-right" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
-            <a type="button" name="edit" id="edit" class="btn btn-primary pull-right" href="./cases-edit.php?id=<?php echo $row11['id']?>">Edit</a>
-          </div>
+
+            <?php 
+            if($row11['foredit'] == 0)
+            {
+              ?>
+
+            <a type="button" name="edit" id="edit" style="visibility: hidden;"  class="btn btn-primary pull-right" href="./cases-edit.php?id=<?php echo $row11['id']?>">Edit</a>
+         
+            
+
+                       
+            <?php
+            } 
+            else
+            if($row11['foredit'] == 1)
+            {
+              ?>
+              <a type="button" name="edit" id="edit" class="btn btn-primary pull-right" href="./cases-edit.php?id=<?php echo $row11['id']?>">Edit</a>
+         
+              <?php
+            }
+            
+            ?>
+            </div>
                 </div>
               </div>
       </div>
@@ -537,7 +557,7 @@ include("../../../php_action/retrieve/case2.php");
         </div>
         <div class="modal-footer">
           <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
-          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+          <a type="button" name="submit" href = "../../../php_action/delete/case.php?id=<?php echo $row11['id']?>" class="btn btn-primary">Yes</a>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
 $servername = "127.0.0.1";
 $username = "root";
 $password = "";
-$dbname = "pupccrm_db";
+$dbname = "pupccrm";
 
 // create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

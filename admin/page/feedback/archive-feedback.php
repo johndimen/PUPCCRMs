@@ -1,3 +1,24 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+
+include("../../../php_action/db_connect.php");
+
+include("../../../php_action/retrieve/feedback.php");
+include("../../../php_action/userdata.php");
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -233,8 +254,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="./feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-            <li ><a href="./unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-            <li ><a href="./read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+            <li class="active"><a href="./archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -247,7 +267,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
             <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
@@ -260,7 +279,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
             <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
@@ -295,7 +313,6 @@
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
       <li class="treeview">
@@ -392,10 +409,7 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="./feedback.php"><i class="fa fa-inbox"></i> Feedbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./unread-feedback.php"><i class="fa fa-envelope"></i> Unread</a></li>
-                    <li><a href="./read-feedback.php"><i class="fa fa-envelope-open"></i> Read</a></li>
                     <li class="active"><a href="./archive-feedback.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./trash-feedback.php"><i class="fa fa-trash""></i> Trash</a></li>
                   </ul>
             </div>
             <!-- /.box-body -->
@@ -460,33 +474,31 @@
                 <!-- /.pull-right -->
               </div>
               <div class="table-responsive mailbox-messages">
-                <table class="table table-hover table-striped">
-                  <tbody>
-                    <tr>
-                      <th></th>
-                      <th></th>
-                      <th></th>
-                      <th></th>
-                      <th></th>
-                      <th style="width:100px">Action</th>
-                    </tr>
-                    <?php 
-                      $action = 
-                        '<div class="btn-group">
-                          <a type="button" class="btn btn-info " href="./feedback-archive-view.php">View</a>
-                        </div>
-                        ';
-                    ?>
-                    <tr>
-                      <td><input type="checkbox"></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><?php echo $action ?></td>
-                    </tr>
-                  </tbody>
-                </table>
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>ID</th> 
+                    <th>Message</th>
+                    <th>Date</th>
+                  </tr>
+
+                </thead>
+                <tbody>
+                <?php while($row90 = mysqli_fetch_array($query90)){?>
+                  
+                  <tr>
+                  <td><?php echo $row90[0] ?></td>
+                    <td><?php echo $row90[1] ?></td>
+                    <td><?php echo $row90[2] ?></td>
+                    
+                  </tr>
+                  <?php } ?>
+                </tbody>
+                <tfoot>
+                 
+                 
+                </tfoot>
+              </table>
                 <!-- /.table -->
               </div>
               <!-- /.mail-box-messages -->

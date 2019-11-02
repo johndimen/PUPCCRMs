@@ -259,8 +259,7 @@ include("../../../php_action/retrieve/concession_items2.php");
                 </a>
                 <ul class="treeview-menu">
                   <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                  <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                  <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                  <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
                 </ul>
               </li>
             <li class=" treeview">
@@ -273,7 +272,6 @@ include("../../../php_action/retrieve/concession_items2.php");
               </a>
               <ul class="treeview-menu">
                 <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
                 <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
               </ul>
             </li>
@@ -286,7 +284,6 @@ include("../../../php_action/retrieve/concession_items2.php");
               </a>
               <ul class="treeview-menu">
                 <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
                 <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive <span class="label label-warning pull-right">4</span></a></li>
               </ul>
             </li>
@@ -320,7 +317,6 @@ include("../../../php_action/retrieve/concession_items2.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
             <li class="treeview">
@@ -421,7 +417,6 @@ include("../../../php_action/retrieve/concession_items2.php");
                     <ul class="nav nav-pills nav-stacked">
                       <li class="active"><a href="./concession-item-product.php"><i class="fa fa-th-large"></i> Itembox</a></li>
                       <li><a href="./concession-item-product-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                      <li><a href="./concession-item-product-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                     </ul>
                   </div>
                   <!-- /.box-body -->
@@ -463,41 +458,47 @@ include("../../../php_action/retrieve/concession_items2.php");
                                 <label for="viewItemNumber" class="col-sm-3 control-label">Item Number</label>
         
                                 <div class="col-sm-7">
-                                    <input type="text" value = "<?php echo $row['id'] ?>" class="form-control" id="viewItemNumber" name="viewItemNumber" placeholder="Item Number" disabled>
+                                  <label for="" class="form-control" id="viewItemNumber" name="viewItemNumber"><?php echo $row['id'] ?></label>
+                                    <input type="hidden" value = "" class="form-control" id="viewItemNumber" name="viewItemNumber" placeholder="Item Number" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="viewProfile" class="col-sm-3 control-label">Profile Name</label>
         
                                 <div class="col-sm-7">
-                                    <input type="text" value = "<?php echo $row['serial'] ?>" class="form-control" name="viewProfile" id="viewProfile" placeholder="Profile" disabled>
+                                  <label for="" class="form-control" name="viewProfile" id="viewProfile"><?php echo $row['serial'] ?></label>
+                                    <input type="hidden" value = "" class="form-control" name="viewProfile" id="viewProfile" placeholder="Profile" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="viewItemName" class="col-sm-3 control-label">Item Name</label>
         
-                                <div class="col-sm-7">
-                                    <input type="text" class="form-control" value = "<?php echo $row['item'] ?>" id="viewItemName" name="viewItemName" placeholder="Item Name" disabled>
+                                <div class="col-sm-7">\
+                                    <label for="" class="form-control" id="viewItemName" name="viewItemName"><?php echo $row['item'] ?></label>
+                                    <input type="hidden" class="form-control" value = "" id="viewItemName" name="viewItemName" placeholder="Item Name" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="viewItemType" class="col-sm-3 control-label">Item Type</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" value = "<?php echo $row['type'] ?>" id="viewItemName" name="viewItemName" placeholder="Item Type" disabled>
+                                    <label for="" class="form-control" id="viewItemName" name="viewItemName"><?php echo $row['type'] ?></label>
+                                    <input type="hidden" class="form-control" value = "" id="viewItemName" name="viewItemName" placeholder="Item Type" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="viewItemPrice" class="col-sm-3 control-label">Item Price</label>
         
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" value = "<?php echo $row['price'] ?>" id="viewItemPrice" name="viewItemPrice" placeholder="Item Price" disabled>
+                                   <label for="" class="form-control" id="viewItemPrice" name="viewItemPrice"><?php echo $row['price'] ?></label>
+                                    <input type="hidden" class="form-control" value = "" id="viewItemPrice" name="viewItemPrice" placeholder="Item Price" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="viewItemDesc" class="col-sm-3 control-label">Item Description</label>
         
                                 <div class="col-sm-7">
-                                    <textarea type="text" class="form-control" value = "<?php echo $row['description'] ?>" id="viewItemDesc" name="viewItemDesc" rows="5" placeholder="Item Description" disabled></textarea>
+                                  <label for="" class="form-control" id="viewItemDesc" name="viewItemDesc"><?php echo $row['description'] ?></label>
+                                 
                                 </div>
 
                                 

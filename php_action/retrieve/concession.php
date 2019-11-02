@@ -4,6 +4,9 @@
 $sql1 = "SELECT c.serial, c.stall, c.name, o.fname, o.lname, c.function, cd.id FROM concession c JOIN concession_details cd ON c.id = cd.cdid JOIN owner o ON cd.odid = o.id WHERE cd.active = 1 AND cd.deletion = 1";
 $query1 = mysqli_query($conn, $sql1);
 
+$sql2 = "SELECT c.serial, c.stall, c.name, o.fname, o.lname, c.function, cd.id FROM concession c JOIN concession_details cd ON c.id = cd.cdid JOIN owner o ON cd.odid = o.id WHERE cd.deletion = 0";
+$query2 = mysqli_query($conn, $sql2);
+
 
 $sql5 = "SELECT c.serial, c.name, c.id from concession_details cd JOIN concession c ON cd.cdid = c.id where cd.deletion";
 $query5 = mysqli_query($conn, $sql5);

@@ -273,7 +273,6 @@ include("../../../php_action/retrieve/report.php");
           </a>
           <ul class="treeview-menu">
             <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash <span class="label label-warning pull-right">4</span></a></li>
             <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
@@ -286,7 +285,6 @@ include("../../../php_action/retrieve/report.php");
           </a>
           <ul class="treeview-menu">
             <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label label-warning pull-right">4</span></a></li>
             <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archived <span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
@@ -360,7 +358,6 @@ include("../../../php_action/retrieve/report.php");
             </a>
             <ul class="treeview-menu">
               <li class="active"><a href="./reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-              <li class=""><a  href="./reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
             </ul>
           </li>
         <li class="treeview">
@@ -463,7 +460,7 @@ include("../../../php_action/retrieve/report.php");
                                         </div>
                                         <!-- /.box-header -->
                                         <div class="box-body">
-                                            <table id="feedbackreporttbl" class="table table-bordered table-hover">
+                                            <table  class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th>ID Number</th>
@@ -522,7 +519,7 @@ include("../../../php_action/retrieve/report.php");
                                         </div>
                                         <!-- /.box-header -->
                                         <div class="box-body">
-                                            <table id="casereporttbl" class="table table-bordered table-hover">
+                                            <table id="" class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th>ID Number</th>
@@ -616,129 +613,9 @@ include("../../../php_action/retrieve/report.php");
                       </div>
                       <!-- ./Non-Food-->
             
-                      <!-- Other Items-->
-                        <div class="box collapsed-box">
-                          <div class="box-header with-border">
-                            <h3 class="box-title"><strong>Contract Reports</strong></h3>
-                              <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                                </button>
-                              </div>
-                          </div>
-                          <div class="box-body">
-                            <div class="">
-                                <div class="">
-                                    <div class="box">
-                                        <div class="box-header">
-                                            <h3 class="box-title">Contracts Data Table</h3>
-                                        </div>
-                                        <!-- /.box-header -->
-                                        <div class="box-body">
-                                            <table id="contractreporttbl" class="table table-bordered table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID Number</th>
-                                                        <th>Conctract Name</th>
-                                                        <th>Business Name</th>
-                                                        <th>Date Signed</th>
-                                                        <th>Status</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>ID Number</th>
-                                                        <th>Conctract Name</th>
-                                                        <th>Business Name</th>
-                                                        <th>Date Signed</th>
-                                                        <th>Status</th>
-                                                    </tr>
-                                                </tfoot>
-                                            </table>
-                                        </div>
-                                        <!-- /.box-body -->
-                                        <div class="box-footer">
-                                            <button type="button" class="btn btn-primary" name="" id="">Generate Report</button>
-                                        </div>
-                                    </div>
-                                    <!-- /.box -->
-                                </div>
-                                <div class="">
-                                    
-                                </div>
-                                <!-- /.box -->
-                            </div>
-                          </div>
-                          <div class="box-footer clearfix">
-                          <button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button>
-                          </div>
-                    </div>
+                      
             </div>
             <div class="col-md-6">
-                    <div class="box collapsed-box">
-                          <div class="box-header with-border">
-                            <h3 class="box-title"><strong>Concession Reports</strong></h3>
-                              <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                                </button>
-                              </div>
-                          </div>
-                          <div class="box-body">
-                            <div class="">
-                                <div class="">
-                                    <div class="box">
-                                        <div class="box-header">
-                                            <h3 class="box-title">Concessions Data Table</h3>
-                                        </div>
-                                        <!-- /.box-header -->
-                                        <div class="box-body">
-                                            <table id="concessionreporttbl" class="table table-bordered table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID Number</th>
-                                                        <th>Business Name</th>
-                                                        <th>Stall Number</th>
-                                                        <th>Stall Location</th>
-                                                        <th>Owners Name</th>
-                                                        <th>Contract Number</th>
-                                                        <th>Date Approved</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>ID Number</th>
-                                                        <th>Business Name</th>
-                                                        <th>Stall Number</th>
-                                                        <th>Stall Location</th>
-                                                        <th>Owners Name</th>
-                                                        <th>Contract Number</th>
-                                                        <th>Date Approved</th>
-                                                    </tr>
-                                                </tfoot>
-                                            </table>
-                                        </div>
-                                        <!-- /.box-body -->
-                                        <div class="box-footer">
-                                            <button type="button" class="btn btn-primary" name="" id="">Generate Report</button>
-                                        </div>
-                                    </div>
-                                    <!-- /.box -->
-                                </div>
-                                <div class="">
-                                    
-                                </div>
-                                <!-- /.box -->
-                            </div>
-                          </div>
-                          <div class="box-footer clearfix"> 
-                          <button type="button" class="btn btn-primary pull-right" name="" id="">Generate Report</button>
-                          </div>
-                    </div>
                     
                     <div class="box collapsed-box">
                           <div class="box-header with-border">
@@ -838,7 +715,7 @@ include("../../../php_action/retrieve/report.php");
                                                         <td><?php echo $row93[0]?></td>
                                                         <td><?php echo $row93[1]?></td>
                                                         <td><?php echo $row93[2]?></td>
-                                                        <td><?php echo $row93[3]?></td>
+                                                        <td><?php echo round($row93[3]);?></td>
                                                         <td></td>
                                                         
                                                     </tr>
@@ -897,7 +774,7 @@ include("../../../php_action/retrieve/report.php");
                                                         <td><?php echo $row94[0]?></td>
                                                         <td><?php echo $row94[1]?></td>
                                                         <td><?php echo $row94[2]?></td>
-                                                        <td><?php echo $row94[3]?></td>
+                                                        <td><?php echo round($row94[3])?></td>
                                                         <td></td>
                                                         
                                                     </tr>
@@ -1155,15 +1032,15 @@ include("../../../php_action/retrieve/report.php");
 <script src="../../dist/js/demo.js"></script>
 <script>
   $(document).ready(function () {
-    $('.sidebar-menu').tree()
-    $('#feedbackreporttbl').DataTable()
-    $('#taskreporttbl').DataTable()
-    $('#casereporttbl').DataTable()
-    $('#contractreporttbl').DataTable()
-    $('#concessionreporttbl').DataTable()
-    $('#categoryreporttbl').DataTable()
-    $('#outstandingreporttbl').DataTable()
-    $('#complainedreporttbl').DataTable()
+//    $('.sidebar-menu').tree()
+//    $('#feedbackreporttbl').DataTable()
+//    $('#taskreporttbl').DataTable()
+//    $('#casereporttbl').DataTable()
+//    $('#contractreporttbl').DataTable()
+//    $('#concessionreporttbl').DataTable()
+//    $('#categoryreporttbl').DataTable()
+//    $('#outstandingreporttbl').DataTable()
+ //   $('#complainedreporttbl').DataTable()
 
   });
   $(function(){

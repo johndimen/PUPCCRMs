@@ -13,7 +13,7 @@ $userid = $_SESSION["id"];
 include("../../../php_action/db_connect.php");
 include("../../../php_action/userdata.php");
 include("../../../php_action/insert/case.php");
-
+include("../../../php_action/retrieve/feedback.php");
 
 
 ?>
@@ -261,8 +261,7 @@ include("../../../php_action/insert/case.php");
               </a>
               <ul class="treeview-menu">
                 <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class="active treeview">
@@ -275,7 +274,6 @@ include("../../../php_action/insert/case.php");
             </a>
             <ul class="treeview-menu">
               <li class="active"><a href="./cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="./trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class="label label-warning pull-right">4</span></a></li>
               <li><a href="./archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class= "label bg-green pull-right">4</span></a></li>
             </ul>
           </li>
@@ -288,7 +286,6 @@ include("../../../php_action/insert/case.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -423,7 +420,6 @@ include("../../../php_action/insert/case.php");
                   <ul class="nav nav-pills nav-stacked">
                     <li><a href="./cases.php"><i class="fa fa-th-large"></i> Casebox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./trash-cases.php"><i class="fa fa-trash"></i> trash</a></li>
                     <li><a href="./archive-cases.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
@@ -476,7 +472,7 @@ include("../../../php_action/insert/case.php");
 		$day = date('d');
 		$serial = "CA-MN-$rand-$day$month-$year";?>
 
-                <input type="text" value = "<?php echo $serial?>" class="form-control" id="inputCaseNumber" placeholder="Case Number" name = "number">
+                <input type="text" name = "number" class="form-control" id="inputCaseNumber" value="<?php echo $serial?>"> 
               </div>
             </div>
             <div class="form-group">
@@ -516,11 +512,45 @@ include("../../../php_action/insert/case.php");
                 <textarea class="form-control" id="inputDescription" rows="5" placeholder="Case Description" name = "description"></textarea>
               </div>
             </div>
+
+            <h4>Feedback Detail</h4>
+            <div class="form-group">
+              <label for="inputfeedback" class="col-sm-3 control-label">Feedback ID</label>
+              <div class="col-sm-8">
+
+
+                <select class="form-control select2" style="width: 100%;" name="feedback" id="inputfeedback">
+                  <option>Select Feedback ID</option>
+                  <?php while($row77 = mysqli_fetch_array($query77)){?>
+                  <option value = "<?php echo $row77[0]?>"><?php echo $row77[1]?> ~ <?php echo $row77[2]?></option>
+                  <?php }?>
+                </select>
+              </div>
+            </div>
           </div>
           <div class="box-footer">
             <button type="reset" name="reset" id="reset" class="btn btn-default pull-left" >Reset Fields</button>
-            <button type="submit" name="submit" id="submit" class="btn btn-primary pull-right">Submit</button>
+            <button type="button" name="confirm" id="confirm" data-target="#ConfirmModal" data-toggle="modal" class="btn btn-primary pull-right">Confirm</button>
           </div>
+
+          
+  <div class="modal modal-default fade" id="ConfirmModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Are you sure?</h3>
+        </div>
+        <div class="modal-body">
+          <p>Note: <br> Once you click <b>Finalize</b> you cannot <b>Edit</b> this Case any more. <br>    you can click <b>Save</b> If you want to <b>Edit</b> this later</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+          <button type="submit" data-href="cases-add.php" name="save" class="btn btn-primary">Save</button>
+          <button type="submit" data-href="cases-add.php" name="submit" class="btn btn-info">Finalize</button>
+        </div>
+      </div>
+    </div>
+  </div>
         </form>
                 </div>
               </div>
@@ -530,7 +560,6 @@ include("../../../php_action/insert/case.php");
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
 
   <div class="modal modal-default fade" id="trashModal">
     <div class="modal-dialog">

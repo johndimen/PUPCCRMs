@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/concession.php");
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -298,7 +320,6 @@
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -461,33 +482,30 @@
                         </div>
        
                         <div class="table-responsive mailbox-massages">
-                          <table class="table table-hover table-striped">
+                        <table class="table table-hover table-striped">
                             <tbody>
                               <tr>
-                                <th style="width: 20px">Select</th>
-                                <th style="width: 100px">Profile No.</th>
-                                <th style="width: 80px">Stall No.</th>
-                                <th>Concession Name</th>
-                                <th>Owner's Name</th>
-                                <th>Function</th>
-                                <th>Date Applied</th>
-                                <th style="width: 100px">Actions</th>
+                                
+                                <td style="width: 80px">Profile No.</td>
+                                <td style="width: 80px">Stall No.</td>
+                                <td>Concession Name</td>
+                                <td>Owner's Name</td>
+                                <td>Category</td>
+                              </tr>
+                              <tr>
+                              <?php
+
+                              while($row = mysqli_fetch_array($query2)){
+                              ?>
+                                
+                                <td><?php echo $row[0] ?></td>
+                                <td><?php echo $row[1] ?></td>
+                                <td><?php echo $row[2] ?></td>
+                                <td><?php echo $row[3] ?> <?php echo $row[4] ?></td>
+                                <td><?php echo $row[5] ?></td>
                                 
                               </tr>
-                              <?php
-                              $action ='
-                                          <a type ="button" class ="btn btn-primary" href="./concession-archive-view.php">View</a>';
-                              ?>
-                              <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><?php echo $action; ?></td>
-                              </tr>
+                              <?php } ?>
                             </tbody>
                           </table>
                         </div>

@@ -12,6 +12,8 @@ $userid = $_SESSION['id'];
 		$posts1[2]= $_POST['type'];
 		$posts1[3]= $_POST['priority'];
 		$posts1[4]= $_POST['description'];
+		$posts1[5]= $_POST['feedback'];
+		
 		
 		
 		return $posts1;
@@ -28,8 +30,8 @@ $userid = $_SESSION['id'];
 	
 
 
-		$insert_Query = "INSERT INTO `cases`(case_number, case_name, type, priority, case_desc, assigned_admin)
-				VALUES ('$data1[0]','$data1[1]','$data1[2]','$data1[3]','$data1[4]', '$userid')";	
+		$insert_Query = "INSERT INTO `cases`(case_number, case_name, type, priority, case_desc, assigned_admin, feedback, foredit)
+				VALUES ('$data1[0]','$data1[1]','$data1[2]','$data1[3]','$data1[4]', '$userid','$data1[5]', 0)";	
 
 		
 
@@ -56,4 +58,41 @@ $userid = $_SESSION['id'];
 	}
 	
 
+
+
+	if (isset($_POST['save']))
+	{
+		
+		$data1 = getPosts1();
+		            
+	
+
+
+		$insert_Query = "INSERT INTO `cases`(case_number, case_name, type, priority, case_desc, assigned_admin, feedback)
+				VALUES ('$data1[0]','$data1[1]','$data1[2]','$data1[3]','$data1[4]', '$userid','$data1[5]')";	
+
+		
+
+		try {
+            //FIRST
+            
+
+
+                $insert_Result = mysqli_query($conn, $insert_Query);
+					
+			if(mysqli_affected_rows($conn) > 0)
+			{
+
+					echo "<script>alert('Successfully Saved!')</script>";
+					//echo "<script>location.href='concession.php'</script>";
+			}
+				else {
+				echo "<script>alert('Unable to saved!')</script>";
+				echo "<script>location.href='cases-add.php'</script>";
+			}
+		} catch (Exception $ex) {
+		echo "<script>alert('Error Insert'. $ex->getMessage())</script>";
+		}
+	}
+	
 	?>

@@ -17,7 +17,6 @@ include("../../../php_action/retrieve/feedback3.php");
 include("../../../php_action/userdata.php");
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +24,7 @@ include("../../../php_action/userdata.php");
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PUPCCRMs | Mailbox</title>
+  <title>PUPCCRMs | View Complain</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -269,7 +268,6 @@ include("../../../php_action/userdata.php");
           </a>
           <ul class="treeview-menu">
             <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash <span class= "label bg-green pull-right">4</span></a></li>
             <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
@@ -282,7 +280,6 @@ include("../../../php_action/userdata.php");
           </a>
           <ul class="treeview-menu">
             <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-            <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
             <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
           </ul>
         </li>
@@ -307,46 +304,7 @@ include("../../../php_action/userdata.php");
             <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
           </ul>
         </li>
-        <!--<li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
-        <li class="treeview">
-          <a href="../calendar/calendar.php">
-            <i class="fa fa-calendar"></i> <span>Calendar</span>
-            <span class="pull-right-container">
-              <small class="label pull-right label-info">17</small>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-              <li>
-                <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                  <span class="pull-right-container">
-                    <small class="label pull-right label-warning"> 3</small> 
-                    <small class="label pull-right bg-blue"> 14</small> 
-                  </span>
-                </a>
-              </li>
-          </ul>
-        </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-envelope"></i> <span>Mailbox</span>
-          <span class="pull-right-container">
-            <small class="label pull-right bg-yellow">12</small>
-            <small class="label pull-right bg-green">16</small>
-            <small class="label pull-right bg-red">5</small>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li class="">
-            <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
-              <span class="pull-right-container">
-                <span class="label label-primary pull-right">13</span>
-              </span>
-            </a>
-          </li>
-          <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
-          <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
-        </ul>
-      </li>-->
+        
       <li class="treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -356,7 +314,6 @@ include("../../../php_action/userdata.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
       <li class="treeview">
@@ -450,12 +407,9 @@ include("../../../php_action/userdata.php");
             </div>
             <div class="box-body no-padding">
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="./feedback.php"><i class="fa fa-inbox"></i> Feedbox
+                    <li><a href="./feedback.php"><i class="fa fa-inbox"></i> Feedbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./unread-feedback.php"><i class="fa fa-envelope"></i> Unread</a></li>
-                    <li><a href="./read-feedback.php"><i class="fa fa-envelope-open"></i> Read</a></li>
                     <li><a href="./archive-feedback.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./trash-feedback.php"><i class="fa fa-trash""></i> Trash</a></li>
                   </ul>
             </div>
             <!-- /.box-body -->
@@ -487,116 +441,43 @@ include("../../../php_action/userdata.php");
         <div class="col-md-9">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title"><strong>Feedbox</strong></h3>
+              <h3 class="box-title"><strong>Complain Feedbox</strong></h3>
             </div>
             <div class="box-body form-horizontal">
-          <center><h4>Feedback Details</h4></center>
+          <center><h4>Complain Details</h4></center>
           <div class="col-md-4">
           <br>
           <div class="form-group">
             <label for="feedbackno" class="col-sm-4 control-label">Feedback No</label>
             <div class="col-sm-8">
-              <label class="form-control" id="feedbackno" name="feedbackno"><?php echo $row29[0]?></label>
+              <label class="form-control"style="height:auto"  id="feedbackno" name="feedbackno"><?php echo $row90[0]?></label>
               <!--<label type="text" value = ""  placeholder="Feedback Number" disabled>-->
             </div>
           </div>
           <div class="form-group">
             <label for="stallno" class="col-sm-4 control-label">Stall No</label>
             <div class="col-sm-8">
-              <input type="text" value = "<?php echo $row29[1]?>" class="form-control" id="stallno" name="stallno" placeholder="Stall Number" disabled>
+              <label for="" class="form-control" id="stallno" name="stallno"><?php echo $row90[2]?></label>
+              <input type="hidden" value = "<?php echo $row90[1]?>" class="form-control" id="stallno" name="stallno" placeholder="Stall Number" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="stallarea" class="col-sm-4 control-label">Stall Area</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" value = "<?php echo $row29[2]?>" id="stallarea" name="stallarea" placeholder="Stall Area" disabled>
+              <label for="" class="form-control" id="stallarea" name="stallarea"><?php echo $row90[3]?></label>
+              <input type="hidden" class="form-control" value = "" id="stallarea" name="stallarea" placeholder="Stall Area" disabled>
             </div>
           </div>
-          <div class="form-group">
-            <label for="evaluation" class="col-sm-4 control-label">Evaluation</label>
-            <div class="col-sm-8">
-              <input type="text" value = "<?php echo $row29[3]?>" class="form-control" id="evaluation" name="evaluation" placeholder="Evaluation" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="type" class="col-sm-4 control-label">Feedback Type</label>
-            <div class="col-sm-8">
-              <input type="text" value = "<?php echo $row29[4]?>" class="form-control" id="type" name="type" placeholder="Feedback Type" disabled>
-            </div>
-          </div>
+          
           </div>
           <div class="col-md-8">
               <br>
           <div class="form-group">
             <label for="message" class="col-sm-4 control-label">Feedback Message</label>
             <div class="col-sm-12">
-              <textarea name="message" id="message" class="form-control" rows="11" Placeholder="Feedback Message" disabled><?php echo $row29[5]?></textarea>
+              <label for="message" style="height:auto"  class="form-control" ><?php echo $row90[1]?></label>
+              <!--<textarea name="message" id="message" class="form-control" rows="11" Placeholder="Feedback Message" disabled><?php echo $row90[5]?></textarea>-->
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-12">
-          <center><h4>Question Details</h4></center>
-          <br>
-          <div class="col-md-4">
-          <div class="form-group">
-            <label for="question1" class="col-sm-4 control-label">Question 1</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="question1" name="question1" placeholder="Question 1" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="question2" class="col-sm-4 control-label">Question 2</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="question2" name="question2" placeholder="Question 2" disabled>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="question3" class="col-sm-4 control-label">Question 3</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="question3" name="question3" placeholder="Question 3" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="question4" class="col-sm-4 control-label">Question 4</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="question4" name="question4" placeholder="Question 4" disabled>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="question5" class="col-sm-4 control-label">Question 5</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="question5" name="question5" placeholder="Question 5" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="question6" class="col-sm-4 control-label">Question 6</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="question6" name="question6" placeholder="Question 6" disabled>
-            </div>
-          </div>
-        </div>
-          <div class="row">
-              <div class="col-md-4" style="margin-left:12px">
-          <div class="form-group">
-            <label for="question7" class="col-sm-4 control-label">Question 7</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" style="width:134px" id="question7" name="question7" placeholder="Question 7" disabled>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-7">
-          <div class="form-group">
-            <label for="average" class="col-sm-5 control-label">Average</label>
-            <div class="col-sm-5">
-              <input type="text" class="form-control" id="average" name="average" placeholder="Average" disabled>
-            </div>
-          </div>
-        </div>
           </div>
         </div>
           <div class="col-md-12">
@@ -606,28 +487,32 @@ include("../../../php_action/userdata.php");
               <div class="col-md-6">
           <div class="form-group">
             <label for="sendername" class="col-sm-4 control-label">Sender Name</label>
-            <div class="col-sm-8">
-              <input type="text" value = "<?php echo $row29[6]?>" class="form-control" id="sendername" name="sendername" placeholder="Sender Name" disabled>
+            <div class="col-sm-5">
+              <label for="" class="form-control" style="height:auto;width:auto" id="sendername" name="sendername"><?php echo $row90[4]?></label>
+              <input type="hidden" value = "<?php echo $row90[4]?>" class="form-control" id="sendername" name="sendername" placeholder="Sender Name" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="idno" class="col-sm-4 control-label">ID No</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="idno" value = "<?php echo $row29[7]?>" name="idno" placeholder="ID Number" disabled>
+            <div class="col-sm-5">
+              <label for="" class="form-control" style="height:auto;width:auto" id="idno" name="idno"><?php echo $row90[5]?></label>
+              <input type="hidden" class="form-control" id="idno" value = "<?php echo $row90[5]?>" name="idno" placeholder="ID Number" disabled>
             </div>
           </div>
         </div>
           <div class="col-md-6">
           <div class="form-group">
-            <label for="email" class="col-sm-4 control-label">E-mail</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" value = "<?php echo $row29[8]?>" id="email" name="email" placeholder="E-mail" disabled>
+            <label for="email" class="col-sm-3 control-label">E-mail</label>
+            <div class="col-sm-9">
+              <label for="" class="form-control" style="height:auto;width:auto" id="email" name="email"><?php echo $row90[6]?></label>
+              <input type="hidden" class="form-control" value = "<?php echo $row90[6]?>" id="email" name="email" placeholder="E-mail" disabled>
             </div>
           </div>
           <div class="form-group">
-            <label for="contactno" class="col-sm-4 control-label">Contact No</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="contactno" value = "<?php echo $row29[9]?>" name="contactno" placeholder="Contact No" disabled>
+            <label for="contactno" class="col-sm-3 control-label">Contact No</label>
+            <div class="col-sm-9">
+              <label for="" class="form-control" style="height:auto;width:auto" id="contactno" name="contactno"><?php echo $row90[7]?></label>
+              <input type="hidden" class="form-control" id="contactno" value = "<?php echo $row90[7]?>" name="contactno" placeholder="Contact No" disabled>
             </div>
           </div>
         </div>
@@ -640,7 +525,6 @@ include("../../../php_action/userdata.php");
         </div>
           <div class="box-footer">
             <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
-            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
           </div>
           </div>
           <!-- /. box -->
@@ -813,7 +697,7 @@ include("../../../php_action/userdata.php");
         </div>
         <div class="modal-footer">
           <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
-          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+          <a type="button" name="submit" href = "../../../php_action/delete/complain.php?id=<?php echo $row90[8]?>" class="btn btn-primary">Yes</a>
         </div>
       </div>
     </div>

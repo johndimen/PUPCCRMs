@@ -1,7 +1,7 @@
 <?php 
 
 include("php_action/db_connect.php");
-include("php_action/insert/feedback.php");
+include("php_action/insert/complaint.php");
 include("php_action/retrieve/feedback.php");
 
 
@@ -76,7 +76,7 @@ include("php_action/retrieve/feedback.php");
             </div>
           </header><!-- #header -->
 
-          	<!-- Start banner Area -->
+          	<!-- Start banner Area 
 			<section class=" generic-banner relative" style="background-image:-webkit-linear-gradient(0deg,rgba(98, 189, 252,1) 0%, rgba(132, 144, 255,1) 100%);margin-top:78px">					
                     <div class="container">
                         <div class="row height align-items-center justify-content-center">
@@ -89,7 +89,7 @@ include("php_action/retrieve/feedback.php");
                         </div>
                     </div>
             </section>		
-            <!-- End banner Area -->
+             End banner Area -->
         
         <div class="col-md-12">
             <br><br>
@@ -239,74 +239,18 @@ include("php_action/retrieve/feedback.php");
                                             </div>
                                         </div>
                                         
-                                        <div class="col-md-12" id="nonfood">
-                                            <hr>
-                                            <h5>Non-Food-Related Question</h5>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-check">
-                                                        <P>How's the service(s)?</P>
-                                                        <label for="question2" class="form-text-label" >
-                                                        <select name = "service" class = "default-select" id = "default-select" required>
-				    	    								<option value = "1">Outstanding</option>
-					    	    							<option value = "2">Very Good</option>
-						    	    						<option value = "3">Good</option>
-							    	    					<option value = "4">Bad</option>
-								    	    			</select> </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <hr>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h5>Your Stall Evaluation</h5>
-                                            
-                                            <fieldset id='rating' class="rating" style="padding-left: 10px; padding-right:15px">
-                                                
-                                                <input class="stars" type="radio" id="star53" name="rating" value="5" />
-                                                <label class = "full" for="star53" title="Awesome - 5 stars"></label>
-                                                <input class="stars" type="radio" id="star4half3" name="rating" value="4.5" />
-                                                <label class="half" for="star4half3" title="Pretty good - 4.5 stars"></label>
-                                                <input class="stars" type="radio" id="star43" name="rating" value="4" />
-                                                <label class = "full" for="star43" title=" Good - 4 stars"></label>
-                                                <input class="stars" type="radio" id="star3half3" name="rating" value="3.5" />
-                                                <label class="half" for="star3half3" title="Neutral (+) - 3.5 stars"></label>
-                                                <input class="stars" type="radio" id="star33" name="rating" value="3" />
-                                                <label class = "full" for="star33" title="Neutral - 3 stars"></label>
-                                                <input class="stars" type="radio" id="star2half3" name="rating" value="2.5" />
-                                                <label class="half" for="star2half3" title="Neutral (-) - 2.5 stars"></label>
-                                                <input class="stars" type="radio" id="star23" name="rating" value="2" />
-                                                <label class = "full" for="star23" title="Bad - 2 stars"></label>
-                                                <input class="stars" type="radio" id="star1half3" name="rating" value="1.5" />
-                                                <label class="half" for="star1half3" title="Pretty bad - 1.5 stars"></label>
-                                                <input class="stars" type="radio" id="star13" name="rating" value="1" />
-                                                <label class = "full" for="star13" title="Unsatisfactory - 1 star"></label>
-                                                <input class="stars" type="radio" id="starhalf3" name="rating" value="0.5" />
-                                                <label class="half" for="starhalf3" title="Very Unsatisfactory - 0.5 stars"></label>
-                                            </fieldset>
-                                            <br><br><p><b>Note:</b><br><b>5 stars</b> is the highest evaluation,<br><b> 1 star</b> is the lowest evaluation</p>
-                                        </div> 
-                                            <br>
-                                            <br>
-                                            <div class="col-md-6">
-                                                <h5>Feedback Type</h5>
-                                                <label>Complaint</label>
-                                                <input type="hidden" name="feedbacktype" id="feedbacktype" value="complaint">
-                                            </div>
                                     </div>
-                                    <br>
                                     <h5>Your Complaint</h5>
-                                    <p> Please write down below your complain and let US know</p>
+                                    <p> Please write down below your complain and let Us know</p>
                                     <textarea id ="message" name = "message" class="single-textarea" rows="5" style="line-height:20px;border-radius: 5px;" placeholder="Write your complain here.." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Write your complain here..'" required></textarea>
                                 </div>
                         </div>
 							<hr>
                         <br>
                            <h5>Sender Details</h5>
-                            <p>(It is <b>required</b> to fill up this form.)  All fields mark with <b>*</b> are <b>required</b>.</p>
+                            <p> All fields mark with <b>*</b> are <b>required</b>.</p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="col-sm-8">
@@ -341,6 +285,7 @@ include("php_action/retrieve/feedback.php");
                                 </div>
                                 <div class="col-md-12 pull-right" style="padding-left:20px;">
                                     <input type = "text" hidden = "true" value = "true" name = "sample">
+                                    <a href="./feedback.php" class="genric-btn primary circle mt-10"><span><i class="fa fa-arrow-left"></i> </span>Prev</a>
                                     <button type = "submit" id = "feedback" name = "submit" class="genric-btn primary circle arrow pull-right mt-10"><strong> Send</strong><span class="lnr lnr-rocket"></span></button>
                                 </div>
                             </div>

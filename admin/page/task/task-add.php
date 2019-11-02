@@ -264,8 +264,7 @@ include("../../../php_action/insert/task.php");
               </a>
               <ul class="treeview-menu">
                 <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class=" treeview">
@@ -278,7 +277,6 @@ include("../../../php_action/insert/task.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
               <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -368,7 +366,6 @@ include("../../../php_action/insert/task.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -531,7 +528,7 @@ include("../../../php_action/insert/task.php");
                   <!-- /.form-group -->
                     <div class="form-group">
                       <label for="inputDateStart" class="col-sm-3 control-label">Date Start</label>
-                        <div class="col-sm-8 input-group date" style="width: 63%;padding-left: 15px;">
+                        <div class="col-sm-8 input-group " style="width: 63%;padding-left: 15px;">
                           <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                           </div>
@@ -540,7 +537,7 @@ include("../../../php_action/insert/task.php");
                     </div>
                       <div class="form-group">
                         <label for="inputDateDue" class="col-sm-3 control-label">Date Due</label>
-                          <div class="col-sm-8 input-group date" style="width: 63%;padding-left: 15px;">
+                          <div class="col-sm-8 input-group " style="width: 63%;padding-left: 15px;">
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
@@ -583,32 +580,7 @@ include("../../../php_action/insert/task.php");
                     </select>
                     </div>
                   </div>
-                  <div class="form-group">
-              <label for="inputCaseName" class="col-sm-3 control-label">Case Name</label>
-      
-              <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputCaseName" placeholder="Case Name" disabled>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputType" class="col-sm-3 control-label">Case Type</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" id="type" name="type" placeholder="Type" disabled>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="casepriority" class="col-sm-3 control-label">Case Priority</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" id="casepriority" name="casepriority" placeholder="Priority" disabled>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputDescription" class="col-sm-3 control-label">Case Description</label>
-      
-              <div class="col-sm-8">
-                <textarea class="form-control" id="inputDescription" rows="5" placeholder="Task Description" disabled></textarea>
-              </div>
-            </div>
+            
                   </div>
                   </div>
           </div>
@@ -892,18 +864,18 @@ include("../../../php_action/insert/task.php");
     $('.sidebar-menu').tree()
     $('.select2').select2()
     //Date picker
-    $('#inputDateStart').datepicker({
-      autoclose: true
-    })
-    $('#inputDateDue').datepicker({
-      autoclose: true
-    })
-    $('#editDateStart').datepicker({
-      autoclose:true
-    })
-    $('#editDateDue').datepicker({
-      autoclose:true
-    })
+    //$('#inputDateStart').datepicker({
+      //autoclose: true
+    //})
+    //$('#inputDateDue').datepicker({
+      //autoclose: true
+    //})
+    //$('#editDateStart').datepicker({
+      //autoclose:true
+    //})
+    //$('#editDateDue').datepicker({
+      //autoclose:true
+    //})
     $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
       checkboxClass: 'icheckbox_flat-green',
       radioClass   : 'iradio_flat-green'

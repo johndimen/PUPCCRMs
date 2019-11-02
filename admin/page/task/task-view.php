@@ -264,8 +264,7 @@ include("../../../php_action/retrieve/task2.php");
               </a>
               <ul class="treeview-menu">
                 <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class=" treeview">
@@ -278,7 +277,6 @@ include("../../../php_action/retrieve/task2.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
               <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -294,7 +292,6 @@ include("../../../php_action/retrieve/task2.php");
                 
               </span></a>
               </li>
-              <li><a href="./trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li><a href="./archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -368,7 +365,6 @@ include("../../../php_action/retrieve/task2.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -467,7 +463,6 @@ include("../../../php_action/retrieve/task2.php");
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="./task.php"><i class="fa fa-th-large"></i> Taskbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./trash-task.php"><i class="fa fa-trash"></i> Trash</a></li>
                     <li><a href="./archive-task.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
@@ -515,13 +510,15 @@ include("../../../php_action/retrieve/task2.php");
 
                   <label for="inputtaskname" class="col-sm-3 control-label">Task Name</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" value = '<?php echo $row30[0]?>' id="inputtaskname" name="inputtaskname" placeholder="Task Name" disabled>
+                    <label for="" class="form-control" id="inputtaskname" name="inputtaskname"><?php echo $row30[0]?></label>
+                    
                   </div>
                 </div>
                   <div class="form-group">
                       <label for="inputPriority" class="col-sm-3 control-label">Priority</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" value = "<?php echo $row30[1]?>" id="inputPriority" name="inputPriority" placeholder="Priority" disabled>
+                        <label for="" class="form-control" value = "" id="inputPriority" name="inputPriority"><?php echo $row30[1]?></label>
+                        
                       </div>
                     </div>
                   <!-- /.form-group -->
@@ -531,7 +528,8 @@ include("../../../php_action/retrieve/task2.php");
                           <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                           </div>
-                          <input type="text" value = "<?php echo $row30[2]?>" class="form-control pull-right" id="inputDateStart" name="inputDateStart" disabled>
+                          <label for="" class="form-control pull-right" id="inputDateStart" name="inputDateStart"><?php echo $row30[2]?></label>
+                          
                         </div>
                     </div>
                       <div class="form-group">
@@ -540,21 +538,24 @@ include("../../../php_action/retrieve/task2.php");
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" value = "<?php echo $row30[3]?>" class="form-control pull-right" id="inputDateDue" name="datedue" placeholder="mm/dd/yyyy" disabled>
+                            <label for="" class="form-control pull-right" id="inputDateDue" name="datedue"><?php echo $row30[3]?></label>
+                           
                           </div>
                       </div>
                 <div class="form-group">
                   <label for="inputDescription" class="col-sm-3 control-label">Task Description</label>
 
                   <div class="col-sm-8">
-                    <textarea class="form-control" id="inputDescription" name="description" rows="5" placeholder="Task Description" disabled><?php echo $row30[4]?></textarea>
+                    <label for="" style="height:auto;width:auto" class="form-control" id="inputDescription" name="description"><?php echo $row30[4]?></label>
+                    
                   </div>
                 </div>
                   <div class="form-group">
                     <label for="inputAdminName" class="col-sm-3 control-label">Assigned Admin</label>
 
                     <div class="col-sm-8">
-                    <input type="text" value = "<?php echo $row30[5]?> <?php echo $row30[6]?>"class="form-control pull-right" id="inputAdminName" name="inputAdminName" placeholder="Admin" disabled>
+                      <label for="" class="form-control pull-right" id="inputAdminName" name="inputAdminName"><?php echo $row30[5]?> <?php echo $row30[6]?></label>
+                      
                     </div>
                   </div>
                   </div>
@@ -566,7 +567,8 @@ include("../../../php_action/retrieve/task2.php");
                     <label for="casename" class="col-sm-3 control-label">Case Number</label>
 
                     <div class="col-sm-8">
-                      <input type="text" value = "<?php echo $row30[7]?>" class="form-control pull-right" id="casename" name="casename" placeholder="Case Name" disabled>
+                      <label for="" class="form-control pull-right" id="casename" name="casename"><?php echo $row30[7]?></label>
+                      
                     </select>
                     </div>
                   </div>
@@ -574,35 +576,37 @@ include("../../../php_action/retrieve/task2.php");
               <label for="inputCaseName" class="col-sm-3 control-label">Case Name</label>
       
               <div class="col-sm-8">
-                <input type="text" value = "<?php echo $row30[8]?>" class="form-control" id="inputCaseName" placeholder="Case Name" disabled>
+                <label for="" class="form-control" id="inputCaseName"><?php echo $row30[8]?></label>
               </div>
             </div>
             <div class="form-group">
               <label for="inputType" class="col-sm-3 control-label">Case Type</label>
               <div class="col-sm-8">
-                <input type="text" value = "<?php echo $row30[9]?>" class="form-control" id="type" name="type" placeholder="Type" disabled>
+                <label for="" class="form-control" id="type" name="type"><?php echo $row30[9]?></label>
               </div>
             </div>
             <div class="form-group">
               <label for="casepriority" class="col-sm-3 control-label">Case Priority</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" value = "<?php echo $row30[10]?>" id="casepriority" name="casepriority" placeholder="Priority" disabled>
+                <label for="" class="form-control" value = "" id="casepriority" name="casepriority"><?php echo $row30[10]?></label>
+                
               </div>
             </div>
             <div class="form-group">
               <label for="inputDescription" class="col-sm-3 control-label">Case Description</label>
       
               <div class="col-sm-8">
-                <textarea class="form-control" id="inputDescription" rows="5" placeholder="Task Description" disabled><?php echo $row30[11]?></textarea>
+                <label for=""  class="form-control" id="inputDescription"><?php echo $row30[11]?></label>
               </div>
             </div>
                   </div>
                   </div>
           </div>
           <div class="box-footer">
+            <div class="pull-right">
             <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
-            <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
             <a type="button" name="edit" class="btn btn-primary" href="./task-edit.php?id=<?php echo $row30[12]?>">Edit</a>
+            </div>
           </div>
                 </div>
               </div>
@@ -643,7 +647,7 @@ include("../../../php_action/retrieve/task2.php");
         </div>
         <div class="modal-footer">
           <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
-          <button type="button" name="submit" class="btn btn-primary">Yes</button>
+          <a type="button" name="submit" href = "../../../php_action/delete/task.php?id=<?php echo $row30[12]?>" class="btn btn-primary">Yes</a>
         </div>
       </div>
     </div>

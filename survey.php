@@ -61,7 +61,7 @@ include("php_action/retrieve/feedback.php");
                   <nav id="nav-menu-container">
                     <ul class="nav-menu">
                       <li class="menu-active"><a href="./index.html">Home</a></li>
-                      <li class="manu-active"><a href="#feedback">Feedback</a></li>
+                      <li class="manu-active"><a href="#survey">Survey</a></li>
                       <li class="menu-has-children"><a href="">Pages</a>
                         <ul>
                           <li><a href="https://www.pup.edu.ph/">PUPWebSite</a></li>
@@ -97,25 +97,41 @@ include("php_action/retrieve/feedback.php");
         <!-- Start Align Area -->
         <div class="whole-wrap">
             <div class="container">
-                <div class="section-top-border" id="feedback">
+                <div class="section-top-border" id="survey">
 <!--start here the form ***********************************************************************-->
                     <form method = "post" action = "surveyform.php">
                     <div class="row">
-                        <div class="col-lg-8">
+                        <div class="col-md-12">
                             
                             <h3 class="mb-30">Feedback: <br> Survey Form</h3>
                             <p>You dont have to worry about information <b>leak</b>, Your Information is <b>secured</b> in our system. </p>
+                    
+                    <h5>HOW WE DEAL WITH COMPLAINTS, COMMENDATIONS AND  SUGGESTIONS</h5>
+                    <p>We take all complaints, commendations and suggestions seriously. We promise to treat your feedback fairly, impartially and confidentially.</p>
+                    <p>We treat everyone who gives feedback equally, regardless of whether they make a complaint, commendation or suggestion. We will not discriminate against you on the basis of your age, disability, ethnicity, gender, religion, belief, sexual orientation or any other irrelevant ground. We will respond to you as promptly as possible, regardless of the subject matter of your feedback or the method through which you contact us.</p>
+                    <h5>Commendations</h5>
+                    <p>We aim to acknowledge your commendation in writing within one working day and ensure your feedback is passed on to the relevant people.</p>
+                    <h5>Suggestions</h5>
+                    <p>We aim to acknowledge your Suggestions in writing within one working day. Decisions will be taken in light of the relevant criteria.</p>
+                    <p>We will draw on your feedback to improve our concessionaires' services and products where appropriate</p>
+                    <blockquote class="generic-blockquote">
+                    <div class="col-lg-12">
+                        <h5>HOW WE USE YOUR INFORMATION</h5>
+                        <p>The PUP-RGO only uses your personal data to contact you to acknowledge your feedback, resolve any queries you may raise, or provide additional information relevant to the issues you have raised.</p>
+                        <p>Under Philippine Data Privacy Act of 2012 you have the right to ask for anonymity, for which as a state university, complies for it is under the jurisdiction of the law, and the right to ask us to correct any inaccuracies in that information. If you want more information about this, please contact Resource Generation Office.</p>
+                    </div>
+                    </blockquote>
 
 
-                <p><b>Note</b> : Please Enter the Category and the Location of the stall you want to give your feedback so we can filter it for you. </p>
-                <div class="row">
-                    <div class="col-sm-6" style="margin-left:16px">
+                    <div class="row">
+                    <div class="col-sm-6 mt-50" style="margin-left:16px">
+                    <p>to continue, Please Provide Concession Category and Stall Location.</p>
                     <h5>Category</h5><br>
                         
                     <select class = "default-select" name = "category" id = "default-select" required>
                     <option value = "">Select Category</option>
                     <option value = "food">Food</option>
-                    <option value = "non-food">Non-Food</option>
+                    <option value = "nonfood">Non-Food</option>
 
                      </select>
                     </div>
@@ -132,19 +148,25 @@ include("php_action/retrieve/feedback.php");
                         <select class = "default-select" id = "default-select" name = "location" required>
                         <option value = "">Select Area</option>
                         <option value = "north">North</option>
-                        <option value = "north">South</option>
-                        <option value = "north">West</option>
-                        <option value = "north">East</option>
-                        <option value = "north">Sampaguita</option>
-                        <option value = "north">Lagoon</option>
+                        <option value = "south">South</option>
+                        <option value = "west">West</option>
+                        <option value = "east">East</option>
+                        <option value = "sampaguita">Sampaguita</option>
+                        <option value = "lagoon">Lagoon</option>
 
                       
 
                         </select>
                         </div>
                         </div>
+                        <blockquote class="generic-blockquote mt-20">
+                            <div class="col-lg-12">
+                                <p><b>Note</b> : Please Enter the Category and the Location of the stall you want to give your feedback so we can filter it for you. </p>
+                            </div>
+                        </blockquote>
                         <hr>
-                        <button type = "submit" id = "feedback" name = "next" class="genric-btn primary circle arrow pull-right mt-10"><strong> Next</strong><span class="lnr lnr-rocket"></span></button>
+                        <a href="./choose.php" class="genric-btn primary circle mt-10"><span><i class="fa fa-arrow-left"></i> </span>Prev</a>
+                        <button type = "submit" id = "feedback" name = "next" class="genric-btn primary circle arrow pull-right mt-10"><strong> Next</strong><span class="fa fa-arrow-right"></span></button>
                     </form>
 					</div>
                 </div>

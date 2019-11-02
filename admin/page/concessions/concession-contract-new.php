@@ -405,9 +405,7 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li><a href="./concession-contract.php"><i class="fa fa-th-large"></i> Contractbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./concession-contract-due.php"><i class="fa fa-exclamation-circle"></i> Contract Due</a></li>
                     <li><a href="./concession-contract-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-contract-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->

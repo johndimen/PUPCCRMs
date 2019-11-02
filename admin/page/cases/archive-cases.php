@@ -1,3 +1,24 @@
+<?php
+session_start();
+
+
+if(empty($_SESSION["id"])){
+  header("location: ../../login.php");
+  exit;
+}
+
+$userid = $_SESSION["id"];
+
+
+include("../../../php_action/db_connect.php");
+include("../../../php_action/userdata.php");
+include("../../../php_action/retrieve/case.php");
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -251,7 +272,6 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="./cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="./trash-cases.php"><i class="fa fa-circle-o"></i> Trash  <span class= "label bg-green pull-right">4</span></a></li>
               <li class="active"><a href="./archive-cases.php"><i class="fa fa-circle-o"></i> Archive  <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -264,7 +284,6 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -398,7 +417,6 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li ><a href="./cases.php"><i class="fa fa-th-large"></i> Casebox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./trash-cases.php"><i class="fa fa-trash"></i>Trash</a></li>
                     <li class="active"><a href="./archive-cases.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
@@ -462,36 +480,37 @@
                     </div>
    
                     <div class="table-responsive mailbox-massages">
-                      <table class="table table-hover table-striped">
+                      
+
+                    <table class="table table-hover table-striped">
                         <tbody>
-                          <tr>
-                            <td style="width: 10px">Select</td>
+                              <tr>
                                 <td style="width: 150px">Name</td>
                                 <td style="width: 200px">Description</td>
                                 <td style="width: 100px">Type</td>
                                 <td style="width: 50px">Priority</td>
                                 <td style="width: 100px">Status</td>
-                                <td style="width: 130px">Action</td>
                               </tr>
-                              <?php 
-                              $action = 
-                              '<div class="btn-group">
-                                <a type="button" class="btn btn-info " href="./archive-cases-view.php">View</a>
-                              </div>
-                              ';
-                              ?>
+                              
+                              <?php while($row12 = mysqli_fetch_array($query12)){ ?>
+                                    
+                                    <tr>
+                                      <td><?php echo $row12['case_name']; ?></td>
+                                      <td><?php echo $row12['case_desc'];?></td>
+                                      <td><?php echo $row12['type'];?></td>
+                                      <td><?php echo $row12['priority']?></td>
+                                      <td><?php echo $row12['status']?></td>
+                                    
+                                    </tr>
+                              <?php }?>
 
-                              <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><?php echo $action ?></td>
-                              </tr>
+                              
+                                
+                              
                         </tbody>
                       </table>
+
+
                     </div>
                   </div>
                 </div>

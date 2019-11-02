@@ -319,7 +319,6 @@ include("../../../php_action/retrieve/concession2.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -464,36 +463,42 @@ include("../../../php_action/retrieve/concession2.php");
           <div class="form-group">
             <label for="viewcontractnumber" class ="col-sm-3 control-label">Contract Number</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" value = "<?php echo $row67['serial']?>" id="viewcontractnumber" name="viewcontractnumber" placeholder="Contract Number" disabled>
+              <label for="" class="form-control" id="viewcontractnumber" name="viewcontractnumber"><?php echo $row67['serial']?></label>
+              <input type="hidden" class="form-control" value = "" id="viewcontractnumber" name="viewcontractnumber" placeholder="Contract Number" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewprofile" class ="col-sm-3 control-label">Profile</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewprofile" name="viewprofile" placeholder="Profile" disabled>
+              <label for="" class="form-control" id="viewprofile" name="viewprofile"></label>
+              <input type="hidden" class="form-control" id="viewprofile" name="viewprofile" placeholder="Profile" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewcontractname" class ="col-sm-3 control-label">Contract Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" value = "<?php echo $row67['name']?>" id="viewcontractname" name="viewcontractname" placeholder="Contract Name" disabled>
+              <label for="" class="form-control" id="viewcontractname" name="viewcontractname"><?php echo $row67['name']?></label>
+              <input type="hidden" class="form-control" value = "" id="viewcontractname" name="viewcontractname" placeholder="Contract Name" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewstallname" class ="col-sm-3 control-label">Business Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" value = "<?php echo $row67['store']?>" id="viewstallname" name="viewstallname" placeholder="Stall Name" disabled>
+              <label for="" class="form-control" id="viewstallname" name="viewstallname"><?php echo $row67['store']?></label>
+              <input type="text" class="form-control" value = "" id="viewstallname" name="viewstallname" placeholder="Stall Name" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewfunction" class ="col-sm-3 control-label">Function</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" value = "<?php echo $row67['function']?>" id="viewfunction" name="viewfunction" placeholder="Function" disabled>
+              <label for=""class="form-control" id="viewfunction" name="viewfunction"><?php echo $row67['function']?></label>
+              <input type="hidden" class="form-control" value = "" id="viewfunction" name="viewfunction" placeholder="Function" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="viewconsigneefirstname" class ="col-sm-3 control-label">Consignee Name</label>
             <div class="col-sm-9">
+              <label for=""></label>
               <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsigneefirstname" value = "<?php echo $row67['fname']?>"name="viewconsigneefirstname" placeholder="First Name" disabled>
             
               <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsigneemiddlename" value = "<?php echo $row67['mname']?>" name="viewconsigneemiddlename" placeholder="Middle Name" disabled>

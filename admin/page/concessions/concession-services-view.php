@@ -257,8 +257,7 @@ include("../../../php_action/retrieve/concession2.php");
               </a>
               <ul class="treeview-menu">
                 <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class=" treeview">
@@ -271,7 +270,6 @@ include("../../../php_action/retrieve/concession2.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
               <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -284,7 +282,6 @@ include("../../../php_action/retrieve/concession2.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -318,7 +315,6 @@ include("../../../php_action/retrieve/concession2.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -419,7 +415,6 @@ include("../../../php_action/retrieve/concession2.php");
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="./concession-services.php"><i class="fa fa-th-large"></i> Servicebox</a></li>
                     <li><a href="./concession-services-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-services-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -461,46 +456,50 @@ include("../../../php_action/retrieve/concession2.php");
                     <label for="number" class="col-sm-4 control-label">Service Number</label>
                         
                     <div class="col-sm-5">
-                      <input type="text" value = "<?php echo $row39[5]; ?>" class="form-control" id="number" name="number" placeholder="Service Number" disabled>
+                      <label for="" class="form-control" id="number" name="number"><?php echo $row39[5]; ?></label>
+                      <input type="hidden" value = "<?php echo $row39[5]; ?>" class="form-control" id="number" name="number" placeholder="Service Number" disabled>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputProfileName" class="col-sm-4 control-label">Profile Name</label>
                         
                     <div class="col-sm-5">
-                      <input type="text" class="form-control" value = "<?php echo $row39[0]; ?>" id="inputProfileName" name="inputProfileName" placeholder="Profile Name" disabled>
+                      <label for="" class="form-control" id="inputProfileName" name="inputProfileName"><?php echo $row39[0]; ?></label>
+                      <input type="hidden" class="form-control" value = "<?php echo $row39[0]; ?>" id="inputProfileName" name="inputProfileName" placeholder="Profile Name" disabled>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputServiceName" class="col-sm-4 control-label">Service Name</label>
         
                       <div class="col-sm-5">
-                        <input type="text" class="form-control" id="inputServiceName" value = "<?php echo $row39[1]; ?>" name="inputServiceName" placeholder="Service Name" disabled>
+                        <label for="" class="form-control" id="inputServiceName" name="inputServiceName"><?php echo $row39[1]; ?></label>
+                        <input type="hidden" class="form-control" id="inputServiceName" value = "<?php echo $row39[1]; ?>" name="inputServiceName" placeholder="Service Name" disabled>
                       </div>
                   </div>
                     <div class="form-group">
                       <label for="inputServicePrice" class="col-sm-4 control-label">Price</label>
                       <div class="row">
                         <div class="col-sm-2">
-                          <input type="text" class="form-control" id="inputServicePriceLower" value = "<?php echo $row39[2]; ?>" name="inputServicePriceLower" placeholder="Price (lower)" disabled>
+                          <label for="" class="form-control" id="inputServicePriceLower"  name="inputServicePriceLower"><?php echo $row39[2]; ?></label>
+                          <input type="hidden" class="form-control" id="inputServicePriceLower" value = "<?php echo $row39[2]; ?>" name="inputServicePriceLower" placeholder="Price (lower)" disabled>
                         </div>
                         <div class="col-sm-1" style="width:57px"><span><center>~</center> </span></div>
                         <div class="col-sm-2">
-                          <input type="text" class="form-control" value = "<?php echo $row39[3]; ?>" id="inputServicePriceHigher" name="inputServicePriceHigher" placeholder="Price (Higher)" disabled>
+                          <label for="" class="form-control" id="inputServicePriceHigher" name="inputServicePriceHigher"><?php echo $row39[3]; ?></label>
+                          <input type="hidden" class="form-control" value = "<?php echo $row39[3]; ?>" id="inputServicePriceHigher" name="inputServicePriceHigher" placeholder="Price (Higher)" disabled>
                         </div>
                       </div>
                     </div>
                   <div class="form-group">
-                    <label for="inputServiceDesc" value = "<?php echo $row39[4]; ?>" class="col-sm-4 control-label">Description</label>
+                    <label for="inputServiceDesc"  class="col-sm-4 control-label">Description</label>
         
                       <div class="col-sm-5">
-                          <textarea class="form-control" id="inputServiceDesc" name="inputServiceDesc" rows="5"disabled></textarea>
+                          <label for="" class="form-control" id="inputServiceDesc" name="inputServiceDesc"><?php echo $row39[4]; ?></label>
                       </div>
                   </div>
                 </div>
                 <div class="box-footer">
                   <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
-                  <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
                   <a type="button" name="edit" class="btn btn-info pull-right" href="./concession-services-edit.php?id=<?php echo $row39[5]?>">Edit</a>
                 </div>
                 </div>

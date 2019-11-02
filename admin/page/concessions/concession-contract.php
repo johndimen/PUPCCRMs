@@ -258,8 +258,7 @@ include("../../../php_action/retrieve/concession.php");
               </a>
               <ul class="treeview-menu">
                 <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class=" treeview">
@@ -272,7 +271,6 @@ include("../../../php_action/retrieve/concession.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash <span class= "label bg-green pull-right">4</span></a></li>
               <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -285,7 +283,6 @@ include("../../../php_action/retrieve/concession.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -359,7 +356,6 @@ include("../../../php_action/retrieve/concession.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -463,9 +459,7 @@ include("../../../php_action/retrieve/concession.php");
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="./concession-contract.php"><i class="fa fa-th-large"></i> Contractbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./concession-contract-due.php"><i class="fa fa-exclamation-circle"></i> Contract Due</a></li>
                     <li><a href="./concession-contract-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-contract-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -531,11 +525,9 @@ include("../../../php_action/retrieve/concession.php");
                     <table class="table table-hover table-striped">
                       <tbody>
                         <tr>
-                          <td style="width: 150px">Name</td>
                           <td style="width: 150px">Business Name</td>
                           <td style="width: 100px">Function</td>
                           <td style="width: 120px">Consignor</td>
-                          <td style="width: 120px">Consignee</td>
                           <td style="width: 100px">Date Signed</td>
                           <td>Contract Duration</td>
                           <td>Action</td>
@@ -544,10 +536,8 @@ include("../../../php_action/retrieve/concession.php");
                         while($row67 = mysqli_fetch_array($query67)){
                         ?>
                         <tr>
-                          <td><?php echo $row67['name']?></td>
                           <td><?php echo $row67['store']?></td>
                           <td><?php echo $row67['function']?></td>
-                          <td><?php echo $row67['oic_f']?> <?php echo $row67['oic_l']?></td>
                           <td><?php echo $row67['fname']?> <?php echo $row67['lname']?></td>
                           <td><?php echo $row67['date']?></td>
                           <td><?php echo $row67['duration']?></td>

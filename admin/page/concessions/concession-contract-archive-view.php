@@ -237,8 +237,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class=" treeview">
@@ -251,7 +250,6 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
               <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -264,7 +262,6 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="../task/task.php"><i class="fa fa-circle-o"></i>All Task <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../task/trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li><a href="../task/archive-task.php"><i class="fa fa-circle-o"></i>Archive <span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -399,9 +396,7 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li><a href="./concession-contract.php"><i class="fa fa-th-large"></i> Contractbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./concession-contract-due.php"><i class="fa fa-exclamation-circle"></i> Contract Due</a></li>
                     <li class="active"><a href="./concession-contract-archive.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
-                    <li><a href="./concession-contract-trash.php"><i class="fa fa-trash"></i> Trash</a></li>
                   </ul>
                 </div>
                 <!-- /.box-body -->
@@ -442,81 +437,85 @@
           <div class="form-group">
             <label for="viewcontractnumber" class ="col-sm-3 control-label">Contract Number</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewcontractnumber" name="viewcontractnumber" placeholder="Contract Number" disabled>
+              <label for="viewcontractnumber" id="viewcontractnumber" name="viewcontractnumber"></label>
             </div>
           </div>
           <div class="form-group">
             <label for="viewprofile" class ="col-sm-3 control-label">Profile</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewprofile" name="viewprofile" placeholder="Profile" disabled>
+              <label for="viewprofile" id="viewprofile" name="viewprofile"></label>
             </div>
           </div>
           <div class="form-group">
             <label for="viewcontractname" class ="col-sm-3 control-label">Contract Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewcontractname" name="viewcontractname" placeholder="Contract Name" disabled>
+              <label for="viewcontractname" id="viewcontractname" name="viewcontractname"></label>
             </div>
           </div>
           <div class="form-group">
             <label for="viewstallname" class ="col-sm-3 control-label">Business Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewstallname" name="viewstallname" placeholder="Stall Name" disabled>
+              <label for="viewstallname"  id="viewstallname" name="viewstallname"></label>
             </div>
           </div>
           <div class="form-group">
             <label for="viewfunction" class ="col-sm-3 control-label">Function</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewfunction" name="viewfunction" placeholder="Function" disabled>
+              <label for="viewfunction" id="viewfunction" name="viewfunction"></label>
             </div>
           </div>
           <div class="form-group">
             <label for="viewconsigneefirstname" class ="col-sm-3 control-label">Consignee Name</label>
             <div class="col-sm-9">
-              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsigneefirstname" name="viewconsigneefirstname" placeholder="First Name" disabled>
-            
-              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsigneemiddlename" name="viewconsigneemiddlename" placeholder="Middle Name" disabled>
-            
-              <input type="text" class="form-control" id="viewconsigneelastname" name="viewconsigneelastname" placeholder="Last Name" disabled>
+              <label for="viewconsigneefirstname"id="viewconsigneefirstname" name="viewconsigneefirstname"></label>
+              <label for="viewconsigneemiddlename" id="viewconsigneemiddlename" name="viewconsigneemiddlename"></label>
+              <label for="viewconsigneelastname" id="viewconsigneelastname" name="viewconsigneelastname"></label>
             </div>
           </div>
           <div class="form-group">
             <label for="viewdescription" class ="col-sm-3 control-label">Description</label>
             <div class="col-sm-9">
-              <textarea name="viewdescription" id="viewdescription" class="form-control" rows="5" placeholder="Description" disabled></textarea>
+              <label for="viewdescription" name="viewdescription" id="viewdescription"></label>
             </div>
           </div>
           </div>
           <div class="col-md-6">
           <div class="form-group">
-            <label for="viewconsignorname" class ="col-sm-3 control-label">OIC Name</label>
+            <label for="viewconsignorname" class ="col-sm-3 control-label">Representative Name</label>
             <div class="col-sm-9">
-              <input type="text"  style="margin-bottom:5px" class="form-control" id="viewconsignorfirstname" name="viewconsignorfirstname" placeholder="First Name" disabled>
-             
-              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsignormiddlename" name="viewconsignormiddlename" placeholder="Middle Name" disabled>
-            
-              <input type="text" style="margin-bottom:5px" class="form-control" id="viewconsignorlastname" name="viewconsignorlastname" placeholder="Last Name" disabled>
+              <label for="" id="viewconsignorfirstname" name="viewconsignorfirstname"></label>
+              <label for="" id="viewconsignormiddlename" name="viewconsignormiddlename"></label>
+              <label for="" id="viewconsignorlastname" name="viewconsignorlastname"></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewsigned" class ="col-sm-3 control-label">Date Signed</label>
+            <div class="col-sm-9">
+              <label for="viewsigned" id="viewsigned" name="viewsigned"></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="viewdue" class ="col-sm-3 control-label">Date Due</label>
+            <div class="col-sm-9">
+              <label for="viewdue" id="viewdue" name="viewdue"></label>
             </div>
           </div>
           <div class="form-group">
             <label for="viewstatus" class ="col-sm-3 control-label">Status</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewstatus" name="viewstatus" placeholder="Status" disabled>
+              <label for="viewstatus" id="viewstatus" name="viewstatus"></label>
             </div>
           </div>
           <div class="form-group">
             <label for="viewduration" class ="col-sm-3 control-label">Duration</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="viewduration" name="viewduration" placeholder="Duration" disabled>
+              <label for="viewduration" id="viewduration" name="viewduration"></label>
             </div>
           </div>
         </div>
         </div>
         </div>
         <div class="box-footer">
-            <div class="pull-left">
-                <button type="button" name="archive" class="btn btn-warning" data-toggle="modal" data-target="#archiveModal">Send to Archive</button>
-                <button type="button" name="trash" class="btn btn-danger" data-toggle="modal" data-target="#trashModal">Send to Trash</button>
-            </div>
             
         </div>
                 </div>

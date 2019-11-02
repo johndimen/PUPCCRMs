@@ -263,8 +263,7 @@ include("../../../php_action/retrieve/task.php");
               </a>
               <ul class="treeview-menu">
                 <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-                <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-                <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+                <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
               </ul>
             </li>
           <li class=" treeview">
@@ -277,7 +276,6 @@ include("../../../php_action/retrieve/task.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../cases/cases.php"><i class="fa fa-circle-o"></i> All Cases <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../cases/trash-cases.php"><i class="fa fa-circle-o"></i> Trash<span class= "label bg-green pull-right">4</span></a></li>
               <li><a href="../cases/archive-cases.php"><i class="fa fa-circle-o"></i> Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -293,7 +291,6 @@ include("../../../php_action/retrieve/task.php");
                 
               </span></a>
               </li>
-              <li><a href="./trash-task.php"><i class="fa fa-circle-o"></i>Trash<span class="label bg-green pull-right">4</span></a></li>
               <li><a href="./archive-task.php"><i class="fa fa-circle-o"></i>Archive<span class="label label-warning pull-right">4</span></a></li>
             </ul>
           </li>
@@ -367,7 +364,6 @@ include("../../../php_action/retrieve/task.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="../reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
           </ul>
         </li>
           <li class="treeview">
@@ -468,7 +464,6 @@ include("../../../php_action/retrieve/task.php");
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="./task.php"><i class="fa fa-th-large"></i> Taskbox
                       <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="./trash-task.php"><i class="fa fa-trash"></i> Trash</a></li>
                     <li><a href="./archive-task.php"><i class="fa fa-archive"></i> Archive <span class="label label-warning pull-right">65</span></a></li>
                   </ul>
                 </div>
@@ -555,14 +550,40 @@ include("../../../php_action/retrieve/task.php");
                                 
                                 <td><?php echo $row30[0]; ?></td>
                                 <td><?php echo $row30[1]; ?></td>
-                                <td><?php echo $row30[2].' - '.$row30[3]; ?></td>
+                                <td><?php echo $row30[2].' ~ '.$row30[3]; ?></td>
                                 <td><?php echo $row30[4]; ?></td>
                                 <td><?php echo $row30[5]; ?> <?php echo $row30[6]; ?></td>
                                 <td>
+                                  <center>
                                 <a type="button" class="btn btn-primary" href="./task-view.php?id=<?php echo $row30[7]?>">View</button></a>
-                                
+                                <br><br>
+                                <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#FinishModal">Finish</button></a>
+                              </center>
                                 </td>
                               </tr>
+
+
+                              
+  <div class="modal modal-default fade" id="FinishModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius:10px">
+        <div class="modal-header">
+          <h3 class="modal-title">Is it Done?</h3>
+        </div>
+        <div class="modal-body">
+          <h5>Note:</h5>
+          <p>Are you sure this task is finished?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+          <a type="button" name="submit" href = "../../../php_action/edit/finish.php?id=<?php echo $row30[7]?>" class="btn btn-primary">Yes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
                               <?php }?>
                              
                         </tbody>
@@ -578,23 +599,6 @@ include("../../../php_action/retrieve/task.php");
   </div>
   <!-- /.content-wrapper -->
 
-  <div class="modal modal-default fade" id="trashModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="border-radius:10px">
-        <div class="modal-header">
-          <h3 class="modal-title">Trash</h3>
-        </div>
-        <div class="modal-body">
-          <P>Are you sure?</P>
-          <p>you can restore this at trash folder.  </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" name="close" class="btn btn-default pull-left" data-dismiss="modal">No</button>
-          <button type="button" name="submit" class="btn btn-primary">Yes</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="modal modal-default fade" id="archiveModal">
     <div class="modal-dialog">

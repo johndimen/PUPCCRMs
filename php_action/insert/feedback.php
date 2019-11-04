@@ -158,13 +158,13 @@
 			{
 
 					echo "<script>alert('Successfully Saved!')</script>";
-					//echo "<script>location.href='index.html'</script>";
+					echo "<script>location.href='choose.php'</script>";
 			}
 			else 
 			{
 				
 				echo "<script>alert('Unsuccessfully Saved!')</script>";
-				//echo "<script>location.href='concession.php'</script>";
+				//echo "<script>location.href='choose.php'</script>";
 			}
 				
 			

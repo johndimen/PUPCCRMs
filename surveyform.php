@@ -63,7 +63,7 @@ include("php_action/retrieve/feedback.php");
                   <nav id="nav-menu-container">
                     <ul class="nav-menu">
                       <li class="menu-active"><a href="./index.html">Home</a></li>
-                      <li class="manu-active"><a href="#feedback">Feedback</a></li>
+                      <li class="manu-active"><a href="#survey">Survey</a></li>
                       <li class="menu-has-children"><a href="">Pages</a>
                         <ul>
                           <li><a href="https://www.pup.edu.ph/">PUPWebSite</a></li>
@@ -99,7 +99,7 @@ include("php_action/retrieve/feedback.php");
         <!-- Start Align Area -->
         <div class="whole-wrap">
             <div class="container">
-                <div class="section-top-border" id="feedback">
+                <div class="section-top-border" id="survey">
 <!--start here the form ***********************************************************************-->
                     <form method = "post">
                     <div class="row">

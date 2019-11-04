@@ -103,7 +103,7 @@ include("php_action/retrieve/feedback.php");
 <!--start here the form ***********************************************************************-->
                     <form method = "post">
                     <div class="row">
-                        <div class="col-lg-8">
+                        <div class="col-lg-12">
                             
                             <h3 class="mb-30">Feedback: <br> Survey Form</h3>
                             <p>You dont have to worry about information <b>leak</b>, Your Information is <b>secured</b> in our system. </p>
@@ -137,13 +137,23 @@ include("php_action/retrieve/feedback.php");
 
                                         </select>
                                     </div>
-                                    <br><br><br>          
+                                    <br><br><br> <hr>
+                                       
                                 </div>
-                                <br>
+                                <br>   
                                 <div class="col-md-12">
                                     <div class="col-md-12">
-                                        <h5>Simple Survey</h5>
-                                        <p>Please, <b>Truthfully</b> answer all the survey questions.</p>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5>Simple Survey</h5>
+                                                <p>Please, <b>Truthfully</b> answer all the survey questions.</p>
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <h5>Feedback Type</h5>
+                                                <label for="feedbacktype">Suggestion and Commendation</label>
+                                                <input type="hidden" name="feedbacktype" value="suggestion/commendation">
+                                            </div>
+                                        </div>
                                         <hr>
                                         <br>
                                         <div class="col-md-12">
@@ -522,42 +532,7 @@ include("php_action/retrieve/feedback.php");
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h5>Your Stall Evaluation</h5>
-                                            <fieldset id='rating' class="rating  mt-10" style="padding-left: 10px; padding-right:15px">
-                                                
-                                                <input class="stars" type="radio" id="star53" name="rating" value="5" />
-                                                <label class = "full" for="star53" title="Strongly Agree - 5 stars"></label>
-                                                <input class="stars" type="radio" id="star4half3" name="rating" value="4.5" />
-                                                <label class="half" for="star4half3" title="Very Agree - 4.5 stars"></label>
-                                                <input class="stars" type="radio" id="star43" name="rating" value="4" />
-                                                <label class = "full" for="star43" title="Agree - 4 stars"></label>
-                                                <input class="stars" type="radio" id="star3half3" name="rating" value="3.5" />
-                                                <label class="half" for="star3half3" title="Slightly Agree - 3.5 stars"></label>
-                                                <input class="stars" type="radio" id="star33" name="rating" value="3" />
-                                                <label class = "full" for="star33" title="Undecided - 3 stars"></label>
-                                                <input class="stars" type="radio" id="star2half3" name="rating" value="2.5" />
-                                                <label class="half" for="star2half3" title="Slightly Disagree - 2.5 stars"></label>
-                                                <input class="stars" type="radio" id="star23" name="rating" value="2" />
-                                                <label class = "full" for="star23" title="Disagree - 2 stars"></label>
-                                                <input class="stars" type="radio" id="star1half3" name="rating" value="1.5" />
-                                                <label class="half" for="star1half3" title="Very Disagree - 1.5 stars"></label>
-                                                <input class="stars" type="radio" id="star13" name="rating" value="1" />
-                                                <label class = "full" for="star13" title="Strongly Disagree - 1 star"></label>
-                                                <input class="stars" type="radio" id="starhalf3" name="rating" value="0.5" />
-                                                <label class="half" for="starhalf3" title="Completely Disagree - 0.5 stars"></label>
-                                            </fieldset>
-                                            <br><br><p><b>Note:</b><br><b>5 stars</b> is the highest evaluation,<br><b> 0.5 star</b> is the lowest evaluation</p>
-                                        </div> 
-                                            <br>
-                                            <br>
-                                            <div class="col-md-6 ">
-                                                <h5>Feedback Type</h5>
-                                                <label for="feedbacktype">Suggestion and Commendation</label>
-                                                <input type="hidden" name="feedbacktype" value="suggestion/commendation">
-                                            </div>
-                                    </div>
+                                    
                                     <br>
                                     <h5>Your message</h5>
                                     <p> Please write down below any of your suggestions and commendations and let Us know</p>
@@ -578,12 +553,12 @@ include("php_action/retrieve/feedback.php");
                         <br>
 							<hr>
                         <br>
-                           <h5>Feedback Details</h5>
+                           <h5>Sender Details</h5>
                             <p>All fields mark with <b>*</b> are <b>required</b>.</p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="col-sm-8">
-										<h5>Name*</h5>
+										<h5>Sender Name*</h5>
 										<input type="text" name="name" placeholder="Name." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" class="single-input" required>
                                     </div>
 									<div class="col-sm-8" style="margin-top:10px">

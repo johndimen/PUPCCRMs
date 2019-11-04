@@ -10,7 +10,7 @@
 		$posts1[2]= $_POST['price'];
 		$posts1[3]= $_POST['condition'];
 		$posts1[4]= $_POST['environment'];
-		$posts1[5]= $_POST['rating'];
+		$posts1[5]= 0;
 		$posts1[6]= $_POST['feedbacktype'];
 		$posts1[7]= $_POST['message'];
 		$posts1[8]= $_POST['store'];
@@ -48,6 +48,57 @@
 		$serial = "FB-MN-$rand-$day$month-$year";
 		$data1 = getPosts1();
 		
+
+		//new
+
+		$rating = $data1[0] + $data1[1] + $data1[2] + $data1[3] + $data1[4] + $data1[9];
+		$rating = $rating / 6;
+
+		if($rating >= 1 && $rating <= 1.4)
+		{
+			$data1[5] = 1;
+		} else 
+		
+		if($rating >= 1.5 && $rating <= 1.9)
+		{
+			$data1[5] = 1.5;
+		}else
+
+		if($rating >= 2 && $rating <= 2.4)
+		{
+			$data1[5] = 2;
+		}else
+
+		if($rating >= 2.5 && $rating <= 2.9)
+		{
+			$data1[5] = 2.5;
+		}else
+		
+		if($rating >= 3 && $rating <= 3.4)
+		{
+			$data1[5] = 3;
+		}else
+
+		if($rating >= 3.5 && $rating <= 3.9)
+		{
+			$data1[5] = 3.5;
+		}else
+		
+		if($rating >= 4 && $rating <= 4.4)
+		{
+			$data1[5] = 4;
+		}else
+
+		if($rating >= 4.5 && $rating <= 4.9)
+		{
+			$data1[5] = 4.5;
+		}else
+				
+		if($rating == 5)
+		{
+			$data1[5] = 5;
+		}
+		//.......................................
 		
 		$insert_Query = "INSERT INTO `feedback_details`(evaluation, hygiene, hospitable, conditions, environment, price, service, message, serial) 
 						VALUES ('$data1[5]','$data1[0]','$data1[1]','$data1[3]','$data1[4]','$data1[2]', '$data1[9]','$data1[7]', '$serial')";	
@@ -107,7 +158,7 @@
 			{
 
 					echo "<script>alert('Successfully Saved!')</script>";
-					echo "<script>location.href='index.html'</script>";
+					//echo "<script>location.href='index.html'</script>";
 			}
 			else 
 			{

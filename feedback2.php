@@ -105,7 +105,7 @@ include("php_action/retrieve/feedback.php");
                     <div class="row">
                         <div class="col-lg-8">
                             
-                            <h3 class="mb-30">Feedback Form</h3>
+                            <h3 class="mb-30">Feedback: <br> Complaint Form</h3>
                             <p>You dont have to worry about information <b>leak</b>, Your Information is <b>secured</b> in our system. </p>
                             
 
@@ -136,81 +136,12 @@ include("php_action/retrieve/feedback.php");
 
 
                                         </select>
-                                    </div>
-                                    <br><br><br>          
+                                    </div>       
                                 </div>
-                                <br>
-                                <div class="col-md-12">
+                                <div class="col-md-10">
                                     
-                                    <div class="col-md-12">
-                                        <!--<h5>Questions (rate your answer)</h5>
-                                        <hr>
-                                        <br>
-                                        <div class="col-md-12">
-                                            <h5>General Questions</h5>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-check">
-                                                        <P>How about the hygiene?</P>
-                                                        <label for="question3" class="form-text-label" >
-                                                        <select name = "hygiene" class = "default-select" id = "default-select" required>
-			    					    					<option value = "1">Outstanding</option>
-		    					    						<option value = "2">Very Good</option>
-	    					    							<option value = "3">Good</option>
-    					    								<option value = "4">Bad</option>
-				    								    </select></label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <P>How about the hospitality of the attendant(s)?</P>
-                                                        <label for="question3" class="form-text-label" >
-                                                        <select name = "hospitable" class = "default-select" id = "default-select" required>
-					    					    			<option value = "1">Outstanding</option>
-				    					    				<option value = "2">Very Good</option>
-			    					    					<option value = "3">Good</option>
-		    					    						<option value = "4">Bad</option>
-	    					    						</select></label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <P>Is the Product at the fair price?</P>
-                                                        <label for="question7" class="form-text-label" >
-                                                            <select name = "price" class = "default-select" id = "default-select" required>
-			    									    	    <option value = "1">Outstanding</option>
-				    				    			    		<option value = "2">Very Good</option>
-					    				    	    			<option value = "3">Good</option>
-						    			        				<option value = "4">Bad</option>
-							    	    				</select></label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-check">
-                                                        <P>How's the product condition?</P>
-                                                        <label for="question4" class="form-text-label" >
-                                                            <select name = "condition" class = "default-select" id = "default-select" required>
-												            	<option value = "1">Outstanding</option>
-							            						<option value = "2">Very Good</option>
-										            			<option value = "3">Good</option>
-													            <option value = "4">Bad</option>
-												            </select></label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <P>How's the area around the stall?</P>
-                                                        <label for="question6" class="form-text-label" >
-                                                            <select name = "environment" class = "default-select" id = "default-select" required>
-				            									<option value = "1">Outstanding</option>
-							            						<option value = "2">Very Good</option>
-										        			    <option value = "3">Good</option>
-													            <option value = "4">Bad</option>
-												            </select></label>
-                                                    </div>
-                                                </div>-->
-                                            </div>
-                                        </div>
                                        
                                         <div class="col-md-12" id="food" >
-                                            <hr>
-                                            <h5>Food-related Questions</h5>
-                                            <br>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-check">
@@ -240,21 +171,23 @@ include("php_action/retrieve/feedback.php");
                                         </div>
                                         
                                     </div>
-                                    <hr>
                                     </div>
+                                    <hr>
                                     <h5>Your Complaint</h5>
                                     <p> Please write down below your complain and let Us know</p>
                                     <textarea id ="message" name = "message" class="single-textarea" rows="5" style="line-height:20px;border-radius: 5px;" placeholder="Write your complain here.." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Write your complain here..'" required></textarea>
                                 </div>
                         </div>
-							<hr>
+							
+                        <div class="col-md-11" style="padding-left:8%">
+                        <hr>
                         <br>
                            <h5>Sender Details</h5>
                             <p> All fields mark with <b>*</b> are <b>required</b>.</p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="col-sm-8">
-										<h5>Name*</h5>
+										<h5>Sender Name*</h5>
 										<input type="text" name="name" placeholder="Name." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" class="single-input" required>
                                     </div>
 									<div class="col-sm-8" style="margin-top:10px">
@@ -291,9 +224,9 @@ include("php_action/retrieve/feedback.php");
                             </div>
                         <hr>
 						
-                    
+                        
                     </form>
-                                    
+                           </div>         
 					</div>
                 </div>
             </div>

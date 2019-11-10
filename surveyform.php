@@ -322,6 +322,7 @@ include("php_action/retrieve/feedback.php");
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-check mt-20">
+                                                    <h5 class="mb-10">Product</h5>
                                                         <h6 class="mb-10">How would you rate the items'/products' condition?</h6>
                                                         <label for="condition" class="form-text-label" >
                                                             <!--<select name = "condition" class = "default-select" id = "default-select" required>
@@ -373,7 +374,6 @@ include("php_action/retrieve/feedback.php");
                                                         </label>
                                                     </div>
                                                     <div class="form-check mt-20">
-                                                    <h5 class="mb-10">Product</h5>
                                                         <h6 class="mb-10">How would you rate the services of the stall?</h6>
                                                         <label for="services" class="form-text-label" >
                                                             <!--<select name = "services" class = "default-select" id = "default-select" required>

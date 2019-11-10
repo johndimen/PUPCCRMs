@@ -158,6 +158,7 @@ include("php_action/retrieve/feedback.php");
                         <blockquote class="generic-blockquote mt-20">
                             <div class="col-md-12">
                                 <p><b>Note</b> : Please Enter the Category and the Location of the stall you want to give your feedback so we can filter it for you. </p>
+                                <p>     By Clicking <b>Next</b> button, You <b>Agree</b> to the terms and condition stated above.</p>
                             </div>
                         </blockquote>
                         <hr>

@@ -259,8 +259,7 @@ include("../../../php_action/retrieve/report.php");
             </a>
             <ul class="treeview-menu">
               <li><a href="../feedback/feedback.php"><i class="fa fa-circle-o"></i> All Feedback <span class="label label-info pull-right">4</span></a></li>
-              <li><a href="../feedback/unread-feedback.php"><i class="fa fa-circle-o"></i> Unread Feedback <span class= "label bg-green pull-right">4</span></a></li>
-              <li><a href="../feedback/read-feedback.php"><i class="fa fa-circle-o"></i> Read Feedback <span class="label label-default pull-right">4</span></a></li>
+              <li><a href="../feedback/archive-feedback.php"><i class="fa fa-circle-o"></i> Archive <span class="label label-default pull-right">4</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -463,11 +462,12 @@ include("../../../php_action/retrieve/report.php");
                                             <table  class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID Number</th>
                                                         <th>Stall No</th>
+                                                        <th>Area</th>
                                                         <th>Evaluation</th>
                                                         <th>Feedback Type</th>
                                                         <th>Sender Type</th>
+                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -476,8 +476,56 @@ include("../../../php_action/retrieve/report.php");
                                                 <tfoot>
                                                 <?php while ($row89 = mysqli_fetch_array($query89)){?>
                                                     <tr>
-                                                        <td><?php echo $row89[0]?></td>
+
+                                                    <?php 
+                                                    
+		if($row89[2] >= 1 && $row89[2] <= 1.4)
+		{
+			$row89[2] = 1;
+		} else 
+		
+		if($row89[2] >= 1.5 && $row89[2] <= 1.9)
+		{
+			$row89[2] = 1.5;
+		}else
+
+		if($row89[2] >= 2 && $row89[2] <= 2.4)
+		{
+			$row89[2] = 2;
+		}else
+
+		if($row89[2] >= 2.5 && $row89[2] <= 2.9)
+		{
+			$row89[2] = 2.5;
+		}else
+		
+		if($row89[2] >= 3 && $row89[2] <= 3.4)
+		{
+			$row89[2] = 3;
+		}else
+
+		if($row89[2] >= 3.5 && $row89[2] <= 3.9)
+		{
+			$row89[2] = 3.5;
+		}else
+		
+		if($row89[2] >= 4 && $row89[2] <= 4.4)
+		{
+			$row89[2] = 4;
+		}else
+
+		if($row89[2] >= 4.5 && $row89[2] <= 4.9)
+		{
+			$row89[2] = 4.5;
+		}else
+				
+		if($row89[2] == 5)
+		{
+			$row89[2] = 5;
+		}
+                                                    ?>
                                                         <td><?php echo $row89[1]?></td>
+                                                        <td><?php echo $row89[5]?></td>
                                                         <td><?php echo $row89[2]?></td>
                                                         <td><?php echo $row89[3]?></td>
                                                         <td><?php echo $row89[4]?></td>
@@ -522,7 +570,7 @@ include("../../../php_action/retrieve/report.php");
                                             <table id="" class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID Number</th>
+                                                        <th>Serial Number</th>
                                                         <th>Name</th>
                                                         <th>Type</th>
                                                         <th>Priority</th>
@@ -534,7 +582,7 @@ include("../../../php_action/retrieve/report.php");
                                                 <tfoot>
                                                 <?php while($row90 = mysqli_fetch_array($query90)){?>
                                                     <tr>
-                                                        <td><?php echo $row90['id']?></td>
+                                                        <td><?php echo $row90['case_number']?></td>
                                                         <td><?php echo $row90['case_name']?></td>
                                                         <td><?php echo $row90['type']?></td>
                                                         <td><?php echo $row90['priority']?></td>
@@ -575,7 +623,6 @@ include("../../../php_action/retrieve/report.php");
                                             <table id="taskreporttbl" class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID Number</th>
                                                         <th>Task Name</th>
                                                         <th>Case Number</th>
                                                         <th>Date Duration</th>
@@ -588,7 +635,6 @@ include("../../../php_action/retrieve/report.php");
                                                 <tfoot>
                                                 <?php while ($row91 = mysqli_fetch_array($query91)){?>
                                                     <tr>
-                                                        <td><?php echo $row91[0]?></td>
                                                         <td><?php echo $row91[1]?></td>
                                                         <td><?php echo $row91[2]?></td>
                                                         <td><?php echo $row91[3]?>~<?php echo $row91[4]?></td>
@@ -637,9 +683,9 @@ include("../../../php_action/retrieve/report.php");
                                             <table id="categoryreporttbl" class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID Number</th>
                                                         <th>Business Name</th>
                                                         <th>Stall Category</th>
+                                                        <th>Stall Area</th>
                                                         <th>Stall Measurement</th>
                                                         <th>Monthly Rental</th>
                                                     </tr>
@@ -650,9 +696,9 @@ include("../../../php_action/retrieve/report.php");
                                                 <tfoot>
                                                 <?php while($row92 = mysqli_fetch_array($query92)){?>
                                                     <tr>
-                                                        <td><?php echo $row92['id']?></td>
                                                         <td><?php echo $row92['name']?></td>
                                                         <td><?php echo $row92['function']?></td>
+                                                        <td><?php echo $row92['area']?></td>
                                                         <td><?php echo $row92['measurement']?></td>
                                                         
                                                         <td><?php echo $row92['rental']?></td>
@@ -699,7 +745,6 @@ include("../../../php_action/retrieve/report.php");
                                             <table id="outstandingreporttbl" class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID Number</th>
                                                         <th>Business Name</th>
                                                         <th>Category</th>
                                                         <th>Overall Evaluation</th>
@@ -712,10 +757,56 @@ include("../../../php_action/retrieve/report.php");
                                                 <tfoot>
                                                 <?php while($row93 = mysqli_fetch_array($query93)){?>
                                                     <tr>
-                                                        <td><?php echo $row93[0]?></td>
+                                                    <?php 
+                                                    
+                                                    if($row93[3] >= 1 && $row93[3] <= 1.4)
+                                                    {
+                                                      $row93[3] = 1;
+                                                    } else 
+                                                    
+                                                    if($row93[3] >= 1.5 && $row93[3] <= 1.9)
+                                                    {
+                                                      $row93[3] = 1.5;
+                                                    }else
+                                                
+                                                    if($row93[3] >= 2 && $row93[3] <= 2.4)
+                                                    {
+                                                      $row93[3] = 2;
+                                                    }else
+                                                
+                                                    if($row93[3] >= 2.5 && $row93[3] <= 2.9)
+                                                    {
+                                                      $row93[3] = 2.5;
+                                                    }else
+                                                    
+                                                    if($row93[3] >= 3 && $row93[3] <= 3.4)
+                                                    {
+                                                      $row93[3] = 3;
+                                                    }else
+                                                
+                                                    if($row93[3] >= 3.5 && $row93[3] <= 3.9)
+                                                    {
+                                                      $row93[3] = 3.5;
+                                                    }else
+                                                    
+                                                    if($row93[3] >= 4 && $row93[3] <= 4.4)
+                                                    {
+                                                      $row93[3] = 4;
+                                                    }else
+                                                
+                                                    if($row93[3] >= 4.5 && $row93[3] <= 4.9)
+                                                    {
+                                                      $row93[3] = 4.5;
+                                                    }else
+                                                        
+                                                    if($row93[3] == 5)
+                                                    {
+                                                      $row93[3] = 5;
+                                                    }
+                                                                                                    ?>
                                                         <td><?php echo $row93[1]?></td>
                                                         <td><?php echo $row93[2]?></td>
-                                                        <td><?php echo round($row93[3]);?></td>
+                                                        <td><?php echo $row93[3];?></td>
                                                         <td></td>
                                                         
                                                     </tr>
@@ -758,7 +849,6 @@ include("../../../php_action/retrieve/report.php");
                                             <table id="complainedreporttbl" class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID Number</th>
                                                         <th>Business Name</th>
                                                         <th>Category</th>
                                                         <th>Overall Evaluation</th>
@@ -771,10 +861,56 @@ include("../../../php_action/retrieve/report.php");
                                                 <tfoot>
                                                 <?php while($row94 = mysqli_fetch_array($query94)){?>
                                                     <tr>
-                                                        <td><?php echo $row94[0]?></td>
+                                                    <?php 
+                                                    
+                                                    if($row94[3] >= 1 && $row94[3] <= 1.4)
+                                                    {
+                                                      $row94[3] = 1;
+                                                    } else 
+                                                    
+                                                    if($row94[3] >= 1.5 && $row94[3] <= 1.9)
+                                                    {
+                                                      $row94[3] = 1.5;
+                                                    }else
+                                                
+                                                    if($row94[3] >= 2 && $row94[3] <= 2.4)
+                                                    {
+                                                      $row94[3] = 2;
+                                                    }else
+                                                
+                                                    if($row94[3] >= 2.5 && $row94[3] <= 2.9)
+                                                    {
+                                                      $row94[3] = 2.5;
+                                                    }else
+                                                    
+                                                    if($row94[3] >= 3 && $row94[3] <= 3.4)
+                                                    {
+                                                      $row94[3] = 3;
+                                                    }else
+                                                
+                                                    if($row94[3] >= 3.5 && $row94[3] <= 3.9)
+                                                    {
+                                                      $row94[3] = 3.5;
+                                                    }else
+                                                    
+                                                    if($row94[3] >= 4 && $row94[3] <= 4.4)
+                                                    {
+                                                      $row94[3] = 4;
+                                                    }else
+                                                
+                                                    if($row94[3] >= 4.5 && $row94[3] <= 4.9)
+                                                    {
+                                                      $row94[3] = 4.5;
+                                                    }else
+                                                        
+                                                    if($row94[3] == 5)
+                                                    {
+                                                      $row94[3] = 5;
+                                                    }
+                                                                                                    ?>
                                                         <td><?php echo $row94[1]?></td>
                                                         <td><?php echo $row94[2]?></td>
-                                                        <td><?php echo round($row94[3])?></td>
+                                                        <td><?php echo $row94[3]?></td>
                                                         <td></td>
                                                         
                                                     </tr>

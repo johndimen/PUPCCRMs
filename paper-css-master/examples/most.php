@@ -67,10 +67,57 @@ $count = 0;
                                                     $count++
                                                     ?>
                                                     <tr>
+
+                                                    <?php 
+                                                    if($row93[3] >= 1 && $row93[3] <= 1.4)
+                                                    {
+                                                      $row93[3] = 1;
+                                                    } else 
+                                                    
+                                                    if($row93[3] >= 1.5 && $row93[3] <= 1.9)
+                                                    {
+                                                      $row93[3] = 1.5;
+                                                    }else
+                                                
+                                                    if($row93[3] >= 2 && $row93[3] <= 2.4)
+                                                    {
+                                                      $row93[3] = 2;
+                                                    }else
+                                                
+                                                    if($row93[3] >= 2.5 && $row93[3] <= 2.9)
+                                                    {
+                                                      $row93[3] = 2.5;
+                                                    }else
+                                                    
+                                                    if($row93[3] >= 3 && $row93[3] <= 3.4)
+                                                    {
+                                                      $row93[3] = 3;
+                                                    }else
+                                                
+                                                    if($row93[3] >= 3.5 && $row93[3] <= 3.9)
+                                                    {
+                                                      $row93[3] = 3.5;
+                                                    }else
+                                                    
+                                                    if($row93[3] >= 4 && $row93[3] <= 4.4)
+                                                    {
+                                                      $row93[3] = 4;
+                                                    }else
+                                                
+                                                    if($row93[3] >= 4.5 && $row93[3] <= 4.9)
+                                                    {
+                                                      $row93[3] = 4.5;
+                                                    }else
+                                                        
+                                                    if($row93[3] == 5)
+                                                    {
+                                                      $row93[3] = 5;
+                                                    }
+                                                    ?>
                                                         <td><?php echo $row93[0]?></td>
                                                         <td><?php echo $row93[1]?></td>
                                                         <td><?php echo $row93[2]?></td>
-                                                        <td><?php echo round($row93[3]);?> Star</td>
+                                                        <td><?php echo $row93[3];?> Star</td>
                                                         <td></td>
                                                         
                                                     </tr>

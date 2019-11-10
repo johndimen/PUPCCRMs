@@ -482,7 +482,7 @@ include("../php_action/retrieve/dashboard.php");
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="./page/reports/reports-all.php"><i class="fa fa-circle-o"></i>All Reports</a></li>
-            <li class=""><a  href="./page/reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>
+           <!--<li class=""><a  href="./page/reports/reportbyquery.php"><i class="fa fa-circle-o"></i>Reports By Query</a></li>-->
           </ul>
         </li>
         <li class="treeview">
@@ -582,7 +582,7 @@ include("../php_action/retrieve/dashboard.php");
             <div class="icon">
               <i class="ion ion-briefcase"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="./page/cases/cases.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -597,7 +597,7 @@ include("../php_action/retrieve/dashboard.php");
             <div class="icon">
               <i class="ion ion-clipboard"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="./page/task/task.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -612,7 +612,7 @@ include("../php_action/retrieve/dashboard.php");
             <div class="icon">
               <i class="ion ion-chatbubbles"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="./page/feedback/feedback.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

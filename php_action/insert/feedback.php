@@ -6,7 +6,7 @@
 	{
 		$posts = array();
 		$posts1[0]= $_POST['hygiene'];
-		$posts1[1]= $_POST['hospitable'];
+		$posts1[1]= 0;
 		$posts1[2]= $_POST['price'];
 		$posts1[3]= $_POST['condition'];
 		$posts1[4]= $_POST['environment'];
@@ -51,8 +51,8 @@
 
 		//new
 
-		$rating = $data1[0] + $data1[1] + $data1[2] + $data1[3] + $data1[4] + $data1[9];
-		$rating = $rating / 6;
+		$rating = $data1[0] + $data1[2] + $data1[3] + $data1[4] + $data1[9];
+		$rating = $rating / 5;
 
 		if($rating >= 1 && $rating <= 1.4)
 		{
@@ -100,8 +100,8 @@
 		}
 		//.......................................
 		
-		$insert_Query = "INSERT INTO `feedback_details`(evaluation, hygiene, hospitable, conditions, environment, price, service, message, serial) 
-						VALUES ('$data1[5]','$data1[0]','$data1[1]','$data1[3]','$data1[4]','$data1[2]', '$data1[9]','$data1[7]', '$serial')";	
+		$insert_Query = "INSERT INTO `feedback_details`(evaluation, hygiene, conditions, environment, price, service, message, serial) 
+						VALUES ('$data1[5]','$data1[0]','$data1[3]','$data1[4]','$data1[2]', '$data1[9]','$data1[7]', '$serial')";	
 		
 
 	

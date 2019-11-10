@@ -51,8 +51,10 @@ $count = 0;
       <center><h2>Summary</h2></center>
 <table border = "3" width= "100%">
 <tr>
-                                                        <th>ID Number</th>
+                                                        <th>Serial Number</th>
                                                         <th>Stall No</th>
+                                                        <th>Area</th>
+                                                        
                                                         <th>Evaluation</th>
                                                         
                                                         <th>Feedback Type</th>
@@ -65,6 +67,8 @@ $count = 0;
                                                     <tr>
                                                         <td><?php echo $row89[0]?></td>
                                                         <td><?php echo $row89[1]?></td>
+                                                        <td><?php echo $row89[5]?></td>
+                                                        
                                                         <td><?php echo $row89[2]?> Stars</td>
                                                         
                                                         <td><?php echo $row89[3]?></td>
@@ -80,6 +84,12 @@ $count = 0;
   <p>*********************** End of Document ***********************</p>
   </center>
   </section>
+
+  <div class="pull-left">
+  <h4>Prepared By:</h4><br><br>
+  <p>__________________________</p>
+    <p>Signature over printed name</p>
+  </div>
 
 </body>
 

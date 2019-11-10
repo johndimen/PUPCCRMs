@@ -53,7 +53,7 @@ $count = 0;
   <p></p>
                                                 <thead>
                                                     <tr>
-                                                        <th>ID Number</th>
+                                                        <th>Serial Number</th>
                                                         <th>Name</th>
                                                         <th>Type</th>
                                                         <th>Priority</th>
@@ -67,7 +67,7 @@ $count = 0;
                                                     $count++;?>
                                                     <tr>
                                                         
-                                                        <td><?php echo $row90['id']?></td>
+                                                        <td><?php echo $row90['case_number']?></td>
                                                         <td><?php echo $row90['case_name']?></td>
                                                         <td><?php echo $row90['type']?></td>
                                                         <td><?php echo $row90['priority']?></td>

@@ -66,11 +66,59 @@ $count = 0;
                                                 <?php while($row94 = mysqli_fetch_array($query94)){
                                                     $count++
                                                     ?>
+
+                                                    
                                                     <tr>
+                                                    <?php 
+                                                    if($row94[3] >= 1 && $row94[3] <= 1.4)
+                                                    {
+                                                      $row94[3] = 1;
+                                                    } else 
+                                                    
+                                                    if($row94[3] >= 1.5 && $row94[3] <= 1.9)
+                                                    {
+                                                      $row94[3] = 1.5;
+                                                    }else
+                                                
+                                                    if($row94[3] >= 2 && $row94[3] <= 2.4)
+                                                    {
+                                                      $row94[3] = 2;
+                                                    }else
+                                                
+                                                    if($row94[3] >= 2.5 && $row94[3] <= 2.9)
+                                                    {
+                                                      $row94[3] = 2.5;
+                                                    }else
+                                                    
+                                                    if($row94[3] >= 3 && $row94[3] <= 3.4)
+                                                    {
+                                                      $row94[3] = 3;
+                                                    }else
+                                                
+                                                    if($row94[3] >= 3.5 && $row94[3] <= 3.9)
+                                                    {
+                                                      $row94[3] = 3.5;
+                                                    }else
+                                                    
+                                                    if($row94[3] >= 4 && $row94[3] <= 4.4)
+                                                    {
+                                                      $row94[3] = 4;
+                                                    }else
+                                                
+                                                    if($row94[3] >= 4.5 && $row94[3] <= 4.9)
+                                                    {
+                                                      $row94[3] = 4.5;
+                                                    }else
+                                                        
+                                                    if($row94[3] == 5)
+                                                    {
+                                                      $row94[3] = 5;
+                                                    }
+                                                    ?>
                                                         <td><?php echo $row94[0]?></td>
                                                         <td><?php echo $row94[1]?></td>
                                                         <td><?php echo $row94[2]?></td>
-                                                        <td><?php echo $row94[3]?></td>
+                                                        <td><?php echo $row94[3] ?> Star</td>
                                                         <td></td>
                                                         
                                                     </tr>

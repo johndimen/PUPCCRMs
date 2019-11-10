@@ -52,9 +52,10 @@ $count = 0;
 <table border = "3" width= "100%">
 <thead>
                                                     <tr>
-                                                        <th>ID Number</th>
+                                                        <th>Serial Number</th>
                                                         <th>Business Name</th>
                                                         <th>Stall Category</th>
+                                                        <th>Stall Area</th>
                                                         <th>Stall Measurement</th>
                                                         <th>Monthly Rental</th>
                                                     </tr>
@@ -66,9 +67,10 @@ $count = 0;
                                                 <?php while($row92 = mysqli_fetch_array($query92)){
                                                     $count++?>
                                                     <tr>
-                                                        <td><?php echo $row92['id']?></td>
+                                                        <td><?php echo $row92['serial']?></td>
                                                         <td><?php echo $row92['name']?></td>
                                                         <td><?php echo $row92['function']?></td>
+                                                        <td><?php echo $row92['area']?></td>
                                                         <td><?php echo $row92['measurement']?></td>
                                                         
                                                         <td><?php echo $row92['rental']?></td>

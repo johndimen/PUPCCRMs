@@ -108,8 +108,8 @@
 										<li>By e-mail: - feedback.RGO@pup.edu.ph</li>
 										<li>By telephone: (Monday to Friday, 0730 to 1800 GMT)
                                             <ul>
-                                                <li>+632 310-9219</li>
-                                                <li>+632 335-1777 or +632 335-1787 local 350</li>
+                                                <li>+632 5310-9219</li>
+                                                <li>+632 5335-1777 or +632 5335-1787 local 350</li>
                                             </ul> 
                                         </li>
 										<li>By post:

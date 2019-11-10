@@ -467,7 +467,7 @@ include("../../../php_action/userdata.php");
           <div class="form-group">
             <label for="evaluation" class="col-sm-4 control-label">Evaluation</label>
             <div class="col-sm-8">
-              <label for="" class="form-control" id="evaluation" name="evaluation"><?php echo $row29[3]?></label>
+              <label for="" style="height:auto" class="form-control" id="evaluation" name="evaluation"><?php echo $row29[3]?> Customer Satisfaction</label>
             </div>
           </div>
           </div>
@@ -486,6 +486,7 @@ include("../../../php_action/userdata.php");
           <br>
     <div class="row">
         <div class="col-md-6">
+        <h5><b>Place</b></h5>
           <div class="form-group">
             <label for="question1" class="col-sm-3 control-label">Hygiene</label>
             <div class="col-sm-5">
@@ -493,29 +494,26 @@ include("../../../php_action/userdata.php");
             </div>
           </div>
           <div class="form-group">
-            <label for="question2" class="col-sm-3 control-label">Hospitablity</label>
-            <div class="col-sm-5">
-              <label for="" class="form-control" id="question2" name="hospitablity"><?php echo $row29[11]?></label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="question3" class="col-sm-3 control-label">Conditions</label>
-            <div class="col-sm-5">
-              <label for="" class="form-control" id="question3" name="conditions"><?php echo $row29[12]?></label>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-        <div class="form-group">
             <label for="question4" class="col-sm-3 control-label">Environment</label>
             <div class="col-sm-5">
               <label for="" class="form-control" id="question4" name="environment"><?php echo $row29[13]?></label>
             </div>
           </div>
+          <h5><b>Pricing</b></h5>
           <div class="form-group">
             <label for="question5" class="col-sm-3 control-label">Pricing</label>
             <div class="col-sm-5">
               <label for="" class="form-control" id="question5" name="price"><?php echo $row29[14]?></label>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-md-6">
+        <h5><b>Product</b></h5>
+          <div class="form-group">
+            <label for="question3" class="col-sm-3 control-label">Conditions</label>
+            <div class="col-sm-5">
+              <label for="" class="form-control" id="question3" name="conditions"><?php echo $row29[12]?></label>
             </div>
           </div>
           <div class="form-group">

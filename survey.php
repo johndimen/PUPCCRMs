@@ -147,11 +147,7 @@ include("php_action/retrieve/feedback.php");
                         
                         <select class = "default-select" id = "default-select" name = "location" required>
                         <option value = "">Select Area</option>
-                        <option value = "north">North</option>
-                        <option value = "south">South</option>
                         <option value = "west">West</option>
-                        <option value = "east">East</option>
-                        <option value = "sampaguita">Sampaguita</option>
                         <option value = "lagoon">Lagoon</option>
 
                       

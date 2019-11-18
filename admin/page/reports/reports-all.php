@@ -464,8 +464,7 @@ include("../../../php_action/retrieve/report.php");
                                                     <tr>
                                                         <th>Stall No</th>
                                                         <th>Area</th>
-                                                        <th>Evaluation</th>
-                                                        <th>Feedback Type</th>
+                                                        <th>Customer Evaluation</th>
                                                         <th>Sender Type</th>
                                                         
                                                     </tr>
@@ -478,56 +477,58 @@ include("../../../php_action/retrieve/report.php");
                                                     <tr>
 
                                                     <?php 
-                                                    
-		if($row89[2] >= 1 && $row89[2] <= 1.4)
+
+if($row89[2] >= 1 && $row89[2] <= 1.4)
 		{
-			$row89[2] = 1;
+			$row89[2] = 'Extremely Poor';
 		} else 
 		
 		if($row89[2] >= 1.5 && $row89[2] <= 1.9)
 		{
-			$row89[2] = 1.5;
+			$row89[2] = 'Very Poor';
 		}else
 
 		if($row89[2] >= 2 && $row89[2] <= 2.4)
 		{
-			$row89[2] = 2;
+			$row89[2] = 'Poor';
 		}else
 
 		if($row89[2] >= 2.5 && $row89[2] <= 2.9)
 		{
-			$row89[2] = 2.5;
+			$row89[2] = 'Below Average';
 		}else
 		
 		if($row89[2] >= 3 && $row89[2] <= 3.4)
 		{
-			$row89[2] = 3;
+			$row89[2] = 'Average';
 		}else
 
 		if($row89[2] >= 3.5 && $row89[2] <= 3.9)
 		{
-			$row89[2] = 3.5;
+			$row89[2] = 'Above Average';
 		}else
 		
 		if($row89[2] >= 4 && $row89[2] <= 4.4)
 		{
-			$row89[2] = 4;
+			$row89[2] = 'Good';
 		}else
 
 		if($row89[2] >= 4.5 && $row89[2] <= 4.9)
 		{
-			$row89[2] = 4.5;
+			$row89[2] = 'Very Good';
 		}else
 				
 		if($row89[2] == 5)
 		{
-			$row89[2] = 5;
-		}
+			$row89[2] = 'Excellent';
+        }
+
+        //----------------------
+
                                                     ?>
                                                         <td><?php echo $row89[1]?></td>
                                                         <td><?php echo $row89[5]?></td>
                                                         <td><?php echo $row89[2]?></td>
-                                                        <td><?php echo $row89[3]?></td>
                                                         <td><?php echo $row89[4]?></td>
                                                     </tr>
                                                 <?php }?>

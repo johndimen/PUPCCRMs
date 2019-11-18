@@ -304,46 +304,6 @@ include("../../../php_action/retrieve/feedback.php");
             <li><a href="../concessions/concession-contract.php"><i class="fa fa-circle-o"></i> Contracts </a></li>
           </ul>
         </li>
-        <!--<li><a href="../categories/categories.php"><i class="fa fa-tags"></i> <span>Categories</span></a></li>
-        <li class="treeview">
-          <a href="../calendar/calendar.php">
-            <i class="fa fa-calendar"></i> <span>Calendar</span>
-            <span class="pull-right-container">
-              <small class="label pull-right label-info">17</small>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-              <li>
-                <a href="../calendar/activity.php"><i class="fa fa-circle-o"></i> Activity 
-                  <span class="pull-right-container">
-                    <small class="label pull-right label-warning"> 3</small> 
-                    <small class="label pull-right bg-blue"> 14</small> 
-                  </span>
-                </a>
-              </li>
-          </ul>
-        </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-envelope"></i> <span>Mailbox</span>
-          <span class="pull-right-container">
-            <small class="label pull-right bg-yellow">12</small>
-            <small class="label pull-right bg-green">16</small>
-            <small class="label pull-right bg-red">5</small>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li class="">
-            <a href="../mail/mailbox.php"><i class="fa fa-circle-o"></i>Inbox
-              <span class="pull-right-container">
-                <span class="label label-primary pull-right">13</span>
-              </span>
-            </a>
-          </li>
-          <li><a href="../mail/mail-unread.php"><i class="fa fa-circle-o"></i>Unread</a></li>
-          <li><a href="../mail/read-mail.php"><i class="fa fa-circle-o"></i>Read</a></li>
-        </ul>
-      </li>-->
       <li class="treeview">
           <a>
             <i class="fa fa-file-archive-o"></i> <span>Reports</span>
@@ -470,124 +430,50 @@ include("../../../php_action/retrieve/feedback.php");
                 <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>
               </ul>
             </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
         </div>
-        <!-- /.col -->
-        <div class="col-md-9">
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title"><strong>Survey</strong></h3>
 
-              <div class="box-tools pull-right">
-                <div class="has-feedback">
-                  <input type="text" class="form-control input-sm" placeholder="Search Feedback">
-                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                </div>
-              </div>
-              <!-- /.box-tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <div class="mailbox-controls">
-                <!-- Check all button -->
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
-                </button>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-archive"></i></button>
-                </div>
-                <!-- /.btn-group -->
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                <div class="pull-right">
-                  1/1
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                  </div>
-                  <!-- /.btn-group -->
-                </div>
-                <!-- /.pull-right -->
-              </div>
-              <div class="table-responsive mailbox-messages">
-                <table class="table table-hover table-striped">
-                  <tbody>
-                    <tr>
-                      
-                      <th>Sender Name</td>
-                      <!-- note gawin feedback type  nlng ung message-->
-                      <th>Message</td>
-                      <th>Area</td>
-                      <th>Date</td>
-                      <th>Action</td>
-                    </tr>
+          <div class="col-md-9 pull-right">
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title"><strong>Survey</strong> </h3>
+              </div> 
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Sender Name</th> 
+                    <th>Message</th>
+                    <th>Area</th>
+                    <th>Date</th>
+                    <th style="width:100px;">Action</th>
+                  </tr>
+
+                </thead>
+                <tbody>
+                <?php while($row = mysqli_fetch_array($query9)){?>
                   
-                    <?php
-                  while($row = mysqli_fetch_array($query9))
-                  {
-
-                    if($row[5] == 1)
-                    {
-                      $strong = "<strong>";
-                    }
-                    else 
-                    {
-                      $strong = "";
-                    }
-
-                  ?>
-
                   <tr>
                   
-                    <td class="mailbox-name"><?php echo $strong?> <?php echo $row[0]?></td>
-                    <td class="mailbox-subject"><?php echo $strong?><?php echo $row[1] ?>
-                    </td>
-                    <td><?php echo $strong?> <?php echo $row[2] ?></td>
-                    <td class="mailbox-attachment"><?php echo $strong?><?php echo $row[3] ?></td>
+                    <td > <?php echo $row[0]?></td>
+                    <td><?php echo $row[1] ?></td>
+                    <td> <?php echo $row[2] ?></td>
+                    <td><?php echo $row[3] ?></td>
                     <td>
-                    <div class="btn-group">
-                    <a type="button" class="btn btn-info " href="./survey-view.php?id=<?php echo $row[4]?>">View</a>
-                  </div>
-                  </td>
+                      <div class="btn-group">
+                        <a type="button" class="btn btn-info " href="./survey-view.php?id=<?php echo $row[4]?>">View</a>
+                      </div>
+                    </td>
+                  <?php } ?>
+                </tbody>
+                <tfoot>
                  
-                  </tr>
-                  <?php }?>
-                  </tbody>
-                </table>
-                <!-- /.table -->
-              </div>
-              <!-- /.mail-box-messages -->
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer no-padding">
-              <div class="mailbox-controls">
-                <!-- Check all button -->
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
-                </button>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
-                </div>
-                <!-- /.btn-group -->
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                <div class="pull-right">
-                  1/1
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                  </div>
-                  <!-- /.btn-group -->
-                </div>
-                <!-- /.pull-right -->
-              </div>
+                 
+                </tfoot>
+              </table>
             </div>
           </div>
-          <!-- /. box --> 
-        </div>
+          </div>
           <div class="col-md-9 pull-right">
             <div class="box">
               <div class="box-header">
@@ -599,8 +485,8 @@ include("../../../php_action/retrieve/feedback.php");
                   <tr>
                     <th>ID</th> 
                     <th>Message</th>
-                    <th>Date</th>
-                    <th style="width:100px;">Action</th>
+                    <th style="width:70px;">Date</th>
+                    <th style="width:70px;">Action</th>
                   </tr>
 
                 </thead>
